@@ -1,0 +1,82 @@
+{"type":"entity","name":"DSH(deepseek-harness)","entityType":"project","observations":["版本 0.1.5-rc.2, commit c291e79","268 包 / 50 能力域"]}
+{"type":"entity","name":"Cordis","entityType":"framework","observations":["4.0.0-rc.7 fork, vendored 于 vendor/","内核 2693 行 TS 源码"]}
+{"type":"entity","name":"能力seam","entityType":"concept","observations":["三角色: Service Definition / Service Provider / Consumer","规范范例: packages/shell"]}
+{"type":"entity","name":"dsh-shell","entityType":"package","observations":["拥有 ctx.shell 的 Service Definition","抽象类 ShellExecutor extends Service"]}
+{"type":"entity","name":"事件三域","entityType":"concept","observations":["session/*(持久事实,追加日志) / agent/*(活跃Agent实时事件) / 能力事件(fs/* tools/* telemetry/*)","waterfall事件必须调next()委托; agent/turn-stopping 是serial事件无next()"]}
+{"type":"entity","name":"轮次流程","entityType":"concept","observations":["turn/start -> claim输入 -> agent/pre-step -> step -> agent/request -> prepareCall -> llm/stream -> tool/call* -> step/end -> turn/end","pre-step可改写或拒绝输入; 首次领取被拒绝则关闭空轮次"]}
+{"type":"entity","name":"会话日志不变式","entityType":"concept","observations":["模型可见即已记录: 抵达模型请求的一切必须能从会话日志重建, 由运行时不变量断言","deriveMessages() 从日志投影模型历史; JSONL v0/v1 + zstd, generation路径永不改名"]}
+{"type":"entity","name":"dsh-agent-loop","entityType":"package","observations":["core/agent-loop: 默认循环驱动器, 占据 ctx.agentLoop, 本身可替换"]}
+{"type":"entity","name":"dsh-llm","entityType":"package","observations":["llm/llm: 消息与流式词汇表 + 适配器seam, 占据 ctx.llm","SD与Consumer合并的例子(Consumer是agent loop本身), 不预防性拆包的范例"]}
+{"type":"entity","name":"dsh-tool-bash","entityType":"package","observations":["shell/tool-bash: ctx.shell 的 Consumer, inject=['tools','shell','systemPrompt','shellEnv']","从不 import dsh-bash-local 等具体Provider"]}
+{"type":"entity","name":"dsh-session","entityType":"package","observations":["core/session: 仅追加 SessionEvent 日志和内存存储, 占据 ctx.sessions"]}
+{"type":"entity","name":"ctx键清单","entityType":"concept","observations":["核心: sessions systemPrompt tools agents agentLoop llm","能力: shell fs terminals subprocess sandbox jobs goals webhookRuntime sessionProjections"]}
+{"type":"entity","name":"记忆管理","entityType":"course-subdirection","observations":["课程六子方向之一"]}
+{"type":"entity","name":"上下文管理","entityType":"course-subdirection","observations":["课程六子方向之一; dsh对应: compaction域+context域+spill域","dsh答案(笔记08): 三层防线=spill(执行时)/pruner(压缩前)/compaction(pre-step);摘要不是surface事件,替换user/message承载"]}
+{"type":"entity","name":"知识库管理","entityType":"course-subdirection","observations":["课程六子方向之一; dsh对应: skill域+fs域"]}
+{"type":"entity","name":"工具管理","entityType":"course-subdirection","observations":["课程六子方向之一; dsh对应: tools+guard+interaction(审批)+sandbox"]}
+{"type":"entity","name":"复杂任务执行","entityType":"course-subdirection","observations":["课程六子方向之一; dsh对应: goal/plan/todo/jobs/workflow 域","dsh答案(笔记06): goal(四态phase+armed分离)/plan(plan-mode经pre-step next()后追加)/todo(log-only,execute体内)三层+jobs不碰账本"]}
+{"type":"entity","name":"多智能体协作","entityType":"course-subdirection","observations":["课程六子方向之一; dsh对应: subagent域+experimental/agent-teams","dsh答案(笔记07): 唯一多提供方注册表seam;持久对象(Session+Activation)vs一次性;三层=委派/编排脚本/常驻团队"]}
+{"type":"entity","name":"笔记01-仓库地图","entityType":"deliverable","observations":["dsh-anatomy/01-仓库地图与包依赖.md, 2026-09-14"]}
+{"type":"entity","name":"笔记02-微内核与Cordis","entityType":"deliverable","observations":["dsh-anatomy/02-微内核与Cordis依赖注入.md, 2026-09-14"]}
+{"type":"entity","name":"dsh-app-boot","entityType":"package","observations":["boot/app-boot: 所有 dsh 应用的共享启动库","配置叠层: bundle栈 -> profile patch -> home patch -> --patch overlay","fail loud: 两阶段失败标签, 上报前拆卸整个上下文, 空patch文件也启动失败","patchReload: live(web模板热重载) | startup(headless/sdk/acp一次性)"]}
+{"type":"entity","name":"dsh-agent-presets","entityType":"package","observations":["preset/agent-presets: 按会话组装agent, 目录内 agent.cordis.yml","仅通过复制创建preset(快照语义); persona包提供可组装人设行"]}
+{"type":"entity","name":"dsh-scope","entityType":"package","observations":["core/scope: agent级注册世界, createScope(ctx, agent), dispose撤销全部注册","子作用域继承祖先贡献且较近优先; 祖先可观察后代, 均不反向; core所有注册表构建其上"]}
+{"type":"entity","name":"Fiber状态机","entityType":"concept","observations":["PENDING(等依赖) -> LOADING(setup) -> ACTIVE; UNLOADING -> DISPOSED; setup抛错 -> FAILED","dsh加固: UNLOADING中拒绝新建effect, effect owner包装先于setup注册"]}
+{"type":"entity","name":"笔记03-生命周期与装配","entityType":"deliverable","observations":["dsh-anatomy/03-插件生命周期与装配管线.md, 2026-09-14"]}
+{"type":"entity","name":"笔记04-事件溯源会话","entityType":"deliverable","observations":["dsh-anatomy/04-事件溯源会话.md, 2026-09-14","核心: Session=append-only日志唯一真源, deriveMessages()投影, 模型可见即已记录"]}
+{"type":"entity","name":"评审意见-Claude","entityType":"deliverable","observations":["评审意见-Claude-20260914.md: 约40项代码引用逐条复核","结论: 事实底座扎实; 4类必改(.env优先序写反/2处行号/README文件名/2693行口径)已全部修订","建议已采纳: 术语表+能力域vs能力seam对照句/校验命令页脚/mermaid修正/isolate realm真实YAML示例"]}
+{"type":"entity","name":"SessionEventMap","entityType":"concept","observations":["types.ts:269 merge-extensible 仅追加事件词汇(compaction/* hook/* 等插件扩展)","ignorable标记(types.ts:483): 未知事件默认拒绝重建, 忘标marker宁可over-refuse","四种SurfaceEventType携带surfaceOp: system/user/assistant/tool; system/message是surface第0号节点"]}
+{"type":"entity","name":"deriveMessages","entityType":"concept","observations":["core/session/src/index.ts:832; 缓存+冻结的投影; 空assistant消息保留事件但不进transcript","fork拒绝开放轮次内前缀(会话分支) vs 子代理fork保留截断(委派发生在父轮次打开时)"]}
+{"type":"entity","name":"笔记05-工具执行管线","entityType":"deliverable","observations":["dsh-anatomy/05-工具执行管线.md, 2026-09-14","三瀑布+单调守卫+fail-closed审批; tool/call执行前落账; PTC模式分派层结构沙箱"]}
+{"type":"entity","name":"单调守卫","entityType":"concept","observations":["ToolGuard返回类型不含allow(docs/subsystems/tools.zh.md:317); undefined=保留决策, reason=拒绝","监听器顺序无法把拒绝翻回允许; ctx.tools.guard()注册, agent.ctx注册=仅该agent"]}
+{"type":"entity","name":"笔记06-任务层级","entityType":"deliverable","observations":["dsh-anatomy/06-任务层级goal-plan-todo.md","goal/plan/todo三层+jobs+schedule"]}
+{"type":"entity","name":"笔记07-子代理与工作流","entityType":"deliverable","observations":["dsh-anatomy/07-子代理与工作流.md","subagent注册表+workflow+Agent Teams"]}
+{"type":"entity","name":"笔记08-压缩与结果外置","entityType":"deliverable","observations":["dsh-anatomy/08-压缩与结果外置.md","compaction事务+pruner+spill"]}
+{"type":"entity","name":"笔记09-模型接缝与MCP","entityType":"deliverable","observations":["dsh-anatomy/09-模型接缝与MCP.md","prepareCall+LlmAdapter+MCP桥接"]}
+{"type":"entity","name":"笔记10-声明式组合与扩展","entityType":"deliverable","observations":["dsh-anatomy/10-声明式组合与扩展.md","bundle+skill+extensions+hooks"]}
+{"type":"relation","from":"DSH(deepseek-harness)","to":"Cordis","relationType":"基于(vendored fork)"}
+{"type":"relation","from":"DSH(deepseek-harness)","to":"能力seam","relationType":"核心架构概念"}
+{"type":"relation","from":"能力seam","to":"dsh-shell","relationType":"规范范例"}
+{"type":"relation","from":"DSH(deepseek-harness)","to":"事件三域","relationType":"扩展点体系"}
+{"type":"relation","from":"DSH(deepseek-harness)","to":"轮次流程","relationType":"核心运行时行为"}
+{"type":"relation","from":"DSH(deepseek-harness)","to":"会话日志不变式","relationType":"核心约束"}
+{"type":"relation","from":"DSH(deepseek-harness)","to":"ctx键清单","relationType":"服务面"}
+{"type":"relation","from":"dsh-agent-loop","to":"轮次流程","relationType":"实现"}
+{"type":"relation","from":"dsh-tool-bash","to":"dsh-shell","relationType":"Consumer of"}
+{"type":"relation","from":"dsh-llm","to":"ctx键清单","relationType":"提供ctx.llm"}
+{"type":"relation","from":"dsh-session","to":"会话日志不变式","relationType":"承载"}
+{"type":"relation","from":"DSH(deepseek-harness)","to":"记忆管理","relationType":"支撑课程子方向"}
+{"type":"relation","from":"DSH(deepseek-harness)","to":"上下文管理","relationType":"支撑课程子方向"}
+{"type":"relation","from":"DSH(deepseek-harness)","to":"知识库管理","relationType":"支撑课程子方向"}
+{"type":"relation","from":"DSH(deepseek-harness)","to":"工具管理","relationType":"支撑课程子方向"}
+{"type":"relation","from":"DSH(deepseek-harness)","to":"复杂任务执行","relationType":"支撑课程子方向"}
+{"type":"relation","from":"DSH(deepseek-harness)","to":"多智能体协作","relationType":"支撑课程子方向"}
+{"type":"relation","from":"笔记01-仓库地图","to":"DSH(deepseek-harness)","relationType":"解剖"}
+{"type":"relation","from":"笔记02-微内核与Cordis","to":"DSH(deepseek-harness)","relationType":"解剖"}
+{"type":"relation","from":"笔记02-微内核与Cordis","to":"Cordis","relationType":"解剖"}
+{"type":"relation","from":"dsh-app-boot","to":"DSH(deepseek-harness)","relationType":"启动管线"}
+{"type":"relation","from":"dsh-app-boot","to":"Fiber状态机","relationType":"驱动"}
+{"type":"relation","from":"dsh-agent-presets","to":"dsh-scope","relationType":"组装接入"}
+{"type":"relation","from":"dsh-agent-presets","to":"多智能体协作","relationType":"支撑(多agent单进程)"}
+{"type":"relation","from":"笔记03-生命周期与装配","to":"DSH(deepseek-harness)","relationType":"解剖"}
+{"type":"relation","from":"笔记04-事件溯源会话","to":"DSH(deepseek-harness)","relationType":"解剖"}
+{"type":"relation","from":"笔记04-事件溯源会话","to":"会话日志不变式","relationType":"展开"}
+{"type":"relation","from":"笔记04-事件溯源会话","to":"SessionEventMap","relationType":"讲解"}
+{"type":"relation","from":"SessionEventMap","to":"会话日志不变式","relationType":"承载"}
+{"type":"relation","from":"评审意见-Claude","to":"笔记01-仓库地图","relationType":"评审通过(修订后)"}
+{"type":"relation","from":"评审意见-Claude","to":"笔记02-微内核与Cordis","relationType":"评审通过(修订后)"}
+{"type":"relation","from":"评审意见-Claude","to":"笔记03-生命周期与装配","relationType":"评审通过(修订后)"}
+{"type":"relation","from":"笔记05-工具执行管线","to":"DSH(deepseek-harness)","relationType":"解剖"}
+{"type":"relation","from":"笔记05-工具执行管线","to":"单调守卫","relationType":"讲解"}
+{"type":"relation","from":"笔记05-工具执行管线","to":"工具管理","relationType":"支撑课程子方向"}
+{"type":"relation","from":"笔记06-任务层级","to":"DSH(deepseek-harness)","relationType":"解剖"}
+{"type":"relation","from":"笔记07-子代理与工作流","to":"DSH(deepseek-harness)","relationType":"解剖"}
+{"type":"relation","from":"笔记08-压缩与结果外置","to":"DSH(deepseek-harness)","relationType":"解剖"}
+{"type":"relation","from":"笔记09-模型接缝与MCP","to":"DSH(deepseek-harness)","relationType":"解剖"}
+{"type":"relation","from":"笔记10-声明式组合与扩展","to":"DSH(deepseek-harness)","relationType":"解剖"}
+{"type":"relation","from":"笔记06-任务层级","to":"复杂任务执行","relationType":"支撑课程子方向"}
+{"type":"relation","from":"笔记07-子代理与工作流","to":"多智能体协作","relationType":"支撑课程子方向"}
+{"type":"relation","from":"笔记08-压缩与结果外置","to":"上下文管理","relationType":"支撑课程子方向"}
+{"type":"relation","from":"笔记10-声明式组合与扩展","to":"知识库管理","relationType":"支撑课程子方向"}
+{"type":"relation","from":"笔记07-子代理与工作流","to":"deriveMessages","relationType":"fork两策略衔接"}
+{"type":"relation","from":"笔记08-压缩与结果外置","to":"SessionEventMap","relationType":"compaction事件扩展"}

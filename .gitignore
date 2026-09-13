@@ -1,0 +1,7 @@
+# 第三方克隆仓库(不随项目发布)
+workspace/
+# 本地智能体配置(含密钥,严禁提交)
+.zcode/
+# 系统杂物
+scripts/__pycache__/
+*.pyc
