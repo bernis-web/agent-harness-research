@@ -1,0 +1,26 @@
+[
+  {
+    "file": "harness.cjs",
+    "code": 0,
+    "stderr": ""
+  },
+  {
+    "file": "step11.cjs",
+    "code": 0,
+    "stderr": ""
+  },
+  {
+    "file": "run.cjs",
+    "code": 0,
+    "stderr": ""
+  },
+  {
+    "file": "launch-guard.cjs",
+    "code": 0,
+    "stderr": ""
+  },
+  {
+    "pythonParse": 0,
+    "stderr": ""
+  }
+]

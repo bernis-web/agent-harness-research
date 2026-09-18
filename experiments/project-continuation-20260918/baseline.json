@@ -1,0 +1,80 @@
+{
+  "at": "2026-09-18T03:26:58.895Z",
+  "head": "295b6f639fb3d251b4002582b768241770f09f36",
+  "gitStatus": "?? experiments/\n?? research/\n",
+  "trackedDiffSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "sources": [
+    {
+      "path": "D:/projects/agent-harness-research/research/01-scope/研究问题与边界.md",
+      "sha256": "9cb6032d7803df38bcb3c76f122acfc46a25b035da7ab141ff5b27ecedf831f3"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/research/02-design/先导任务说明.md",
+      "sha256": "4ed068fb5d71529310b3b2ffb4bfdaf917db42ba4642974a596f357ffe7a980b"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/research/02-design/评分规则.md",
+      "sha256": "58491ba8066b9fdfb2ac8a7d57552aeff71247be378a93fc3eb3e521e768282e"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/research/02-design/数据契约.md",
+      "sha256": "c594dfb6a75492f135bdc0b067f439925cfa8111521ba6f7e988daecb7772b7f"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/research/02-design/运行器设计.md",
+      "sha256": "988a28259e607d461d8cb2f3acfcb1542d708d6de9665b8372655c7e6afe403b"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/docs/superpowers/plans/2026-09-15-claude-code-long-horizon-research-plan.md",
+      "sha256": "6feaa527675b73216846b3b80b5f9d20b2018bf04967c4ab88a7562ed2048548"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/docs/superpowers/plans/2026-09-15-flash-execution-brief.md",
+      "sha256": "495038824c7701c99729d5631499b2cfa6f438732e381fec70ad6fb24845afa3"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/README.md",
+      "sha256": "182ea15d3f5fa0a7ebbf68588805bd5c42ca247a4c7644dec4927fe35eeafa75"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/step11-visible-04/REPORT.md",
+      "sha256": "fc0dbc4ea7035fa1468967e306937107c6411f5781e0a91eb6ea9449bd4e4277"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/step11-visible-04/final-verification.json",
+      "sha256": "4036e6a6930392ee290c516576b7538c2460427e826af328452e8cd8eb806c06"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/step11-visible-04/evidence-index-validation.json",
+      "sha256": "8ec0f398e52f7f41443807e832e231b34052cfddeadd74549d409e276a5f9b68"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/step11-visible-04/model-report/invoke-stream.py",
+      "sha256": "dd6dc934ac473a16be41e1431d30e3a5f81cfc600a50bf54a5288399d9d07ac7",
+      "copiedTo": "D:/projects/agent-harness-research/experiments/project-continuation-20260918/model/invoke-stream.py"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/step11-visible-04/model-report/settings.json",
+      "sha256": "8964de44d77cff8ae8cbedf4f94e3ddfa213d7177a29851f651c932cba25aa0c",
+      "copiedTo": "D:/projects/agent-harness-research/experiments/project-continuation-20260918/model/settings.json"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/step11-visible-04/model-report/empty-mcp.json",
+      "sha256": "691f62624936af38f0e6b2ac6c8b43162a23696696f62d5037d9eb2b43bd73c5",
+      "copiedTo": "D:/projects/agent-harness-research/experiments/project-continuation-20260918/model/empty-mcp.json"
+    }
+  ],
+  "scope": "Only new experiments/project-continuation-20260918/",
+  "rulesChecked": [
+    "D:/AGENTS.md",
+    "D:/AGENTS.override.md",
+    "D:/projects/AGENTS.md",
+    "D:/projects/AGENTS.override.md",
+    "D:/projects/agent-harness-research/AGENTS.md",
+    "D:/projects/agent-harness-research/AGENTS.override.md",
+    "D:/projects/agent-harness-research/experiments/AGENTS.md",
+    "D:/projects/agent-harness-research/experiments/AGENTS.override.md"
+  ],
+  "guidance": "C:/Users/28417/.codex/guidance/dox-hierarchy.md",
+  "noMemoryRead": true
+}

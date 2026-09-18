@@ -1,0 +1,15 @@
+{
+  "reviewer": "Codex",
+  "models": [
+    "model-env",
+    "model-privacy",
+    "model-interception"
+  ],
+  "originals": "execution/*.inherited and model-*/result.json",
+  "scope": "new step11-visible-04 only",
+  "syntax": true,
+  "identityTests": true,
+  "protection": 5,
+  "privacy": "No global titles; no personal file list; no credentials read; screenshot Cancel button or task page only",
+  "limits": "Driver 90 seconds, native helper 30 seconds, task-only browser close"
+}

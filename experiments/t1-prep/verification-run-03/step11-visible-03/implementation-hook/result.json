@@ -1,0 +1,85 @@
+{
+  "duration_api_ms": 49406,
+  "stop_reason": "end_turn",
+  "session_id": "42917b00-e418-44bb-b258-086203f2597e",
+  "total_cost_usd": 0.05201,
+  "usage": {
+    "input_tokens": 1727,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "output_tokens": 1735,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "glm-5.3-flash": {
+      "inputTokens": 1727,
+      "outputTokens": 1735,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.05201,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000,
+      "thinkingTokens": 0,
+      "canonicalModel": "glm-5.3-flash",
+      "provider": "firstParty",
+      "costBasis": "unknown"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "is_error": false,
+  "num_turns": 1,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "```json\n{\n  \"code\": \"// launch-guard.cjs — required BEFORE harness.cjs (i.e. before playwright-core loads)\\n'use strict';\\nconst cp = require('child_process');\\nconst fs = require('fs');\\nconst path = require('path');\\n\\nconst TARGET_EXE = 'c:/program files/google/chrome/application/chrome.exe';\\n\\nfunction normCmd(c) {\\n  return String(c).replace(/\\\\\\\\/g, '/').replace(/^\\\\u0022|\\\\u0022$/g, '').toLowerCase();\\n}\\n\\nfunction writeJsonSafe(file, obj) {\\n  const tmp = file + '.tmp';\\n  fs.writeFileSync(tmp, JSON.stringify(obj, null, 2), 'utf8');\\n  fs.renameSync(tmp, file);\\n}\\n\\nfunction install(out) {\\n  const profileArg = '--user-data-dir=' + out + '/profile';\\n  const guard = {\\n    _child: null,\\n    _launch: null,\\n    _verified: false,\\n    state() {\\n      return {\\n        captured: !!this._child,\\n        pid: this._launch ? this._launch.pid : null,\\n        verified: this._verified,\\n        childAlive: !!this._child && this._child.pid != null,\\n      };\\n    },\\n    verify(cdpPid) {\\n      if (!this._launch) throw new Error('launch-guard: no owned launch captured');\\n      if (this._verified) return this._launch.identity;\\n      const r = cp.spawnSync('python', ['identity.py', 'launch.json', 'identity-before.json'], {\\n        cwd: out, timeout: 10000, windowsHide: true, encoding: 'utf8',\\n      });\\n      if (r.status !== 0 || !r.stdout) {\\n        throw new Error('launch-guard: identity.py failed status=' + r.status + ' stderr=' + (r.stderr || '').slice(0, 200));\\n      }\\n      const identity = JSON.parse(r.stdout);\\n      if (!identity.passed || identity.pid !== this._launch.pid) {\\n        throw new Error('launch-guard: identity mismatch identity.pid=' + identity.pid + ' owned pid=' + this._launch.pid);\\n      }\\n      this._verified = true;\\n      const mapping = Object.assign({}, this._launch, {\\n        cdpPid,\\n        cdpEqualsSpawn: cdpPid === this._launch.pid,\\n        identity,\\n      });\\n      writeJsonSafe(path.join(out, 'launch.json'), mapping);\\n      return identity;\\n    },\\n  };\\n\\n  const origSpawn = cp.spawn;\\n  let launched = false;\\n  cp.spawn = function (command, args, spawnOptions) {\\n    const isTarget = normCmd(command) === TARGET_EXE && Array.isArray(args) && args.includes(profileArg);\\n    if (!isTarget) return origSpawn.apply(this, arguments);\\n    if (launched) throw new Error('launch-guard: multiple owned launches not allowed');\\n    launched = true;\\n    const before = Date.now();\\n    const child = origSpawn.apply(this, arguments);\\n    const after = Date.now();\\n    guard._child = child;\\n    guard._launch = {\\n      pid: child.pid, driverPid: process.pid,\\n      exe: String(command), profile: out + '/profile',\\n      spawnBeforeMs: before, spawnAfterMs: after,\\n    };\\n    writeJsonSafe(path.join(out, 'launch.json'), guard._launch);\\n    return child;\\n  };\\n  return guard;\\n}\\n\\nmodule.exports = { install };\\n\",\n  \"interceptionPatch\": \"// step11 — inserted after playwright import, before native spawn (same in-process playwright-core)\\n(async () => {\\n  const fs = require('fs');\\n  if (t.page.listenerCount('filechooser') !== 0) {\\n    throw new Error('pre-spawn: filechooser listener already attached, count=' + t.page.listenerCount('filechooser'));\\n  }\\n  await t.page._channel.updateSubscription({ event: 'fileChooser', enabled: false });\\n  const cdp = await t.page.context().newCDPSession(t.page);\\n  try {\\n    await cdp.send('Page.setInterceptFileChooserDialog', { enabled: false });\\n  } finally {\\n    await cdp.detach();\\n  }\\n  fs.writeFileSync('interception.json', JSON.stringify({\\n    filechooserListenerCount: t.page.listenerCount('filechooser'),\\n    updateSubscription: { event: 'fileChooser', enabled: false },\\n    cdpSetInterceptFileChooserDialog: { enabled: false },\\n    atMs: Date.now(),\\n  }, null, 2));\\n})();\",\n  \"notes\": \"install(out) wraps child_process.spawn once at module load (before require('./harness.cjs') pulls in playwright-core). Only the owned launch is intercepted: normalized command equals c:/program files/google/chrome/application/chrome.exe AND args contain exact '--user-data-dir='+out+'/profile'; all other spawns pass through via origSpawn.apply(this,args) untouched, never restored (target-specific and harmless, runner-scoped). On the owned launch only: captures pid from the exact spawned child, driverPid=process.pid, exe, profile, spawnBeforeMs/spawnAfterMs; keeps guard._child reference for cleanup audit; wrapper does not throw after spawn except multiple-launch guard. Per the change request, identity.py is NOT invoked at spawn time (window not yet visible); verify(cdpPid) runs later via un-hooked spawnSync(python identity.py launch.json identity-before.json) with timeout 10000, windowsHide true, encoding utf8, no full cmdline logged; it rejects on nonzero exit or if identity.passed!==true or identity.pid!==owned pid, then writes the mapping including cdpPid and cdpEqualsSpawn (CDP target id is never equated with the real pid — cdpEqualsSpawn records whether they coincided). Writes are atomic via tmp+rename. Native identity JSON {passed,pid,createTime,targetOwnerHwnd,exe,profile,...} is stored in identity-before.json and embedded in the mapping for later native-helper revalidation. interceptionPatch goes after playwright import and before native spawn: asserts listenerCount('filechooser')===0, updateSubscription({event:'fileChooser',enabled:false}) with no swallow (installed coreBundle :38026-38031 swallows send errors, hence the explicit no-swallow CDP barrier), then newCDPSession on the same in-process instance sends Page.setInterceptFileChooserDialog {enabled:false} without cancel:true, detaches, and writes interception.json evidence. No sleeps, no invented APIs, no config/network/credential access; 82 lines of code.\"\n}\n```",
+  "ttft_ms": 16103,
+  "type": "result",
+  "duration_ms": 49520,
+  "uuid": "004218f8-8341-414e-bda9-14ed34f4f04b",
+  "ttft_stream_ms": 8876,
+  "time_to_request_ms": 128,
+  "first_content_frame_ms": 8876,
+  "queued_turn_count": 0,
+  "result_index": 0
+}

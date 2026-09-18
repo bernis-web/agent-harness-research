@@ -1,0 +1,16 @@
+{
+  "author": "Claude CLI glm-5.3-flash first successful response",
+  "secondCall": "glm-5.3-flash 120s timeout, no usable text; not used as code source",
+  "coordinatorCorrections": [
+    "Win64 ctypes signatures, class-name buffer, BOOL callback; mechanical ABI fixes",
+    "Screenshot only target Cancel HWND; compatible bitmap lifecycle and Pillow stride fixed",
+    "Only exact PID window metadata retained",
+    "Atomic real SendInput down/up pair; process-local thread DPI context",
+    "Node browser CDP session accessed from browser, not context",
+    "Native failure stops as BLOCKED before any further UI assertion; no extra30s poll",
+    "Separate harness-results from step11 results; visible headless false with no headless arg"
+  ],
+  "prerequisite": "UI generate+rename then task-owned known JSON import. Equivalent post10 tree and cleared undo; previous1-10 not rerun.",
+  "nativeCancel": "No chooser subscription during tested click; helper only exact owned dialog Cancel button real SendInput; DOM listeners observation only",
+  "originalsRetained": true
+}

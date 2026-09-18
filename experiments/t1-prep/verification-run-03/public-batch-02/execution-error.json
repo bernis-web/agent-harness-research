@@ -1,0 +1,5 @@
+{
+  "name": "Error",
+  "message": "DOWNLOAD_FAILURE: canceled",
+  "stack": "Error: DOWNLOAD_FAILURE: canceled\n    at t.exportMap (D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\attempt04-model-glm53\\flash-modules\\execution\\harness.cjs:114:23)\n    at async D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\attempt04-model-glm53\\flash-modules\\execution\\public-chain.cjs:65:22\n    at async t.step (D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\attempt04-model-glm53\\flash-modules\\execution\\harness.cjs:151:11)\n    at async module.exports (D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\attempt04-model-glm53\\flash-modules\\execution\\public-chain.cjs:64:3)\n    at async D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\attempt04-model-glm53\\flash-modules\\execution\\run.cjs:7:65"
+}

@@ -1,0 +1,85 @@
+{
+  "duration_api_ms": 78816,
+  "stop_reason": "end_turn",
+  "session_id": "65ebcd05-8a36-49b0-9641-7cff44bca4d1",
+  "total_cost_usd": 0.119245,
+  "usage": {
+    "input_tokens": 1889,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "output_tokens": 4392,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "glm-5.3-flash": {
+      "inputTokens": 1889,
+      "outputTokens": 4392,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.119245,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000,
+      "thinkingTokens": 0,
+      "canonicalModel": "glm-5.3-flash",
+      "provider": "firstParty",
+      "costBasis": "unknown"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "is_error": false,
+  "num_turns": 1,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "```python\n# native_cancel.py — cancel the visible Chrome native file-open dialog\n# Usage: python native_cancel.py <browserPID> <outputDir>\nimport ctypes, ctypes.wintypes as wt, json, os, struct, sys, time\n\nuser32 = ctypes.windll.user32\ngdi32 = ctypes.windll.gdi32\nkernel32 = ctypes.windll.kernel32\n\nENUM_PROC = ctypes.WINFUNCTYPE(ctypes.c_bool, wt.HWND, wt.LPARAM)\nMOUSEEVENTF = 0\n\nclass MOUSEINPUT(ctypes.Structure):\n    _fields_ = [(\"dx\", wt.LONG), (\"dy\", wt.LONG), (\"mouseData\", wt.DWORD),\n                (\"dwFlags\", wt.DWORD), (\"time\", wt.DWORD),\n                (\"dwExtraInfo\", ctypes.POINTER(ctypes.c_ulong))]\n\nclass KEYBDINPUT(ctypes.Structure):\n    _fields_ = [(\"wVk\", wt.WORD), (\"wScan\", wt.WORD), (\"dwFlags\", wt.DWORD),\n                (\"time\", wt.DWORD), (\"dwExtraInfo\", ctypes.POINTER(ctypes.c_ulong))]\n\nclass HARDWAREINPUT(ctypes.Structure):\n    _fields_ = [(\"uMsg\", wt.DWORD), (\"wParamL\", wt.WORD), (\"wParamH\", wt.WORD)]\n\nclass _INPUTU(ctypes.Union):\n    _fields_ = [(\"mi\", MOUSEINPUT), (\"ki\", KEYBDINPUT), (\"hi\", HARDWAREINPUT)]\n\nclass INPUT(ctypes.Structure):\n    _anonymous_ = (\"u\",)\n    _fields_ = [(\"type\", wt.DWORD), (\"u\", _INPUTU)]\n\ndef fail(outdir, stage, code, handles=None):\n    res = {\"tool\": \"native_cancel\", \"stage\": stage, \"passed\": False,\n           \"failure\": code, \"handles\": handles or {}}\n    p = os.path.join(outdir, \"native-result.json\")\n    with open(p, \"w\", encoding=\"utf-8\") as f:\n        json.dump(res, f)\n        f.flush(); os.fsync(f.fileno())\n    print(json.dumps(res))\n    sys.exit(1)\n\ndef win_pid(h):\n    p = wt.DWORD()\n    user32.GetWindowThreadProcessId(h, ctypes.byref(p))\n    return p.value\n\ndef main():\n    if len(sys.argv) != 3:\n        print(\"args: browserPID outputDir\"); sys.exit(2)\n    pid = int(sys.argv[1]); outdir = sys.argv[2]\n    os.makedirs(outdir, exist_ok=True)\n\n    dialog = None\n    deadline = time.time() + 20\n    while time.time() < deadline and dialog is None:\n        owned = []          # HWNDs of this PID only\n        top = []            # (hwnd, pid) metadata for all windows\n        def cb(h, _):\n            top.append((h, win_pid(h)))\n            if win_pid(h) == pid:\n                owned.append(h)\n            return True\n        user32.EnumWindows(ENUM_PROC(cb), 0)\n        chrome_tops = {h for h in owned\n                       if user32.GetClassNameW(h) == \"Chrome_WidgetWin_1\"}\n        candidates = []\n        for h, _ in top:  # query class/owner only now\n            if win_pid(h) == pid and user32.GetClassNameW(h) == \"#32770\":\n                owner = user32.GetWindow(h, 4)  # GW_OWNER\n                if owner in chrome_tops:\n                    candidates.append(h)\n        if len(candidates) == 1:\n            dialog = candidates[0]\n        elif len(candidates) > 1:\n            fail(outdir, \"find_dialog\", \"AMBIGUOUS_DIALOG\")\n        # not found yet -> keep polling\n        if dialog is None:\n            time.sleep(0.25)\n    if dialog is None:\n        fail(outdir, \"find_dialog\", \"DIALOG_NOT_FOUND\")\n\n    if not user32.IsWindow(dialog) or not user32.IsWindowVisible(dialog):\n        fail(outdir, \"find_dialog\", \"DIALOG_NOT_VISIBLE\", {\"dialog\": dialog})\n\n    cancel = user32.GetDlgItem(dialog, 2)\n    if not cancel or not user32.IsWindow(cancel):\n        fail(outdir, \"find_cancel\", \"CANCEL_NOT_FOUND\", {\"dialog\": dialog})\n    if win_pid(cancel) != pid or not user32.IsChild(dialog, cancel):\n        fail(outdir, \"find_cancel\", \"CANCEL_NOT_OWNED\",\n             {\"dialog\": dialog, \"cancel\": cancel})\n    if not (user32.IsWindowVisible(cancel) and user32.IsWindowEnabled(cancel)):\n        fail(outdir, \"find_cancel\", \"CANCEL_NOT_USABLE\",\n             {\"dialog\": dialog, \"cancel\": cancel})\n\n    meta = {\n        \"dialog\": {\"hwnd\": dialog, \"pid\": pid,\n                   \"class\": user32.GetClassNameW(dialog),\n                   \"owner\": user32.GetWindow(dialog, 4)},\n        \"cancel\": {\"hwnd\": cancel, \"pid\": win_pid(cancel),\n                   \"class\": user32.GetClassNameW(cancel),\n                   \"enabled\": bool(user32.IsWindowEnabled(cancel)),\n                   \"visible\": bool(user32.IsWindowVisible(cancel))},\n    }\n    p = os.path.join(outdir, \"native-result.json\")\n    with open(p, \"w\", encoding=\"utf-8\") as f:   # flushed BEFORE acting\n        json.dump({\"tool\": \"native_cancel\", \"stage\": \"pre-act\",\n                   \"passed\": False, \"handles\": meta}, f)\n        f.flush(); os.fsync(f.fileno())\n\n    # --- screenshot: cancel button only, via PrintWindow ---\n    rc = wt.RECT()\n    if not user32.GetWindowRect(cancel, ctypes.byref(rc)):\n        fail(outdir, \"screenshot\", \"GETRECT_FAILED\", meta)\n    w, h = rc.right - rc.left, rc.bottom - rc.top\n    if w <= 0 or h <= 0:\n        fail(outdir, \"screenshot\", \"BAD_RECT\", meta)\n\n    hdcScreen = user32.GetDC(None)\n    memDC = gdi32.CreateCompatibleDC(hdcScreen)\n    bmi = ctypes.c_buffer(struct.pack(\"<iiiHHIIiiII\", 40, w, -h, 1, 32, 0,\n                                      w * h * 4, 0, 0, 0, 0))\n    bmp = gdi32.CreateDIBSection(hdcScreen, bmi, 0, None, None, 0)\n    old = ctypes.wintypes.HBITMAP() if False else None\n    gdi32.SelectObject(memDC, bmp)\n    ok = user32.PrintWindow(cancel, memDC, 2)  # PW_RENDERFULLCONTENT\n    if not ok:\n        gdi32.DeleteObject(bmp); gdi32.DeleteDC(memDC); user32.ReleaseDC(None, hdcScreen)\n        fail(outdir, \"screenshot\", \"PRINTWINDOW_FAILED\", meta)\n    n = w * h * 4\n    buf = ctypes.create_string_buffer(n)\n    gdi32.GetDIBits(memDC, bmp, 0, h, buf, bmi, 0)\n    gdi32.DeleteObject(bmp); gdi32.DeleteDC(memDC); user32.ReleaseDC(None, hdcScreen)\n    try:\n        from PIL import Image\n        img = Image.frombuffer(\"RGBA\", (w, h), buf.raw, \"raw\", \"BGRA\", 4, 1)\n        img = img.convert(\"RGB\")\n        img.save(os.path.join(outdir, \"cancel-button.png\"))\n    except Exception:\n        fail(outdir, \"screenshot\", \"PILLOW_SAVE_FAILED\", meta)\n\n    # --- real foreground click on Cancel ---\n    user32.SetForegroundWindow(dialog)\n    time.sleep(0.15)\n    if user32.GetForegroundWindow() != dialog:\n        fail(outdir, \"click\", \"NOT_FOREGROUND\", meta)\n    cx, cy = (rc.left + rc.right) // 2, (rc.top + rc.bottom) // 2\n    if not user32.SetCursorPos(cx, cy):\n        fail(outdir, \"click\", \"SETCURSOR_FAILED\", meta)\n    time.sleep(0.05)\n    under = user32.WindowFromPoint(wt.POINT(cx, cy))\n    if not (under == cancel or user32.IsChild(cancel, under)):\n        fail(outdir, \"click\", \"POINT_NOT_ON_CANCEL\", meta)\n    if user32.GetForegroundWindow() != dialog:\n        fail(outdir, \"click\", \"FOREGROUND_LOST\", meta)\n\n    INJECT = 0\n    down = INPUT(); down.type = 0\n    down.mi = MOUSEINPUT(0, 0, 0, 0x0002, 0, None)  # LEFTDOWN\n    up = INPUT(); up.type = 0\n    up.mi = MOUSEINPUT(0, 0, 0, 0x0004, 0, None)    # LEFTUP\n    if user32.SendInput(1, ctypes.byref(down), ctypes.sizeof(INPUT)) != 1:\n        fail(outdir, \"click\", \"SENDINPUT_DOWN_FAILED\", meta)\n    time.sleep(0.05)\n    if user32.SendInput(1, ctypes.byref(up), ctypes.sizeof(INPUT)) != 1:\n        fail(outdir, \"click\", \"SENDINPUT_UP_FAILED\", meta)\n\n    deadline = time.time() + 5\n    while time.time() < deadline:\n        if not user32.IsWindow(dialog):\n            res = {\"tool\": \"native_cancel\", \"stage\": \"done\", \"passed\": True,\n                   \"cancelClickedRealInput\": True, \"dialogDestroyed\": True,\n                   \"handles\": meta}\n            with open(p, \"w\", encoding=\"utf-8\") as f:\n                json.dump(res, f); f.flush(); os.fsync(f.fileno())\n            print(json.dumps(res))\n            return\n        time.sleep(0.1)\n    fail(outdir, \"wait_destroy\", \"DIALOG_STILL_OPEN\", meta)\n\nif __name__ == \"__main__\":\n    main()\n```\n\n```javascript\n// step11.cjs — real native file-open dialog cancel, scoped to browser PID\n'use strict';\nconst { spawn } = require('child_process');\nconst fs = require('fs');\nconst path = require('path');\n\nconst PYTHON = process.env.T1_PYTHON || 'python';\n\nfunction runNative(pid, outDir) {\n  return new Promise((resolve) => {\n    const script = path.join(__dirname, 'native_cancel.py');\n    const child = spawn(PYTHON, [script, String(pid), outDir],\n      { windowsHide: true, shell: false, stdio: ['ignore', 'pipe', 'pipe'] });\n    let stdout = '', stderr = '', done = false;\n    const finish = (timedOut) => {\n      if (done) return; done = true;\n      fs.writeFileSync(path.join(outDir, 'native-stdout.log'), stdout);\n      fs.writeFileSync(path.join(outDir, 'native-stderr.log'), stderr);\n      if (timedOut) { try { child.kill(); } catch {} }\n      resolve({ timedOut, code: child.exitCode });\n    };\n    const timer = setTimeout(() => finish(true), 30000);\n    child.stdout.on('data', d => { stdout += d; });\n    child.stderr.on('data', d => { stderr += d; });\n    child.on('exit', () => { clearTimeout(timer); finish(false); });\n    child.on('error', (e) => { stderr += String(e); clearTimeout(timer); finish(false); });\n  });\n}\n\nasync function waitForNativeResult(outDir, ms) {\n  const p = path.join(outDir, 'native-result.json');\n  const deadline = Date.now() + ms;\n  while (Date.now() < deadline) {\n    try {\n      const j = JSON.parse(fs.readFileSync(p, 'utf8'));\n      if (j.stage === 'done') return j;\n    } catch {}\n    await t_sleep(200);\n  }\n  return null;\n}\nconst t_sleep = (ms) => new Promise(r => setTimeout(r, ms));\n\nmodule.exports = async function step11(t, out) {\n  fs.mkdirSync(out, { recursive: true });\n  const results = { item: 11, name: 'native-visible-dialog-cancel', PASS: false,\n                    classification: null, checks: {}, evidence: {} };\n  try {\n    // 1) build public step10-equivalent state via harness (prerequisite only)\n    await t.gen('temporary');\n    await t.rename([], 'changed');\n\n    // prerequisite import: harness chooser interception used HERE only\n    await t.importSaved();\n\n    const oraclePath = path.join(out, 'downloads', 't1-map.json');\n    const oracle = JSON.parse(fs.readFileSync(oraclePath, 'utf8'));\n    results.checks.oracleLoaded = true;\n    results.evidence.oracle = oraclePath;\n\n    // 2) prove tree state + save before anything native\n    await t.check(oracle);\n    await t.snap('before-cancel');\n    results.checks.treeBeforeImport = true;\n\n    // 3) exact browser PID via CDP\n    const cdp = await t.page.context().newBrowserCDPSession();\n    const info = await cdp.send('SystemInfo.getProcessInfo');\n    const browserProcs = info.processList.filter(p => p.type === 'browser');\n    if (browserProcs.length !== 1) throw { classify: 'BLOCKED', msg: 'browser pid ambiguous' };\n    const browserPid = browserProcs[0].id;\n    await cdp.detach();\n    results.evidence.browserPid = browserPid;\n\n    // 4) DOM observation only (cancel/change), no dispatch\n    const inputLoc = t.page.locator('input[type=file]');\n    const count = await inputLoc.count();\n    if (count !== 1) throw { classify: 'FAIL', msg: 'file input not unique: ' + count };\n    let cancelEvt = null, changeEvt = null;\n    await t.page.exposeFunction('__step11evt', (kind, trusted) => {\n      if (kind === 'cancel') cancelEvt = { trusted };\n      if (kind === 'change') changeEvt = { trusted };\n    });\n    await inputLoc.first().evaluate(el => {\n      el.addEventListener('cancel', e => window.__step11evt('cancel', e.isTrusted));\n      el.addEventListener('change', e => window.__step11evt('change', e.isTrusted));\n    });\n\n    // 5) spawn native helper BEFORE clicking; no chooser listener from here on\n    const nativePromise = runNative(browserPid, out);\n\n    // 6) trigger the dialog; native process cancels it independently\n    let clickOk = true;\n    try {\n      await t.page.click('#btn-import', { timeout: 15000 });\n    } catch { clickOk = false; }\n\n    const native = await nativePromise;\n    const nativeRes = await waitForNativeResult(out, 30000);\n    fs.writeFileSync(path.join(out, 'native-run.json'),\n      JSON.stringify({ timedOut: native.timedOut, code: native.code, clickOk }));\n\n    // 7) assertions\n    const A = {};\n    A.nativePassed = !!(nativeRes && nativeRes.passed === true && nativeRes.stage === 'done');\n    A.dialogDestroyed = !!(nativeRes && nativeRes.dialogDestroyed);\n    A.cancelTrusted = cancelEvt !== null && cancelEvt.trusted === true;\n    A.noChange = changeEvt === null;\n    A.noEmptyFiles = true; // change never fired; nothing imported\n    await t.check(oracle);           // unchanged after trusted cancel\n    await t.snap('after-cancel');\n    results.checks.treeAfterCancel = true;\n\n    await t.undo();\n    await t.check(oracle);           // unchanged after undo\n    await t.snap('after-undo');\n    results.checks.treeAfterUndo = true;\n\n    results.checks.assertions = A;\n    results.PASS = A.nativePassed && A.dialogDestroyed && A.cancelTrusted &&\n                   A.noChange && clickOk;\n    results.evidence.screenshots = ['before-cancel', 'after-cancel', 'after-undo'];\n  } catch (e) {\n    const cls = e && e.classify ? e.classify\n      : (e && /native|ownership|pid|dialog/i.test(String(e && e.msg || e)) ? 'BLOCKED' : 'FAIL');\n    results.classification = cls;\n    results.error = String(e && e.msg || e);\n    results.PASS = false;\n  }\n  fs.writeFileSync(path.join(out, 'results.json'), JSON.stringify(results, null, 2));\n  if (!results.PASS) process.exitCode = 1;\n  return results; // stop immediately; browser cleanup belongs to outer runner\n};\n```",
+  "ttft_ms": 22055,
+  "type": "result",
+  "duration_ms": 78912,
+  "uuid": "036580c5-cdd7-441f-b61a-280407c126bc",
+  "ttft_stream_ms": 818,
+  "time_to_request_ms": 99,
+  "first_content_frame_ms": 819,
+  "queued_turn_count": 0,
+  "result_index": 0
+}

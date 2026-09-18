@@ -1,0 +1,174 @@
+# T2 公开用例 U01–U10（草案 v0.1，全部拟定，待会审，未获批）
+
+状态：仅准备文档。本批不含产品或测试代码，未运行任何验证。文中「固定」仅指本草案内部固定、可复审，不代表设计已冻结或获批。基线 A（拟定）：`add` 允许写入被识别为 JSON 数组格式的 store（整体读出、追加、整体重写，保持数组格式）；「拒绝 add」的 B 方案仅为备选，不影响本稿判据。所有取值待会审。
+
+## 0. 记法与评价总则
+
+- **沙盒**：每条用例在评价器新建的空隔离沙盒内顺序执行；所有相对路径相对该 cwd 解析。本文不创建任何真实数据文件；评价器执行时才按「初始文件」条款生成文件。
+- **argv 表示**：每步的 `argv` 为 JSON 字符串数组，表示传给 `python notes.py` 之后的参数序列（即完整进程参数为 `["notes.py"] + argv`）。数组即精确参数，不经 shell 引号处理。
+- **LF**：JSON 字符串中的 `\n` 解码后是实际换行符 LF（U+000A），不是反斜杠+n。`\t` 同理为制表符。argv 数组按 JSON 解码一次即得实际参数，不做二次解码。初始 JSONL 行内示例记法：JSON 字符串内部的反斜杠转义序列（如 `\n`、`\"`、`\t`、`\\`）保留为文件字节，不转为物理字符；仅记录之间与文件末尾的 `\n` 表示物理 LF 字节。
+- **STORE**（常量，拟定）：相对路径 `store.jsonl`。各用例可绑定自己的常量，绑定方式均为「字面替换」。U07 的绝对路径记为 `ABS：<rel>`，评价规则：由评价器将 `<rel>` 拼接到沙盒 cwd 的绝对路径之后构造（cwd 绝对路径 + 平台分隔符 + rel），不做其他规范化。
+- **stdout 语义**：`json` 表示输出经 JSON 解析后与期望的有序记录数组精确相等（字符串逐码点、键集合恰为 title/body、顺序一致）；不比较空白、键序、ensure_ascii 表现。`empty` 表示 stdout 为空串。**失败用例的 stderr/stdout 与文件 bytes 判据按字面/逐字节执行，不得改用语义比较**。stderr 期望记 `one-line`：stderr 恰为一行非空文本（内容不锁定，允许一个尾随 LF），且 stdout 为空串。成功时：`add`/`export` stdout 与 stderr 均为空；`list`/`search` stderr 为空。此成功约束为通用总则：全文所有成功步骤一律 exit 0 且按上述 stdout/stderr 约束执行，个别步骤未重复写出 exit/stderr 时同样适用；不新增其他判据。
+- **字节快照对象**：`SNAP(p, before, after)` 中 `before` 为该命令执行前路径 p 的存在性与完整原始 bytes（可能含非法 UTF-8；按存在性+bytes 直接记录，不得先转字符串再比较），`after` 为期望的执行后内容：具体字符串＝逐字节等于该字符串的 UTF-8 编码；`"SAME"`＝与 before 逐字节相同；`null`＝期望文件不存在。快照对象本身即期望，不另构造。**比较总则（固定）**：所有成功读操作（list/search/export）每步执行前后均比对实际 store bytes（文中未逐步重写时同样适用）；所有失败步骤比对实际 --store 文件存在性+原始 bytes；export 失败时还比对 --out 存在性+原始 bytes。成功 export 的 out 从不存在变为新文件，仅按 JSON 语义检查，不要求 out bytes 不变；成功 add 同样只比较记录语义。目录参数只比较存在性和本用例已声明的目录内容，不把目录当文件读取 bytes。全程无临时残留文件。
+- **计数声明**：本文恰好 10 个编号场景 U01–U10，每个是一条顺序场景（可含多步固定步骤与固定负例表）。步骤与子断言数量不冒充测试数量；本文不声称任何测试已执行。
+- **PASS 总则（固定）**：某场景 PASS 当且仅当该场景全部固定步骤的全部断言均满足；场景未被执行记 UNRUN；不存在任何 P1 评分机制。隐藏用例仅替换数据（标题、正文、查询词、路径字面量）复测本文步骤，不引入新命令、新流程、新断言类型，也不临时扩展 U08/U10 之外的路径与坏文件流程。
+- **导出成功判定**：对 `--out` 文件按 UTF-8（无 BOM）解码、JSON 解析，得有序记录数组（每条恰有 title/body 两键、字符串逐码点），与 store 解析结果精确相等；JSONL store 须仍满足每物理行恰一记录。
+
+## 用户明确的诊断修复与静态交付门槛
+
+- 未来任务是诊断并修复预置的已有缺陷 `notes.py`，不是从零创建；不得修改评价器提供的 `tests/`。
+- 交付修复后的 `notes.py`、产品 `README.md` 与不超过 10 条变更记录的 `CHANGES.md`，仅使用 Python 标准库。
+- 评价器在修复前后核对 tests 的相对文件集合及每文件原始 bytes 的 SHA-256 完全一致；不得增、删、改 tests 文件。哈希清单留在评价侧。本轮不读取或计算任何 tests 哈希。
+- 上述是公开静态门槛，不新增第 11 个行为场景；未核对则记 UNRUN，不能据此宣称通过。
+
+**成功序列化统一判据：**JSONL 每个物理行一条记录、末尾 LF 允许 0 或 1 个；输出与导出按解析后的有序记录、键集合和字符串值比较，不锁空白、键序或具体合法转义写法。固定初始夹具的字节表示不等于成功写入格式要求。原始 bytes 不变仅用于失败与只读操作。所有 stdout/stderr 文本按 UTF-8 解码。
+
+## U01 贯穿链：特殊字符写入→list→search→export→--store 重载（R01/R03/R04/R05/R06/R07/R10）
+
+- requirements：字符串保真（含引号、反斜杠、LF、制表符、逗号、emoji、全角）；查询 casefold 子串；导出可经 `--store` 重载并保持语义。
+- 初始文件：无（U01 各 add 步自建 STORE）。语义 store 顺序按写入序：`t1..t4` 如下。
+  - t1 title=`标题"一"` body=`行1\n行\t2\\end, "q"全角ＡＢ emoji😀`
+  - t2 title=`Straße` body=`UPPER lower MiXeD`
+  - t3 title=`STRASSE二` body=`无关`
+  - t4 title=`仅正文命中` body=`藏着 needle 在这里`
+- 步骤：
+  1. add t1：argv `["add","--store","store.jsonl","--title","标题\"一\"","--body","行1\n行\t2\\end, \"q\"全角ＡＢ emoji😀"]`；exit 0，stdout empty，stderr empty；STORE 由无变为恰含 t1 的合法 JSONL（每物理行一记录，末尾 LF 允许 0 或 1 个）。
+  2. 依次 add t2、t3、t4（argv 同构，仅替换 title/body 字面值，顺序 t2→t3→t4）；每步 exit 0，stdout/stderr empty；每次执行后 STORE 为含已写入记录的合法 JSONL。
+  3. list：argv `["list","--store","store.jsonl"]`；exit 0，stderr empty，stdout json==`[t1,t2,t3,t4]`（含 body 中的实际 LF 还原）；STORE after=`"SAME"`（相对步骤 2 结束时的 bytes）。
+  4. search：argv `["search","--store","store.jsonl","--query","strasse"]`；exit 0，stderr empty，stdout json==`[t2,t3]`（按 store 顺序，各一次；查询词 casefold 后与 `Straße`、`STRASSE二` 折叠命中）。
+  5. search：argv `["search","--store","store.jsonl","--query","NEEDLE"]`；exit 0，stderr empty，stdout json==`[t4]`。
+  6. export：argv `["export","--store","store.jsonl","--out","out.json"]`；exit 0，stdout empty，stderr empty；`out.json` 为合法 JSON 数组（UTF-8 无 BOM），解析结果==`[t1,t2,t3,t4]`；STORE after=`"SAME"`。
+  7. 重载 list：argv `["list","--store","out.json"]`；exit 0，stderr empty，stdout json==`[t1,t2,t3,t4]`。
+  8. 重载 add：argv add t5 title=`重载新条` body=`reloaded`（于 `out.json` 上，基线 A：保持 JSON 数组格式整体重写）；exit 0，stdout/stderr empty；`out.json` 仍为合法 JSON 数组，解析结果==`[t1,t2,t3,t4,t5]`。
+  9. 重载 list/search：argv list 同构（store=`out.json`）stdout json==`[t1..t5]`；argv search query=`strasse` stdout json==`[t2,t3]`。
+
+## U02 Unicode 区分、空 body、首尾空白保留（R03/R04/R06/R07）
+
+- requirements：精确逐码点比较不受 casefold/大小写影响；body 可为空串；title/body 首尾空白不剥离。
+- 初始文件：STORE，内容（一物理行一记录；规范允许末尾 LF 为 0 或 1 个，本初始夹具固定为 1 个）：
+  `{"title":"ＡＢＣ","body":"全角三枚"}\n{"title":"abc","body":"半角"}\n{"title":" 空白title ","body":"  两端空格保留  "}\n`
+- 步骤：
+  1. list：argv `["list","--store","store.jsonl"]`；exit 0，stderr empty，stdout json==三条记录按上序原样（` 空白title ` 与 `  两端空格保留  ` 逐字符保留）。
+  2. search：argv `["search","--store","store.jsonl","--query","abc"]`；exit 0，stdout json==仅 `abc` 那条（全角 `ＡＢＣ` 不命中）。
+  3. search：argv `["search","--store","store.jsonl","--query","ＡＢＣ"]`；exit 0，stdout json==仅 `ＡＢＣ` 那条。
+  4. add：argv `["add","--store","store.jsonl","--title","空body条","--body",""]`；exit 0，stdout/stderr empty；STORE 的第四条记录语义为 `{"title":"空body条","body":""}`（不锁定 JSON 空白和键序），保持合法 JSONL（末尾 LF 有或无均可）。
+  5. add：argv `["add","--store","store.jsonl","--title","  保留两端  ","--body","x"]`；exit 0；STORE 追加第五行，title 为含两端空格的精确串。
+  6. search：argv `["search","--store","store.jsonl","--query","  保留两端  "]`；exit 0，stdout json==该第五条（查询原样含空格，不做 trim）。
+  7. add：argv `["add","--store","store.jsonl","--title","ABC","--body","精确大小写"]`；exit 0，stdout/stderr empty；STORE 追加第六条（`ABC` 与既有 `abc`、`ＡＢＣ` 均不构成重复：重复标题判定按精确大小写/逐码点）。
+  8. list：argv `["list","--store","store.jsonl"]`；exit 0，stderr empty，stdout json==六条按写入序（末条为第六条 `ABC`）。
+
+## U03 重复标题、空白标题、缺参与重复选项的逐条拒绝（R01/R03/R04/R08/R09）
+
+- requirements：每个拒绝命令恰一个错误（exit 2、stdout empty、stderr one-line），且执行前后 STORE bytes 逐字节相同。每步独立、无多故障叠加。
+- 初始文件：STORE，before=`{"title":"存在","body":"b1"}\n`；对下列每步 `SNAP(STORE, before, "SAME")`。
+- 负例表（顺序执行，每条独立断言）：
+  | 步 | argv | 期望 |
+  |---|---|---|
+  | 1 | `["add","--store","store.jsonl","--title","存在","--body","x"]` | exit 2，one-line（重复标题） |
+  | 2 | `["add","--store","store.jsonl","--title","","--body","x"]` | exit 2，one-line（空 title） |
+  | 3 | `["add","--store","store.jsonl","--title","   ","--body","x"]` | exit 2，one-line（纯空白 title） |
+  | 4 | `["add","--store","store.jsonl","--title","x"]` | exit 2，one-line（缺 --body） |
+  | 5 | `["add","--title","x","--body","y"]` | exit 2，one-line（缺 --store） |
+  | 6 | `["add","--store","store.jsonl","--title","x","--title","y","--body","z"]` | exit 2，one-line（重复选项） |
+  | 7 | `["list"]` | exit 2，one-line（缺 --store） |
+  | 8 | `["search","--store","store.jsonl"]` | exit 2，one-line（缺 --query） |
+  | 9 | `["export","--store","store.jsonl"]` | exit 2，one-line（缺 --out） |
+  | 10 | `["list","--store","store.jsonl","--store","store.jsonl"]` | exit 2，one-line（重复选项） |
+  | 11 | `["frobnicate"]` | exit 2，one-line（未知子命令） |
+  | 12 | `["list","--bogus","v","--store","store.jsonl"]` | exit 2，one-line（未知选项） |
+  | 13 | `["list","extra","--store","store.jsonl"]` | exit 2，one-line（位置参数） |
+  | 14 | `["list","--store",""]` | exit 2，one-line（空路径） |
+  | 15 | `["search","--store","store.jsonl","--query",""]` | exit 2，one-line（空查询） |
+  全部 15 步后 STORE 仍逐字节等于 before（step16 不需要；以末次快照为准：每步各自断言 before→SAME）。
+  收尾验证 list：argv `["list","--store","store.jsonl"]`；exit 0，stdout json==`[{"title":"存在","body":"b1"}]`。
+
+## U04 casefold 同时匹配 title 与 body、按序去重（R06）
+
+- requirements：casefold 后对 title 与 body 各做子串判定；命中按 store 顺序，每条至多一次。
+- 初始文件：STORE，四条按序：
+  `{"title":"Straße","body":"x"}\n{"title":"别的","body":"STRASSE 在正文"}\n{"title":"STRASSE双命中","body":"strasse 也在这"}\n{"title":"无关","body":"zzz"}\n`
+- 步骤：
+  1. search：argv `["search","--store","store.jsonl","--query","strasse"]`；exit 0，stderr empty，stdout json==`[Straße条, 别的条, STRASSE双命中条]`（store 顺序；第三条 title 与 body 真实双命中、仅出现一次）。
+  2. search：argv `["search","--store","store.jsonl","--query","STRASSE"]`；stdout json 与步骤 1 完全相同。
+  3. search：argv `["search","--store","store.jsonl","--query","ß"]`；exit 0，stdout json==`[Straße条, 别的条, STRASSE双命中条]`（查询词自身 casefold：ß→ss，命中前三条折叠后含 strasse/ss 的记录；第四条 `无关` 不命中）。STORE 全程 after=`"SAME"`（每步快照同 before）。
+
+## U05 正文特殊字符查询：LF 与引号（R03/R06）
+
+- requirements：body 中保存的 LF 与双引号可被含同样字符的查询命中。
+- 初始文件：无（step1 自建 STORE）。
+- 步骤：
+  1. add：argv `["add","--store","store.jsonl","--title","多行","--body","第一行\n\"引用段\"\t尾"]`；exit 0，stdout empty，stderr empty；STORE 由无变为恰含该条的合法 JSONL（解析后 body 须与 argv 的实际 LF/引号/TAB 字符串完全相等；不锁具体合法 JSON 转义写法、空白或键序，末尾 LF 允许 0 或 1 个）。
+  2. search：argv `["search","--store","store.jsonl","--query","第一行\n\"引用段\""]`（查询含实际 LF 与引号）；exit 0，stderr empty，stdout json==`[多行条]`。
+  3. search：argv `["search","--store","store.jsonl","--query","\"引用段\"\t尾"]`；exit 0，stdout json==`[多行条]`。
+  4. search：argv `["search","--store","store.jsonl","--query","行\n无"]`；exit 0，stdout json==`[]`（无命中，R07）。STORE 在步骤 2–4 的各次只读查询前后 after=`"SAME"`；步骤 1 成功 add 只按有序记录与字符串语义比较，不要求 bytes 不变。
+
+## U06 边界状态：空 store、无结果、纯空格查询、store 缺失（R02/R06/R07/R08）
+
+- requirements：各状态显式区分，每步 exit 与输出固定。
+- 初始文件：EMPTY=`empty.jsonl`（评价器预创建的空文件，0 字节），本场景全程存在；`one.jsonl` 初始不存在，由步骤 3 中段创建；`missing.jsonl` 与 `o.json` 初始不存在且全程期望保持不存在。
+- 步骤：
+  1. list 于空 store：argv `["list","--store","empty.jsonl"]`；exit 0，stderr empty，stdout json==`[]`；EMPTY after=`"SAME"`（before 为空串）。
+  2. search 于空 store：argv `["search","--store","empty.jsonl","--query","x"]`；exit 0，stderr empty，stdout json==`[]`；EMPTY after=`"SAME"`。
+  3. search 纯空格查询（合法）：argv `["search","--store","empty.jsonl","--query"," "]`；exit 0，stdout json==`[]`；EMPTY after=`"SAME"`。再于非空时复验：评价器在此步创建 `one.jsonl`=`{"title":"a b","body":"c"}\n`，argv `["search","--store","one.jsonl","--query"," "]`；exit 0，stdout json==该条（空格子串按原样匹配，不 trim）。
+  4. list 缺失 store：argv `["list","--store","missing.jsonl"]`；exit 3，one-line；执行后 `missing.jsonl` 仍不存在。
+  5. search 缺失 store：argv `["search","--store","missing.jsonl","--query","q"]`；exit 3，one-line；`missing.jsonl` 仍不存在。
+  6. export 缺失 store：argv `["export","--store","missing.jsonl","--out","o.json"]`；exit 3，one-line；`missing.jsonl` 与 `o.json` 均不存在。
+
+## U07 导出：正常与空导出、含中文/空格路径（R02/R05/R07）
+
+- requirements：相对与绝对路径、含中文与空格的路径正常工作；导出不修改输入 store，可重复执行（权限模拟类失败场景不在验收范围）。
+- 初始文件：`dir one/中文 store.jsonl`（路径含空格与中文，相对路径）内容=`{"title":"条","body":"值"}\n`；`empty.jsonl` 空文件。
+- 步骤（均不修改输入 store）：
+  1. 相对路径正常导出：argv `["export","--store","dir one/中文 store.jsonl","--out","out 相对.json"]`；exit 0，stdout/stderr empty；`out 相对.json` 解析==`[{"title":"条","body":"值"}]`；输入 store after=`"SAME"`。
+  2. 绝对路径导出：store 记为 `ABS：dir one/中文 store.jsonl`，out 记为 `ABS：out 绝对.json`：argv `["export","--store","<ABS:dir one/中文 store.jsonl>","--out","<ABS:out 绝对.json>"]`（`<ABS:…>` 占位按 §0 规则替换为构造后的绝对路径字面串）；exit 0；`ABS：out 绝对.json` 解析==同上。
+  3. 空导出：argv `["export","--store","empty.jsonl","--out","empty_out.json"]`；exit 0；`empty_out.json` 解析==`[]`。
+  4. 重复导出普通文件：argv 重复步骤 1 的命令（out 换 `out ro.json`）；exit 0，stdout/stderr empty；`out ro.json` 解析==同上；输入 store bytes after=`"SAME"`。
+
+## U08 路径拒绝与 export 目标保护（R02/R08/R09/R11）
+
+- requirements：各类路径错误独立拒绝，不改变文件或已声明的目录内容。仅普通文件/明确目录错误，不含链接场景；不以内部是否打开文件作额外验收断言。
+- 初始文件：GOOD=`good.jsonl`=`{"title":"t","body":"b"}\n`；EXIST=`exists.json`=`[]\n`（普通文件）；DIR=`adir/`（存在的目录）；SUB=`sub/`（初始预创建的空目录）。
+- 负例表（顺序独立执行，每步一因）：
+  | 步 | argv | 期望 |
+  |---|---|---|
+  | 1 | `["export","--store","good.jsonl","--out","exists.json"]` | exit 2，one-line（目标已存在普通文件）；`exists.json` bytes 逐字节不变；GOOD after=`"SAME"` |
+  | 2 | `["export","--store","good.jsonl","--out","./sub/../good.jsonl"]` | exit 2，one-line（规范化后与 source 同一路径，R11）；GOOD after=`"SAME"`；预创建的空目录 `sub` 断言仍存在且仍为空 |
+  | 3 | `["export","--store","good.jsonl","--out","adir"]` | exit 3，one-line（目标是目录）；GOOD after=`"SAME"`；`adir` 内容不变 |
+  | 4 | `["export","--store","good.jsonl","--out","nodir/o.json"]` | exit 3，one-line（缺父目录，不隐式创建）；`nodir` 不存在；GOOD after=`"SAME"` |
+  | 5 | `["export","--store","good.jsonl","--out",""]` | exit 2，one-line（空路径）；GOOD after=`"SAME"` |
+  | 6 | `["list","--store","adir"]` | exit 3，one-line（store 是目录） |
+  | 7 | `["add","--store","adir","--title","x","--body","y"]` | exit 3，one-line（store 是目录）；`adir` 内容不变 |
+  | 8 | `["add","--store","nodir/s.jsonl","--title","x","--body","y"]` | exit 3，one-line（缺父目录）；`nodir` 不存在 |
+  | 9 | `["export","--store","good.jsonl","--out","good.jsonl"]` | exit 2，one-line（R11 同路径，字面相同）；GOOD after=`"SAME"` |
+  全表后 `exists.json` 仍逐字节等于 `[]\n`，GOOD 仍等于 before，无任何残留临时文件。
+
+## U09 数组 store 重载往返（基线 A）（R04/R05/R06/R09/R10）
+
+- requirements：导出数组作为 store 后，search/add/list/export 全语义一致；原 JSONL store 不变。
+- 初始文件：SRC=`src.jsonl`=`{"title":"Alpha","body":"x"}\n{"title":"beta","body":"包含 Beta 词"}\n`。
+- 步骤：
+  1. export：argv `["export","--store","src.jsonl","--out","arr.json"]`；exit 0；`arr.json` 解析==两条按序。
+  2. search（数组 store）：argv `["search","--store","arr.json","--query","beta"]`；exit 0，stdout json==仅第二条（第一条 title `Alpha` 不含 `beta`，不命中；第二条 title `beta` 与 body `Beta` casefold 后命中）。SRC after=`"SAME"`。
+  3. add（数组 store，基线 A）：argv `["add","--store","arr.json","--title","Gamma","--body","g"]`；exit 0；`arr.json` 仍为 JSON 数组格式（解码后 lstrip 首字符为 `[`），解析==三条按序。
+  4. add 重复（数组 store）：argv `["add","--store","arr.json","--title","Alpha","--body","dup"]`；exit 2，one-line；`arr.json` bytes after=步骤 3 结束时 bytes 的 `"SAME"`。
+  5. list（数组 store）：argv `["list","--store","arr.json"]`；exit 0，stdout json==三条按序。
+  6. 再 export（数组→新数组）：argv `["export","--store","arr.json","--out","arr2.json"]`；exit 0；`arr2.json` 解析==三条按序。
+  7. 终态确认：SRC 逐字节等于初始内容；无残留临时文件。
+
+## U10 固定坏文件拒绝：截断 JSON 与非法 UTF-8（R05/R08/R09）
+
+- requirements：坏数据的公开规范仅本节声明（坏数据→exit 3、不修改文件、隐藏用例仅换数据复测本节流程，不得临时扩展、不新增隐藏错误类别）；本场景固定两类坏 bytes，list 与 add 各自独立拒绝。
+- 初始文件（评价器按精确 bytes 写入，非文本方式）：
+  - TRUNC=`trunc.jsonl`，bytes 为 `7B 22 74 69 74 6C 65 22 3A 22 61`（即 `\u007b\u0022title\u0022:\u0022a`，截断的对象，无收尾）。重复记录公开规范：任一行/元素违反 §5（多键、缺键、类型不符、title 空白或重复）→同流程拒绝。
+  - BADUTF8=`bad.jsonl`，bytes 为 `7B 22 74 69 74 6C 65 22 3A 22 61 22 2C 22 62 6F 64 79 22 3A 22 FF 22 7D`（即原本合法的 `{"title":"a","body":"b"}` 记录中 body 字符串值的唯一字节 `b`(62) 被替换为 FF，构成唯一解码错误；无末尾 LF）。
+- 步骤（每步快照：目标文件 bytes after=`"SAME"`，逐字节）：
+  1. list：argv `["list","--store","trunc.jsonl"]`；exit 3，one-line（非法 JSON/坏 schema）。
+  2. add：argv `["add","--store","trunc.jsonl","--title","n","--body","b"]`；exit 3，one-line；TRUNC bytes 不变，不得追加任何行。
+  3. list：argv `["list","--store","bad.jsonl"]`；exit 3，one-line（非法 UTF-8 字节致解码失败）。
+  4. add：argv `["add","--store","bad.jsonl","--title","n","--body","b"]`；exit 3，one-line；BADUTF8 bytes 不变。
+  5. search（补充）：argv `["search","--store","trunc.jsonl","--query","a"]`；exit 3，one-line；TRUNC after=`"SAME"`。
+  6. export（补充）：argv `["export","--store","bad.jsonl","--out","o10.json"]`；exit 3，one-line；`o10.json` 不存在；BADUTF8 after=`"SAME"`。
+
+## 附：声明
+
+本文共 10 个编号场景（U01–U10）；其中 U03、U08 为场景内固定负例表，其条目为场景内步骤，不计为独立用例数。全部设计为拟定值、待会审；固定判据仅指本稿内部可复审，不代表获批。无隐藏数据、无变异信息写入本文。

@@ -1,0 +1,85 @@
+{
+  "duration_api_ms": 57899,
+  "stop_reason": "end_turn",
+  "session_id": "65c4383d-9409-4e19-9425-023038ae6c0e",
+  "total_cost_usd": 0.09834,
+  "usage": {
+    "input_tokens": 3288,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "output_tokens": 3276,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "glm-5.3-flash": {
+      "inputTokens": 3288,
+      "outputTokens": 3276,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.09834,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000,
+      "thinkingTokens": 0,
+      "canonicalModel": "glm-5.3-flash",
+      "provider": "firstParty",
+      "costBasis": "unknown"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "is_error": false,
+  "num_turns": 1,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "```json\n{\n  \"patches\": [\n    {\n      \"file\": \"identity.py\",\n      \"old\": \"        top.append({\\\"hwnd\\\": int(hwnd), \\\"pid\\\": pid, \\\"class\\\": buf.value,\\n                    \\\"visible\\\": bool(IsWindowVisible(hwnd)),\\n                    \\\"owner\\\": int(owner), \\\"ownerPid\\\": owner_pid})\",\n      \"new\": \"        top.append({\\\"hwnd\\\": int(hwnd), \\\"pid\\\": pid, \\\"class\\\": buf.value,\\n                    \\\"visible\\\": bool(IsWindowVisible(hwnd)),\\n                    \\\"owner\\\": int(owner or 0), \\\"ownerPid\\\": owner_pid})\",\n      \"reason\": \"int(owner) crashes when GetWindow returns NULL/None for unowned HWNDs; int(owner or 0) yields 0, which the verify() filter (w[\\\"owner\\\"] == 0) requires.\"\n    },\n    {\n      \"file\": \"identity.py\",\n      \"old\": \"    if not EnumWindows(WNDENUMPROC(cb), 0) and ctypes.get_last_error():\\n        pass\",\n      \"new\": \"    if not EnumWindows(WNDENUMPROC(cb), 0):\\n        raise RuntimeError(\\\"EnumWindows failed\\\")\",\n      \"reason\": \"EnumWindows failure was silently swallowed (the condition could never lead to any action); per review it must raise instead of proceeding with an empty/partial window list.\"\n    },\n    {\n      \"file\": \"identity.py\",\n      \"old\": \"    ct = proc.create_time()\\n    if expected_create_time is not None and abs(ct - expected_create_time) > 1.0:\\n        raise RuntimeError(\\\"create_time mismatch\\\")\",\n      \"new\": \"    ct = proc.create_time()\\n    now = time.time()\\n    if ct > now + 1.0:\\n        raise RuntimeError(\\\"create_time in the future\\\")\\n    if record.get(\\\"spawnBeforeMs\\\") is not None and ct < record[\\\"spawnBeforeMs\\\"] / 1000.0 - 1.0:\\n        raise RuntimeError(\\\"create_time before spawn window\\\")\\n    if expected_create_time is not None and ct != expected_create_time:\\n        raise RuntimeError(\\\"create_time mismatch\\\")\",\n      \"reason\": \"verify() lacked a creation-time range: added an upper bound (not in the future) and a lower bound derived from record spawnBeforeMs (ms -> seconds), each with 1s slack. Also per review, expected_create_time now requires strict equality instead of the previous 1-second tolerance. time is already imported; record is a dict, .get guards absence.\"\n    },\n    {\n      \"file\": \"identity.py\",\n      \"old\": \"def _run(launch_path, out_path):\\n    now_ms = int(time.time() * 1000)\\n    L = json.load(open(launch_path, encoding=\\\"utf-8\\\"))\\n    pid = L[\\\"pid\\\"]\\n    proc, exe, profile = _identity(pid)\\n    ok = (exe == _norm(L[\\\"exe\\\"]) and profile == _norm(L[\\\"profile\\\"])\\n          and proc.ppid() == L[\\\"driverPid\\\"] and proc.is_running())\\n    ct_ms = int(proc.create_time() * 1000)\\n    ok = ok and (L[\\\"spawnBeforeMs\\\"] - 2000 <= ct_ms <= now_ms)\\n    ok = ok and ct_ms <= L[\\\"spawnAfterMs\\\"] + 2000\\n    out = {\\\"passed\\\": ok, \\\"pid\\\": pid, \\\"exe\\\": exe, \\\"createTime\\\": proc.create_time(),\\n           \\\"parentPid\\\": proc.ppid(), \\\"profile\\\": profile,\\n           \\\"profileMatch\\\": profile == _norm(L[\\\"profile\\\"]), \\\"checkedAtMs\\\": now_ms}\\n    if not ok:\\n        raise RuntimeError(\\\"identity checks failed: %s\\\" % json.dumps(out))\\n    json.dump(out, open(out_path, \\\"w\\\", encoding=\\\"utf-8\\\"), indent=2)\",\n      \"new\": \"def _run(launch_path, out_path):\\n    now_ms = int(time.time() * 1000)\\n    L = json.load(open(launch_path, encoding=\\\"utf-8\\\"))\\n    out = verify(L)\\n    out[\\\"checkedAtMs\\\"] = now_ms\\n    json.dump(out, open(out_path, \\\"w\\\", encoding=\\\"utf-8\\\"), indent=2)\",\n      \"reason\": \"CLI _run bypassed verify/_meta entirely (no owner/window evidence, only coarse flags). Replaced with: load launch record, out = verify(L) (which runs exe/profile/ppid/create-time-range/window checks and includes targetOwnerHwnd), attach checkedAtMs, json.dump to out_path. No stdout output needed since the hook reads the file.\"\n    },\n    {\n      \"file\": \"launch-guard.cjs\",\n      \"old\": \"        childAlive: !!this._child && this._child.pid != null,\",\n      \"new\": \"        childAlive: !!this._child && this._child.exitCode === null && this._child.signalCode === null,\",\n      \"reason\": \"A captured child with a non-null pid is not necessarily alive; a live Node ChildProcess has exitCode === null and signalCode === null.\"\n    },\n    {\n      \"file\": \"launch-guard.cjs\",\n      \"old\": \"      if (this._verified) return this._launch.identity;\\n      const r = cp.spawnSync('python', ['identity.py', 'launch.json', 'identity-before.json'], {\\n        cwd: out, timeout: 10000, windowsHide: true, encoding: 'utf8',\\n      });\\n      if (r.status !== 0 || !r.stdout) {\\n        throw new Error('launch-guard: identity.py failed status=' + r.status + ' stderr=' + (r.stderr || '').slice(0, 200));\\n      }\\n      const identity = JSON.parse(r.stdout);\",\n      \"new\": \"      const identityPath = path.join(__dirname, 'identity.py');\\n      const r = cp.spawnSync('python', [identityPath,\\n        path.join(out, 'launch.json'), path.join(out, 'identity-before.json')], {\\n        cwd: out, timeout: 10000, windowsHide: true, encoding: 'utf8',\\n      });\\n      if (r.status !== 0) {\\n        throw new Error('launch-guard: identity.py failed status=' + r.status + ' stderr=' + (r.stderr || '').slice(0, 200));\\n      }\\n      const identity = JSON.parse(fs.readFileSync(path.join(out, 'identity-before.json'), 'utf8'));\",\n      \"reason\": \"Old call resolved identity.py relative to cwd (out) instead of the script directory; wrong path + CLI now writes the result file rather than stdout. Fixed: absolute identity.py via __dirname, absolute out/launch.json and out/identity-before.json arguments, result parsed from the identity-before.json file (fs/path already required), stdout requirement dropped. Status check kept. Early cache return removed so each verify() call performs a live reverification.\"\n    },\n    {\n      \"file\": \"launch-guard.cjs\",\n      \"old\": \"      this._verified = true;\\n      const mapping = Object.assign({}, this._launch, {\",\n      \"new\": \"      const mapping = Object.assign({}, this._launch, {\",\n      \"reason\": \"Companion to removing the verify cache: _verified is no longer set since identity is live-reverified on every call.\"\n    }\n  ]\n}\n```\n\nNote: `verify()`'s success return already includes `targetOwnerHwnd`, so the CLI output file now carries it via the new `_run`. Full cmdlines remain unlogged (`_identity` extracts only exe/profile; nothing logs `cmd`).",
+  "ttft_ms": 34481,
+  "type": "result",
+  "duration_ms": 58005,
+  "uuid": "13a6dc1e-fcaf-460d-80a8-b158cea5ef49",
+  "ttft_stream_ms": 1010,
+  "time_to_request_ms": 109,
+  "first_content_frame_ms": 1010,
+  "queued_turn_count": 0,
+  "result_index": 0
+}

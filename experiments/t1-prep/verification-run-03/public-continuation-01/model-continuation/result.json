@@ -1,0 +1,85 @@
+{
+  "duration_api_ms": 16273,
+  "stop_reason": "end_turn",
+  "session_id": "3fb8c429-acf3-4285-b0c4-e4711db3f833",
+  "total_cost_usd": 0.036879999999999996,
+  "usage": {
+    "input_tokens": 2291,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "output_tokens": 1017,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "glm-5.3-flash": {
+      "inputTokens": 2291,
+      "outputTokens": 1017,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.036879999999999996,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000,
+      "thinkingTokens": 0,
+      "canonicalModel": "glm-5.3-flash",
+      "provider": "firstParty",
+      "costBasis": "unknown"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "is_error": false,
+  "num_turns": 1,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "```js\n// continuation.cjs — 公开步骤 10、11、12a-d（A/B 复用 fragments.cjs）\nmodule.exports = async (t) => {\n  // 10: 添加\"细节丁\"→快照→导入导出文件→整体替换回 6 节点\n  await t.step('10', async () => {\n    await t.add([2], '细节丁');\n    await t.check({ title: '中心主题', children: [\n      { title: '分支一', children: [] },\n      { title: '分支贰', children: [ { title: '细节甲', children: [] }, { title: '细节乙', children: [] } ] },\n      { title: '分支三', children: [ { title: '细节丁', children: [] } ] },\n    ]});\n    await t.snap('snap10-before-import');\n    await t.importSaved(); // 显式导入步骤 9 保存的 t1-map.json\n    await t.check(t.clone(t.TREE)); // 恢复导出时刻 6 节点\n  });\n\n  // 11: 真实点击导入但无原生取消能力（headless 无 filechooser 监听 → 浏览器自动取消）→ 标记 UNTESTED\n  await t.unverified('11', 'BLOCKED_HEADLESS_NATIVE_CANCEL: 本轮禁止可见窗，无 filechooser 监听的 headless click 为浏览器自动取消（isTrusted cancel），非用户真实原生取消；FileChooser 无 cancel 接口。仅能记录\"自动取消/撤销清空\"的部分证据。', async () => {\n    await t.page.click('#btn-import'); // 不监听 filechooser、不 setFiles 空数组、不 dispatch\n    await t.page.waitForTimeout(500);\n    await t.check(t.clone(t.TREE)); // 自动取消后应仍为 6 节点（部分证据）\n    await t.undo(); // 撤销应无效果\n    await t.check(t.clone(t.TREE)); // 撤销清空的部分证据\n    // 若以上任一树不符，check 已 throw，驱动停止\n  });\n  // 11 未验证不阻止独立 12/A/B（授权调整）\n\n  // 12a: 关闭标签页重开 → 空状态 + 撤销无效果\n  await t.step('12a', async () => {\n    await t.reopen();\n    await t.check(null);\n    await t.undo();\n    await t.check(null);\n  });\n\n  // 12b: 生成单节点\"临时根\"→改名→撤销一条（不可直接读内部栈，用 UI 行为证明）\n  await t.step('12b', async () => {\n    await t.gen('临时根');\n    await t.rename([], '临时根改名');\n    await t.check({ title: '临时根改名', children: [] });\n    // UI 行为验证撤销栈恰有 1 条：undo 后回\"临时根\"，再 undo 不变（栈已空）\n    await t.undo();\n    await t.check({ title: '临时根', children: [] });\n    await t.undo();\n    await t.check({ title: '临时根', children: [] });\n    // 真实 rename 回\"临时根改名\"以重建目标状态\n    await t.rename([], '临时根改名');\n    await t.check({ title: '临时根改名', children: [] });\n    await t.note('12b-undo-probe', 'undo→临时根; 再undo不变(栈空); rename重建为临时根改名');\n  });\n\n  // 12c: 导入步骤 9 的 t1-map.json → 完整恢复 6 节点\n  await t.step('12c', async () => {\n    await t.importSaved();\n    await t.check({ title: '中心主题', children: [\n      { title: '分支一', children: [] },\n      { title: '分支贰', children: [ { title: '细节甲', children: [] }, { title: '细节乙', children: [] } ] },\n      { title: '分支三', children: [] },\n    ]});\n  });\n\n  // 12d: 导入后撤销无效果\n  await t.step('12d', async () => {\n    await t.undo();\n    await t.check({ title: '中心主题', children: [\n      { title: '分支一', children: [] },\n      { title: '分支贰', children: [ { title: '细节甲', children: [] }, { title: '细节乙', children: [] } ] },\n      { title: '分支三', children: [] },\n    ]});\n  });\n};\n```",
+  "ttft_ms": 1294,
+  "type": "result",
+  "duration_ms": 16376,
+  "uuid": "683268d1-a804-4415-9374-9a7cd3bd1516",
+  "ttft_stream_ms": 1113,
+  "time_to_request_ms": 105,
+  "first_content_frame_ms": 1113,
+  "queued_turn_count": 0,
+  "result_index": 0
+}

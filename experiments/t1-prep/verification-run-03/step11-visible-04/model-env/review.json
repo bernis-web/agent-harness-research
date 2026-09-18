@@ -1,0 +1,6 @@
+{
+  "acceptedWithRevision": true,
+  "reason": "Model merge/fallback rejected: exclusive wx on brand-new task profile, no Preferences reads/overwrites, no swallowed failure; directory additions retained",
+  "reviewer": "Codex",
+  "original": "result.json"
+}

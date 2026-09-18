@@ -1,0 +1,10 @@
+{
+  "requestedModel": "glm-5.3-flash",
+  "priorAttempt": "attempt04-model-glm53",
+  "priorState": "TIMEOUT",
+  "priorElapsed": 480.692,
+  "priorCompleteResult": false,
+  "authorized": "User allowed Flash implementation with explicit actual model attribution",
+  "duplicate": false,
+  "timeoutSeconds": 240
+}

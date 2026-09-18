@@ -1,0 +1,506 @@
+{
+  "root": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01",
+  "scope": "all changes this continuation are new files under this directory; previous run03 unchanged",
+  "files": [
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/CONTROL-PLAN.md",
+      "size": 492,
+      "sha256": "236bf11fb4ca782df690435245eb7cc44013cf039b1aba2d3f7b7f9dba2c00be"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/diag.html",
+      "size": 1174,
+      "sha256": "6a100e564e6889149ef27e1c4448de56ba394a42609e252740471a248e896efe"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/diagnosis.cjs",
+      "size": 11074,
+      "sha256": "e60622d9840d6aa9926d85392b61039e897ba9454604e5d5cde519f71b83e09a"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/diagnosis.original.cjs",
+      "size": 7450,
+      "sha256": "100849436388c09c3e60185d36cad0d1dac3ee4de323224b0e8517f806c01f0e"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/diagnosis.repair-original.cjs",
+      "size": 10600,
+      "sha256": "d5a363498007584e4a5767c554a6fddb4fd7838ec9bd6187a26718b21eac84f1"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/execution-meta.json",
+      "size": 149,
+      "sha256": "732fed455e16c08f6afb136b1283bf0df7f9d6df9165a597617dc6ff24ab434f"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/expected.json",
+      "size": 397,
+      "sha256": "df8f17fbed15145cf88c091521a471fd1e0298d43388f55e3c0c1467a5020915"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/git-final.txt",
+      "size": 44,
+      "sha256": "c1d02a352f683cc82872843efa6c4bce18c32d1dc2070fdc7c440c4d8f41086d"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/model-call-summary.json",
+      "size": 988,
+      "sha256": "6a36b4411970ab36d77a5f52dbf44db7a2437ff01cda39c92a394538f313ada6"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/protected-after.json",
+      "size": 828,
+      "sha256": "f9ae68ed4e667ffbd31908c66b218145e944535197ce3e72b8a67e39a1cbaae8"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/protected-before.json",
+      "size": 828,
+      "sha256": "8f6b79f7f89eb3608c3744f31f119d40c948ce1514714513a7daebdeeaecc2bd"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/REPORT.md",
+      "size": 4451,
+      "sha256": "bf76403e060839a36f130fd373a83224e8ed009b12c609f3e2ecfe6ccc335c43"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/results.json",
+      "size": 6809,
+      "sha256": "eb03ce553e1350f0d374e30871ebae9e4d19c6abc52a942347f9036905585e73"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/review.json",
+      "size": 811,
+      "sha256": "165cd58c34a2b5195ee886bd48a83833115560d01c4b80eea6732c115dd98574"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/stderr.txt",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/stdout.txt",
+      "size": 1271,
+      "sha256": "f2b36558587a98e75a6c5ad59c04f7166c49af457d3a68da6a0fec4e9ffde08c"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/summary.json",
+      "size": 4360,
+      "sha256": "270acf21a7e1ffba8f3969157128476e69492e189ecb525a2dab7358a7b36ca4"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/model-task/empty-mcp.json",
+      "size": 17,
+      "sha256": "691f62624936af38f0e6b2ac6c8b43162a23696696f62d5037d9eb2b43bd73c5"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/model-task/invoke-stream.py",
+      "size": 3829,
+      "sha256": "dd6dc934ac473a16be41e1431d30e3a5f81cfc600a50bf54a5288399d9d07ac7"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/model-task/model-call.json",
+      "size": 2530,
+      "sha256": "3b0d74e7bc5563af9ba2b74057ace0481376a02a24a372dbad7da1705fb6fdb3"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/model-task/prompt.txt",
+      "size": 5065,
+      "sha256": "1252ec78a5362a0cddbabb91529374f9e2e6717c17275c7b5ffa54f84343b9c0"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/model-task/result.json",
+      "size": 9726,
+      "sha256": "fc81690ec18e34dc02493ec314cb15a0b65076430ef76bdf30e3cff63b2de352"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/model-task/runner-stderr.txt",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/model-task/runner-stdout.txt",
+      "size": 225,
+      "sha256": "33698e5e11d6972c7c5bafb807474eaff019ddeda766a6e4d99d88edb65fb771"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/model-task/settings.json",
+      "size": 70,
+      "sha256": "2fe7c6bc57f34cce4f6dd9d766ea293d10786faf95fe91978a0b6f35254ca845"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/model-task/stderr.txt",
+      "size": 81,
+      "sha256": "5a60532f16c7d02a3b8c045f73f93781042c9e2ed50905b80bf4b771b304c883"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/model-task/stdout.jsonl",
+      "size": 637960,
+      "sha256": "32947324c7a909187e7c4d0cc2de27f15e611c7c56a63e4476f7937b15205d87"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/model-repair/empty-mcp.json",
+      "size": 17,
+      "sha256": "691f62624936af38f0e6b2ac6c8b43162a23696696f62d5037d9eb2b43bd73c5"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/model-repair/invoke-stream.py",
+      "size": 3829,
+      "sha256": "dd6dc934ac473a16be41e1431d30e3a5f81cfc600a50bf54a5288399d9d07ac7"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/model-repair/model-call.json",
+      "size": 2525,
+      "sha256": "fb74babceeb21434621ec788c1c7c99ea0e9bf03aedf68c49a954cda8ddfe5f2"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/model-repair/prompt.txt",
+      "size": 9477,
+      "sha256": "397223df761920b68eeab5d45dd8182128dc90f780a96ea30c90a95f4a28346e"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/model-repair/result.json",
+      "size": 12894,
+      "sha256": "e84be07b329c49fde3c61993900a56c0b85968357730638017485cb941b95b00"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/model-repair/runner-stderr.txt",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/model-repair/runner-stdout.txt",
+      "size": 226,
+      "sha256": "9a2b3f8f7a8fc1f168eaa34a741a6e3ed246544eca4be66aed68e43022186189"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/model-repair/settings.json",
+      "size": 70,
+      "sha256": "2fe7c6bc57f34cce4f6dd9d766ea293d10786faf95fe91978a0b6f35254ca845"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/model-repair/stderr.txt",
+      "size": 81,
+      "sha256": "5a60532f16c7d02a3b8c045f73f93781042c9e2ed50905b80bf4b771b304c883"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/model-repair/stdout.jsonl",
+      "size": 1417197,
+      "sha256": "b606908394482fe63c82f0875cdf4692198d42d7f71d8f436c4e76dc9ae705b6"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/A/after-blob.png",
+      "size": 5752,
+      "sha256": "06d1d184f5bceda0a5fd5d185aa2ba3d92d1bbd967d3a702b089e15f4ec86e16"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/A/after-data.png",
+      "size": 5752,
+      "sha256": "1ad4cc27cad62103e4e2ba000a1c4a8786090b7009254492d5c27c746a9b3ee9"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/A/events.jsonl",
+      "size": 6143,
+      "sha256": "ecdd3ae4e80b41ffc0a2d81dab3287badce7d18d7f78f6b4d14d17257425e41b"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/A/result.json",
+      "size": 10498,
+      "sha256": "e6cfb505e96a1f727d55270ab02e90fc374db0e6c7cc5d31cccf54923e0a1978"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/A/s0-about-blank.png",
+      "size": 22109,
+      "sha256": "d30a6d76f6273f0c5ceed0518be2ff5dab1d4f5d8ca197cde9971dbdb9a0fd6a"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/B/after-blob.png",
+      "size": 5752,
+      "sha256": "06d1d184f5bceda0a5fd5d185aa2ba3d92d1bbd967d3a702b089e15f4ec86e16"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/B/after-data.png",
+      "size": 5752,
+      "sha256": "1ad4cc27cad62103e4e2ba000a1c4a8786090b7009254492d5c27c746a9b3ee9"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/B/events.jsonl",
+      "size": 8077,
+      "sha256": "d439679aa4ce2c6efcb7059fc54d25a94923c535470914e6934c159786e02c5f"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/B/result.json",
+      "size": 14220,
+      "sha256": "7e3b0b030ec017a678bd33e109d808a3653bedd7c3ecfa75a17f94a9f11b11d3"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/B/s0-about-blank.png",
+      "size": 22109,
+      "sha256": "d30a6d76f6273f0c5ceed0518be2ff5dab1d4f5d8ca197cde9971dbdb9a0fd6a"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/C/after-blob.png",
+      "size": 5752,
+      "sha256": "06d1d184f5bceda0a5fd5d185aa2ba3d92d1bbd967d3a702b089e15f4ec86e16"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/C/after-data.png",
+      "size": 5752,
+      "sha256": "1ad4cc27cad62103e4e2ba000a1c4a8786090b7009254492d5c27c746a9b3ee9"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/C/events.jsonl",
+      "size": 2840,
+      "sha256": "f5838e44d86419be707cb70a3f00d89aa85b4a91a82c15df3a97a8c984d95d77"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/C/result.json",
+      "size": 6209,
+      "sha256": "31bfda1d8d717553b9efd28382fb09134e1286599adc643f5887fa8d731fee64"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/C/s0-about-blank.png",
+      "size": 22109,
+      "sha256": "d30a6d76f6273f0c5ceed0518be2ff5dab1d4f5d8ca197cde9971dbdb9a0fd6a"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/B/evidence-originals/blob-mindmap.json",
+      "size": 397,
+      "sha256": "df8f17fbed15145cf88c091521a471fd1e0298d43388f55e3c0c1467a5020915"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/B/evidence-originals/data-mindmap.json",
+      "size": 397,
+      "sha256": "df8f17fbed15145cf88c091521a471fd1e0298d43388f55e3c0c1467a5020915"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/B/saved/blob.json",
+      "size": 397,
+      "sha256": "df8f17fbed15145cf88c091521a471fd1e0298d43388f55e3c0c1467a5020915"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/B/saved/data.json",
+      "size": 397,
+      "sha256": "df8f17fbed15145cf88c091521a471fd1e0298d43388f55e3c0c1467a5020915"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/verify-public-1-9/execution-meta.json",
+      "size": 112,
+      "sha256": "e88f50c21765cb38ba6c434610dd65cb430a7bc1aeaaf2d77413f50e010d21a1"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/verify-public-1-9/harness.before-path-fix.cjs",
+      "size": 11564,
+      "sha256": "25a7aadb20874ed49ce3e0c329cdc307d2df93142f8c6e11f2172fa3a4237a4c"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/verify-public-1-9/harness.cjs",
+      "size": 11940,
+      "sha256": "f5a5af45172fc87db2b2aa49bdbd9c29233aa79705b54379ca3a8dbe89f008c1"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/verify-public-1-9/public-chain.before-scope-trim.cjs",
+      "size": 4459,
+      "sha256": "1cd52635239adcae163bffcf9243c4ff264c95a4dd85102a9535d3dc02827f16"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/verify-public-1-9/public-chain.cjs",
+      "size": 2868,
+      "sha256": "719f6a377ab2ccde6dc3d53319e70eb6af1ba0fff949439facd2922d972dd21c"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/verify-public-1-9/review.json",
+      "size": 587,
+      "sha256": "0d35fdb6dbbbdf372c3fc49feaac9ef8c8bde3dfbe381774c44b39d2dff8f9d0"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/verify-public-1-9/run.cjs",
+      "size": 1723,
+      "sha256": "32b468c2b19954cef99e9d1e4471afdfa5ebabf7c0be89b924400fe2d4ee189b"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/verify-public-1-9/stderr.txt",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/verify-public-1-9/stdout.txt",
+      "size": 20,
+      "sha256": "4f4bc5d5aee4b421d8630d30ce66eefb99d4f34b543fbced3d92b2079c58fdc2"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/verify-public-1-9/evidence/actions.jsonl",
+      "size": 3680,
+      "sha256": "7b2010beba1a6be596d055157481c37586d5737faed7ecebdd7d86a91d626263"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/verify-public-1-9/evidence/download-evidence.json",
+      "size": 1312,
+      "sha256": "66aa18bef22594a8e6352fb0841aad5174252ef467744e314804accb397f1128"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/verify-public-1-9/evidence/export-original-preserved.json",
+      "size": 397,
+      "sha256": "df8f17fbed15145cf88c091521a471fd1e0298d43388f55e3c0c1467a5020915"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/verify-public-1-9/evidence/fixed-expected-comparison.json",
+      "size": 514,
+      "sha256": "d1322dba73b2b3fe36e2ac75791d426f4da2bf6977eed7ed12e709512d2102df"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/verify-public-1-9/evidence/preserved-original-evidence.json",
+      "size": 557,
+      "sha256": "0a12c4da685354dc61d22fb995e347a05b6b7e0ded8d24094773cc63cecc343d"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/verify-public-1-9/evidence/results.json",
+      "size": 1065,
+      "sha256": "c6fa393d78cf3e8fb38e12643b629733d380669861fae420974668ae929cf43c"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/verify-public-1-9/evidence/snap-1.json",
+      "size": 51,
+      "sha256": "d967a3b5a1bd6f997b9e9f9e3d2e94b303957fd79ed644bb50d04ac85d4ae472"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/verify-public-1-9/evidence/snap-1.png",
+      "size": 17686,
+      "sha256": "21fc65294a014cb80a50868ba8777ff72e2b01d40fe4e15d084be485509deb76"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/verify-public-1-9/evidence/snap-2.json",
+      "size": 554,
+      "sha256": "1d6f0ebcc289c961be9d45a1cb2615c55e87f400a86b8f62cef2b6dbc12c77b8"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/verify-public-1-9/evidence/snap-2.png",
+      "size": 32740,
+      "sha256": "1d11b00cde4d5350fcc38ead1632816bf7c4f142f1677b361164a1dc84663434"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/verify-public-1-9/evidence/snap-3.json",
+      "size": 506,
+      "sha256": "8a140cf568ae0757676685c51272ccfcd6ad5c2f2c0704424e3a11244b4de3fb"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/verify-public-1-9/evidence/snap-3.png",
+      "size": 30526,
+      "sha256": "ac5382da3ec2e1e81ee2f26cf1bfd5ad13232b11b18f601b82121ad5339d9735"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/verify-public-1-9/evidence/snap-4.json",
+      "size": 606,
+      "sha256": "53f95e6834a3021ce4bea949cf085d85b237e52971d8c2e21563841ca336da58"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/verify-public-1-9/evidence/snap-4.png",
+      "size": 33195,
+      "sha256": "86eec4e9b1fba0527c86189512c606676d63153e77fec4e746fe8722f62a17ce"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/verify-public-1-9/evidence/snap-5.json",
+      "size": 511,
+      "sha256": "0b4e572f9529b78e9dbf858e6ba2f26d1fe9e4a169ac33817211bd7abfa82bc2"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/verify-public-1-9/evidence/snap-5.png",
+      "size": 30280,
+      "sha256": "fa27dee9b1ef9c4f393a501e4fa9d9b89fd00240893fe2a52bb237465bf261b3"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/verify-public-1-9/evidence/snap-6.json",
+      "size": 616,
+      "sha256": "1eeef5c52e6b35b9356329f3406e7116b46c4d8f78da82fda3d624008be653e2"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/verify-public-1-9/evidence/snap-6.png",
+      "size": 33337,
+      "sha256": "ddd9f885aab023102997efd87f90db4b52b5ec734d051bc08c45642d5de81178"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/verify-public-1-9/evidence/snap-7.json",
+      "size": 630,
+      "sha256": "1c1ebbe3f03f1ec6e3bc6c9882bbc3a61e2ef776964b7842fc6ae0080617d29a"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/verify-public-1-9/evidence/snap-7.png",
+      "size": 31224,
+      "sha256": "e47dc63a21a256c9d98980e4c4143833aedd4b548c6e09ede558a7bc60c4cc00"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/verify-public-1-9/evidence/snap-8.json",
+      "size": 536,
+      "sha256": "57ef2bdf2964a8eb93a6588aae95ec39b5c9048248e1c550a16513dd8efbdfb5"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/verify-public-1-9/evidence/snap-8.png",
+      "size": 28698,
+      "sha256": "e89990057fda42bb9fc408d3fd2e9159a4b1eb6eb16cfd53ef12701a1c7c7895"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/verify-public-1-9/evidence/snap-9-download-started.json",
+      "size": 515,
+      "sha256": "93d06624d07bdd5e8d9ebcc1609f21a167c15abc48b201c33411c31a5dadc5a9"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/verify-public-1-9/evidence/snap-9-download-started.png",
+      "size": 28855,
+      "sha256": "5cd209edb05379104f7caada5935cb3d610dbf199991a27bab8962ca5fc6e22d"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/verify-public-1-9/evidence/snap-9.json",
+      "size": 515,
+      "sha256": "93d06624d07bdd5e8d9ebcc1609f21a167c15abc48b201c33411c31a5dadc5a9"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/verify-public-1-9/evidence/snap-9.png",
+      "size": 28855,
+      "sha256": "5cd209edb05379104f7caada5935cb3d610dbf199991a27bab8962ca5fc6e22d"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/verify-public-1-9/evidence/snap-about-blank.png",
+      "size": 4714,
+      "sha256": "3eab349ebf404dae5a2a20d041325042a032d46aeab4b9730d8f8962686fb9b0"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/verify-public-1-9/evidence/downloads/t1-map.json",
+      "size": 397,
+      "sha256": "df8f17fbed15145cf88c091521a471fd1e0298d43388f55e3c0c1467a5020915"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/retained-files-check.json",
+      "size": 1284,
+      "sha256": "456a8eddb2c63b4a316f803890eac2533441d18d6df35f5dca65727e8a39c7dd"
+    }
+  ],
+  "runtimeDirectoriesNotInspected": [
+    "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/A/profile",
+    "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/A/temp",
+    "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/A/home",
+    "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/B/profile",
+    "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/B/temp",
+    "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/B/home",
+    "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/C/profile",
+    "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/C/temp",
+    "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/C/home",
+    "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/verify-public-1-9/evidence/profile",
+    "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/verify-public-1-9/evidence/temp",
+    "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/verify-public-1-9/evidence/home"
+  ],
+  "note": "No profile or credential file contents inspected; explicit evidence files only",
+  "documentationCorrection": {
+    "at": "2026-09-17T12:51:08.416Z",
+    "changedFiles": [
+      "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/REPORT.md",
+      "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/changed-files.json"
+    ],
+    "scope": "evidence index paths and REPORT hash/size only",
+    "rerun": false,
+    "resultsPath": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/verify-public-1-9/evidence/results.json",
+    "counts": {
+      "PASS": 9,
+      "FAIL": 0,
+      "UNTESTED": 0
+    }
+  }
+}

@@ -1,0 +1,270 @@
+{
+  "items": [
+    {
+      "id": "1",
+      "status": "PASS",
+      "evidence": "snap-1.png",
+      "reason": null
+    },
+    {
+      "id": "2",
+      "status": "PASS",
+      "evidence": "snap-2.png",
+      "reason": null
+    },
+    {
+      "id": "3",
+      "status": "PASS",
+      "evidence": "snap-3.png",
+      "reason": null
+    },
+    {
+      "id": "4",
+      "status": "PASS",
+      "evidence": "snap-4.png",
+      "reason": null
+    },
+    {
+      "id": "5",
+      "status": "PASS",
+      "evidence": "snap-5.png",
+      "reason": null
+    },
+    {
+      "id": "6",
+      "status": "PASS",
+      "evidence": "snap-6.png",
+      "reason": null
+    },
+    {
+      "id": "7",
+      "status": "PASS",
+      "evidence": "snap-7.png",
+      "reason": null
+    },
+    {
+      "id": "8",
+      "status": "PASS",
+      "evidence": "snap-8.png",
+      "reason": null
+    },
+    {
+      "id": "9",
+      "status": "PASS",
+      "evidence": "snap-9.png",
+      "reason": null
+    },
+    {
+      "id": "10",
+      "status": "PASS",
+      "evidence": "snap-10.png",
+      "reason": null
+    },
+    {
+      "id": "11",
+      "status": "UNTESTED",
+      "evidence": "snap-11-unverified.png",
+      "reason": "BLOCKED_HEADLESS_NATIVE_CANCEL: 本轮禁止可见窗，无 filechooser 监听的 headless click 为浏览器自动取消（isTrusted cancel），非用户真实原生取消；FileChooser 无 cancel 接口。仅能记录\"自动取消/撤销清空\"的部分证据。"
+    },
+    {
+      "id": "12a",
+      "status": "PASS",
+      "evidence": "snap-12a.png",
+      "reason": null
+    },
+    {
+      "id": "12b",
+      "status": "PASS",
+      "evidence": "snap-12b.png",
+      "reason": null
+    },
+    {
+      "id": "12c",
+      "status": "PASS",
+      "evidence": "snap-12c.png",
+      "reason": null
+    },
+    {
+      "id": "12d",
+      "status": "PASS",
+      "evidence": "snap-12d.png",
+      "reason": null
+    },
+    {
+      "id": "A1",
+      "status": "PASS",
+      "evidence": "snap-A1.png",
+      "reason": null
+    },
+    {
+      "id": "A2",
+      "status": "PASS",
+      "evidence": "snap-A2.png",
+      "reason": null
+    },
+    {
+      "id": "A3",
+      "status": "PASS",
+      "evidence": "snap-A3.png",
+      "reason": null
+    },
+    {
+      "id": "A4",
+      "status": "PASS",
+      "evidence": "snap-A4.png",
+      "reason": null
+    },
+    {
+      "id": "B1",
+      "status": "PASS",
+      "evidence": [
+        "snap-B1-e1.png",
+        "snap-B1-e2.png",
+        "snap-B1-e3.png",
+        "snap-B1-e4.png",
+        "snap-B1-e5.png",
+        "snap-B1-e6.png",
+        "snap-B1-e7.png",
+        "snap-B1-e8.png",
+        "snap-B1-e9.png",
+        "snap-B1-e10.png"
+      ],
+      "reason": null,
+      "substeps": [
+        {
+          "id": "B1-e1",
+          "status": "PASS",
+          "evidence": "snap-B1-e1.png"
+        },
+        {
+          "id": "B1-e2",
+          "status": "PASS",
+          "evidence": "snap-B1-e2.png"
+        },
+        {
+          "id": "B1-e3",
+          "status": "PASS",
+          "evidence": "snap-B1-e3.png"
+        },
+        {
+          "id": "B1-e4",
+          "status": "PASS",
+          "evidence": "snap-B1-e4.png"
+        },
+        {
+          "id": "B1-e5",
+          "status": "PASS",
+          "evidence": "snap-B1-e5.png"
+        },
+        {
+          "id": "B1-e6",
+          "status": "PASS",
+          "evidence": "snap-B1-e6.png"
+        },
+        {
+          "id": "B1-e7",
+          "status": "PASS",
+          "evidence": "snap-B1-e7.png"
+        },
+        {
+          "id": "B1-e8",
+          "status": "PASS",
+          "evidence": "snap-B1-e8.png"
+        },
+        {
+          "id": "B1-e9",
+          "status": "PASS",
+          "evidence": "snap-B1-e9.png"
+        },
+        {
+          "id": "B1-e10",
+          "status": "PASS",
+          "evidence": "snap-B1-e10.png"
+        }
+      ]
+    },
+    {
+      "id": "B2",
+      "status": "PASS",
+      "evidence": [
+        "snap-B2-u1.png",
+        "snap-B2-u2.png",
+        "snap-B2-u3.png",
+        "snap-B2-u4.png",
+        "snap-B2-u5.png",
+        "snap-B2-u6.png",
+        "snap-B2-u7.png",
+        "snap-B2-u8.png",
+        "snap-B2-u9.png",
+        "snap-B2-u10.png"
+      ],
+      "reason": null,
+      "substeps": [
+        {
+          "id": "B2-u1",
+          "status": "PASS",
+          "evidence": "snap-B2-u1.png"
+        },
+        {
+          "id": "B2-u2",
+          "status": "PASS",
+          "evidence": "snap-B2-u2.png"
+        },
+        {
+          "id": "B2-u3",
+          "status": "PASS",
+          "evidence": "snap-B2-u3.png"
+        },
+        {
+          "id": "B2-u4",
+          "status": "PASS",
+          "evidence": "snap-B2-u4.png"
+        },
+        {
+          "id": "B2-u5",
+          "status": "PASS",
+          "evidence": "snap-B2-u5.png"
+        },
+        {
+          "id": "B2-u6",
+          "status": "PASS",
+          "evidence": "snap-B2-u6.png"
+        },
+        {
+          "id": "B2-u7",
+          "status": "PASS",
+          "evidence": "snap-B2-u7.png"
+        },
+        {
+          "id": "B2-u8",
+          "status": "PASS",
+          "evidence": "snap-B2-u8.png"
+        },
+        {
+          "id": "B2-u9",
+          "status": "PASS",
+          "evidence": "snap-B2-u9.png"
+        },
+        {
+          "id": "B2-u10",
+          "status": "PASS",
+          "evidence": "snap-B2-u10.png"
+        }
+      ]
+    },
+    {
+      "id": "B3",
+      "status": "PASS",
+      "evidence": "snap-B3.png",
+      "reason": null
+    }
+  ],
+  "notes": {
+    "12b-undo-probe": "undo→临时根; 再undo不变(栈空); rename重建为临时根改名"
+  },
+  "summary": {
+    "PASS": 21,
+    "FAIL": 0,
+    "UNTESTED": 1
+  }
+}

@@ -1,0 +1,31 @@
+You implement a minimal local Windows Chrome test harness patch. Return ONLY JSON {"replacements":[{"file":"harness.cjs","old":"exact existing string","new":"replacement"}],"rationale":"..."}. No tools available. New execution copy will live in step11-visible-04; originals immutable. Fix only temporary HOME directories (Desktop, Documents, Downloads and necessary local folders) and initialize dedicated Chrome profile chooser default to absolute OUT/downloads. No registry/global config/dependencies/auth files. Profile is brand-new owned experiment profile. Use profile/Default/Preferences with minimal selectfile.last_directory (Chrome file chooser); ensure no existing preferences overwritten. Preserve all launch flags, isolation, cancel oracle, ownership checks. Explain this is initial hint, native navigation allowed separately if needed. Do NOT claim browser test run. Existing relevant source:
+// harness.cjs — CommonJS，保存为 harness.cjs
+const { chromium } = require(process.env.T1_PLAYWRIGHT);
+const fs = require('fs'), path = require('path'), crypto = require('crypto');
+const { pathToFileURL } = require('url');
+
+const OUT = process.env.T1_OUT;
+const FILE_URL = pathToFileURL(process.env.T1_REFERENCE).href;
+const LAUNCH = {
+  executablePath: 'C:/Program Files/Google/Chrome/Application/chrome.exe',
+  headless: false, chromiumSandbox: true, ignoreDefaultArgs: true,
+  args: ['--remote-debugging-pipe','--user-data-dir='+OUT+'/profile','--no-first-run','--no-default-browser-check','--disable-background-networking','--disable-component-update','--disable-sync','--disable-extensions','--enable-automation','--window-size=1280,800'],
+  downloadsPath: OUT + '/downloads', acceptDownloads: true, offline: true,
+  serviceWorkers: 'block', viewport: {width:1280,height:800}, timeout: 30000,
+  env: {...process.env, TEMP:OUT+'/temp', TMP:OUT+'/temp', HOME:OUT+'/home', USERPROFILE:OUT+'/home', APPDATA:OUT+'/home/AppData/Roaming', LOCALAPPDATA:OUT+'/home/AppData/Local'}
+};
+const S0 = '中心主题\n  分支一\n  分支二\n    细节甲\n    细节乙\n  分支三';
+const TREE = (() => { const r={title:'中心主题',children:[]}; const b1={title:'分支一',children:[]}, b2={title:'分支二',children:[{title:'细节甲',children:[]},{title:'细节乙',children:[]}]}, b3={title:'分支三',children:[]}; r.children.push(b1,b2,b3); return r; })();
+const clone = (x) => JSON.parse(JSON.stringify(x));
+const ap = (p) => fs.promises.mkdir(p, {recursive:true});
+
+async function createHarness() {
+  for (const d of ['/profile','/downloads','/temp','/home','/home/AppData/Roaming','/home/AppData/Local']) await ap(OUT + d);
+  const errors = [];
+  const actions = [];
+  const items = [...Array.from({length:11},(_,i)=>String(i+1)),'12a','12b','12c','12d','A1','A2','A3','A4','B1','B2','B3'].map(id => ({id,status:'UNTESTED',evidence:null,reason:null}));
+  const notes = {};
+  let ctx, page, cdp;
+
+  const logAction = (a) => { actions.push({...a, ts: Date.now()}); fs.appendFileSync(path.join(OUT,'actions.jsonl'), JSON.stringify(actions[actions.length-1])+'\n'); };
+  const writeResults = () => fs.writeFileSync(path.join(OUT,'harness-results.json'), JSON.stringify({items, notes, summary:{PASS:items.filter(i=>i.status==='PASS').length, FAIL:items.filter(i=>i.status==='FAIL').length, UNTESTED:items.filter(i=>i.status==='UNTESTED').length}}, null, 2));

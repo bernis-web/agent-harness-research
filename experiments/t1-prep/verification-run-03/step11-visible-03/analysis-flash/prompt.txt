@@ -1,0 +1,341 @@
+Small OFFLINE analysis only. You are actual Claude glm-5.3-flash effort low worker. No tools/browser. Need SOURCE-BASED diagnosis of prior DIALOG_NOT_FOUND, NOT product failure. Return concise JSON {findings:[{claim,evidence_lines,confirmed_or_hypothesis}],minimal_fixes:[...],identity_design,interception_patch,risks}. Read supplied installed Playwright excerpts and current harness/step11. 1) CDP SystemInfo browser id after close was conhost; cannot assume OS PID/reuse. Propose exact live mapping using launch child_process.spawn pid tied to exact Chrome exe and unique user-data-dir; immediately query only that PID exe/create_time/parent and commandline for this OWNED candidate only; no other process cmdlines. Need handle/owner verification. 2) Does waitForEvent(filechooser) automatically REMOVE listener through which code? Does in-process client keep interception due once listener path? Source shows updateSubscription asynchronous. Can we explicitly await page._channel.updateSubscription({event:'fileChooser',enabled:false}) (verify protocol event exact supplied mapping) AND page-scoped CDP Page.setInterceptFileChooserDialog {enabled:false}, NO cancel:true. Need cite lines; don't claim proven live until observed. Ask for other small source ranges if necessary. No patch yet beyond interception snippet.
+EXCERPTS
+[{"path":"D:/projects/npm-cache/_npx/cbf1b8a072280925/node_modules/playwright-core/lib/coreBundle.js","start":22370,"end":22400,"text":"22370:       _didCrash() {\n22371:         if (this._lifecycle !== \"open\")\n22372:           return;\n22373:         this._lifecycle = \"crashed\";\n22374:         this._didDisconnect(new TargetClosedError(\"Page crashed\"));\n22375:         this.emit(_Page.Events.Crash);\n22376:       }\n22377:       async _onFileChooserOpened(handle) {\n22378:         let multiple;\n22379:         try {\n22380:           multiple = await handle.evaluate((element3) => !!element3.multiple);\n22381:         } catch (e) {\n22382:           return;\n22383:         }\n22384:         if (!this.listenerCount(_Page.Events.FileChooser)) {\n22385:           handle.dispose();\n22386:           return;\n22387:         }\n22388:         const fileChooser = new FileChooser(handle, multiple);\n22389:         this.emit(_Page.Events.FileChooser, fileChooser);\n22390:       }\n22391:       opener() {\n22392:         return this._opener;\n22393:       }\n22394:       mainFrame() {\n22395:         return this.frameManager.mainFrame();\n22396:       }\n22397:       frames() {\n22398:         return this.frameManager.frames();\n22399:       }\n22400:       async exposeBinding(progress2, name, playwrightBinding, noGlobal) {"},{"path":"D:/projects/npm-cache/_npx/cbf1b8a072280925/node_modules/playwright-core/lib/coreBundle.js","start":22840,"end":22862,"text":"22840:           worker.didClose();\n22841:           this._workers.delete(workerId);\n22842:         }\n22843:       }\n22844:       async setFileChooserInterceptedBy(progress2, enabled, by) {\n22845:         await progress2.race(this._setFileChooserInterceptedBy(enabled, by));\n22846:       }\n22847:       async _setFileChooserInterceptedBy(enabled, by) {\n22848:         const wasIntercepted = this.fileChooserIntercepted();\n22849:         if (enabled)\n22850:           this._fileChooserInterceptedBy.add(by);\n22851:         else\n22852:           this._fileChooserInterceptedBy.delete(by);\n22853:         if (wasIntercepted !== this.fileChooserIntercepted())\n22854:           await this.delegate.updateFileChooserInterception();\n22855:       }\n22856:       fileChooserIntercepted() {\n22857:         return this._fileChooserInterceptedBy.size > 0;\n22858:       }\n22859:       frameNavigatedToNewDocument(frame) {\n22860:         this.emit(_Page.Events.InternalFrameNavigatedToNewDocument, frame);\n22861:         this.browserContext.emit(BrowserContext.Events.InternalFrameNavigatedToNewDocument, frame);\n22862:         const origin = frame.origin();"},{"path":"D:/projects/npm-cache/_npx/cbf1b8a072280925/node_modules/playwright-core/lib/coreBundle.js","start":37900,"end":37922,"text":"37900:           };\n37901:           this._page.addConsoleMessage(null, level, [], location2, text2, event.entry.timestamp);\n37902:         }\n37903:       }\n37904:       async _onFileChooserOpened(event) {\n37905:         if (!event.backendNodeId)\n37906:           return;\n37907:         const frame = this._page.frameManager.frame(event.frameId);\n37908:         if (!frame)\n37909:           return;\n37910:         let handle;\n37911:         try {\n37912:           const utilityContext = await frame.utilityContext();\n37913:           handle = await this._adoptBackendNodeId(event.backendNodeId, utilityContext);\n37914:         } catch (e) {\n37915:           return;\n37916:         }\n37917:         await this._page._onFileChooserOpened(handle);\n37918:       }\n37919:       _willBeginDownload() {\n37920:         if (!this._crPage._page.initializedOrUndefined()) {\n37921:           this._firstNonInitialNavigationCommittedReject(new Error(\"Starting new page download\"));\n37922:         }"},{"path":"D:/projects/npm-cache/_npx/cbf1b8a072280925/node_modules/playwright-core/lib/coreBundle.js","start":38022,"end":38034,"text":"38022:       async _setDefaultFontFamilies(session2) {\n38023:         const fontFamilies = platformToFontFamilies[this._crPage._browserContext._browser._platform()];\n38024:         await session2.send(\"Page.setFontFamilies\", fontFamilies);\n38025:       }\n38026:       async _updateFileChooserInterception(initial) {\n38027:         const enabled = this._page.fileChooserIntercepted();\n38028:         if (initial && !enabled)\n38029:           return;\n38030:         await this._client.send(\"Page.setInterceptFileChooserDialog\", { enabled }).catch(() => {\n38031:         });\n38032:       }\n38033:       async _evaluateOnNewDocument(initScript, world, runImmediately) {\n38034:         const worldName = world === \"utility\" ? this._crPage.utilityWorldName : void 0;"},{"path":"D:/projects/npm-cache/_npx/cbf1b8a072280925/node_modules/playwright-core/lib/coreBundle.js","start":39770,"end":39835,"text":"39770:         let browserProcess = void 0;\n39771:         const exitPromise = new ManualPromise();\n39772:         const { launchedProcess, gracefullyClose, kill } = await progress2.race(launchProcess({\n39773:           command: prepared.executable,\n39774:           args: prepared.browserArguments,\n39775:           env: this.amendEnvironment(env, prepared.userDataDir, isPersistent, options),\n39776:           handleSIGINT,\n39777:           handleSIGTERM,\n39778:           handleSIGHUP,\n39779:           log: (message) => {\n39780:             progress2.log(message);\n39781:             browserLogsCollector.log(message);\n39782:           },\n39783:           stdio: \"pipe\",\n39784:           tempDirectories: prepared.tempDirectories,\n39785:           attemptToGracefullyClose: async () => {\n39786:             if (options.__testHookGracefullyClose)\n39787:               await options.__testHookGracefullyClose();\n39788:             if (transport) {\n39789:               this.attemptToGracefullyCloseBrowser(transport);\n39790:             } else {\n39791:               throw new Error(\"Force-killing the browser because no transport is available to gracefully close it.\");\n39792:             }\n39793:           },\n39794:           onExit: (exitCode, signal) => {\n39795:             exitPromise.resolve();\n39796:             if (browserProcess && browserProcess.onclose)\n39797:               browserProcess.onclose(exitCode, signal);\n39798:           }\n39799:         }));\n39800:         async function closeOrKill(timeout) {\n39801:           let timer;\n39802:           try {\n39803:             await Promise.race([\n39804:               gracefullyClose(),\n39805:               new Promise((resolve, reject) => timer = setTimeout(reject, timeout))\n39806:             ]);\n39807:           } catch (ignored) {\n39808:             await kill().catch((ignored2) => {\n39809:             });\n39810:           } finally {\n39811:             clearTimeout(timer);\n39812:           }\n39813:         }\n39814:         browserProcess = {\n39815:           onclose: void 0,\n39816:           process: launchedProcess,\n39817:           close: () => closeOrKill(options.__testHookBrowserCloseTimeout || DEFAULT_PLAYWRIGHT_TIMEOUT),\n39818:           kill\n39819:         };\n39820:         try {\n39821:           const { wsEndpoint } = await progress2.race([\n39822:             this.waitForReadyState(options, browserLogsCollector),\n39823:             exitPromise.then(() => ({ wsEndpoint: void 0 }))\n39824:           ]);\n39825:           if (exitPromise.isDone()) {\n39826:             const log2 = helper.formatBrowserLogs(browserLogsCollector.recentLogs());\n39827:             const updatedLog = this.doRewriteStartupLog(log2);\n39828:             throw new Error(`Failed to launch the browser process.\n39829: Browser logs:\n39830: ${updatedLog}`);\n39831:           }\n39832:           if (!this.supportsPipeTransport(options)) {\n39833:             transport = await WebSocketTransport.connect(progress2, wsEndpoint);\n39834:           } else {\n39835:             const stdio = launchedProcess.stdio;"},{"path":"D:/projects/npm-cache/_npx/cbf1b8a072280925/node_modules/playwright-core/lib/coreBundle.js","start":9287,"end":9330,"text":"9287: async function launchProcess(options) {\n9288:   const stdio = options.stdio === \"pipe\" ? [\"ignore\", \"pipe\", \"pipe\", \"pipe\", \"pipe\"] : [\"pipe\", \"pipe\", \"pipe\"];\n9289:   options.log(`<launching> ${options.command} ${options.args ? options.args.join(\" \") : \"\"}`);\n9290:   const spawnOptions = {\n9291:     // On non-windows platforms, `detached: true` makes child process a leader of a new\n9292:     // process group, making it possible to kill child process tree with `.kill(-pid)` command.\n9293:     // @see https://nodejs.org/api/child_process.html#child_process_options_detached\n9294:     detached: process.platform !== \"win32\",\n9295:     env: options.env,\n9296:     cwd: options.cwd,\n9297:     shell: options.shell,\n9298:     stdio\n9299:   };\n9300:   const spawnedProcess = childProcess.spawn(options.command, options.args || [], spawnOptions);\n9301:   const cleanup = async () => {\n9302:     options.log(`[pid=${spawnedProcess.pid || \"N/A\"}] starting temporary directories cleanup`);\n9303:     const errors = await removeFolders(options.tempDirectories);\n9304:     for (let i = 0; i < options.tempDirectories.length; ++i) {\n9305:       if (errors[i])\n9306:         options.log(`[pid=${spawnedProcess.pid || \"N/A\"}] exception while removing ${options.tempDirectories[i]}: ${errors[i]}`);\n9307:     }\n9308:     options.log(`[pid=${spawnedProcess.pid || \"N/A\"}] finished temporary directories cleanup`);\n9309:   };\n9310:   spawnedProcess.on(\"error\", () => {\n9311:   });\n9312:   if (!spawnedProcess.pid) {\n9313:     let failed;\n9314:     const failedPromise = new Promise((f, r) => failed = f);\n9315:     spawnedProcess.once(\"error\", (error) => {\n9316:       failed(new Error(\"Failed to launch: \" + error));\n9317:     });\n9318:     return failedPromise.then(async (error) => {\n9319:       await cleanup();\n9320:       throw error;\n9321:     });\n9322:   }\n9323:   options.log(`<launched> pid=${spawnedProcess.pid}`);\n9324:   const stdout = readline.createInterface({ input: spawnedProcess.stdout });\n9325:   stdout.on(\"line\", (data) => {\n9326:     options.log(`[pid=${spawnedProcess.pid}][out] ` + data);\n9327:   });\n9328:   const stderr = readline.createInterface({ input: spawnedProcess.stderr });\n9329:   stderr.on(\"line\", (data) => {\n9330:     options.log(`[pid=${spawnedProcess.pid}][err] ` + data);"},{"path":"D:/projects/npm-cache/_npx/cbf1b8a072280925/node_modules/playwright-core/lib/coreBundle.js","start":57270,"end":57318,"text":"57270:           this._parent._objects.set(guid, this);\n57271:           this._logger = this._parent._logger;\n57272:         }\n57273:         this._channel = this._createChannel(new EventEmitter2());\n57274:         this._initializer = initializer;\n57275:       }\n57276:       _setEventToSubscriptionMapping(mapping) {\n57277:         this._eventToSubscriptionMapping = mapping;\n57278:       }\n57279:       _updateSubscription(event, enabled) {\n57280:         const protocolEvent = this._eventToSubscriptionMapping.get(String(event));\n57281:         if (protocolEvent)\n57282:           this._channel.updateSubscription({ event: protocolEvent, enabled }).catch(() => {\n57283:           });\n57284:       }\n57285:       on(event, listener) {\n57286:         if (!this.listenerCount(event))\n57287:           this._updateSubscription(event, true);\n57288:         super.on(event, listener);\n57289:         return this;\n57290:       }\n57291:       addListener(event, listener) {\n57292:         if (!this.listenerCount(event))\n57293:           this._updateSubscription(event, true);\n57294:         super.addListener(event, listener);\n57295:         return this;\n57296:       }\n57297:       prependListener(event, listener) {\n57298:         if (!this.listenerCount(event))\n57299:           this._updateSubscription(event, true);\n57300:         super.prependListener(event, listener);\n57301:         return this;\n57302:       }\n57303:       off(event, listener) {\n57304:         super.off(event, listener);\n57305:         if (!this.listenerCount(event))\n57306:           this._updateSubscription(event, false);\n57307:         return this;\n57308:       }\n57309:       removeListener(event, listener) {\n57310:         super.removeListener(event, listener);\n57311:         if (!this.listenerCount(event))\n57312:           this._updateSubscription(event, false);\n57313:         return this;\n57314:       }\n57315:       _adopt(child) {\n57316:         child._parent._objects.delete(child._guid);\n57317:         this._objects.set(child._guid, child);\n57318:         child._parent = this;"},{"path":"D:/projects/npm-cache/_npx/cbf1b8a072280925/node_modules/playwright-core/lib/coreBundle.js","start":62262,"end":62288,"text":"62262:         this._channel.on(\"response\", ({ response: response2, page }) => this._onResponse(Response3.from(response2), Page3.fromNullable(page)));\n62263:         this._channel.on(\"recorderEvent\", ({ event, data, page, code }) => {\n62264:           if (event === \"actionAdded\")\n62265:             this._onRecorderEventSink?.actionAdded?.(Page3.from(page), data, code);\n62266:           else if (event === \"actionUpdated\")\n62267:             this._onRecorderEventSink?.actionUpdated?.(Page3.from(page), data, code);\n62268:           else if (event === \"signalAdded\")\n62269:             this._onRecorderEventSink?.signalAdded?.(Page3.from(page), data, code);\n62270:         });\n62271:         this._closedPromise = new Promise((f) => this.once(Events.BrowserContext.Close, f));\n62272:         this._setEventToSubscriptionMapping(/* @__PURE__ */ new Map([\n62273:           [Events.BrowserContext.Console, \"console\"],\n62274:           [Events.BrowserContext.Dialog, \"dialog\"],\n62275:           [Events.BrowserContext.DialogClosed, \"dialogClosed\"],\n62276:           [Events.BrowserContext.Request, \"request\"],\n62277:           [Events.BrowserContext.Response, \"response\"],\n62278:           [Events.BrowserContext.RequestFinished, \"requestFinished\"],\n62279:           [Events.BrowserContext.RequestFailed, \"requestFailed\"]\n62280:         ]));\n62281:       }\n62282:       static from(context) {\n62283:         return context._object;\n62284:       }\n62285:       static fromNullable(context) {\n62286:         return context ? _BrowserContext.from(context) : null;\n62287:       }\n62288:       async _initializeHarFromOptions(recordHar) {"},{"path":"D:/projects/npm-cache/_npx/cbf1b8a072280925/node_modules/playwright-core/lib/coreBundle.js","start":53664,"end":53680,"text":"53664:       }\n53665:       async runBeforeUnload(params2, progress2) {\n53666:         await this._page.runBeforeUnload(progress2);\n53667:       }\n53668:       async updateSubscription(params2, progress2) {\n53669:         if (params2.event === \"fileChooser\")\n53670:           await this._page.setFileChooserInterceptedBy(progress2, params2.enabled, this);\n53671:         if (params2.enabled)\n53672:           this._subscriptions.add(params2.event);\n53673:         else\n53674:           this._subscriptions.delete(params2.event);\n53675:       }\n53676:       async keyboardDown(params2, progress2) {\n53677:         await this._page.keyboard.apiDown(progress2, params2.key);\n53678:       }\n53679:       async keyboardUp(params2, progress2) {\n53680:         await this._page.keyboard.apiUp(progress2, params2.key);"},{"path":"D:/projects/npm-cache/_npx/cbf1b8a072280925/node_modules/playwright-core/lib/coreBundle.js","start":58803,"end":58826,"text":"58803:     init_jsHandle();\n58804:     init_timeoutSettings();\n58805:     init_waiter();\n58806:     Worker2 = class _Worker extends ChannelOwner {\n58807:       constructor(parent, type3, guid, initializer) {\n58808:         super(parent, type3, guid, initializer);\n58809:         // Set for service workers.\n58810:         this._closedScope = new LongStandingScope();\n58811:         this._setEventToSubscriptionMapping(/* @__PURE__ */ new Map([\n58812:           [Events.Worker.Console, \"console\"]\n58813:         ]));\n58814:         this._channel.on(\"console\", (event) => {\n58815:           this.emit(Events.Worker.Console, new ConsoleMessage2(event, null, this));\n58816:         });\n58817:         this._channel.on(\"close\", () => {\n58818:           if (this._page)\n58819:             this._page._workers.delete(this);\n58820:           if (this._context)\n58821:             this._context._serviceWorkers.delete(this);\n58822:           this.emit(Events.Worker.Close, this);\n58823:         });\n58824:         this.once(Events.Worker.Close, () => this._closedScope.close(this._closeErrorWithReason()));\n58825:       }\n58826:       static fromNullable(worker) {"},{"path":"D:/projects/npm-cache/_npx/cbf1b8a072280925/node_modules/playwright-core/types/protocol.d.ts","start":18508,"text":"18508:     export interface ProcessInfo {\n18509:       /**\n18510:        * Specifies process type.\n18511:        */\n18512:       type: string;\n18513:       /**\n18514:        * Specifies process id.\n18515:        */\n18516:       id: number;\n18517:       /**\n18518:        * Specifies cumulative CPU usage in seconds across all threads of the\n18519: process since the process start.\n18520:        */\n18521:       cpuTime: number;\n18522:     }\n18523:     \n18524:     \n18525:     /**\n18526:      * Returns information about the system.\n18527:      */\n18528:     export type getInfoParameters = {\n18529:     }\n18530:     export type getInfoReturnValue = {"}]
+HARNESS
+// harness.cjs — CommonJS，保存为 harness.cjs
+const { chromium } = require(process.env.T1_PLAYWRIGHT);
+const fs = require('fs'), path = require('path'), crypto = require('crypto');
+const { pathToFileURL } = require('url');
+
+const OUT = process.env.T1_OUT;
+const FILE_URL = pathToFileURL(process.env.T1_REFERENCE).href;
+const LAUNCH = {
+  executablePath: 'C:/Program Files/Google/Chrome/Application/chrome.exe',
+  headless: false, chromiumSandbox: true, ignoreDefaultArgs: true,
+  args: ['--remote-debugging-pipe','--user-data-dir='+OUT+'/profile','--no-first-run','--no-default-browser-check','--disable-background-networking','--disable-component-update','--disable-sync','--disable-extensions','--enable-automation','--window-size=1280,800'],
+  downloadsPath: OUT + '/downloads', acceptDownloads: true, offline: true,
+  serviceWorkers: 'block', viewport: {width:1280,height:800}, timeout: 30000,
+  env: {...process.env, TEMP:OUT+'/temp', TMP:OUT+'/temp', HOME:OUT+'/home', USERPROFILE:OUT+'/home', APPDATA:OUT+'/home/AppData/Roaming', LOCALAPPDATA:OUT+'/home/AppData/Local'}
+};
+const S0 = '中心主题\n  分支一\n  分支二\n    细节甲\n    细节乙\n  分支三';
+const TREE = (() => { const r={title:'中心主题',children:[]}; const b1={title:'分支一',children:[]}, b2={title:'分支二',children:[{title:'细节甲',children:[]},{title:'细节乙',children:[]}]}, b3={title:'分支三',children:[]}; r.children.push(b1,b2,b3); return r; })();
+const clone = (x) => JSON.parse(JSON.stringify(x));
+const ap = (p) => fs.promises.mkdir(p, {recursive:true});
+
+async function createHarness() {
+  for (const d of ['/profile','/downloads','/temp','/home','/home/AppData/Roaming','/home/AppData/Local']) await ap(OUT + d);
+  const errors = [];
+  const actions = [];
+  const items = [...Array.from({length:11},(_,i)=>String(i+1)),'12a','12b','12c','12d','A1','A2','A3','A4','B1','B2','B3'].map(id => ({id,status:'UNTESTED',evidence:null,reason:null}));
+  const notes = {};
+  let ctx, page, cdp;
+
+  const logAction = (a) => { actions.push({...a, ts: Date.now()}); fs.appendFileSync(path.join(OUT,'actions.jsonl'), JSON.stringify(actions[actions.length-1])+'\n'); };
+  const writeResults = () => fs.writeFileSync(path.join(OUT,'harness-results.json'), JSON.stringify({items, notes, summary:{PASS:items.filter(i=>i.status==='PASS').length, FAIL:items.filter(i=>i.status==='FAIL').length, UNTESTED:items.filter(i=>i.status==='UNTESTED').length}}, null, 2));
+
+  async function newPage(url) {
+    const p = await ctx.newPage();
+    p.setDefaultTimeout(10000);
+    p.on('pageerror', e => errors.push('pageerror: ' + e.message));
+    p.on('console', m => { if (m.type() === 'error') errors.push('console.error: ' + m.text()); });
+    await p.goto(url, {waitUntil:'load'});
+    return p;
+  }
+
+  ctx = await chromium.launchPersistentContext(OUT + '/profile', LAUNCH);
+  await ctx.route(/^https?:\/\//, r => r.abort());
+  try { await ctx.setOffline(true); } catch (e) {}
+  cdp = await ctx.newCDPSession(await ctx.pages()[0] || await ctx.newPage());
+  cdp.on('Browser.downloadWillBegin',e=>logAction({action:'cdp-willBegin',...e}));
+  cdp.on('Browser.downloadProgress',e=>logAction({action:'cdp-progress',...e}));
+  page = ctx.pages()[0] || await ctx.newPage();
+  page.setDefaultTimeout(10000);
+  page.on('pageerror', e => errors.push('pageerror: ' + e.message));
+  page.on('console', m => { if (m.type() === 'error') errors.push('console.error: ' + m.text()); });
+  await page.goto('about:blank');
+  await page.screenshot({path: path.join(OUT,'snap-about-blank.png'), fullPage:true});
+  await cdp.send('Browser.setDownloadBehavior', {behavior:'allowAndName', downloadPath: path.win32.normalize(OUT + '/downloads'), eventsEnabled:true});
+  await page.goto(FILE_URL, {waitUntil:'load'});
+  logAction({action:'open', url:FILE_URL});
+
+  const t = {};
+  t.page = page; t.S0 = S0; t.TREE = clone(TREE); t.clone = clone; t.note = (k,v) => { notes[k]=v; writeResults(); };
+
+  t.tree = async () => {
+    const rootUl = page.locator('#map > ul > li').first();
+    if (!(await page.locator('#map .empty').count()) && !(await rootUl.count())) return null;
+    if (!(await rootUl.count())) return null;
+    return rootUl.evaluate((li) => {
+      function build(n) {
+        const row = n.querySelector(':scope > .node-row > .title');
+        const kids = [];
+        const ul = n.querySelector(':scope > ul');
+        if (ul) for (const c of ul.children) if (c.tagName === 'LI') kids.push(build(c));
+        return {title: row ? row.textContent : null, children: kids};
+      }
+      return build(li);
+    });
+  };
+
+  t.check = async (expected) => {
+    const got = await t.tree();
+    const treeOk = JSON.stringify(got) === JSON.stringify(expected);
+    const emptyVisible = got === null ? await page.locator('#map .empty').isVisible() : false;
+    if (!treeOk || errors.length || (got === null && !emptyVisible)) throw new Error('check失败: tree=' + JSON.stringify(got) + ' errors=' + JSON.stringify(errors));
+    return true;
+  };
+
+  const promptDialog = (pageRef, value) => new Promise((res, reject) => pageRef.once('dialog', d => { logAction({action:'dialog',type:d.type(),value}); d.accept(value).then(res,reject); }));
+
+  t.gen = async (text) => { await page.fill('#src', text); logAction({action:'gen'}); await page.click('#btn-gen'); await page.waitForTimeout(100); };
+  t.rename = async (indexPath, title) => { const li = liAt(indexPath); const p = promptDialog(page, title); await li.locator(':scope > .node-row > button', {hasText:'重命名'}).first().click(); await p; await page.waitForTimeout(100); logAction({action:'rename', indexPath, title}); };
+  t.add = async (indexPath, title) => { const li = liAt(indexPath); const p = promptDialog(page, title); await li.locator(':scope > .node-row > button', {hasText:'+子节点'}).first().click(); await p; await page.waitForTimeout(100); logAction({action:'add', indexPath, title}); };
+  t.del = async (indexPath) => { const li = liAt(indexPath); await li.locator(':scope > .node-row > button', {hasText:'删除'}).first().click(); await page.waitForTimeout(100); logAction({action:'del', indexPath}); };
+  t.undo = async () => { await page.click('#btn-undo'); await page.waitForTimeout(100); logAction({action:'undo'}); };
+
+  function liAt(indexPath) {
+    let sel = '#map > ul > li';
+    for (const i of indexPath) sel += `:nth-child(${i+1}) > ul > li`;
+    if (indexPath.length) sel = sel.replace('#map > ul > li', '#map > ul > li');
+    let loc = page.locator('#map > ul > li');
+    for (const i of indexPath) loc = loc.locator(':scope > ul > li').nth(i);
+    return loc;
+  }
+
+  t.reopen = async () => { await page.close(); page = await newPage(FILE_URL); t.page = page; logAction({action:'reopen'}); };
+
+  t.exportMap = async () => {
+    const bounded = (p,label) => Promise.race([p,new Promise((_,rej)=>setTimeout(()=>rej(new Error('TOOL_ERROR: '+label+' timeout')),15000))]);
+    const evProm = new Promise(res => cdp.once('Browser.downloadWillBegin',res));
+    const doneProm = new Promise(res => cdp.on('Browser.downloadProgress',e=>{if(e.state==='completed'||e.state==='canceled')res(e);}));
+    const dl = page.waitForEvent('download', {timeout:10000});
+    await page.click('#btn-export');
+    const download=await dl;
+    logAction({action:'playwright-download',url:download.url(),suggestedFilename:download.suggestedFilename()});
+    await t.snap('9-download-started');
+    const failure=await bounded(download.failure(),'download failure/completion');
+    logAction({action:'download-outcome',failure});
+    if(failure) throw new Error('DOWNLOAD_FAILURE: '+failure);
+    const actualPath=await download.path();
+    const savedPath=path.join(OUT,'downloads','t1-map.json');
+    await download.saveAs(savedPath);
+    const begin=await bounded(evProm,'CDP begin'),done=await bounded(doneProm,'CDP completion');
+    const orig=done.filePath||path.join(OUT,'downloads',begin.guid);
+    const origExists = fs.existsSync(orig) || fs.existsSync(download.path ? await download.path() : '');
+    const origPath = fs.existsSync(orig) ? orig : await download.path();
+    const inScope = path.resolve(origPath).startsWith(path.resolve(OUT)+path.sep);
+    fs.writeFileSync(path.join(OUT,'download-evidence.json'),JSON.stringify({begin,done,playwrightPath:await download.path(),original:origPath,saved:savedPath,originalSHA256:crypto.createHash('sha256').update(fs.readFileSync(origPath)).digest('hex'),savedSHA256:crypto.createHash('sha256').update(fs.readFileSync(savedPath)).digest('hex')},null,2));
+    if (!fs.existsSync(origPath) || !inScope) throw new Error('导出原件缺失或越界: ' + origPath);
+    const buf = fs.readFileSync(origPath);
+    const json = JSON.parse(fs.readFileSync(savedPath,'utf-8'));
+    logAction({action:'export', orig:origPath, saved:savedPath, hash:crypto.createHash('sha256').update(buf).digest('hex')});
+    const preserved=path.join(OUT,"export-original-preserved.json");
+    fs.copyFileSync(origPath,preserved);
+    fs.writeFileSync(path.join(OUT,"preserved-original-evidence.json"),JSON.stringify({actualOriginalPath:origPath,preservedCopy:preserved,sha256:crypto.createHash("sha256").update(fs.readFileSync(preserved)).digest("hex"),note:"copy before context close; Playwright may remove temporary original"},null,2));
+    return json;
+  };
+
+  t.importSaved = async () => {
+    const msgBefore = await page.locator('#msg').textContent();
+    const [fc] = await Promise.all([ page.waitForEvent('filechooser'), page.click('#btn-import') ]);
+    await fc.setFiles(path.join(OUT,'downloads','t1-map.json'));
+    await page.waitForFunction(([prev]) => {
+      const m = document.querySelector('#msg');
+      return m && m.textContent !== prev && m.textContent.indexOf('导入成功') !== -1;
+    }, [msgBefore], {timeout:10000});
+    logAction({action:'importSaved'});
+  };
+
+  t.snap = async (label) => {
+    const safe = String(label).replace(/[^\w-]/g,'_');
+    await page.screenshot({path: path.join(OUT, `snap-${safe}.png`), fullPage:true});
+    const tree = await t.tree().catch(() => null);
+    fs.writeFileSync(path.join(OUT, `snap-${safe}.json`), JSON.stringify({tree, errors, message:await page.locator("#msg").textContent()}, null, 2));
+    logAction({action:'snap', label});
+  };
+
+  t.step = async (id, fn) => {
+    try { await fn(t); await t.snap(id);
+      const it = items.find(i => i.id === id); if (it) { it.status='PASS'; it.evidence=`snap-${id}.png`; }
+      if (/^B[12]-/.test(id)) { const parent=items.find(i=>i.id===id.split('-')[0]); (parent.substeps ||= []).push({id,status:'PASS',evidence:`snap-${id}.png`}); if(parent.substeps.length===10){parent.status='PASS';parent.evidence=parent.substeps.map(s=>s.evidence);} }
+      writeResults(); logAction({action:'step', id, status:'PASS'});
+    } catch (e) {
+      await t.snap(id + '-fail').catch(()=>{});
+      const it = items.find(i => i.id === id.split('-')[0]); if (it) { it.status='FAIL'; it.evidence=`snap-${id}-fail.png`; it.reason=String(e.message||e); }
+      writeResults();
+      fs.writeFileSync(path.join(OUT, `error-${id}.json`), JSON.stringify({id, error:String(e.message||e), errors}, null, 2));
+      logAction({action:'step', id, status:'FAIL', error:String(e.message||e)});
+      throw e;
+    }
+  };
+
+  t.unverified = async (id, reason, fn) => {
+    try { await fn(t); await t.snap(id + '-unverified'); }
+    catch (e) {
+      await t.snap(id + '-fail').catch(()=>{});
+      const it=items.find(i=>i.id===id);if(it){it.status='FAIL';it.reason=String(e.message||e);it.evidence=`snap-${id}-fail.png`;}
+      writeResults();
+      fs.writeFileSync(path.join(OUT, `error-${id}.json`), JSON.stringify({id, error:String(e.message||e), errors}, null, 2));
+      throw e;
+    }
+    const it = items.find(i => i.id === id); if (it) { it.status='UNTESTED'; it.reason=reason; it.evidence=`snap-${id}-unverified.png`; }
+    writeResults(); logAction({action:'unverified', id, reason});
+  };
+
+t.close = async () => {
+  writeResults();
+  await ctx.close();
+  const remaining = ctx.pages();
+  if (remaining.length !== 0) {
+    throw new Error(`task context close incomplete: ${remaining.length} page(s) remain after ctx.close()`);
+  }
+  return { ownedContextCloseCompleted: true, pagesRemaining: 0 };
+};
+
+  writeResults();
+  return t;
+}
+module.exports = { createHarness };
+
+STEP11
+// step11.cjs — real native file-open dialog cancel, scoped to browser PID
+'use strict';
+const { spawn } = require('child_process');
+const fs = require('fs');
+const path = require('path');
+
+const PYTHON = process.env.T1_PYTHON || 'python';
+
+function runNative(pid, outDir) {
+  return new Promise((resolve) => {
+    const script = path.join(__dirname, 'native_cancel.py');
+    const child = spawn(PYTHON, [script, String(pid), outDir],
+      { windowsHide: true, shell: false, stdio: ['ignore', 'pipe', 'pipe'] });
+    let stdout = '', stderr = '', done = false;
+    const finish = (timedOut) => {
+      if (done) return; done = true;
+      fs.writeFileSync(path.join(outDir, 'native-stdout.log'), stdout);
+      fs.writeFileSync(path.join(outDir, 'native-stderr.log'), stderr);
+      if (timedOut) { try { child.kill(); } catch {} }
+      resolve({ timedOut, code: child.exitCode });
+    };
+    const timer = setTimeout(() => finish(true), 30000);
+    child.stdout.on('data', d => { stdout += d; });
+    child.stderr.on('data', d => { stderr += d; });
+    child.on('exit', () => { clearTimeout(timer); finish(false); });
+    child.on('error', (e) => { stderr += String(e); clearTimeout(timer); finish(false); });
+  });
+}
+
+async function waitForNativeResult(outDir, ms) {
+  const p = path.join(outDir, 'native-result.json');
+  const deadline = Date.now() + ms;
+  while (Date.now() < deadline) {
+    try {
+      const j = JSON.parse(fs.readFileSync(p, 'utf8'));
+      if (j.stage === 'done') return j;
+    } catch {}
+    await t_sleep(200);
+  }
+  return null;
+}
+const t_sleep = (ms) => new Promise(r => setTimeout(r, ms));
+
+module.exports = async function step11(t, out) {
+  fs.mkdirSync(out, { recursive: true });
+  const results = { item: 11, name: 'native-visible-dialog-cancel', PASS: false,
+                    classification: null, checks: {}, evidence: {} };
+  try {
+    // 1) build public step10-equivalent state via harness (prerequisite only)
+    await t.gen('temporary');
+    await t.rename([], 'changed');
+
+    // prerequisite import: harness chooser interception used HERE only
+    await t.importSaved();
+
+    const oraclePath = path.join(out, 'downloads', 't1-map.json');
+    const oracle = JSON.parse(fs.readFileSync(oraclePath, 'utf8'));
+    results.checks.oracleLoaded = true;
+    results.evidence.oracle = oraclePath;
+
+    // 2) prove tree state + save before anything native
+    await t.check(oracle);
+    await t.snap('before-cancel');
+    results.checks.treeBeforeImport = true;
+
+    // 3) exact browser PID via CDP
+    const cdp = await t.page.context().browser().newBrowserCDPSession();
+    const resp = await cdp.send('SystemInfo.getProcessInfo');
+    await cdp.detach();
+    fs.writeFileSync(path.join(out, 'cdp-process-info.json'), JSON.stringify(resp, null, 2));
+    if (!Array.isArray(resp.processInfo)) throw { classify: 'BLOCKED_DRIVER', msg: 'getProcessInfo: processInfo is not an array', rawResp: resp };
+    const browserProcs = resp.processInfo.filter(p => p.type === 'browser');
+    if (browserProcs.length !== 1) throw { classify: 'BLOCKED_DRIVER', msg: 'browser pid ambiguous', rawResp: resp };
+    const browserPid = browserProcs[0].id;
+    if (!Number.isSafeInteger(browserPid) || browserPid <= 0) throw { classify: 'BLOCKED_DRIVER', msg: 'browser pid is not a positive safe integer', rawResp: resp };
+    results.evidence.browserPid = browserPid;
+
+    // 4) DOM observation only (cancel/change), no dispatch
+    const inputLoc = t.page.locator('input[type=file]');
+    const count = await inputLoc.count();
+    if (count !== 1) throw { classify: 'BLOCKED', msg: 'file input not unique: ' + count };
+    let cancelEvt = null, changeEvt = null;
+    await t.page.exposeFunction('__step11evt', (kind, trusted) => {
+      fs.appendFileSync(path.join(out,'dom-events.jsonl'), JSON.stringify({kind,isTrusted:trusted,at:new Date().toISOString()})+'\n');
+      if (kind === 'cancel') cancelEvt = { trusted };
+      if (kind === 'change') changeEvt = { trusted };
+    });
+    await inputLoc.first().evaluate(el => {
+      el.addEventListener('cancel', e => window.__step11evt('cancel', e.isTrusted));
+      el.addEventListener('change', e => window.__step11evt('change', e.isTrusted));
+    });
+
+    // 5) spawn native helper BEFORE clicking; no chooser listener from here on
+    const nativePromise = runNative(browserPid, out);
+
+    // 6) trigger the dialog; native process cancels it independently
+    let clickOk = true;
+    try {
+      await t.page.click('#btn-import', { timeout: 15000 });
+    } catch { clickOk = false; }
+
+    const native = await nativePromise;
+    const nativeRes = fs.existsSync(path.join(out,'native-result.json')) ? JSON.parse(fs.readFileSync(path.join(out,'native-result.json'),'utf8')) : null;
+    fs.writeFileSync(path.join(out, 'native-run.json'),
+      JSON.stringify({ timedOut: native.timedOut, code: native.code, clickOk }));
+
+    if (native.timedOut || native.code !== 0 || !nativeRes || !nativeRes.passed) throw {classify:'BLOCKED',msg:'Native tool/ownership failure: '+JSON.stringify(nativeRes)};
+    await t_sleep(200);
+    // 7) assertions
+    const A = {};
+    A.nativePassed = !!(nativeRes && nativeRes.passed === true && nativeRes.stage === 'done');
+    A.dialogDestroyed = !!(nativeRes && (nativeRes.dialogDestroyed || nativeRes.dialogClosed));
+    A.cancelTrusted = cancelEvt !== null && cancelEvt.trusted === true;
+    A.noChange = changeEvt === null;
+    // No empty-file API was called; DOM events recorded independently.
+    await t.check(oracle);           // unchanged after trusted cancel
+    await t.snap('after-cancel');
+    results.checks.treeAfterCancel = true;
+
+    await t.undo();
+    await t.check(oracle);           // unchanged after undo
+    await t.snap('after-undo');
+    results.checks.treeAfterUndo = true;
+
+    results.checks.assertions = A;
+    results.PASS = A.nativePassed && A.dialogDestroyed && A.cancelTrusted &&
+                   A.noChange && clickOk;
+    results.evidence.screenshots = ['before-cancel', 'after-cancel', 'after-undo'];
+  } catch (e) {
+    const cls = e && e.classify ? e.classify
+      : (e && /native|ownership|pid|dialog/i.test(String(e && e.msg || e)) ? 'BLOCKED' : 'FAIL');
+    results.classification = cls;
+    results.error = String(e && e.msg || e);
+    results.PASS = false;
+  }
+  results.status=results.PASS?'PASS':results.classification==='FAIL'?'FAIL':'UNTESTED';
+  if(!results.PASS && !results.classification) results.classification='BLOCKED_EVENT_EVIDENCE';
+  fs.writeFileSync(path.join(out, 'results.json'), JSON.stringify(results, null, 2));
+  if (!results.PASS) process.exitCode = 1;
+  return results; // stop immediately; browser cleanup belongs to outer runner
+};

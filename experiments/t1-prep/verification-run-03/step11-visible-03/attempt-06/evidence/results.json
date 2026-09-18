@@ -1,0 +1,50 @@
+{
+  "item": 11,
+  "name": "native-visible-dialog-cancel",
+  "PASS": true,
+  "classification": null,
+  "checks": {
+    "oracleLoaded": true,
+    "treeBeforeImport": true,
+    "treeAfterCancel": true,
+    "treeAfterUndo": true,
+    "assertions": {
+      "nativePassed": true,
+      "dialogDestroyed": true,
+      "cancelTrusted": true,
+      "noChange": true
+    }
+  },
+  "evidence": {
+    "oracle": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\step11-visible-03\\attempt-06\\evidence\\downloads\\t1-map.json",
+    "liveIdentity": {
+      "passed": true,
+      "pid": 48240,
+      "exe": "c:\\program files\\google\\chrome\\application\\chrome.exe",
+      "createTime": 1789665203.5345669,
+      "parentPid": 48548,
+      "profile": "d:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\step11-visible-03\\attempt-06\\evidence\\profile",
+      "profileMatch": true,
+      "targetOwnerHwnd": 12125696,
+      "targetTopWindows": [
+        {
+          "hwnd": 12125696,
+          "pid": 48240,
+          "class": "Chrome_WidgetWin_1",
+          "visible": true,
+          "owner": 0,
+          "ownerPid": 0
+        }
+      ],
+      "checkedAtMs": 1789665205740
+    },
+    "cdpPid": 48240,
+    "browserPid": 48240,
+    "screenshots": [
+      "before-cancel",
+      "after-cancel",
+      "after-undo"
+    ]
+  },
+  "status": "PASS"
+}

@@ -1,0 +1,14 @@
+[
+  {
+    "case": "valid-owned",
+    "pass": true
+  },
+  {
+    "case": "identity-reuse",
+    "pass": true
+  },
+  {
+    "case": "wrong-exe-before-cmdline",
+    "pass": true
+  }
+]

@@ -1,0 +1,69 @@
+Return ONLY JSON {"replacements":[{"file":"native_cancel.py","old":"exact string","new":"replacement"}],"rationale":"..."}. Small driver privacy fix. Remove entire observation-only global dialog inventory block and its record_sample() call; do not replace with other enumeration/logging. Acceptance enumeration only class/HWND/PID is required and remains. Tighten dialog_process_ok to verify every traversed descendant executable is chrome.exe BEFORE accepting immediate parent match; browser itself allowed. Preserve exact owner HWND checks and SendInput cancel; no other changes. Existing inventory block:
+    # --- attempt-04: observation-only dialog inventory (acceptance path unchanged) ---
+    inv = {"tool": "native_cancel", "stage": "inventory", "browserPid": pid,
+           "driverPid": launch.get("driverPid"), "samples": []}
+    inv_path = os.path.join(outdir, "dialog-inventory.json")
+    inv_state = []    # last-seen window signature (most recent only)
+    def record_sample():
+        try:
+            s32770, related = [], []
+            fg = user32.GetForegroundWindow()
+            def ocb(h, _):
+                try:
+                    p = win_pid(h)
+                    cls = class_name(h)
+                    if cls == "#32770":
+                        o = user32.GetWindow(h, 4)
+                        s32770.append({"hwnd": h, "pid": p, "exe": proc_name(p),
+                                       "owner": o, "ownerClass": class_name(o) if o else None,
+                                       "ownerPid": win_pid(o) if o else None,
+                                       "visible": bool(user32.IsWindowVisible(h)),
+                                       "enabled": bool(user32.IsWindowEnabled(h)),
+                                       "title": win_text(h), "rect": win_rect(h)})
+                    if p == pid or p == launch.get("driverPid"):
+                        o = user32.GetWindow(h, 4)
+                        related.append({"hwnd": h, "class": cls, "pid": p,
+                                        "visible": bool(user32.IsWindowVisible(h)),
+                                        "title": win_text(h), "owner": o})
+                except Exception:
+                    pass
+                return True
+            user32.EnumWindows(ENUM_PROC(ocb), 0)
+            if s32770:
+                procs_obs = snapshot_procs()
+                for x in s32770:
+                    x["ancestry"] = ancestry_chain(x["pid"], pid, procs_obs)
+            sig = (tuple(sorted(x["hwnd"] for x in s32770)),
+                   tuple(sorted(x["hwnd"] for x in related)))
+            if sig != (inv_state[-1] if inv_state else None):
+                inv_state[:] = [sig]
+                inv["samples"].append({
+                    "t": round(20 - (deadline - time.time()), 2),
+                    "s32770": s32770, "relatedWindows": related,
+                    "foreground": {"hwnd": fg, "pid": win_pid(fg) if fg else None,
+                                   "class": class_name(fg) if fg else None}})
+                with open(inv_path, "w", encoding="utf-8") as f:
+                    json.dump(inv, f)
+                    f.flush(); os.fsync(f.fileno())
+        except Exception:
+            pass  # observation must never fail the acceptance path
+
+Call site:
+    while time.time() < deadline and dialog is None:
+        record_sample()
+        owned = []
+Function:
+def dialog_process_ok(dp, browser_pid, procs, browser_exe_name):
+    # dialog hosted by browser itself, or by a chrome.exe descendant of browser_pid
+    if dp == browser_pid: return True
+    if not browser_exe_name: return False
+    cur = dp
+    seen = 0
+    while cur in procs and seen < 64:
+        ppid, exe = procs[cur]
+        if ppid == browser_pid: return True
+        if (exe or "").lower() != browser_exe_name: return False
+        cur = ppid
+        seen += 1
+    return False
+

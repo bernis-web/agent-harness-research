@@ -1,0 +1,14 @@
+{
+  "status": "STEP11_BLOCKED_NATIVE_OWNERSHIP",
+  "counts": {
+    "PASS": 21,
+    "FAIL": 0,
+    "UNTESTED": 1
+  },
+  "newRunPASS": 0,
+  "prior21Rerun": false,
+  "productFailure": false,
+  "report": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/step11-visible-02/REPORT.md",
+  "cleanupVerified": true,
+  "protectedFiveUnchanged": true
+}

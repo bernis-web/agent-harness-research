@@ -1,0 +1,61 @@
+{
+  "at": "2026-09-18T12:03:42+0800",
+  "method": "Exact recorded PID existence check only; no enumeration, no commandlines, no termination",
+  "records": [
+    {
+      "source": "model-harness",
+      "pid": 34544,
+      "recordedState": "EXITED",
+      "recordedEnd": "2026-09-18T11:29:49+0800",
+      "pidExists": true,
+      "pidReusedAfterRecordedExit": true,
+      "identityNote": "Do not kill: reused PID"
+    },
+    {
+      "source": "model-cases",
+      "pid": 33144,
+      "recordedState": "EXITED",
+      "recordedEnd": "2026-09-18T11:32:08+0800",
+      "pidExists": false
+    },
+    {
+      "source": "model-harness-review",
+      "pid": 33288,
+      "recordedState": "EXITED",
+      "recordedEnd": "2026-09-18T11:34:18+0800",
+      "pidExists": false
+    },
+    {
+      "source": "model-cases-review",
+      "pid": 30996,
+      "recordedState": "EXITED",
+      "recordedEnd": "2026-09-18T11:35:21+0800",
+      "pidExists": false
+    },
+    {
+      "source": "model-audit",
+      "pid": 18692,
+      "recordedState": "TIMEOUT",
+      "recordedEnd": "2026-09-18T11:45:17+0800",
+      "pidExists": false
+    },
+    {
+      "source": "model-audit-small",
+      "pid": 22940,
+      "recordedState": "TIMEOUT",
+      "recordedEnd": "2026-09-18T11:48:11+0800",
+      "pidExists": false
+    },
+    {
+      "source": "browser",
+      "pid": 5184,
+      "pidExists": false
+    },
+    {
+      "source": "driver",
+      "pid": 34024,
+      "pidExists": false
+    }
+  ],
+  "browserDriverAbsent": true
+}

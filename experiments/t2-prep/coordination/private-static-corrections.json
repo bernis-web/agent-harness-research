@@ -1,0 +1,62 @@
+[
+  {
+    "file": "acceptance/hidden-groups.md",
+    "old": "步骤 2 out=`./sub/../exists.json`",
+    "new": "步骤 2 out=`./sub/../good.jsonl`",
+    "reason": "Static witness/data consistency correction; no new requirement"
+  },
+  {
+    "file": "acceptance/hidden-groups.md",
+    "old": "`casefold`（strasse 语义位）",
+    "new": "`strasse`",
+    "reason": "Static witness/data consistency correction; no new requirement"
+  },
+  {
+    "file": "acceptance/mutation-map.md",
+    "old": "未来参考必须先全绿通过 U01–U10",
+    "new": "未来参考必须先通过公开 U01–U10 和隐藏 H01–H04（由隔离评价器执行，隐藏数据不进入参考开发工作区）",
+    "reason": "Static witness/data consistency correction; no new requirement"
+  },
+  {
+    "file": "acceptance/mutation-map.md",
+    "old": "R03（body 字节/码点保真，实际 LF 必须原样保存）",
+    "new": "R03（body 解码后的字符串逐码点保真，LF 不得变为两个字面字符；不锁定序列化字节）",
+    "reason": "Static witness/data consistency correction; no new requirement"
+  },
+  {
+    "file": "acceptance/mutation-map.md",
+    "old": "U01 步骤1/3（list 返回的 t1 body LF 值错；步骤1/3 的 STORE 字节快照同样失败）",
+    "new": "U01 步骤1/3（add 后解析记录或 list 返回的 t1 body LF 值错；成功读取的前后 bytes 仍可能相等，不能把这种快照称为杀伤证据）",
+    "reason": "Static witness/data consistency correction; no new requirement"
+  },
+  {
+    "file": "acceptance/mutation-map.md",
+    "old": "H01（t1 保留实际 LF：list t1 值错 + STORE 快照失败；U05 类 LF 查询不受本组影响，因 H01 不改 U05）",
+    "new": "H01（复用 U01：list 中 t1 的实际 LF 被替换为字面字符；字节不变快照不是本变异的预期失败项）",
+    "reason": "Static witness/data consistency correction; no new requirement"
+  },
+  {
+    "file": "acceptance/mutation-map.md",
+    "old": "U04 步骤3（`ß` 查询漏前三条）、U09 步骤2 同构可辅助",
+    "new": "U04 步骤1/2 漏第一条；步骤3 的 `ß` 查询只命中第一条，漏第二/第三条，可辅助。U09 的 ASCII 查询不区分 lower/casefold，不作为 M02 witness",
+    "reason": "Static witness/data consistency correction; no new requirement"
+  },
+  {
+    "file": "acceptance/mutation-map.md",
+    "old": "`ß` 查询漏前三条",
+    "new": "`ß` 查询只命中第一条、漏第二/第三条",
+    "reason": "Static witness/data consistency correction; no new requirement"
+  },
+  {
+    "file": "acceptance/mutation-map.md",
+    "old": "U09（数组 store 各步骤顺序逆）可辅助",
+    "new": "U09 步骤3/5/6 的有序记录断言可辅助；步骤2只有一个查询命中，不能仅靠它检测顺序反转",
+    "reason": "Static witness/data consistency correction; no new requirement"
+  },
+  {
+    "file": "acceptance/mutation-map.md",
+    "old": "U01 步骤4；U04 步骤3、U09 步骤2 辅助",
+    "new": "U01 步骤4；U04 步骤1–3 辅助",
+    "reason": "Static witness/data consistency correction; no new requirement"
+  }
+]

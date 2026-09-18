@@ -1,0 +1,38 @@
+{
+  "item": 11,
+  "name": "native-visible-dialog-cancel",
+  "PASS": false,
+  "classification": "BLOCKED",
+  "checks": {
+    "oracleLoaded": true,
+    "treeBeforeImport": true
+  },
+  "evidence": {
+    "oracle": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\step11-visible-03\\attempt-05\\evidence\\downloads\\t1-map.json",
+    "liveIdentity": {
+      "passed": true,
+      "pid": 48016,
+      "exe": "c:\\program files\\google\\chrome\\application\\chrome.exe",
+      "createTime": 1789665136.8480055,
+      "parentPid": 47820,
+      "profile": "d:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\step11-visible-03\\attempt-05\\evidence\\profile",
+      "profileMatch": true,
+      "targetOwnerHwnd": 4131920,
+      "targetTopWindows": [
+        {
+          "hwnd": 4131920,
+          "pid": 48016,
+          "class": "Chrome_WidgetWin_1",
+          "visible": true,
+          "owner": 0,
+          "ownerPid": 0
+        }
+      ],
+      "checkedAtMs": 1789665138044
+    },
+    "cdpPid": 48016,
+    "browserPid": 48016
+  },
+  "error": "Native tool/ownership failure: {\"tool\":\"native_cancel\",\"stage\":\"find_dialog\",\"passed\":false,\"failure\":\"DIALOG_NOT_VISIBLE\",\"handles\":{\"dialog\":25494216}}",
+  "status": "UNTESTED"
+}

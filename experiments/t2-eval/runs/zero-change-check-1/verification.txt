@@ -1,0 +1,3 @@
+snapshot: 71 files hashed; t2-prep latest mtime: 09/18/2026 12:53:37 (spec-fabrication-draft-v0.1.md)
+注：t2-prep-tree-sha256.txt 为制作完成时点快照（71 文件）。其后仅 coordination\draft-status.md 按流程追加续四状态记录（coordination/ 非判据，spec §0 所指冻结对象为 spec+acceptance 判据文档）；六个判据文档+已批制作 spec 的独立哈希见 frozen-criteria-sha256.txt。
+2026-09-18 修订：原快照摘要为 16 位十六进制前缀（Codex 复核 MEDIUM 项），已重拍为完整 64 位 SHA-256（本文件覆盖原内容）。相对制作完成时点的唯一差异 = coordination\draft-status.md 的续四/续五状态追加（coordination 非判据）。判据文档哈希仍见 frozen-criteria-sha256.txt。

@@ -1,0 +1,146 @@
+{
+  "started": "2026-09-18T03:35:11.449Z",
+  "ended": "2026-09-18T03:37:56.962Z",
+  "elapsed_seconds": 165.513,
+  "pid": 32552,
+  "requested_model": "glm-5.3-flash",
+  "effort": "low",
+  "args": [
+    "--print",
+    "--safe-mode",
+    "--effort",
+    "low",
+    "--model",
+    "glm-5.3-flash",
+    "--tools",
+    "",
+    "--disable-slash-commands",
+    "--strict-mcp-config",
+    "--mcp-config",
+    "D:\\projects\\agent-harness-research\\experiments\\t2-prep\\coordination\\call-05-public\\empty-mcp.json",
+    "--setting-sources",
+    "user",
+    "--settings",
+    "D:\\projects\\agent-harness-research\\experiments\\t2-prep\\coordination\\call-05-public\\settings.json",
+    "--no-session-persistence",
+    "--system-prompt-snapshot",
+    "off",
+    "--no-chrome",
+    "--output-format",
+    "stream-json",
+    "--verbose",
+    "--include-partial-messages"
+  ],
+  "exit_code": 0,
+  "signal": null,
+  "timedOut": false,
+  "spawnError": null,
+  "result_received": true,
+  "result_is_error": false,
+  "observed_models": [
+    "glm-5.3-flash"
+  ],
+  "events": 6877,
+  "tool_use_count": 0,
+  "init_tools": [],
+  "init_mcp_servers": [],
+  "init_skills": [],
+  "init_plugins": [
+    {
+      "name": "code-review",
+      "path": "C:\\Users\\28417\\.claude\\plugins\\cache\\claude-plugins-official\\code-review\\1aa8f02ec832",
+      "source": "code-review@claude-plugins-official"
+    },
+    {
+      "name": "codex",
+      "path": "C:\\Users\\28417\\.claude\\plugins\\cache\\openai-codex\\codex\\1.0.6",
+      "source": "codex@openai-codex",
+      "version": "1.0.6"
+    },
+    {
+      "name": "commit-commands",
+      "path": "C:\\Users\\28417\\.claude\\plugins\\cache\\claude-plugins-official\\commit-commands\\1aa8f02ec832",
+      "source": "commit-commands@claude-plugins-official"
+    },
+    {
+      "name": "mattpocock-skills",
+      "path": "C:\\Users\\28417\\.claude\\plugins\\cache\\mattpocock\\mattpocock-skills\\1.2.0",
+      "source": "mattpocock-skills@mattpocock",
+      "version": "1.2.0"
+    },
+    {
+      "name": "pr-review-toolkit",
+      "path": "C:\\Users\\28417\\.claude\\plugins\\cache\\claude-plugins-official\\pr-review-toolkit\\1aa8f02ec832",
+      "source": "pr-review-toolkit@claude-plugins-official"
+    },
+    {
+      "name": "pyright-lsp",
+      "path": "C:\\Users\\28417\\.claude\\plugins\\cache\\claude-plugins-official\\pyright-lsp\\1.0.0",
+      "source": "pyright-lsp@claude-plugins-official",
+      "version": "1.0.0"
+    },
+    {
+      "name": "rust-analyzer-lsp",
+      "path": "C:\\Users\\28417\\.claude\\plugins\\cache\\claude-plugins-official\\rust-analyzer-lsp\\1.0.0",
+      "source": "rust-analyzer-lsp@claude-plugins-official",
+      "version": "1.0.0"
+    },
+    {
+      "name": "session-report",
+      "path": "C:\\Users\\28417\\.claude\\plugins\\cache\\claude-plugins-official\\session-report\\1aa8f02ec832",
+      "source": "session-report@claude-plugins-official"
+    },
+    {
+      "name": "skill-creator",
+      "path": "C:\\Users\\28417\\.claude\\plugins\\cache\\claude-plugins-official\\skill-creator\\1aa8f02ec832",
+      "source": "skill-creator@claude-plugins-official"
+    },
+    {
+      "name": "typescript-lsp",
+      "path": "C:\\Users\\28417\\.claude\\plugins\\cache\\claude-plugins-official\\typescript-lsp\\1.0.0",
+      "source": "typescript-lsp@claude-plugins-official",
+      "version": "1.0.0"
+    }
+  ],
+  "usage": {
+    "input_tokens": 5120,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "output_tokens": 6545,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "glm-5.3-flash": {
+      "inputTokens": 5120,
+      "outputTokens": 6545,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.189225,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000,
+      "thinkingTokens": 0,
+      "canonicalModel": "glm-5.3-flash",
+      "provider": "firstParty",
+      "costBasis": "unknown"
+    }
+  },
+  "prompt_sha256": "aefd83b2812dfd5193d9165df14c01000c308550728f6ef7ef0190bc19221a86",
+  "authentication": "Normal inherited authentication; no credential file inspected or copied",
+  "output": "Original stream/result with safety redaction only; no paraphrase",
+  "wrapper": "Node adaptation of reviewed t1-prep verification-run-03 step11-visible-04 model-report/invoke-stream.py; no Python created or executed"
+}

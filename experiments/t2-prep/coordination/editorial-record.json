@@ -1,0 +1,88 @@
+{
+  "flash_spec_patches": [
+    {
+      "file": "spec/T2-SPEC-draft-v0.1.md",
+      "old": "状态：仅准备文档，本批不含任何产品或测试代码，未运行任何验证。",
+      "new": "状态：仅准备文档，本批不含任何产品或测试代码，未运行任何产品或测试验证。"
+    },
+    {
+      "file": "spec/T2-SPEC-draft-v0.1.md",
+      "old": "- 参考、隐藏与协调类文档（含本文件所在协调目录的一切内容）绝不进入未来产品工作区。",
+      "new": "- 参考、隐藏与协调类文档绝不进入未来产品工作区。本规格的最终获批版本存放于 spec/ 目录；coordination 目录内容仅为本稿拟定过程材料，不构成本稿判据的来源或第二有效判据。"
+    },
+    {
+      "file": "spec/T2-SPEC-draft-v0.1.md",
+      "old": "2. 公开用例共 10 个，编号 U01–U10；其具体固定步骤与数据由下一批 public-cases 文档提供，本规格不在此预先锁定其步骤或覆盖点。错误类公开用例每例只含一个错误原因，不涉及多故障叠加。",
+      "new": "2. 公开用例共 10 个，编号 U01–U10；其具体固定步骤与数据为本稿判据的组成部分，固定于 `acceptance/public-cases.md`（本稿配套文档），不以评价器临时构造为准，亦不预设任何审批冻结状态。错误类公开用例每例只含一个错误原因，不涉及多故障叠加。"
+    },
+    {
+      "file": "spec/T2-SPEC-draft-v0.1.md",
+      "old": "- **R10 `--store` 重载（独立公开条款）**：`export` 的输出文件可用 `--store` 指向它执行 `list`/`search`/`add`，语义与原 store 一致（同一记录集合、同样顺序与查询结果）；后续行为按 §4 识别规则与当时会审选定的写入方案执行。",
+      "new": "- **R10 `--store` 重载（独立公开条款）**：`export` 的输出文件可用 `--store` 指向它执行 `list`/`search`/`add`，语义与原 store 一致（同一记录集合、同样顺序与查询结果）；后续行为按 §4 识别规则与本稿唯一拟定基线（基线 A：允许 `add` 到 JSON 数组并保持数组格式）执行。只读重载（重载后拒绝 `add`）仅作为会审可能改版的备选选项 B，不构成本稿的第二有效判据，也不意味着用户冻结。"
+    },
+    {
+      "file": "spec/T2-SPEC-draft-v0.1.md",
+      "old": "- `add` 写入格式（拟定，待会审）：按识别出的格式以同格式写入——JSONL 追加一行；JSON 数组则整体读出、追加元素、整体重写。待会审的另一更简选项：`add` 遇 JSON 数组格式 store 直接拒绝 exit 2；两案取舍待会审，本规格不以任一案为已决。",
+      "new": "- `add` 写入格式（本稿唯一拟定基线，记为基线 A，待会审）：按识别出的格式以同格式写入——JSONL 追加一行；JSON 数组则整体读出、追加元素、整体重写并保持 JSON 数组格式。备选选项（记为 B，仅供会审可能改版讨论）：`add` 遇 JSON 数组格式 store 直接拒绝 exit 2；B 仅是会审可选项，不作为本稿的有效判据，本稿以基线 A 为唯一拟定判据，不代表已获批或用户冻结。"
+    },
+    {
+      "file": "spec/T2-SPEC-draft-v0.1.md",
+      "old": "2. `add` 对 JSON 数组 store 的处理：同格式整体重写 vs 直接拒绝 exit 2，两案并列待会审（后者实现更简）。",
+      "new": "2. `add` 对 JSON 数组 store 的处理：本稿唯一拟定基线 A＝同格式整体重写、保持 JSON 数组格式；直接拒绝 exit 2 仅作为会审可能改版的备选选项 B（实现更简），不作为本稿第二有效判据，亦不代表用户冻结。"
+    },
+    {
+      "file": "spec/T2-SPEC-draft-v0.1.md",
+      "old": "- **R11 路径边界**：`export` 的 `--store` 与 `--out` 规范化（含 `./`、`../`、相对/绝对等价）后指向同一路径→拒绝 exit 2，不打开文件、不触碰任何文件。软链接、硬链接、悬空链接、权限模拟、并发、崩溃等别名场景全部明确不验收，不要求 `samefile`/`realpath` 之外的链接实现，也不据此判定。",
+      "new": "- **R11 路径边界**：`export` 的 `--store` 与 `--out` 规范化（含 `./`、`../`、相对/绝对等价）后指向同一路径→拒绝 exit 2，不打开文件、不触碰任何文件。软链接、硬链接、悬空链接、权限模拟、并发、崩溃等别名场景全部明确不验收；本条对 `samefile`/`realpath` 等具体实现手段不作任何要求，也不据此判定。"
+    },
+    {
+      "file": "spec/T2-SPEC-draft-v0.1.md",
+      "old": "- 其具体固定步骤、输入数据与期望结果由下一批 public-cases 文档提供并冻结；本规格仅约定：每个用例映射到 §6 的 R ID，且不得引入 R01–R12 之外的新行为要求。",
+      "new": "- 其具体固定步骤、输入数据与期望结果为本稿固定数据/步骤，载于 `acceptance/public-cases.md`；该文档不以未来评价器临时构造为准，也不预设已获批冻结状态。本规格仅约定：每个用例映射到 §6 的 R ID，且不得引入 R01–R12 之外的新行为要求。"
+    },
+    {
+      "file": "spec/T2-SPEC-draft-v0.1.md",
+      "old": "本文件为准备文档，未运行任何命令、未生成 `notes.py`/`README.md`/测试、未执行验证；不泄漏任何隐藏信息。所有判据以获批版本为准。",
+      "new": "本文件为准备文档：本轮除撰写与静态审阅本稿外，未运行任何产品代码或测试、未生成任何产品交付物（`notes.py`/产品 `README.md`/测试代码）、未执行产品验证；文档静态审阅不构成产品验证。不泄漏任何隐藏信息。所有判据以获批版本为准。"
+    }
+  ],
+  "coordinator_factual_corrections": [
+    {
+      "file": "README.md",
+      "old": "不安装依赖、不联网、不提交 git。",
+      "new": "不安装依赖、不浏览互联网、不提交 git；已授权的真实 CLI 模型调用会使用网络。",
+      "reason": "Coordinator factual/identifier correction; no product requirement added"
+    },
+    {
+      "file": "README.md",
+      "old": "规格草案，所有设计选项以并列待判项索引，不复制未定细节。",
+      "new": "完整规格草案；本稿采用唯一拟定基线，其他选项仅供会审改版讨论，不是并列有效判据。",
+      "reason": "Coordinator factual/identifier correction; no product requirement added"
+    },
+    {
+      "file": "README.md",
+      "old": "## 隔离环境事实（拟定基线，待复核）",
+      "new": "## 本轮调用隔离记录",
+      "reason": "Coordinator factual/identifier correction; no product requirement added"
+    },
+    {
+      "file": "README.md",
+      "old": "- 计划采用：",
+      "new": "- 本轮调用采用：",
+      "reason": "Coordinator factual/identifier correction; no product requirement added"
+    },
+    {
+      "file": "README.md",
+      "old": "- 未来 init 中插件注册清单非空",
+      "new": "- 本轮已返回调用的 init 中插件注册清单非空",
+      "reason": "Coordinator factual/identifier correction; no product requirement added"
+    },
+    {
+      "file": "acceptance/README.md",
+      "old": "TC-01 至 TC-10",
+      "new": "U01 至 U10",
+      "reason": "Coordinator factual/identifier correction; no product requirement added"
+    }
+  ],
+  "spec_error_case_clarification": "A scenario may contain multiple independent rejected commands; each command has only one error reason."
+}

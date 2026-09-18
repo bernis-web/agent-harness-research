@@ -5,3 +5,20 @@ workspace/
 # 系统杂物
 scripts/__pycache__/
 *.pyc
+# 评价侧秘密（D4 实验答案，公开=污染实验；本地保留，哈希入 evidence-index）
+experiments/t2-prep/coordination/preflight.json
+experiments/t1-prep/verification-run-03/preflight.json
+experiments/t2-eval/isolation/secrets_corpus.json
+experiments/t2-prep/acceptance/hidden-groups.md
+experiments/t2-prep/acceptance/mutation-map.md
+experiments/t1-prep/acceptance/hidden-cases.md
+experiments/t2-eval/FABRICATION-LOG.md
+experiments/t2-prep/fabrication/
+# 浏览器档案原件（体积巨大且含浏览器本地数据；evidence-index 已存哈希）
+**/browser-setup/
+**/evidence/profile/
+**/component_crx_cache/
+**/profile/
+**/browser-profile/
+**/browser-home/
+**/home/AppData/

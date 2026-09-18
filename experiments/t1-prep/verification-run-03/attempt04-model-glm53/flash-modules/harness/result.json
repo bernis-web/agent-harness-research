@@ -1,0 +1,85 @@
+{
+  "duration_api_ms": 54936,
+  "stop_reason": "end_turn",
+  "session_id": "422c9f4a-c5f9-4533-a036-90507bf2b4f5",
+  "total_cost_usd": 0.09668500000000001,
+  "usage": {
+    "input_tokens": 3667,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "output_tokens": 3134,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "glm-5.3-flash": {
+      "inputTokens": 3667,
+      "outputTokens": 3134,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.09668500000000001,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000,
+      "thinkingTokens": 0,
+      "canonicalModel": "glm-5.3-flash",
+      "provider": "firstParty",
+      "costBasis": "unknown"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "is_error": false,
+  "num_turns": 1,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "```js\n// harness.cjs — CommonJS，保存为 harness.cjs\nconst { chromium } = require(process.env.T1_PLAYWRIGHT);\nconst fs = require('fs'), path = require('path'), crypto = require('crypto');\nconst { pathToFileURL } = require('url');\n\nconst OUT = process.env.T1_OUT;\nconst FILE_URL = pathToFileURL(process.env.T1_REFERENCE).href;\nconst LAUNCH = {\n  executablePath: 'C:/Program Files/Google/Chrome/Application/chrome.exe',\n  headless: true, chromiumSandbox: true, ignoreDefaultArgs: true,\n  args: ['--headless=new','--remote-debugging-pipe','--user-data-dir='+OUT+'/profile','--no-first-run','--no-default-browser-check','--disable-background-networking','--disable-component-update','--disable-sync','--disable-extensions','--enable-automation','--window-size=1280,800'],\n  downloadsPath: OUT + '/downloads', acceptDownloads: true, offline: true,\n  serviceWorkers: 'block', viewport: {width:1280,height:800}, timeout: 30000,\n  env: {...process.env, TEMP:OUT+'/temp', TMP:OUT+'/temp', HOME:OUT+'/home', USERPROFILE:OUT+'/home', APPDATA:OUT+'/home/AppData/Roaming', LOCALAPPDATA:OUT+'/home/AppData/Local'}\n};\nconst S0 = '中心主题\\n  分支一\\n  分支二\\n    细节甲\\n    细节乙\\n  分支三';\nconst TREE = (() => { const r={title:'中心主题',children:[]}; const b1={title:'分支一',children:[]}, b2={title:'分支二',children:[{title:'细节甲',children:[]},{title:'细节乙',children:[]}]}, b3={title:'分支三',children:[]}; r.children.push(b1,b2,b3); return r; })();\nconst clone = (x) => JSON.parse(JSON.stringify(x));\nconst ap = (p) => fs.promises.mkdir(p, {recursive:true});\n\nasync function createHarness() {\n  for (const d of ['/profile','/downloads','/temp','/home','/home/AppData/Roaming','/home/AppData/Local']) await ap(OUT + d);\n  const errors = [];\n  const actions = [];\n  const items = Array.from({length:22}, (_,i) => ({id:'t'+String(i+1).padStart(2,'0'), status:'UNTESTED', evidence:null, reason:null}));\n  const notes = {};\n  let ctx, page, cdp;\n\n  const logAction = (a) => { actions.push({...a, ts: Date.now()}); fs.appendFileSync(path.join(OUT,'actions.jsonl'), JSON.stringify(actions[actions.length-1])+'\\n'); };\n  const writeResults = () => fs.writeFileSync(path.join(OUT,'results.json'), JSON.stringify({items, summary:{PASS:items.filter(i=>i.status==='PASS').length, FAIL:items.filter(i=>i.status==='FAIL').length, UNTESTED:items.filter(i=>i.status==='UNTESTED').length}}, null, 2));\n\n  async function newPage(url) {\n    const p = await ctx.newPage();\n    p.setDefaultTimeout(10000);\n    p.on('pageerror', e => errors.push('pageerror: ' + e.message));\n    p.on('console', m => { if (m.type() === 'error') errors.push('console.error: ' + m.text()); });\n    await p.goto(url, {waitUntil:'load'});\n    return p;\n  }\n\n  ctx = await chromium.launchPersistentContext(OUT + '/profile', LAUNCH);\n  await ctx.route(/^https?:\\/\\//, r => r.abort());\n  try { await ctx.setOffline(true); } catch (e) {}\n  cdp = await ctx.newCDPSession(await ctx.pages()[0] || await ctx.newPage());\n  await cdp.send('Browser.setDownloadBehavior', {behavior:'allowAndName', downloadPath: OUT + '/downloads', eventsEnabled:true});\n  page = ctx.pages()[0] || await ctx.newPage();\n  page.setDefaultTimeout(10000);\n  page.on('pageerror', e => errors.push('pageerror: ' + e.message));\n  page.on('console', m => { if (m.type() === 'error') errors.push('console.error: ' + m.text()); });\n  await page.goto('about:blank');\n  await page.screenshot({path: path.join(OUT,'snap-about-blank.png'), fullPage:true});\n  await page.goto(FILE_URL, {waitUntil:'load'});\n  logAction({action:'open', url:FILE_URL});\n\n  const t = {};\n  t.page = page; t.S0 = S0; t.TREE = clone(TREE); t.clone = clone; t.note = (k,v) => { notes[k]=v; writeResults(); };\n\n  t.tree = async () => {\n    const rootUl = page.locator('#map > ul > li').first();\n    if (!(await page.locator('#map .empty').count()) && !(await rootUl.count())) return null;\n    if (!(await rootUl.count())) return null;\n    return rootUl.evaluate((li) => {\n      function build(n) {\n        const row = n.querySelector(':scope > .node-row > .title');\n        const kids = [];\n        const ul = n.querySelector(':scope > ul');\n        if (ul) for (const c of ul.children) if (c.tagName === 'LI') kids.push(build(c));\n        return {title: row ? row.textContent : null, children: kids};\n      }\n      return build(li);\n    });\n  };\n\n  t.check = async (expected) => {\n    const got = await t.tree();\n    const treeOk = JSON.stringify(got) === JSON.stringify(expected);\n    const emptyVisible = got === null ? await page.locator('#map .empty').isVisible() : false;\n    if (!treeOk || errors.length || (got === null && !emptyVisible)) throw new Error('check失败: tree=' + JSON.stringify(got) + ' errors=' + JSON.stringify(errors));\n    return true;\n  };\n\n  const promptDialog = (pageRef, value) => new Promise(res => pageRef.once('dialog', d => d.accept(value).then(()=>res(),()=>res())));\n\n  t.gen = async (text) => { await page.fill('#src', text); logAction({action:'gen'}); await page.click('#btn-gen'); await page.waitForTimeout(100); };\n  t.rename = async (indexPath, title) => { const li = liAt(indexPath); const p = promptDialog(page, title); await li.locator('.node-row button', {hasText:'重命名'}).first().click(); await p; await page.waitForTimeout(100); logAction({action:'rename', indexPath, title}); };\n  t.add = async (indexPath, title) => { const li = liAt(indexPath); const p = promptDialog(page, title); await li.locator('.node-row button', {hasText:'+子节点'}).first().click(); await p; await page.waitForTimeout(100); logAction({action:'add', indexPath, title}); };\n  t.del = async (indexPath) => { const li = liAt(indexPath); await li.locator('.node-row button', {hasText:'删除'}).first().click(); await page.waitForTimeout(100); logAction({action:'del', indexPath}); };\n  t.undo = async () => { await page.click('#btn-undo'); await page.waitForTimeout(100); logAction({action:'undo'}); };\n\n  function liAt(indexPath) {\n    let sel = '#map > ul > li';\n    for (const i of indexPath) sel += `:nth-child(${i+1}) > ul > li`;\n    if (indexPath.length) sel = sel.replace('#map > ul > li', '#map > ul > li');\n    let loc = page.locator('#map > ul > li');\n    for (const i of indexPath) loc = loc.nth(i).locator(':scope > ul > li');\n    return loc;\n  }\n\n  t.reopen = async () => { await page.close(); page = await newPage(FILE_URL); t.page = page; logAction({action:'reopen'}); };\n\n  t.exportMap = async () => {\n    const evProm = new Promise(res => cdp.on('Browser.downloadWillBegin', e => res(e)));\n    const doneProm = new Promise(res => cdp.on('Browser.downloadProgress', e => { if (e.state === 'completed') res(e); }));\n    await page.click('#btn-export');\n    const begin = await evProm, done = await doneProm;\n    const orig = done.filePath || path.join(OUT,'downloads', begin.suggestedFilename);\n    const saved = path.join(OUT,'downloads','t1-map.json');\n    await page.waitForTimeout(300);\n    const dl = page.waitForEvent('download', {timeout:10000});\n    const savedPath = path.join(OUT,'downloads','t1-map.json');\n    // 保留原件 + saveAs 到 t1-map.json\n    const download = await dl;\n    await download.saveAs(savedPath);\n    const origExists = fs.existsSync(orig) || fs.existsSync(download.path ? await download.path() : '');\n    const origPath = fs.existsSync(orig) ? orig : await download.path();\n    const inScope = path.resolve(origPath).startsWith(path.resolve(OUT));\n    if (!fs.existsSync(origPath) || !inScope) throw new Error('导出原件缺失或越界: ' + origPath);\n    const buf = fs.readFileSync(origPath);\n    const json = JSON.parse(fs.readFileSync(savedPath,'utf-8'));\n    logAction({action:'export', orig:origPath, saved:savedPath, hash:crypto.createHash('sha256').update(buf).digest('hex')});\n    return json;\n  };\n\n  t.importSaved = async () => {\n    const msgBefore = await page.locator('#msg').textContent();\n    const [fc] = await Promise.all([ page.waitForEvent('filechooser'), page.click('#btn-import') ]);\n    await fc.setFiles(path.join(OUT,'downloads','t1-map.json'));\n    await page.waitForFunction(([prev]) => {\n      const m = document.querySelector('#msg');\n      return m && m.textContent !== prev && m.textContent.indexOf('导入成功') !== -1;\n    }, [msgBefore], {timeout:10000});\n    logAction({action:'importSaved'});\n  };\n\n  t.snap = async (label) => {\n    const safe = String(label).replace(/[^\\w-]/g,'_');\n    await page.screenshot({path: path.join(OUT, `snap-${safe}.png`), fullPage:true});\n    const tree = await t.tree().catch(() => null);\n    fs.writeFileSync(path.join(OUT, `snap-${safe}.json`), JSON.stringify({tree, errors}, null, 2));\n    logAction({action:'snap', label});\n  };\n\n  t.step = async (id, fn) => {\n    try { await fn(t); await t.snap(id);\n      const it = items.find(i => i.id === id); if (it) { it.status='PASS'; it.evidence=`snap-${id}.png`; }\n      writeResults(); logAction({action:'step', id, status:'PASS'});\n    } catch (e) {\n      await t.snap(id + '-fail').catch(()=>{});\n      const it = items.find(i => i.id === id); if (it) { it.status='FAIL'; it.evidence=`snap-${id}-fail.png`; it.reason=String(e.message||e); }\n      writeResults();\n      fs.writeFileSync(path.join(OUT, `error-${id}.json`), JSON.stringify({id, error:String(e.message||e), errors}, null, 2));\n      logAction({action:'step', id, status:'FAIL', error:String(e.message||e)});\n      throw e;\n    }\n  };\n\n  t.unverified = async (id, reason, fn) => {\n    try { await fn(t); await t.snap(id + '-unverified'); }\n    catch (e) {\n      await t.snap(id + '-fail').catch(()=>{});\n      writeResults();\n      fs.writeFileSync(path.join(OUT, `error-${id}.json`), JSON.stringify({id, error:String(e.message||e), errors}, null, 2));\n      throw e;\n    }\n    const it = items.find(i => i.id === id); if (it) { it.status='UNTESTED'; it.reason=reason; it.evidence=`snap-${id}-unverified.png`; }\n    writeResults(); logAction({action:'unverified', id, reason});\n  };\n\n  t.close = async () => {\n    writeResults();\n    try { await ctx.close(); } catch (e) {}\n  };\n\n  writeResults();\n  return t;\n}\nmodule.exports = { createHarness };\n```\n\n说明（简短）：\n\n- `liAt` 用 `nth(i)` + `:scope > ul > li` 逐层定位，仅靠 DOM 子序号，不访问内部函数/undoStack。\n- `rename`/`add` 先注册 dialog listener 再 click（`promptDialog` 返回 Promise 后才触发点击）。\n- `importSaved` 先读 `#msg` 当前文字再等待其变为含“导入成功”，避免 race；`exportMap` 通过 CDP `Browser.setDownloadBehavior` 事件拿到原件路径、saveAs 副本并校验在 out 范围内。\n- 22 个预置项 id 为 `t01`–`t22`，初始 UNTESTED；`results.json`/`actions.jsonl`/`snap-*` 全部落在 `T1_OUT`。\n- 一个已知简化：`exportMap` 中 `Browser.downloadProgress` 若错过 completed 事件会等待，但 download 已由 `waitForEvent('download')` 兜底，saveAs 始终执行。",
+  "ttft_ms": 6686,
+  "type": "result",
+  "duration_ms": 55163,
+  "uuid": "0ec87042-2de0-469b-a27d-ac6ff05f610f",
+  "ttft_stream_ms": 2516,
+  "time_to_request_ms": 235,
+  "first_content_frame_ms": 2516,
+  "queued_turn_count": 0,
+  "result_index": 0
+}

@@ -1,0 +1,22 @@
+[
+  {
+    "file": "D:/projects/npm-cache/_npx/cbf1b8a072280925/node_modules/playwright-core/lib/coreBundle.js",
+    "lines": "37248-37260",
+    "text": "37248:         this._page = new Page(this, browserContext);\n37249:         this.utilityWorldName = `__playwright_utility_world_${this._page.guid}`;\n37250:         this._networkManager = new CRNetworkManager(this._page, null);\n37251:         this.updateOffline();\n37252:         this.updateExtraHTTPHeaders();\n37253:         this.updateHttpCredentials();\n37254:         this.updateRequestInterception();\n37255:         this._mainFrameSession = new FrameSession(this, client, targetId, null);\n37256:         this._sessions.set(targetId, this._mainFrameSession);\n37257:         if (opener && !browserContext._options.noDefaultViewport) {\n37258:           const features = opener._nextWindowOpenPopupFeatures.shift() || [];\n37259:           const viewportSize = helper.getViewportSizeFromWindowFeatures(features);\n37260:           if (viewportSize)"
+  },
+  {
+    "file": "D:/projects/npm-cache/_npx/cbf1b8a072280925/node_modules/playwright-core/lib/coreBundle.js",
+    "lines": "37342-37351",
+    "text": "37342:         await this._forAllFrameSessions((frame) => frame._updateUserAgent());\n37343:       }\n37344:       async updateRequestInterception() {\n37345:         await this._networkManager.setRequestInterception(this._page.needsRequestInterception());\n37346:       }\n37347:       async updateFileChooserInterception() {\n37348:         await this._forAllFrameSessions((frame) => frame._updateFileChooserInterception(false));\n37349:       }\n37350:       async reload() {\n37351:         await this._mainFrameSession._client.send(\"Page.reload\");"
+  },
+  {
+    "file": "D:/projects/npm-cache/_npx/cbf1b8a072280925/node_modules/playwright-core/lib/coreBundle.js",
+    "lines": "63977-63985",
+    "text": "63977:   dispatcherConnection.onmessage = (message) => setImmediate(() => clientConnection.dispatch(message));\n63978:   clientConnection.onmessage = (message) => setImmediate(() => dispatcherConnection.dispatch(message));\n63979:   clientConnection.toImpl = (x) => {\n63980:     if (x instanceof Connection)\n63981:       return x === clientConnection ? dispatcherConnection : void 0;\n63982:     if (!x)\n63983:       return dispatcherConnection._dispatcherByGuid.get(\"\");\n63984:     return dispatcherConnection._dispatcherByGuid.get(x._guid)._object;\n63985:   };"
+  },
+  {
+    "file": "D:/projects/npm-cache/_npx/cbf1b8a072280925/node_modules/playwright-core/lib/coreBundle.js",
+    "lines": "38026-38031",
+    "text": "38026:       async _updateFileChooserInterception(initial) {\n38027:         const enabled = this._page.fileChooserIntercepted();\n38028:         if (initial && !enabled)\n38029:           return;\n38030:         await this._client.send(\"Page.setInterceptFileChooserDialog\", { enabled }).catch(() => {\n38031:         });"
+  }
+]

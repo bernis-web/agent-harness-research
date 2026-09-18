@@ -1,0 +1,122 @@
+{
+ "demo_runs": [
+  {
+   "run_id": "final_PA_C00",
+   "suite_before_first_action": true,
+   "restart_sequence": "S1,S2,R,S3,S4,R,S5,S6",
+   "feedback_denials": 2,
+   "state_writes_ok": 0,
+   "final_repair_status": "s4_repaired",
+   "final_critical_pass": true,
+   "final_active": "12/12"
+  },
+  {
+   "run_id": "final_PA_C10",
+   "suite_before_first_action": true,
+   "restart_sequence": "S1,S2,R,S3,S4,R,S5,S6",
+   "feedback_denials": 2,
+   "state_writes_ok": 2,
+   "final_repair_status": "s4_repaired",
+   "final_critical_pass": true,
+   "final_active": "12/12"
+  },
+  {
+   "run_id": "final_PA_C01",
+   "suite_before_first_action": true,
+   "restart_sequence": "S1,S2,R,S3,S4,R,S5,S6",
+   "feedback_denials": 0,
+   "state_writes_ok": 0,
+   "final_repair_status": "s4_repaired",
+   "final_critical_pass": true,
+   "final_active": "12/12"
+  },
+  {
+   "run_id": "final_PA_C11",
+   "suite_before_first_action": true,
+   "restart_sequence": "S1,S2,R,S3,S4,R,S5,S6",
+   "feedback_denials": 0,
+   "state_writes_ok": 2,
+   "final_repair_status": "s4_repaired",
+   "final_critical_pass": true,
+   "final_active": "12/12"
+  },
+  {
+   "run_id": "final_PB_C00",
+   "suite_before_first_action": true,
+   "restart_sequence": "S1,S2,R,S3,S4,R,S5,S6",
+   "feedback_denials": 2,
+   "state_writes_ok": 0,
+   "final_repair_status": "s4_repaired",
+   "final_critical_pass": true,
+   "final_active": "9/9"
+  },
+  {
+   "run_id": "final_PB_C10",
+   "suite_before_first_action": true,
+   "restart_sequence": "S1,S2,R,S3,S4,R,S5,S6",
+   "feedback_denials": 2,
+   "state_writes_ok": 0,
+   "final_repair_status": "s4_repaired",
+   "final_critical_pass": true,
+   "final_active": "9/9"
+  },
+  {
+   "run_id": "final_PB_C01",
+   "suite_before_first_action": true,
+   "restart_sequence": "S1,S2,R,S3,S4,R,S5,S6",
+   "feedback_denials": 0,
+   "state_writes_ok": 0,
+   "final_repair_status": "s4_repaired",
+   "final_critical_pass": true,
+   "final_active": "9/9"
+  },
+  {
+   "run_id": "final_PB_C11",
+   "suite_before_first_action": true,
+   "restart_sequence": "S1,S2,R,S3,S4,R,S5,S6",
+   "feedback_denials": 0,
+   "state_writes_ok": 0,
+   "final_repair_status": "s4_repaired",
+   "final_critical_pass": true,
+   "final_active": "9/9"
+  }
+ ],
+ "crash_windows": [
+  {
+   "fault": "before_effect:stage_score:3",
+   "crash_exit_70": true,
+   "resume_ok": true,
+   "sequence_ok": true,
+   "s3_score_unique": true,
+   "s3_recorded_unique": true,
+   "run_end_unique": true
+  },
+  {
+   "fault": "after_effect_before_applied:suite_publish:3",
+   "crash_exit_70": true,
+   "resume_ok": true,
+   "sequence_ok": true,
+   "s3_score_unique": true,
+   "s3_recorded_unique": true,
+   "run_end_unique": true
+  },
+  {
+   "fault": "after_applied_before_checkpoint:suite_publish:3",
+   "crash_exit_70": true,
+   "resume_ok": true,
+   "sequence_ok": true,
+   "s3_score_unique": true,
+   "s3_recorded_unique": true,
+   "run_end_unique": true
+  },
+  {
+   "fault": "score_persisted_before_log:stage_score:3",
+   "crash_exit_70": true,
+   "resume_ok": true,
+   "sequence_ok": true,
+   "s3_score_unique": true,
+   "s3_recorded_unique": true,
+   "run_end_unique": true
+  }
+ ]
+}

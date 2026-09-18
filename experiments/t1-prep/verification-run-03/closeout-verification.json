@@ -1,0 +1,21 @@
+{
+  "checkedAt": "2026-09-17T11:57:59.683Z",
+  "ordinaryAttemptStatus": "bounded task timeout",
+  "elapsedSeconds": 840.03,
+  "overall": "BLOCKED_EXTERNAL_PREPARATION_TIMEOUT",
+  "counts": {
+    "passed": 0,
+    "failed": 0,
+    "untested": 22
+  },
+  "allItemsUntested": true,
+  "zcodeReadyRequestSent": false,
+  "zcodeDecision": "NOT_RUN_CONSTRAINTS_UNVERIFIED",
+  "reportMentionsTimeout": true,
+  "reportDistinguishesUnknownRootCause": true,
+  "scriptAttribution": {
+    "environmentPreflight": "Codex coordinator, environment-only",
+    "acceptanceDriver": "None received from Claude or ZCode; none executed"
+  },
+  "protectedFilesUnchanged": true
+}

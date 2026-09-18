@@ -1,0 +1,80 @@
+{
+  "replacements": [
+    {
+      "file": "fixtures.json",
+      "old": "{\"name\":\"H3-3.txt\",\"content\":\"A\\tB\"}",
+      "new": "{\"name\":\"H3-3.txt\",\"content\":\"A\\nA\\tB\"}"
+    },
+    {
+      "file": "fixtures.json",
+      "old": "{\"name\":\"H1-blank3.txt\"",
+      "new": "{\"name\":\"H1-empty.txt\",\"content\":\"\"},{\"name\":\"H1-blank3.txt\""
+    },
+    {
+      "file": "cases.cjs",
+      "old": " * Node paths are zero-based child-index arrays, e.g. [0,1,0] = root.children[1].children[0].",
+      "new": " * Node paths are zero-based child-index arrays: [] = root, [1] = root's second child, [1,0] = that child's first child."
+    },
+    {
+      "file": "cases.cjs",
+      "old": "  await h1('H1-empty-textbox', '');",
+      "new": "  await h1('H1-empty-textbox', fx('H1-empty.txt'));"
+    },
+    {
+      "file": "cases.cjs",
+      "old": "    await t.step(id + '-rename-root', S0R(), async () => { await t.rename([0], '临时根'); });\n    await t.step(id + '-reject', S0R(), async () => { await t.gen(data); });",
+      "new": "    await t.step(id + '-rename-root', S0R(), async () => { await t.rename([], '临时根'); });\n    await t.step(id + '-reject', S0R(), async () => { await t.gen(data); }, { messageError: true });"
+    },
+    {
+      "file": "cases.cjs",
+      "old": "    await t.step(id + '-rename-root', S0R(), async () => { await t.rename([0], '临时根'); });\n  };",
+      "new": "    await t.step(id + '-rename-root', S0R(), async () => { await t.rename([], '临时根'); });\n  };"
+    },
+    {
+      "file": "cases.cjs",
+      "old": "    await t.step(id + '-reject', S0(), async () => { await t.gen(fx(fn)); });",
+      "new": "    await t.step(id + '-reject', S0(), async () => { await t.gen(fx(fn)); }, { messageError: true });"
+    },
+    {
+      "file": "cases.cjs",
+      "old": "  await t.step('H4-rename-first-dup', h4b(), async () => { await t.rename([0, 0], '待办改'); });",
+      "new": "  await t.step('H4-rename-first-dup', h4b(), async () => { await t.rename([0], '待办改'); });"
+    },
+    {
+      "file": "cases.cjs",
+      "old": "    await t.step(id + '-import-reject', S0R(), async () => { await t.importFile(fp('H5-f' + i + '.json')); });",
+      "new": "    await t.step(id + '-import-reject', S0R(), async () => { await t.importFile(fp('H5-f' + i + '.json')); }, { messageError: true });"
+    },
+    {
+      "file": "cases.cjs",
+      "old": "    await t.step('H5-f' + i + '-import-reject', S0R(), async () => { await t.importFile(fp('H5-f' + i + '.json')); });",
+      "new": "    await t.step('H5-f' + i + '-import-reject', S0R(), async () => { await t.importFile(fp('H5-f' + i + '.json')); }, { messageError: true });"
+    },
+    {
+      "file": "cases.cjs",
+      "old": "  await t.step('H6-rename-root', N('改根', [N('分支一'), N('分支二', [N('细节甲'), N('细节乙')]), N('分支三')]), async () => { await t.rename([0], '改根'); });",
+      "new": "  await t.step('H6-rename-root', N('改根', [N('分支一'), N('分支二', [N('细节甲'), N('细节乙')]), N('分支三')]), async () => { await t.rename([], '改根'); });"
+    },
+    {
+      "file": "cases.cjs",
+      "old": "  let cur = S0();\n  const snaps = [t.clone(cur)]; // snaps[k] = full expected tree before edit k+1",
+      "new": "  await t.step('H8-reset', null, async () => { await t.reset(); });\n  await t.step('H8-gen-S0', S0(), async () => { await t.gen(fx('S0.txt')); });\n  let cur = S0();\n  const snaps = [t.clone(cur)]; // snaps[k] = full expected tree before edit k+1"
+    },
+    {
+      "file": "cases.cjs",
+      "old": "  const edits = [\n    ['add', [0], '附4'],\n    ['rename', [0, 3], '附肆'],\n    ['add', [0, 0], '附1'],\n    ['rename', [0, 1, 0], '改甲'],\n    ['add', [0, 1, 1], '附2'],\n    ['add', [0, 1], '附3'],\n    ['rename', [0, 2], '改三'],\n    ['add', [0, 2], '附5'],\n    ['rename', [0], '改根'],\n    ['add', [0, 0], '附6']\n  ];",
+      "new": "  const edits = [\n    ['add', [], '附4'],\n    ['rename', [3], '附肆'],\n    ['add', [0], '附1'],\n    ['rename', [1, 0], '改甲'],\n    ['add', [1, 1], '附2'],\n    ['add', [1], '附3'],\n    ['rename', [2], '改三'],\n    ['add', [2], '附5'],\n    ['rename', [], '改根'],\n    ['add', [0], '附6']\n  ];"
+    },
+    {
+      "file": "cases.cjs",
+      "old": "  await t.step('H9-rename-valid', H9a(), async () => { await t.rename([0, 0], '合法1'); });",
+      "new": "  await t.step('H9-rename-valid', H9a(), async () => { await t.rename([0], '合法1'); });"
+    },
+    {
+      "file": "cases.cjs",
+      "old": "    await t.step(id + '-reject', H9a(), async () => { await t.rename([0, 1], fx(fn)); });",
+      "new": "    await t.step(id + '-reject', H9a(), async () => { await t.rename([1], fx(fn)); });"
+    }
+  ],
+  "notes": []
+}

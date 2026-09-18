@@ -1,0 +1,423 @@
+{
+  "at": "2026-09-18T03:46:13.117Z",
+  "totalGroups": 101,
+  "allActionsMatchEnumeratedFixedSequence": true,
+  "checks": [
+    {
+      "id": "H1-empty-textbox-reset",
+      "matches": true
+    },
+    {
+      "id": "H1-empty-textbox-gen-S0",
+      "matches": true
+    },
+    {
+      "id": "H1-empty-textbox-rename-root",
+      "matches": true
+    },
+    {
+      "id": "H1-empty-textbox-reject",
+      "matches": true
+    },
+    {
+      "id": "H1-empty-textbox-undo",
+      "matches": true
+    },
+    {
+      "id": "H1-three-blank-lines-reset",
+      "matches": true
+    },
+    {
+      "id": "H1-three-blank-lines-gen-S0",
+      "matches": true
+    },
+    {
+      "id": "H1-three-blank-lines-rename-root",
+      "matches": true
+    },
+    {
+      "id": "H1-three-blank-lines-reject",
+      "matches": true
+    },
+    {
+      "id": "H1-three-blank-lines-undo",
+      "matches": true
+    },
+    {
+      "id": "H2-reset",
+      "matches": true
+    },
+    {
+      "id": "H2-gen-single-root",
+      "matches": true
+    },
+    {
+      "id": "H2-undo-noop",
+      "matches": true
+    },
+    {
+      "id": "H3-indent-first-line-reset",
+      "matches": true
+    },
+    {
+      "id": "H3-indent-first-line-gen-S0",
+      "matches": true
+    },
+    {
+      "id": "H3-indent-first-line-reject",
+      "matches": true
+    },
+    {
+      "id": "H3-indent-first-line-undo-noop",
+      "matches": true
+    },
+    {
+      "id": "H3-jump-level-reset",
+      "matches": true
+    },
+    {
+      "id": "H3-jump-level-gen-S0",
+      "matches": true
+    },
+    {
+      "id": "H3-jump-level-reject",
+      "matches": true
+    },
+    {
+      "id": "H3-jump-level-undo-noop",
+      "matches": true
+    },
+    {
+      "id": "H3-tab-middle-reset",
+      "matches": true
+    },
+    {
+      "id": "H3-tab-middle-gen-S0",
+      "matches": true
+    },
+    {
+      "id": "H3-tab-middle-reject",
+      "matches": true
+    },
+    {
+      "id": "H3-tab-middle-undo-noop",
+      "matches": true
+    },
+    {
+      "id": "H3-tab-leading-reset",
+      "matches": true
+    },
+    {
+      "id": "H3-tab-leading-gen-S0",
+      "matches": true
+    },
+    {
+      "id": "H3-tab-leading-reject",
+      "matches": true
+    },
+    {
+      "id": "H3-tab-leading-undo-noop",
+      "matches": true
+    },
+    {
+      "id": "H3-tab-trailing-reset",
+      "matches": true
+    },
+    {
+      "id": "H3-tab-trailing-gen-S0",
+      "matches": true
+    },
+    {
+      "id": "H3-tab-trailing-reject",
+      "matches": true
+    },
+    {
+      "id": "H3-tab-trailing-undo-noop",
+      "matches": true
+    },
+    {
+      "id": "H4-reset",
+      "matches": true
+    },
+    {
+      "id": "H4-gen-dup",
+      "matches": true
+    },
+    {
+      "id": "H4-rename-first-dup",
+      "matches": true
+    },
+    {
+      "id": "H5-f1-reset",
+      "matches": true
+    },
+    {
+      "id": "H5-f1-gen-S0",
+      "matches": true
+    },
+    {
+      "id": "H5-f1-rename-root",
+      "matches": true
+    },
+    {
+      "id": "H5-f1-import-reject",
+      "matches": true
+    },
+    {
+      "id": "H5-f1-undo",
+      "matches": true
+    },
+    {
+      "id": "H5-f2-reset",
+      "matches": true
+    },
+    {
+      "id": "H5-f2-gen-S0",
+      "matches": true
+    },
+    {
+      "id": "H5-f2-rename-root",
+      "matches": true
+    },
+    {
+      "id": "H5-f2-import-reject",
+      "matches": true
+    },
+    {
+      "id": "H5-f2-undo",
+      "matches": true
+    },
+    {
+      "id": "H5-f3-reset",
+      "matches": true
+    },
+    {
+      "id": "H5-f3-gen-S0",
+      "matches": true
+    },
+    {
+      "id": "H5-f3-rename-root",
+      "matches": true
+    },
+    {
+      "id": "H5-f3-import-reject",
+      "matches": true
+    },
+    {
+      "id": "H5-f3-undo",
+      "matches": true
+    },
+    {
+      "id": "H5-f4-6-reset",
+      "matches": true
+    },
+    {
+      "id": "H5-f4-6-gen-S0",
+      "matches": true
+    },
+    {
+      "id": "H5-f4-6-rename-root",
+      "matches": true
+    },
+    {
+      "id": "H5-f4-import-reject",
+      "matches": true
+    },
+    {
+      "id": "H5-f5-import-reject",
+      "matches": true
+    },
+    {
+      "id": "H5-f6-import-reject",
+      "matches": true
+    },
+    {
+      "id": "H5-f4-6-undo",
+      "matches": true
+    },
+    {
+      "id": "H6-reset",
+      "matches": true
+    },
+    {
+      "id": "H6-gen-S0",
+      "matches": true
+    },
+    {
+      "id": "H6-rename-root",
+      "matches": true
+    },
+    {
+      "id": "H6-import-F1",
+      "matches": true
+    },
+    {
+      "id": "H6-undo-noop-after-F1",
+      "matches": true
+    },
+    {
+      "id": "H6-add-temp",
+      "matches": true
+    },
+    {
+      "id": "H6-import-F2",
+      "matches": true
+    },
+    {
+      "id": "H6-undo-noop-after-F2",
+      "matches": true
+    },
+    {
+      "id": "H7-reset",
+      "matches": true
+    },
+    {
+      "id": "H7-gen-deep",
+      "matches": true
+    },
+    {
+      "id": "H7-del-zhi1",
+      "matches": true
+    },
+    {
+      "id": "H7-undo-restore",
+      "matches": true
+    },
+    {
+      "id": "H8-reset",
+      "matches": true
+    },
+    {
+      "id": "H8-gen-S0",
+      "matches": true
+    },
+    {
+      "id": "H8-edit1",
+      "matches": true
+    },
+    {
+      "id": "H8-edit2",
+      "matches": true
+    },
+    {
+      "id": "H8-edit3",
+      "matches": true
+    },
+    {
+      "id": "H8-edit4",
+      "matches": true
+    },
+    {
+      "id": "H8-edit5",
+      "matches": true
+    },
+    {
+      "id": "H8-edit6",
+      "matches": true
+    },
+    {
+      "id": "H8-edit7",
+      "matches": true
+    },
+    {
+      "id": "H8-edit8",
+      "matches": true
+    },
+    {
+      "id": "H8-edit9",
+      "matches": true
+    },
+    {
+      "id": "H8-edit10",
+      "matches": true
+    },
+    {
+      "id": "H8-undo1",
+      "matches": true
+    },
+    {
+      "id": "H8-undo2",
+      "matches": true
+    },
+    {
+      "id": "H8-undo3",
+      "matches": true
+    },
+    {
+      "id": "H8-undo4",
+      "matches": true
+    },
+    {
+      "id": "H8-undo5",
+      "matches": true
+    },
+    {
+      "id": "H8-undo6",
+      "matches": true
+    },
+    {
+      "id": "H8-undo7",
+      "matches": true
+    },
+    {
+      "id": "H8-undo8",
+      "matches": true
+    },
+    {
+      "id": "H8-undo9",
+      "matches": true
+    },
+    {
+      "id": "H8-undo10",
+      "matches": true
+    },
+    {
+      "id": "H8-undo11-noop",
+      "matches": true
+    },
+    {
+      "id": "H9-reset",
+      "matches": true
+    },
+    {
+      "id": "H9-gen-S0",
+      "matches": true
+    },
+    {
+      "id": "H9-rename-valid",
+      "matches": true
+    },
+    {
+      "id": "H9-empty-title-reject",
+      "matches": true
+    },
+    {
+      "id": "H9-tab-leading-reject",
+      "matches": true
+    },
+    {
+      "id": "H9-tab-trailing-reject",
+      "matches": true
+    },
+    {
+      "id": "H9-tab-middle-reject",
+      "matches": true
+    },
+    {
+      "id": "H9-undo",
+      "matches": true
+    }
+  ],
+  "H8": {
+    "editActions": 10,
+    "undoActions": 11
+  },
+  "H5": {
+    "resets": 4,
+    "imports": 6
+  },
+  "H9": {
+    "renameAttempts": 5,
+    "undoActions": 1
+  }
+}

@@ -1,0 +1,163 @@
+只生成一个完整CommonJS代码块，保存目标harness.cjs。你实际负责UI验收基础驱动，不要长论证。实现下面固定契约，尽量150行以内。所有读写只参考文件与T1_OUT，任何额外私有文件禁止。require(process.env.T1_PLAYWRIGHT)为已有playwright-core。file URL=pathToFileURL(process.env.T1_REFERENCE)。out=process.env.T1_OUT，已有预检通过，无需再做环境调查。
+模块契约：harness.cjs导出 async function createHarness()，返回t。t.page为当前Playwright Page；t.S0='中心主题\n  分支一\n  分支二\n    细节甲\n    细节乙\n  分支三'；t.TREE为对应独立纯JS树；t.clone(x)深拷贝。t.tree()异步只读DOM返回{title,children}或null；t.check(expected)精确比较树、pageerror/console.error为空、null时empty可见。t.gen(text),t.rename(indexPath,title),t.add(indexPath,title),t.del(indexPath),t.undo()都是异步真实UI。indexPath=[]根，[1]根第2子，[1,1]第2子第2孙。t.reopen()关闭当前page后新page打开file://原reference。t.exportMap()真实点击下载，存原件/哈希和saveAs到out/downloads/t1-map.json并返回JSON；t.importSaved()click导入按钮+filechooser.setFiles显式保存文件并等待导入完成。t.snap(label)保存截图和DOM JSON。t.step(id,fn)执行fn后snap、标PASS并刷新results.json，异常标FAIL截图后throw；所有22项预置UNTESTED。t.unverified(id,reason,fn)执行部分检查，保存证据但保留UNTESTED，异常同样停止。t.close()关闭自己browser context写结果summary；t.note(key,value)记录非敏感证据。public-chain.cjs和fragments.cjs各module.exports=async(t)=>{}，按顺序调用。入口由协调者仅粘合三个模块，不实现UI。
+
+启动配置必须原样复用：chromium.launchPersistentContext(out+'/profile',{executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe',headless:true,chromiumSandbox:true,ignoreDefaultArgs:true,args:['--headless=new','--remote-debugging-pipe','--user-data-dir='+out+'/profile','--no-first-run','--no-default-browser-check','--disable-background-networking','--disable-component-update','--disable-sync','--disable-extensions','--enable-automation','--window-size=1280,800'],downloadsPath:out+'/downloads',acceptDownloads:true,offline:true,serviceWorkers:'block',viewport:{width:1280,height:800},timeout:30000,env:{...process.env,TEMP:out+'/temp',TMP:out+'/temp',HOME:out+'/home',USERPROFILE:out+'/home',APPDATA:out+'/home/AppData/Roaming',LOCALAPPDATA:out+'/home/AppData/Local'}})。先mkdir这些子目录。context.route(/^https?:\/\//,r=>r.abort());setOffline(true)。首次about:blank截图，然后file://。每次新page注册错误，timeout10s。不--no-sandbox，不关闭安全，不安装，不HTTP。
+定位只能DOM root/child序号li。树重建用只读locator.evaluate，:scope > .node-row > .title及:scope > ul > li递归。动作click/fill/prompt accept，无内部函数或root/undoStack访问。dialog listener先于click；FileReader导入要等待#msg成功文本（先读取它当前文字避免race，源码下附）。CDP pageSession Browser.setDownloadBehavior allowAndName eventsEnabled下载在out/downloads，保留事件原件filePath或guid路径、download.path、saveAs路径及hash，断言原件存在且在out范围。
+日志results.json结构{items:[{id,status,evidence,reason}],summary},actions.jsonl每个动作，错误证据保存立即throw，不继续。保存截图用fullPage。t.unverified执行fn但仅标UNTESTED，不能伪装文件选择取消。仅实现harness，不实现验收步骤，不测试隐藏内容。页面源码相关UI部分：
+function render(){
+  var map = $('map');
+  map.innerHTML = '';
+  if (!root){
+    var d = document.createElement('div');
+    d.className = 'empty';
+    d.textContent = '（空）尚未生成导图。请在左侧输入缩进文本后点击“生成导图”，或“导入 JSON”。';
+    map.appendChild(d);
+    return;
+  }
+  var ul = document.createElement('ul');
+  ul.appendChild(renderNode(root, null, -1));
+  map.appendChild(ul);
+}
+function renderNode(node, parentNode, indexInParent){
+  var li = document.createElement('li');
+  var row = document.createElement('div');
+  row.className = 'node-row' + (parentNode === null ? ' rootrow' : '');
+  var title = document.createElement('span');
+  title.className = 'title';
+  title.textContent = node.title;
+  row.appendChild(title);
+  row.appendChild(mkBtn('重命名', function(){ doRename(node); }));
+  row.appendChild(mkBtn('+子节点', function(){ doAddChild(node); }));
+  row.appendChild(mkBtn('删除', function(){ doDelete(node, parentNode, indexInParent); }));
+  li.appendChild(row);
+  if (node.children.length > 0){
+    var ul = document.createElement('ul');
+    for (var i = 0; i < node.children.length; i++){
+      ul.appendChild(renderNode(node.children[i], node, i));
+    }
+    li.appendChild(ul);
+  }
+  return li;
+}
+function mkBtn(label, fn){
+  var b = document.createElement('button');
+  b.textContent = label;
+  b.onclick = fn;
+  return b;
+}
+
+/* ---------- 编辑（无效编辑：状态不变、不进栈、不中断） ---------- */
+function doRename(node){
+  var t = window.prompt('新的标题（取消、空标题、含 Tab 或与原标题相同＝放弃本次编辑）：', node.title);
+  if (t === null) return;
+  var nt = normalizeTitle(t);
+  if (nt === null){ showMsg('重命名被拒绝：标题为空或含 Tab', true); return; }
+  if (nt === node.title){ showMsg('重命名被拒绝：标题未变化（无效编辑，不进入撤销记录）', true); return; }
+  undoStack.push({type:'rename', node: node, oldTitle: node.title});
+  node.title = nt;
+  showMsg('已重命名', false);
+  render();
+}
+function doAddChild(parentNode){
+  var t = window.prompt('子节点标题（取消或空标题＝放弃本次编辑）：', '');
+  if (t === null) return;
+  var nt = normalizeTitle(t);
+  if (nt === null){ showMsg('添加被拒绝：标题为空或含 Tab', true); return; }
+  var child = {title: nt, children: []};
+  undoStack.push({type:'add', parentNode: parentNode, child: child});
+  parentNode.children.push(child);
+  showMsg('已添加子节点', false);
+  render();
+}
+function doDelete(node, parentNode, indexInParent){
+  undoStack.push({type:'delete', parentNode: parentNode, node: node, index: indexInParent});
+  if (parentNode === null){ root = null; }
+  else { parentNode.children.splice(indexInParent, 1); }
+  showMsg('已删除', false);
+  render();
+}
+
+/* ---------- 撤销 ---------- */
+function doUndo(){
+  if (undoStack.length === 0){ showMsg('没有可撤销的操作', false); return; }
+  var op = undoStack.pop();
+  if (op.type === 'rename'){ op.node.title = op.oldTitle; }
+  else if (op.type === 'add'){
+    var i = op.parentNode.children.indexOf(op.child);
+    if (i !== -1) op.parentNode.children.splice(i, 1);
+  }
+  else if (op.type === 'delete'){
+    if (op.parentNode === null){ root = op.node; }
+    else { op.parentNode.children.splice(op.index, 0, op.node); }
+  }
+  showMsg('已撤销一步（剩余可撤销 ' + undoStack.length + ' 步）', false);
+  render();
+}
+
+/* ---------- 生成 ---------- */
+$('btn-gen').onclick = function(){
+  var res = parseInput($('src').value);
+  if (res.error){ showMsg('生成被拒绝：' + res.error + '；当前导图与撤销记录不变', true); return; }
+  root = res.root;
+  undoStack = [];
+  showMsg('生成成功：导图已整体替换，撤销记录已清空', false);
+  render();
+};
+
+/* ---------- 导出 ---------- */
+$('btn-export').onclick = function(){
+  if (!root){ showMsg('导出被拒绝：当前没有导图', true); return; }
+  var blob = new Blob([JSON.stringify(root, null, 2)], {type: 'application/json'});
+  var a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'mindmap.json';   // 建议文件名；实际落盘位置由浏览器下载设置/使用者选择决定
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setTimeout(function(){ URL.revokeObjectURL(a.href); }, 1000);
+  showMsg('已发起导出下载', false);
+};
+
+/* ---------- 导入 ---------- */
+$('btn-import').onclick = function(){
+  $('file-in').value = '';
+  $('file-in').click();
+};
+$('file-in').addEventListener('change', function(ev){
+  var f = ev.target.files && ev.target.files[0];
+  if (!f){ return; }   // 取消：静默忽略，无变化、不提示、不报错
+  var reader = new FileReader();
+  reader.onload = function(){
+    var txt = String(reader.result);
+    if (txt.charCodeAt(0) === 0xFEFF) txt = txt.slice(1);   // 规范化：去 BOM
+    var obj = null;
+    try { obj = JSON.parse(txt); }
+    catch (e){ showMsg('导入被拒绝：文件不是合法 JSON；当前导图与撤销记录不变', true); return; }
+    var tree = normalizeTree(obj);
+    if (tree === null){ showMsg('导入被拒绝：结构或标题不符合公开结构 {title, children}；当前导图与撤销记录不变', true); return; }
+    root = tree;
+    undoStack = [];
+    showMsg('导入成功：导图已整体替换，撤销记录已清空', false);
+    render();
+  };
+  reader.onerror = function(){ showMsg('导入被拒绝：文件读取失败；当前导图与撤销记录不变', true); };
+  reader.readAsText(f, 'utf-8');
+});
+function normalizeTree(n){
+  if (typeof n !== 'object' || n === null || Array.isArray(n)) return null;
+  if (typeof n.title !== 'string') return null;
+  if (!Array.isArray(n.children)) return null;
+  var t = normalizeTitle(n.title);
+  if (t === null) return null;
+  var node = {title: t, children: []};   // 规范化：仅保留 title/children，多余字段忽略
+  for (var i = 0; i < n.children.length; i++){
+    var c = normalizeTree(n.children[i]);
+    if (c === null) return null;
+    node.children.push(c);
+  }
+  return node;
+}
+
+$('btn-undo').onclick = doUndo;
+render();
+</script>

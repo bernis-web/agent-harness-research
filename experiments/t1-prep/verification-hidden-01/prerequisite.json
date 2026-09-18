@@ -1,0 +1,77 @@
+{
+  "at": "2026-09-18T03:29:15.280Z",
+  "publicPriorSummary": {
+    "status": "PARTIAL_VERIFIED_STEP11_BLOCKED",
+    "counts": {
+      "PASS": 21,
+      "FAIL": 0,
+      "UNTESTED": 1
+    },
+    "remainingAuthorizedItems": {
+      "count": 13,
+      "PASS": 12,
+      "FAIL": 0,
+      "UNTESTED": 1
+    },
+    "prerequisites": {
+      "count": 9,
+      "PASS": 9
+    },
+    "passed": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "12a",
+      "12b",
+      "12c",
+      "12d",
+      "A1",
+      "A2",
+      "A3",
+      "A4",
+      "B1",
+      "B2",
+      "B3"
+    ],
+    "untested": [
+      {
+        "id": "11",
+        "blocker": "BLOCKED_HEADLESS_NATIVE_CANCEL",
+        "productFailure": false
+      }
+    ],
+    "resultsPath": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\results.json",
+    "probeResultsPath": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\cancel-probe\\evidence\\probe-results.json",
+    "sequenceAdjustment": "After partial step11 evidence, continued independent12/A/B as explicitly authorized; no full-batch pass claimed",
+    "B1EditsVerified": 10,
+    "B2UndosVerified": 10,
+    "rerunDuringCloseout": false
+  },
+  "step11Final": {
+    "at": "2026-09-18T03:13:45.703Z",
+    "checks": {
+      "newStep11PASS": true,
+      "realNativeCancel": true,
+      "exactOwner": true,
+      "buttonSamePID": true,
+      "oneTrustedCancelNoChange": true,
+      "allTreesEqualOracle": true,
+      "allErrorArraysEmpty": true,
+      "undoNoEffectMessage": true,
+      "old21Verified": true,
+      "fiveProtectedUnchanged": true,
+      "driverExitedZero": true,
+      "cleanupAllRecordedAbsent": true
+    },
+    "passed": true
+  },
+  "referenceSHA256": "c3811f4e772e53fdbf4a047f015eebd2eb6f57df90e497c4b78608af0f5904ad",
+  "mode": "Prior public evidence referenced, not rerun or recursively hashed"
+}

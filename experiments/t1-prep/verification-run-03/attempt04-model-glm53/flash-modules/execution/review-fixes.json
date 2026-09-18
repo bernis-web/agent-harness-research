@@ -1,0 +1,22 @@
+{
+  "at": "2026-09-17T12:28:05.635Z",
+  "author": "Codex static reviewer",
+  "classification": "driver-only syntax/locator/event ordering/result bookkeeping; no product edits",
+  "fixes": [
+    "Correct 22 public result IDs",
+    "Persist notes",
+    "Correct child-path locator traversal",
+    "Restrict actions to direct node row",
+    "Propagate dialog errors and log actual dialog",
+    "Subscribe to download before clicking",
+    "Remove late subscription",
+    "CDP allowAndName original uses GUID",
+    "Record CDP actual original path separately from saveAs and hashes",
+    "Retain visible message in DOM evidence",
+    "Map failing B substep to parent item",
+    "Aggregate all ten B edits and undos only after individual pass",
+    "Fragments: add missing async to ten callback declarations (syntax-only)",
+    "Require rejection text rather than any nonempty message in step 6",
+    "Batch01 hung awaiting unbounded CDP event in step9: attach early CDP evidence listeners, await Playwright completion first, record failure(), impose 15s event bounds, preserve review01 driver; no acceptance expectation changes"
+  ]
+}

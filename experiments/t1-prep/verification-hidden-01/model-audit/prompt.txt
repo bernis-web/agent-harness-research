@@ -1,0 +1,603 @@
+Small final delegated implementation task, real glm-5.3-flash effort low. No tools. Return ONLY JSON {"files":[{"path":"audit.cjs","content":"..."}],"notes":[]}. Implement a result-analysis and REPORT generator script; coordinator will review and execute locally. NO result contents, incident lists, hashes of browser stores or browser materials are supplied to you. Only the frozen spec/hidden and approved scripts below. DO NOT claim you ran anything. Script lives D:/projects/agent-harness-research/experiments/t1-prep/verification-hidden-01/execution/audit.cjs and ROOT=path.resolve(__dirname,'..'). EXACT input allowlist ONLY: ROOT/attempt-01/evidence/results.json, actions.jsonl, launch-options.json, chrome-process.json, close-evidence.json, execution-result.json, network-policy.json, network.jsonl; ROOT/attempt-01/execution-meta.json; ROOT/preflight/coverage-enumeration.json; ROOT/execution/fixtures.json; ROOT/attempt-01/evidence/fixtures/<explicit basename listed by fixtures.json>; ROOT/attempt-01/evidence/snap-<validated step id>.json/.png. No recursive enumeration, no profile/home/temp, no configs, no incident files, no prior archive or historical evidence. Analyze ONLY these fresh artifacts. Output ONLY ROOT/audit-results.json, ROOT/summary.json, ROOT/CASE-INDEX.md, ROOT/REPORT.generated.md.
+Known schema from harness below: results={steps:[{id,expected,actual,status,nodeCount,uiMessage,errors,assertions,actionCount}],errors,summary,owned}. Snapshot JSON={label,tree,errors,message,step}. Preflight enumeration={steps:[{id,expected,options,actions:[{action,args}]}],...} is a script enumeration NOT browser pass evidence. Compare all step IDs, expected trees, screenshot snapshot trees and states, zero errors, correct node counts, actual==expected, required messages for H1/H3/H5. Check PNG signature and file exists, report byte count (do not parse image pixels). Every check fail -> audit failure exit nonzero, not reference repair. Fixtures match manifest bytes AND literal frozen fixtures, particularly H1 three rows '\n  \n', H3 third 'A\nA\tB', H5 invalid content and all tabs. From actions.jsonl log records group per terminating {action:'step',id}; strip dialog and step to compare gen(text), rename/add(indexPath,title),del,undo,reset,importFile(basename) with preflight actions; maintain H8 exact10 edit action+11 undo grouping, independent oracle H8 S0-> specified10 edit snapshots, 12nodes at edit10; undo10 and undo11 exactly S0 with no errors. H5 1-3 distinct resets, 4-6 shared one. H9 exactly4 invalid renames and one undo. browser metadata sandbox=true, headless=true, no --no-sandbox or disable-setuid, offline true, serviceworkers blocked, task-local profile/downloads and no HTTP(S) network request success (any actual HTTP(S) request should flag review, no network probe); every request URL equals frozen reference file URL. close pagesAfterClose=[] and owned exit code0, driver exit0. No process enumeration. No actual re-run. Compute H1-H9 statuses from full required step presence and passes, NOT just grouping existing results.
+REPORT Chinese concise: this is AUTOMATED headless reference-only validation, no manual claim, no native cancel claim, not D2/project completion; 9 case rows substep counts/status and conclusion, methodology behavioral UI+visible DOM, H8 exact count, files and source trace, all PASS only after audit. Prior public22 is caller-asserted previously verified and NOT re-run here; do NOT call all project complete. Include mandatory placeholder section '## 过程边界记录
+由协调员补充；本报告的功能结果不等于整个过程合规。' (do NOT inspect any incident document). CASE-INDEX enumerate all steps screenshot/status assertion files. Preserve all artifacts; never delete/overwrite input. Outputs new reports only.
+FROZEN SPEC:
+# T1 规格 v1.0（冻结稿）
+
+冻结日期：2026-09-17。本稿合并 2026-09-17 聊天交付的 T1 规格主体与全部局部修订（含需求变更：保存/重载 → 显式导出/显式导入）。
+
+## 0. 状态登记
+
+- **规格可满足性** 与 **被测产品能否完成** 分开登记：前者由本目录 `reference/`（参考实现）在运行环境获批后验证；后者属 D2 探索观察目标，不由参考实现证明。
+- 参考实现与验收材料**已编写、未执行**：本轮未做浏览器打开、未做语法运行、未做任何验证；执行验证留待运行环境获批后进行。
+- 本目录全部内容（尤其 `acceptance/hidden-cases.md` 与 `reference/`）**不得放入被测产品的任务工作空间**（工作空间届时另建空目录）。
+- 冻结默认值 3 项（已按上轮默认值冻结）：①撤销栈深度下限 ≥10；②生成/导入成功均无需确认弹窗；③运行基线＝Chrome/Edge 最新版双击打开，无服务端、无构建。
+
+## 1. 任务文本（一次下发，全文逐字）
+
+> 请在当前工作空间内创建纯本地单文件网页应用 `mindmap.html`（HTML/CSS/JS 全部在此文件内）与 `README.md`（打开方式与用法）。文件分三类：**交付物**＝上述两文件；**运行时数据**＝验收时经"导出"产生的 JSON 文件；**开发验证文件**＝你开发中自建的测试或草稿，如需要请放入工作空间内 `dev/` 子目录，它们不作为验收依据。**边界说明**：对联网、外部资源与文件写入的限制针对**交付物（`mindmap.html`）运行时行为**——运行时不得联网、不加载任何外部资源（库/字体/图标/CDN）、无构建步骤与依赖安装，且不得在工作空间之外创建或修改任何文件。功能验收评价交付物行为；开发过程仍须遵守实验约束：不安装依赖、不获取外部库或资源，任务代码、测试和草稿仅写入指定实验工作空间。被测产品客户端的正常模型服务通信及自身必要日志、缓存，不计作交付物联网或任务越界写入，但这一例外不授权读取凭据、修改客户端设置或访问任务无关文件；相关过程行为未被监测时记为未知，不默认判通过。
+>
+> 功能需求（全部必做）：
+> 1. **生成**：页面左侧提供多行文本框和"生成导图"按钮。文本规则：每行一个节点标题；行首空格表示层级，2 个空格为一层；**第一条非空有效行**必须顶格，为根节点；每个后续有效行的缩进必须恰好比其父行多 2 个空格；空白行（零长度或仅空白字符）一律忽略（含 Tab 的行除外，Tab 检查优先）；Tab 为非法字符。不允许多根节点（第二个顶格有效行即非法）。
+> 2. **非法输入处理**：点击"生成导图"时若存在非法行（缩进跳层、有效首行不顶格、含 Tab 等），或全部行均为空白行而被忽略后无任何有效行（空输入），必须**整体拒绝**本次生成：显示可见的错误提示，当前导图与撤销记录保持完全不变。
+> 3. **生成成功**＝用文本框内容**整体替换**当前导图，并**清空撤销记录**；不需要确认弹窗。仅一行顶格文本为合法输入，生成单节点导图。
+> 4. **编辑**（直接作用于导图）：a) 重命名任意节点的标题；b) 为任意节点添加子节点（排在现有子节点末尾）；c) 删除任意节点（连同其全部后代，允许删除根节点＝清空整图）。编辑只影响目标节点及其子树，其余节点的标题、层级、相对顺序必须保持不变。标题统一规范适用于所有来源：去除首尾空白后非空且不含 Tab。产生空标题、含 Tab 的编辑，以及重命名为与原标题完全相同值的编辑，均视为无效编辑：状态不变、不进入撤销记录、不中断不报错。
+> 5. **撤销**：提供"撤销"按钮，每点击一次回退最近一次编辑操作（一次重命名/一次添加/一次删除各算一次；删除被撤销时须整体恢复被删子树）；至少支持连续撤销 10 次；撤销到最早记录后再点击须无任何效果且不报错。不要求"重做"。撤销只针对编辑；生成与导入均不可撤销（其效果已由"整体替换＋清栈"定义）。
+> 6. **导出与导入**：提供"导出 JSON"按钮：将当前导图保存为符合公开结构 `{"title": 字符串, "children": [同构递归]}`（UTF-8）的 JSON 文件；导出采用浏览器默认下载行为，是否弹出保存对话框取决于浏览器与使用者设置，不作要求（建议文件名 `mindmap.json`）。提供"导入 JSON"按钮：经文件选择对话框显式选择一个 JSON 文件，解析与结构校验通过后**整体替换**当前导图并**清空撤销记录**，无需确认弹窗；使用者取消选择时**静默忽略**（无变化、无提示亦可、不报错）；文件解析失败或结构不符合公开结构时，必须**整体拒绝**：显示可见提示，当前导图与撤销记录完全不变。导入内容按统一标题规范规范化（去 BOM、仅保留 `title`/`children` 结构、标题去首尾空白；任一节点不满足即整体拒绝）。应用不得自动发现或自动加载任何本地文件。
+> 7. **明确不做**：重做、自动布局优化、拖拽移动、多根节点、联网同步、账号系统、语音、自动加载本地文件。
+>
+> 验收只依据上述行为是否正确；界面布局、视觉风格与内部实现方式不限。
+
+## 2. 语义表
+
+| 项 | 冻结语义 | 归属 |
+|---|---|---|
+| 输入格式 | 每行一节点；行首空格 2 格＝1 层；第一条非空有效行顶格为根；子行缩进＝父行＋2；空白行（零长度或仅空白字符，含 Tab 的行除外，Tab 检查优先）/行尾空白忽略；Tab 非法；第二个顶格有效行非法（禁多根）；奇数空格缩进无法满足"父行＋2"即非法 | 必要要求 |
+| 空输入 | 空文本框，或全部行均为空白行（忽略后无有效行）→ 生成整体拒绝，状态不变 | 必要要求 |
+| 空白行 | 零长度或仅空白字符的行一律忽略，不作为非法行（含 Tab 的行除外，Tab 检查优先）；仅当忽略后无有效行时按空输入拒绝 | 必要要求 |
+| 单根输入 | 仅一行顶格 → 合法，单节点导图 | 必要要求 |
+| 非法输入 | 任一非法行 → 本次生成整体拒绝，有可见提示，导图与撤销记录不变；提示文案与形式自由 | 判据必要，形式自由 |
+| 重复标题与节点识别 | 标题不唯一、不去重不合并；节点身份＝树中位置（验收用"根的第 N 个子节点"式路径定位）；内部标识自由 | 判据必要，实现自由 |
+| 生成与编辑关系 | 生成成功＝整体替换＋清空撤销栈；被拒绝则一切不变；编辑作用于已生成导图 | 必要要求 |
+| 未改保持范围 | 重命名（含根）＝仅该节点标题；添加（含根）＝目标节点子列表末尾；删除＝目标＋全部后代（删根＝清空整图）；其余节点标题/层级/相对顺序一律不变；展开状态不进验收 | 判据必要，展开状态自由 |
+| 无效编辑 | 任何被拒绝的编辑（空标题等）：状态不变、不进撤销栈、不中断不报错 | 必要要求 |
+| 撤销边界 | 仅编辑可撤销（三种编辑各算一次，删除撤销整体恢复子树）；逐级回退；下限 10 次；到顶后再点＝无效果不报错；生成/导入不可撤销；无重做 | 必要要求 |
+| 导出 | 在使用者选定位置产出符合公开结构（`title` 字符串＋`children` 数组，可为空）的 UTF-8 JSON；无导图时拒绝并提示，不产出文件 | 判据必要，机制自由 |
+| 导入 | 成功＝整体替换＋清空撤销栈，无需确认；取消/解析失败/结构不符＝整体拒绝不变；结构校验按公开结构（顶层含 `title` 与 `children`） | 必要要求 |
+| 导入规范化 | 导入文本先去 BOM；解析后仅保留 `title`/`children` 递归结构（多余字段忽略）；各节点标题按统一标题规范处理；任一节点不符（非对象、title 非字符串、children 非数组、标题非法）→ 整体拒绝 | 必要要求 |
+| 标题统一规范 | 所有来源的标题（输入行、重命名、添加子节点、导入）统一为：去除首尾空白后非空且不含 Tab；重命名为与原标题完全相同的值＝无效编辑（状态不变、不进撤销栈） | 必要要求 |
+| 无第三方库（统一） | 交付物与开发验证文件统一适用：不联网、不加载任何外部资源（库/字体/图标/CDN）、无构建步骤与依赖安装 | 必要要求 |
+| 文件三类边界 | 交付物（`mindmap.html`＋`README.md`）/运行时数据（验收导出的 JSON 文件）/开发验证文件（`dev/` 内，不作验收依据）；工作空间外一律禁写 | 必要要求 |
+| 无自动文件访问 | 交付物运行时不自动发现、不自动加载任何本地文件；一切文件访问经显式导出/导入（本条约束交付物运行时，见第 1 节边界说明） | 必要要求 |
+| 总体实现自由 | 布局、视觉、交互方式（按钮/右键/双击/对话框）、内部数据结构 | 实现自由 |
+
+## 3. 公开验收操作链（公开样例）
+
+**运行前检查（导出下载位置）**：验收开始前须确认浏览器实际下载位置位于指定实验工作空间目录内（必要时设置浏览器下载目录，或导出时用"另存为"指定实验目录）；导出文件的落盘由浏览器按使用者设置完成，属运行时数据，不计为交付物越界写入；未做该项确认时，导出产物位置记为未知，不计为产品违规。
+
+固定初始文本 S0：
+
+```
+中心主题
+  分支一
+  分支二
+    细节甲
+    细节乙
+  分支三
+```
+
+| 步 | 操作 | 唯一预期 |
+|---|---|---|
+| 1 | 打开 `mindmap.html`（无预置文件） | 显示空状态，无报错，不自动加载任何文件 |
+| 2 | 输入 S0，点击"生成导图" | 显示 6 节点：根"中心主题"，一级依次"分支一/分支二/分支三"，"分支二"下依次"细节甲/细节乙" |
+| 3 | 重命名根的第 2 个子节点为"分支贰" | 仅该标题变化，其余 5 节点标题/层级/顺序不变 |
+| 4 | 为"分支一"添加子节点"细节丙" | "分支一"末尾新增"细节丙"，共 7 节点，其余不变 |
+| 5 | 删除"分支贰"的第 2 个子节点"细节乙" | 该节点消失，余 6 节点不变 |
+| 6 | 非法操作：文本框改为含跳层行的文本（第 1 行顶格"X"，第 2 行 4 空格"Y"），点击"生成导图" | 出现错误提示；导图仍为步骤 5 后的 6 节点状态，撤销记录不变 |
+| 7 | 点击"撤销"一次 | 回退删除："细节乙"复现于"分支贰"第 2 位，共 7 节点（"细节丙"仍在） |
+| 8 | 再点击"撤销"一次 | 回退添加："细节丙"消失，余 6 节点（＝步骤 3 后状态） |
+| 9 | 点击"导出 JSON"，取得导出文件并命名为 `t1-map.json`（浏览器默认下载或保存对话框均可） | 导出成功，文件内容与当前导图（6 节点）树同构，结构符合公开 JSON 结构 |
+| 10 | 为"分支三"添加子节点"细节丁"（共 7 节点）→ 点击"导入 JSON"选择 `t1-map.json` | 导图整体替换为导出时刻内容："细节丁"消失，恢复 6 节点，标题/层级/顺序与导出时刻完全一致，撤销记录清空 |
+| 11 | 再次点击"导入 JSON"但取消文件选择 → 无变化、不要求提示、不报错；随后点击"撤销" | 撤销无效果、无报错（导入已清栈），导图保持 6 节点 |
+| 12a | 关闭标签页，重新打开 `mindmap.html` | 空状态；点击撤销无效果 |
+| 12b | 生成单节点"临时根"，再重命名为"临时根改名" | 单节点导图"临时根改名"，撤销记录含 1 条 |
+| 12c | 显式导入步骤 9 保存的 `t1-map.json` | 完整恢复步骤 9 的 6 节点导图，根为"中心主题"，第二个子节点为"分支贰"；临时图消失 |
+| 12d | 点击撤销 | 无效果，导入后的导图不变（撤销记录仍为空） |
+
+步骤 6 非法文本：
+
+```
+X
+    Y
+```
+
+## 4. 附加验收片段（均起始于步骤 2 生成的 S0 导图）
+
+**片段 A：删除子树后完整撤销**
+
+| 步 | 操作 | 唯一预期 |
+|---|---|---|
+| A1 | 删除"分支二"（连同"细节甲""细节乙"） | 余 3 节点：中心主题、分支一、分支三 |
+| A2 | 点击"撤销"一次 | "分支二"及子树按原位置（根第 2 子）原顺序完整恢复，回 6 节点，其余不变 |
+| A3 | 删除根节点"中心主题" | 整图清空，显示空状态（撤销记录含 1 条） |
+| A4 | 点击"撤销"一次 | 6 节点完整恢复：根"中心主题"，一级"分支一/分支二/分支三"，"分支二"下"细节甲/细节乙" |
+
+**片段 B：连续十次编辑后撤销恢复**（10 次编辑：①重命名"分支一"→"甲一"②为"甲一"添加"临时1"③重命名"分支二"→"甲二"④为"甲二"添加"临时2"⑤重命名"分支三"→"甲三"⑥为"细节甲"添加"临时3"⑦重命名"细节甲"→"甲细"⑧为根添加"临时根"⑨重命名"细节乙"→"甲乙"⑩为"甲三"添加"临时4"）
+
+| 步 | 操作 | 唯一预期 |
+|---|---|---|
+| B1 | 依次完成 10 次编辑 | 全部生效：共 11 节点，各处标题与新增位置如操作所述 |
+| B2 | 连续点击"撤销"10 次 | 每次撤销后导图＝对应编辑执行前状态（逐一回退）；第 10 次后＝S0 原始 6 节点，标题全部恢复原名 |
+| B3 | 第 11 次点击"撤销" | 无效果、无报错 |
+
+## 5. 验收判据总则（必过检查清单与公开范围）
+
+- **必过检查清单（统一）**：公开链步骤 1—12 ＋ 片段 A（A1—A4）＋ 片段 B（B1—B3）＋ 隐藏用例 H1—H9，全部通过方为 T1 验收通过；任一项不通过即不通过。
+- **公开规则范围**：对被测实现公开＝第 1 节任务全文＋**第 2 节需求语义表**＋第 3、4 节公开链与片段（含 S0、非法文本、十次编辑序列与全部预期）＋公开验收手册；不公开＝隐藏用例的具体数据与评估执行过程（另册）与参考实现目录。
+- 隐藏用例仅以不同数据复测公开条款，不引入新要求，也不设超出公开下限的更高要求（如撤销次数以公开下限 10 为准）。
+- 每步记录：通过/不通过＋证据（截图或文件哈希）。
+
+FROZEN HIDDEN:
+# T1 隐藏用例集（另册管理，不入被测产品任务工作空间）
+
+原则：全部用例仅以**不同数据**复测已公开的规格条款，**不引入任何新要求，也不设超出公开下限的更高要求**（撤销次数以公开下限 10 为准）。全部输入与操作已固定；凡涉及撤销的用例均显式标注撤销记录的前置状态；凡要求"拒绝不得清除撤销记录"的用例，一律以**有效编辑→拒绝→撤销恢复**的可观察操作验证，不要求读取实现内部栈。
+
+撤销记录状态记法：`栈=空` / `栈=N 条`（N 为当前撤销记录条数）。空白行语义按冻结规格：零长度或仅空白字符的行一律忽略；Tab 为非法字符（首部/中间/尾部均拒绝）。
+
+## 用例
+
+| 编号 | 对应公开条款 | 起始前置（含撤销记录状态） | 固定数据 | 固定操作 | 唯一预期 |
+|---|---|---|---|---|---|
+| H1 | 空输入拒绝且不清除撤销记录 | 无导图；栈=空。**每个数据子例按下述操作独立重建前置** | ①空文本框；②恰好 3 个空白行（其中 1 行仅含空格） | 子例循环：(a) 生成 S0（栈=空）→ (b) 重命名根为`临时根`（栈=1）→ (c) 将文本框置为该非法数据，点击"生成导图"→ (d) 确认导图仍为 6 节点、根标题为`临时根`→ (e) 点击"撤销"一次（栈=0） | 每个子例：(c) 出现可见拒绝提示且导图不变；(d) 根标题仍为`临时根`；(e) 根标题恢复`中心主题`——证明非法生成未清除撤销记录 |
+| H2 | 单根输入合法 | 应用刚打开，无导图；栈=空 | 仅一行：`根A` | 点击"生成导图" | 生成仅含"根A"的单节点导图；栈=空 |
+| H3 | 输入格式与非法处理 | 已生成 S0 导图；栈=空 | 五组分别单独测：①单行，行首 2 空格＋`首行缩进`；②顶格`A` 与 4 空格`B` 两行（跳层）；③顶格`A`，次行为`A`＋中间 Tab＋`B`；④单行，Tab＋`A`（首部 Tab）；⑤单行，`A`＋尾部 Tab | 五组数据分别点击"生成导图" | 五次均整体拒绝，提示可见，S0 导图与撤销记录不变（栈仍=空）；五次提示文案可不同 |
+| H4 | 重复标题与节点识别 | 无导图；栈=空 | 输入四行：`根`／2空格`待办`／2空格`组`／4空格`待办` | 生成 → 重命名"根的第 1 个子节点"为`待办改`（栈=1） | 生成 4 节点；重命名后仅"根"下"待办"变为"待办改"，"组"下的"待办"不变 |
+| H5 | 导入拒绝且不清除撤销记录 | 无导图；栈=空。**文件①—③每个独立重建前置；④—⑥共用一次重建** | ①文件内容 `hello`；②`{"children":[]}`；③`{"title":"x","children":"no"}`；④`{"title":"\t前","children":[]}`（首部 Tab）；⑤`{"title":"后\t","children":[]}`（尾部 Tab）；⑥`{"title":"中\t间","children":[]}`（中间 Tab） | 文件①—③子例循环：(a) 生成 S0（栈=空）→ (b) 重命名根为`临时根`（栈=1）→ (c) 导入该文件 → (d) 确认导图仍为 6 节点、根`临时根`→ (e) 撤销一次（栈=0，根恢复`中心主题`）。文件④—⑥：重建前置后依次导入三个文件（每次拒绝后状态不变），最后撤销一次 | 文件①—③：每次(c)提示可见、导图不变，(e)根恢复`中心主题`；文件④—⑥：三次均拒绝、导图不变，最终撤销后根恢复`中心主题`——证明非法导入未清除撤销记录 |
+| H6 | 导入成功语义（替换＋清栈） | 见操作列；涉及撤销时栈状态随步骤标注 | F1＝`{"title":"导入根A","children":[{"title":"子一","children":[]}]}`；F2＝`{"title":"导入根B","children":[]}` | 生成 S0（栈=空）→ 重命名根为`改根`（栈=1）→ 导入 F1 → 点击"撤销"→ 为"导入根A"添加子节点`临时`（栈=1）→ 导入 F2 → 点击"撤销" | 第一次导入后导图＝F1 内容、栈清空，撤销无效果不报错；"临时"添加后第二次导入使导图＝单节点"导入根B"（"临时"消失），撤销再次无效果不报错 |
+| H7 | 深层树、删除子树与撤销恢复 | 无导图；栈=空 | 输入六行：`主`／2空格`支一`／4空格`叶一`／6空格`子叶一`／4空格`叶二`／2空格`支二` | 生成（栈=空）→ 删除"支一"（栈=1）→ 点击"撤销"一次（栈=0） | 删除后余 2 节点（主、支二）；撤销后"支一"整子树（叶一/子叶一/叶二）按原位置原顺序恢复，共 6 节点 |
+| H8 | 撤销深度达到公开下限 10 | 已生成 S0 导图；栈=空 | 固定 10 次编辑：①为根添加`附4`②重命名"附4"→`附肆`③为"分支一"添加`附1`④重命名"细节甲"→`改甲`⑤为"细节乙"添加`附2`⑥为"分支二"添加`附3`⑦重命名"分支三"→`改三`⑧为"改三"添加`附5`⑨重命名根→`改根`⑩为"分支一"添加`附6` | 依次完成 10 次编辑（栈逐次+1 至 10）→ 连续撤销 10 次（栈回 0）→ 再撤销 1 次 | 编辑全部生效共 12 节点；逐一回退，第 10 次撤销后＝S0 原始 6 节点（根标题恢复"中心主题"）；第 11 次撤销无效果不报错 |
+| H9 | 无效编辑不进撤销栈；Tab 标题拒绝 | 已生成 S0 导图；栈=空 | Tab 标题固定输入三个：`\t前导`（首部）、`尾随\t`（尾部）、`中\t间`（中间） | ①重命名"分支一"为`合法1`（栈=1）②依次尝试把"分支二"重命名为空标题、以及三个 Tab 标题（共 4 次无效编辑）③点击"撤销"一次（栈=0） | ②四次均拒绝：状态不变、无中断、栈仍=1；③撤销回退的是①（"分支一"恢复原名），其余 5 节点不变——证明无效编辑未进栈 |
+
+## 使用规则
+
+1. 隐藏用例在公开链与片段 A/B 通过后执行；顺序可任意，但每条用例执行前须将应用恢复到该条"起始前置"栏要求的状态（含撤销记录状态）；标注"独立重建前置"的子例不得复用前一子例的剩余状态。
+2. **必过检查清单（统一，见规格第 5 节）**：公开链步骤 1—12 ＋ 片段 A ＋ 片段 B ＋ 本册 H1—H9，全部通过方为 T1 验收通过；任一条不通过：记录现象与截图，标注对应公开条款，判验收不通过。
+3. 本文件与 `../reference/` 目录内容不得复制、展示或以任何形式提供给被测产品任务工作空间；对被测实现公开的范围以规格第 5 节为准（任务全文＋**需求语义表**＋公开链与片段＋公开验收手册）。
+
+HARNESS SCRIPT:
+// harness.cjs — reusable hidden-validation harness (no H-case execution here)
+const CHILD_PROCESS = require('child_process');
+const fs = require('fs'), path = require('path'), crypto = require('crypto');
+const { pathToFileURL } = require('url');
+
+const OUT = process.env.T1_OUT;
+if (!OUT) throw new Error('T1_OUT not set');
+const CHROME_EXE = 'C:/Program Files/Google/Chrome/Application/chrome.exe';
+const PROFILE_DIR = path.win32.normalize(path.join(OUT, 'profile'));
+const FILE_URL = pathToFileURL(process.env.T1_REFERENCE).href;
+
+// --- spawn wrapper installed BEFORE loading Playwright: capture only our Chrome ---
+const owned = { pid: null, startedAt: null, exe: null, parentPid: process.pid };
+let chromeLaunched = false;
+const realSpawn = CHILD_PROCESS.spawn;
+CHILD_PROCESS.spawn = function (cmd, args, opts) {
+  const exe = String(cmd || '');
+  const argStr = Array.isArray(args) ? args.join(' ') : String(args || '');
+  const norm = (s) => path.win32.normalize(String(s)).toLowerCase();
+  const isOurs = norm(exe) === norm(CHROME_EXE) && Array.isArray(args) && args.includes('--user-data-dir=' + PROFILE_DIR);
+  if (isOurs) {
+    if (chromeLaunched) throw new Error('REJECTED: a second owned Chrome launch attempted');
+    chromeLaunched = true;
+    const child = realSpawn.call(this, cmd, args, { ...opts, windowsHide: true });
+    owned.pid = child.pid; owned.startedAt = new Date().toISOString(); owned.exe = exe;
+    if (!owned.pid) throw new Error('REJECTED: owned Chrome launch produced no pid');
+    // SAFE metadata only: redact any arg value embedding a local path; env recorded as key names, never values
+    const SAFE_ARGS = (Array.isArray(args) ? args.map(String) : [String(args)]).map(a => a.includes(OUT) ? a.split('=')[0] + '=<redacted>' : a);
+    const ENV_KEYS = Object.keys((opts && opts.env) || {});
+    Object.assign(owned, {browserArgs: SAFE_ARGS, envKeys: ENV_KEYS, profile: PROFILE_DIR, guardedBy: 'normalized exe + exact --user-data-dir match', windowsHide: true});
+    fs.writeFileSync(path.join(OUT, 'chrome-process.json'), JSON.stringify(owned, null, 2));
+    child.once('exit', (code) => { owned.exitedAt = new Date().toISOString(); owned.exitCode = code;
+      fs.writeFileSync(path.join(OUT, 'chrome-process.json'), JSON.stringify(owned, null, 2)); });
+    return child;
+  }
+  return realSpawn.call(this, cmd, args, opts);
+};
+
+// --- load Playwright only after wrapper is installed ---
+const { chromium } = require(process.env.T1_PLAYWRIGHT || 'D:/projects/npm-cache/_npx/cbf1b8a072280925/node_modules/playwright-core');
+
+// --- env allowlist: only system Windows variables, no inherited API secrets ---
+const SYS_KEYS = ['ALLUSERSPROFILE','APPDATA','COMMONPROGRAMFILES','COMMONPROGRAMFILES(X86)','COMPUTERNAME','COMSPEC','DRIVERDATA','HOMEDRIVE','HOMEPATH','LOCALAPPDATA','NUMBER_OF_PROCESSORS','OS','PATH','PATHEXT','PROCESSOR_ARCHITECTURE','PROCESSOR_IDENTIFIER','PROCESSOR_LEVEL','PROCESSOR_REVISION','PROGRAMDATA','PROGRAMFILES','PROGRAMFILES(X86)','SYSTEMDRIVE','SYSTEMROOT','TEMP','TMP','USERDOMAIN','USERNAME','USERPROFILE','WINDIR'];
+function buildEnv() {
+  const env = {};
+  for (const k of SYS_KEYS) if (process.env[k] !== undefined) env[k] = process.env[k];
+  env.TEMP = OUT + '/temp'; env.TMP = OUT + '/temp';
+  env.HOME = OUT + '/home'; env.USERPROFILE = OUT + '/home';
+  env.APPDATA = OUT + '/home/AppData/Roaming'; env.LOCALAPPDATA = OUT + '/home/AppData/Local';
+  return env;
+}
+
+const LAUNCH = {
+  executablePath: CHROME_EXE,
+  headless: true, chromiumSandbox: true, ignoreDefaultArgs: true,
+  args: ['--headless=new', '--remote-debugging-pipe', '--user-data-dir=' + PROFILE_DIR,
+    '--no-first-run', '--no-default-browser-check', '--disable-background-networking',
+    '--disable-component-update', '--disable-sync', '--disable-extensions',
+    '--enable-automation', '--window-size=1280,800'],
+  downloadsPath: OUT + '/downloads', acceptDownloads: true, offline: true,
+  serviceWorkers: 'block', viewport: { width: 1280, height: 800 }, timeout: 30000,
+  env: buildEnv()
+};
+// launch trace: options without env values
+fs.writeFileSync(path.join(OUT, 'launch-options.json'), JSON.stringify({ ...LAUNCH, env: '<omitted>' }, null, 2));
+
+const S0 = '中心主题\n  分支一\n  分支二\n    细节甲\n    细节乙\n  分支三';
+const TREE = (() => {
+  const r = { title: '中心主题', children: [] };
+  const b1 = { title: '分支一', children: [] };
+  const b2 = { title: '分支二', children: [{ title: '细节甲', children: [] }, { title: '细节乙', children: [] }] };
+  const b3 = { title: '分支三', children: [] };
+  r.children.push(b1, b2, b3); return r;
+})();
+const clone = (x) => JSON.parse(JSON.stringify(x));
+const ap = (p) => fs.promises.mkdir(p, { recursive: true });
+
+async function createHarness() {
+  for (const d of ['/profile', '/downloads', '/temp', '/home', '/home/AppData/Roaming', '/home/AppData/Local']) await ap(OUT + d);
+
+  let errors = [];
+  const steps = [];
+  let ctx, page, cdp;
+
+  const writeResults = () => fs.writeFileSync(path.join(OUT, 'results.json'),
+    JSON.stringify({ steps, errors, owned, summary: {
+      total: steps.length,
+      PASS: steps.filter(s => s.status === 'PASS').length,
+      REFERENCE_FAILURE: steps.filter(s => s.status === 'REFERENCE_FAILURE').length,
+      DRIVER_ERROR: steps.filter(s => s.status === 'DRIVER_ERROR').length
+    } }, null, 2));
+  const logAction = (a) => fs.appendFileSync(path.join(OUT, 'actions.jsonl'), JSON.stringify({ ...a, ts: Date.now() }) + '\n');
+
+  async function attachListeners(p) {
+    p.setDefaultTimeout(10000);
+    p.on('pageerror', e => errors.push('pageerror: ' + e.message));
+    p.on('console', m => { if (m.type() === 'error') errors.push('console.error: ' + m.text()); });
+    return p;
+  }
+
+  ctx = await chromium.launchPersistentContext(PROFILE_DIR, LAUNCH);
+  ownedContext.ctx = ctx;
+  if (!owned.pid) throw new Error('launch succeeded but owned Chrome was not captured by spawn wrapper');
+  const networkLog = (event, request) => fs.appendFileSync(path.join(OUT,'network.jsonl'),JSON.stringify({at:new Date().toISOString(),event,url:request.url()})+'\n');
+  ctx.on('request', r => networkLog('request',r));
+  ctx.on('requestfailed', r => networkLog('requestfailed',r));
+  await ctx.route(/^https?:\/\//, r => {networkLog('blocked-http',r.request());return r.abort();});
+  await ctx.setOffline(true);
+  fs.writeFileSync(path.join(OUT,'network-policy.json'),JSON.stringify({offline:true,httpHttpsRouteAbort:true,serviceWorkers:'block',allowedApp:FILE_URL,noHostNetworkChanges:true},null,2));
+  page = ctx.pages()[0] || await ctx.newPage();
+  await attachListeners(page);
+  cdp = await ctx.newCDPSession(page);
+  cdp.on('Browser.downloadWillBegin', e => logAction({ action: 'cdp-willBegin', guid: e.guid }));
+  cdp.on('Browser.downloadProgress', e => logAction({ action: 'cdp-progress', state: e.state }));
+  await cdp.send('Browser.setDownloadBehavior', { behavior: 'allowAndName', downloadPath: path.win32.normalize(OUT + '/downloads'), eventsEnabled: true });
+  await page.goto('about:blank');
+
+  const t = {};
+  t.page = page; t.S0 = S0; t.TREE = clone(TREE); t.clone = clone;
+
+  function liAt(indexPath) {
+    let loc = page.locator('#map > ul > li');
+    for (const i of indexPath) loc = loc.locator(':scope > ul > li').nth(i);
+    return loc;
+  }
+
+  // DOM visible tree only; every descendant title must be visible
+  t.tree = async () => {
+    const rootUl = page.locator('#map > ul > li').first();
+    if (!(await page.locator('#map .empty').count()) && !(await rootUl.count())) return null;
+    if (!(await rootUl.count())) return null;
+    return rootUl.evaluate((li) => {
+      function visible(n) { const r = document.createRange(); r.selectNodeContents(n); const rect = r.getBoundingClientRect(); return !!(n.offsetParent !== null || rect.width || rect.height) && getComputedStyle(n).visibility !== 'hidden' && getComputedStyle(n).display !== 'none'; }
+      function build(n) {
+        const row = n.querySelector(':scope > .node-row > .title');
+        if (row && !visible(row)) throw new Error('hidden title: ' + row.textContent);
+        const kids = [];
+        const ul = n.querySelector(':scope > ul');
+        if (ul) for (const c of ul.children) if (c.tagName === 'LI') kids.push(build(c));
+        return { title: row ? row.textContent : null, children: kids };
+      }
+      return build(li);
+    });
+  };
+
+  const msgState = async () => {
+    const loc = page.locator('#msg');
+    const visible = await loc.isVisible().catch(() => false);
+    const text = visible ? (await loc.textContent() || '').trim() : '';
+    // errors render via inline color '#c22' (no 'error' class) => computed rgb(204, 34, 34)
+    const color = visible ? await loc.evaluate(el => getComputedStyle(el).color).catch(() => '') : '';
+    return { visible, text, color, isError: visible && text.length > 0 && color === 'rgb(204, 34, 34)' };
+  };
+
+  async function snap(label, extra, bestEffort = false) {
+    const safe = String(label).replace(/[^\w-]/g, '_');
+    // screenshot failures must surface on pass; catch path may pass bestEffort=true
+    if (bestEffort) await page.screenshot({ path: path.join(OUT, `snap-${safe}.png`), fullPage: true }).catch(() => {});
+    else await page.screenshot({ path: path.join(OUT, `snap-${safe}.png`), fullPage: true });
+    const tree = await t.tree().catch(() => null);
+    const ms = await msgState().catch(() => ({}));
+    fs.writeFileSync(path.join(OUT, `snap-${safe}.json`), JSON.stringify({ label, tree, errors, message: ms, ...extra }, null, 2));
+  }
+
+  const promptDialog = (value) => new Promise((res, rej) => page.once('dialog', d => { logAction({ action: 'dialog', type: d.type(), value }); d.accept(value).then(res, rej); }));
+
+  t.gen = async (text) => { await page.fill('#src', text); await page.click('#btn-gen'); await page.waitForTimeout(100); logAction({ action: 'gen', text }); };
+  t.rename = async (indexPath, title) => { const p = promptDialog(title); await liAt(indexPath).locator(':scope > .node-row > button', { hasText: '重命名' }).first().click(); await p; await page.waitForTimeout(100); logAction({ action: 'rename', indexPath, title }); };
+  t.add = async (indexPath, title) => { const p = promptDialog(title); await liAt(indexPath).locator(':scope > .node-row > button', { hasText: '+子节点' }).first().click(); await p; await page.waitForTimeout(100); logAction({ action: 'add', indexPath, title }); };
+  t.del = async (indexPath) => { await liAt(indexPath).locator(':scope > .node-row > button', { hasText: '删除' }).first().click(); await page.waitForTimeout(100); logAction({ action: 'del', indexPath }); };
+  t.undo = async () => { await page.click('#btn-undo'); await page.waitForTimeout(100); logAction({ action: 'undo' }); };
+
+  t.importFile = async (fixturePath) => {
+    const [fc] = await Promise.all([page.waitForEvent('filechooser'), page.click('#btn-import')]);
+    // DOM-only #msg observation via MutationObserver, installed BEFORE setFiles; the promise is
+    // created but NOT awaited until after setFiles, so the observation window is never missed.
+    const observed = page.evaluate(() => new Promise((resolve) => {
+      let done = false;
+      const finish = (v) => { if (!done) { done = true; resolve(v); } };
+      const target = document.querySelector('#msg') || document.documentElement;
+      const obs = new MutationObserver(() => {
+        const cur = (target.textContent || '').trim();
+        if (cur.length > 0) { obs.disconnect(); finish(cur); } // visible nonempty success or error text
+      });
+      obs.observe(target, { childList: true, characterData: true, subtree: true });
+      // bounded timer: disconnect observer and resolve null on timeout
+      setTimeout(() => { obs.disconnect(); finish(null); }, 12000);
+    }));
+    await fc.setFiles(fixturePath);
+    const msg = await observed; // actual DOM mutation, success or error
+    if (!msg) throw new Error('importFile: no #msg DOM feedback after file selection');
+    await page.waitForTimeout(100);
+    logAction({ action: 'importFile', fixturePath, messageObserved: true });
+  };
+
+  t.reset = async () => {
+    const oldErrors = errors.slice(); // inspected before reset
+    if (oldErrors.length) {
+      fs.appendFileSync(path.join(OUT, 'errors-history.jsonl'), JSON.stringify({ ts: Date.now(), errors: oldErrors }) + '\n');
+      throw new Error('reset: prior errors present; refusing to clear silently: ' + JSON.stringify(oldErrors));
+    }
+    try { await page.close(); } catch (e) {}
+    page = await ctx.newPage();
+    await attachListeners(page);
+    t.page = page;
+    errors = [];
+    await page.goto('about:blank');
+    await page.goto(FILE_URL, { waitUntil: 'load' });
+    const tree = await t.tree();
+    const emptyVisible = await page.locator('#map .empty').isVisible().catch(() => false);
+    if (tree !== null || !emptyVisible) throw new Error('reset: fresh DOM not empty; tree=' + JSON.stringify(tree));
+    logAction({ action: 'reset', clearedErrors: oldErrors.length });
+  };
+
+  // step(id, expected, action, {messageError?}) — action is an async fn(t)
+  t.step = async (id, expected, action, opts = {}) => {
+    const rec = { id, expected: clone(expected), status: null, timestamp: new Date().toISOString(), actionCount: 0 };
+    const before = fs.existsSync(path.join(OUT, 'actions.jsonl')) ? fs.readFileSync(path.join(OUT, 'actions.jsonl'), 'utf8').split('\n').filter(Boolean).length : 0;
+    const countLines = () => fs.existsSync(path.join(OUT, 'actions.jsonl')) ? fs.readFileSync(path.join(OUT, 'actions.jsonl'), 'utf8').split('\n').filter(Boolean).length : 0;
+    try {
+      if (action) await action(t);
+      // tree/visibility inspection exceptions classify as REFERENCE_FAILURE, not DRIVER_ERROR
+      let got;
+      try { got = await t.tree(); } catch (e) { throw new Error('REFERENCE_FAILURE: tree inspection failed: ' + (e.message || e)); }
+      const ms = await msgState();
+      const treeOk = JSON.stringify(got) === JSON.stringify(expected);
+      // expected === null requires the visible .empty indicator
+      const emptyVisible = expected === null ? await page.locator('#map .empty').isVisible().catch(() => false) : null;
+      const assertions = { treeMatches: treeOk, nodeCount: got ? (function count(n){return 1+n.children.reduce((a,c)=>a+count(c),0);})(got) : 0, message: ms };
+      if (expected === null) assertions.emptyVisible = emptyVisible;
+      if (opts.messageError === true) assertions.messageErrorShown = ms.isError;
+      else if (opts.messageError === false) assertions.messageErrorShown = !ms.isError;
+      const pass = treeOk && errors.length === 0 && (expected !== null || emptyVisible === true) && (opts.messageError !== true || ms.isError);
+      rec.actual = got; rec.nodeCount = assertions.nodeCount; rec.uiMessage = ms; rec.errors = errors.slice(); rec.assertions = assertions;
+      if (pass) { rec.status = 'PASS'; }
+      else {
+        rec.status = 'REFERENCE_FAILURE';
+        rec.reason = 'tree=' + JSON.stringify(got) + ' expected=' + JSON.stringify(expected) + (expected === null && emptyVisible !== true ? ' .empty not visible' : '') + (opts.messageError === true && !ms.isError ? ' messageError not shown' : '') + (errors.length ? ' errors=' + JSON.stringify(errors) : '');
+      }
+      rec.actionCount = countLines() - before; // recorded BEFORE snap so JSON metadata agrees with results.json
+      await snap(id, { step: rec });
+      steps.push(rec); writeResults();
+      if (!pass) throw new Error('REFERENCE_FAILURE[' + id + ']: ' + rec.reason);
+      logAction({ action: 'step', id, status: 'PASS' });
+      return rec;
+    } catch (e) {
+      const isDriver = rec.status !== 'REFERENCE_FAILURE' && !(e.message || '').startsWith('REFERENCE_FAILURE');
+      rec.status = isDriver ? 'DRIVER_ERROR' : rec.status || 'REFERENCE_FAILURE';
+      rec.reason = rec.reason || String(e.message || e);
+      rec.errors = errors.slice();
+      rec.actionCount = countLines() - before;
+      await snap(id + '-fail', { step: rec }, true).catch(() => {}); // best-effort snap; preserve reason
+      if (!steps.includes(rec)) steps.push(rec); writeResults(); // avoid duplicate failure record
+      fs.writeFileSync(path.join(OUT, `error-${String(id).replace(/[^\w-]/g, '_')}.json`), JSON.stringify({ id, status: rec.status, error: String(e.message || e), errors: errors.slice() }, null, 2));
+      throw e;
+    }
+  };
+
+  t.close = async () => {
+    writeResults();
+    const pageUrls = ctx.pages().map(p => { try { return p.url(); } catch (e) { return '<closed>'; } });
+    let closeError = null;
+    try { await ctx.close(); } catch (e) { closeError = String(e.message || e); }
+    let pagesAfterClose = null;
+    try { pagesAfterClose = ctx.pages().map(p => { try { return p.url(); } catch (e) { return '<closed>'; } }); } catch (e) { pagesAfterClose = '<context-unavailable>'; }
+    const ownedExit = { pid: owned.pid, exitedAt: owned.exitedAt || null, exitCode: owned.exitCode === undefined ? null : owned.exitCode };
+    fs.writeFileSync(path.join(OUT, 'close-evidence.json'), JSON.stringify({ ownedExit, pages: pageUrls, pagesAfterClose, closeError, closedAt: new Date().toISOString(), note: 'context-scoped close only; no global kill' }, null, 2));
+    if (closeError) throw new Error('close: ' + closeError);
+  };
+
+  writeResults();
+  return t;
+}
+
+// coordinator fallback: scoped ctx.close available even if createHarness fails after launch
+const ownedContext = { ctx: null };
+async function emergencyClose() {
+  const c = ownedContext.ctx;
+  if (!c) { fs.writeFileSync(path.join(OUT, 'emergency-close.json'), JSON.stringify({ closed: false, note: 'no owned context was recorded' }, null, 2)); return { closed: false }; }
+  const pagesBefore = c.pages().map(p => { try { return p.url(); } catch (e) { return '<closed>'; } });
+  let closeError = null;
+  try { await c.close(); } catch (e) { closeError = String(e.message || e); }
+  let pagesAfterClose = null;
+  try { pagesAfterClose = c.pages().map(p => { try { return p.url(); } catch (e) { return '<closed>'; } }); } catch (e) { pagesAfterClose = '<context-unavailable>'; }
+  const ownedExit = { pid: owned.pid, exitedAt: owned.exitedAt || null, exitCode: owned.exitCode === undefined ? null : owned.exitCode };
+  fs.writeFileSync(path.join(OUT, 'emergency-close.json'), JSON.stringify({ closed: !closeError, ownedExit, pagesBefore, pagesAfterClose, closeError, closedAt: new Date().toISOString(), note: 'context-scoped emergency close only; no global kill' }, null, 2));
+  if (closeError) throw new Error('emergencyClose: ' + closeError);
+  return { closed: true };
+}
+
+module.exports = { createHarness, emergencyClose };
+
+CASES SCRIPT:
+'use strict';
+/* T1 hidden acceptance cases H1-H9.
+ * Uses only the provided harness API (t), fs, path. No globals, no app internals.
+ * Fixture files are materialized ONLY under OUT/fixtures from ./fixtures.json.
+ * Expected trees are built in-test, independent of the actual UI.
+ * Node paths are zero-based child-index arrays: [] = root, [1] = root's second child, [1,0] = that child's first child.
+ */
+const fs = require('fs');
+const path = require('path');
+
+const N = (title, children = []) => ({ title, children });
+const FIX = require('./fixtures.json');
+const fx = (name) => FIX.files.find((f) => f.name === name).content;
+
+async function materialize(OUT) {
+  const dir = path.join(OUT, 'fixtures');
+  await fs.promises.mkdir(dir, { recursive: true });
+  for (const f of FIX.files) {
+    await fs.promises.writeFile(path.join(dir, f.name), f.content, 'utf8');
+  }
+  return dir;
+}
+
+function nodeAt(tree, p) {
+  let n = tree;
+  for (const i of p) n = n.children[i];
+  return n;
+}
+
+module.exports = async function (t, OUT) {
+  const fdir = await materialize(OUT);
+  const fp = (name) => path.join(fdir, name);
+
+  const S0 = () => N('中心主题', [N('分支一'), N('分支二', [N('细节甲'), N('细节乙')]), N('分支三')]);
+  const S0R = () => N('临时根', [N('分支一'), N('分支二', [N('细节甲'), N('细节乙')]), N('分支三')]);
+
+  // ---------- H1: empty-input generation rejected, undo record preserved ----------
+  const h1 = async (id, data) => {
+    await t.step(id + '-reset', null, async () => { await t.reset(); });
+    await t.step(id + '-gen-S0', S0(), async () => { await t.gen(fx('S0.txt')); });
+    await t.step(id + '-rename-root', S0R(), async () => { await t.rename([], '临时根'); });
+    await t.step(id + '-reject', S0R(), async () => { await t.gen(data); }, { messageError: true });
+    await t.step(id + '-undo', S0(), async () => { await t.undo(); });
+  };
+  await h1('H1-empty-textbox', fx('H1-empty.txt'));
+  await h1('H1-three-blank-lines', fx('H1-blank3.txt'));
+
+  // ---------- H2: single-root input is legal ----------
+  await t.step('H2-reset', null, async () => { await t.reset(); });
+  await t.step('H2-gen-single-root', N('根A'), async () => { await t.gen(fx('H2-rootA.txt')); });
+  await t.step('H2-undo-noop', N('根A'), async () => { await t.undo(); });
+
+  // ---------- H3: format violations all rejected, S0 and empty undo record intact ----------
+  const h3 = [
+    ['H3-indent-first-line', 'H3-1.txt'],
+    ['H3-jump-level', 'H3-2.txt'],
+    ['H3-tab-middle', 'H3-3.txt'],
+    ['H3-tab-leading', 'H3-4.txt'],
+    ['H3-tab-trailing', 'H3-5.txt']
+  ];
+  for (const [id, fn] of h3) {
+    await t.step(id + '-reset', null, async () => { await t.reset(); });
+    await t.step(id + '-gen-S0', S0(), async () => { await t.gen(fx('S0.txt')); });
+    await t.step(id + '-reject', S0(), async () => { await t.gen(fx(fn)); }, { messageError: true });
+    await t.step(id + '-undo-noop', S0(), async () => { await t.undo(); });
+  }
+
+  // ---------- H4: duplicate titles identified by position ----------
+  const h4a = () => N('根', [N('待办'), N('组', [N('待办')])]);
+  const h4b = () => N('根', [N('待办改'), N('组', [N('待办')])]);
+  await t.step('H4-reset', null, async () => { await t.reset(); });
+  await t.step('H4-gen-dup', h4a(), async () => { await t.gen(fx('H4.txt')); });
+  await t.step('H4-rename-first-dup', h4b(), async () => { await t.rename([0], '待办改'); });
+
+  // ---------- H5: invalid imports rejected, undo record preserved ----------
+  const h5pre = async (id) => {
+    await t.step(id + '-reset', null, async () => { await t.reset(); });
+    await t.step(id + '-gen-S0', S0(), async () => { await t.gen(fx('S0.txt')); });
+    await t.step(id + '-rename-root', S0R(), async () => { await t.rename([], '临时根'); });
+  };
+  for (let i = 1; i <= 3; i++) {
+    const id = 'H5-f' + i;
+    await h5pre(id);
+    await t.step(id + '-import-reject', S0R(), async () => { await t.importFile(fp('H5-f' + i + '.json')); }, { messageError: true });
+    await t.step(id + '-undo', S0(), async () => { await t.undo(); });
+  }
+  await h5pre('H5-f4-6');
+  for (let i = 4; i <= 6; i++) {
+    await t.step('H5-f' + i + '-import-reject', S0R(), async () => { await t.importFile(fp('H5-f' + i + '.json')); }, { messageError: true });
+  }
+  await t.step('H5-f4-6-undo', S0(), async () => { await t.undo(); });
+
+  // ---------- H6: successful import = whole replace + stack cleared ----------
+  const F1 = () => N('导入根A', [N('子一')]);
+  const F1T = () => N('导入根A', [N('子一'), N('临时')]);
+  const F2 = () => N('导入根B');
+  await t.step('H6-reset', null, async () => { await t.reset(); });
+  await t.step('H6-gen-S0', S0(), async () => { await t.gen(fx('S0.txt')); });
+  await t.step('H6-rename-root', N('改根', [N('分支一'), N('分支二', [N('细节甲'), N('细节乙')]), N('分支三')]), async () => { await t.rename([], '改根'); });
+  await t.step('H6-import-F1', F1(), async () => { await t.importFile(fp('H6-f1.json')); });
+  await t.step('H6-undo-noop-after-F1', F1(), async () => { await t.undo(); });
+  await t.step('H6-add-temp', F1T(), async () => { await t.add([], '临时'); });
+  await t.step('H6-import-F2', F2(), async () => { await t.importFile(fp('H6-f2.json')); });
+  await t.step('H6-undo-noop-after-F2', F2(), async () => { await t.undo(); });
+
+  // ---------- H7: deep tree, subtree delete, full restore ----------
+  const H7full = () => N('主', [N('支一', [N('叶一', [N('子叶一')]), N('叶二')]), N('支二')]);
+  await t.step('H7-reset', null, async () => { await t.reset(); });
+  await t.step('H7-gen-deep', H7full(), async () => { await t.gen(fx('H7.txt')); });
+  await t.step('H7-del-zhi1', N('主', [N('支二')]), async () => { await t.del([0]); });
+  await t.step('H7-undo-restore', H7full(), async () => { await t.undo(); });
+
+  // ---------- H8: undo depth exactly at public lower bound 10 ----------
+  const edits = [
+    ['add', [], '附4'],
+    ['rename', [3], '附肆'],
+    ['add', [0], '附1'],
+    ['rename', [1, 0], '改甲'],
+    ['add', [1, 1], '附2'],
+    ['add', [1], '附3'],
+    ['rename', [2], '改三'],
+    ['add', [2], '附5'],
+    ['rename', [], '改根'],
+    ['add', [0], '附6']
+  ];
+  await t.step('H8-reset', null, async () => { await t.reset(); });
+  await t.step('H8-gen-S0', S0(), async () => { await t.gen(fx('S0.txt')); });
+  let cur = S0();
+  const snaps = [t.clone(cur)]; // snaps[k] = full expected tree before edit k+1
+  for (let k = 0; k < 10; k++) {
+    const [op, p, title] = edits[k];
+    if (op === 'add') nodeAt(cur, p).children.push(N(title));
+    else nodeAt(cur, p).title = title;
+    const after = t.clone(cur);
+    const kn = k + 1;
+    await t.step('H8-edit' + kn, after, async () => {
+      if (op === 'add') await t.add(p, title);
+      else await t.rename(p, title);
+    });
+    snaps.push(after);
+  }
+  for (let j = 1; j <= 10; j++) {
+    await t.step('H8-undo' + j, t.clone(snaps[10 - j]), async () => { await t.undo(); });
+  }
+  await t.step('H8-undo11-noop', t.clone(snaps[0]), async () => { await t.undo(); });
+
+  // ---------- H9: invalid edits (empty/tab titles) never enter the undo stack ----------
+  const H9a = () => N('中心主题', [N('合法1'), N('分支二', [N('细节甲'), N('细节乙')]), N('分支三')]);
+  await t.step('H9-reset', null, async () => { await t.reset(); });
+  await t.step('H9-gen-S0', S0(), async () => { await t.gen(fx('S0.txt')); });
+  await t.step('H9-rename-valid', H9a(), async () => { await t.rename([0], '合法1'); });
+  const h9inv = [
+    ['H9-empty-title', 'H9-empty.txt'],
+    ['H9-tab-leading', 'H9-tab1.txt'],
+    ['H9-tab-trailing', 'H9-tab2.txt'],
+    ['H9-tab-middle', 'H9-tab3.txt']
+  ];
+  for (const [id, fn] of h9inv) {
+    await t.step(id + '-reject', H9a(), async () => { await t.rename([1], fx(fn)); });
+  }
+  await t.step('H9-undo', S0(), async () => { await t.undo(); });
+};

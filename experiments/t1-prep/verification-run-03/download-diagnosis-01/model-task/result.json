@@ -1,0 +1,85 @@
+{
+  "duration_api_ms": 37320,
+  "stop_reason": "end_turn",
+  "session_id": "24a05b0f-74a9-4fe5-97cb-04329817a890",
+  "total_cost_usd": 0.06873499999999999,
+  "usage": {
+    "input_tokens": 2347,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "output_tokens": 2280,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "glm-5.3-flash": {
+      "inputTokens": 2347,
+      "outputTokens": 2280,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.06873499999999999,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000,
+      "thinkingTokens": 0,
+      "canonicalModel": "glm-5.3-flash",
+      "provider": "firstParty",
+      "costBasis": "unknown"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "is_error": false,
+  "num_turns": 1,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "```javascript\n// diagnosis.cjs — Windows Chrome file:// download \"canceled\" minimal diagnosis (A/B/C three fixed groups)\nconst { chromium } = require('D:/projects/npm-cache/_npx/cbf1b8a072280925/node_modules/playwright-core');\nconst fs = require('fs'), path = require('path'), crypto = require('crypto');\nconst { pathToFileURL } = require('url');\n\nconst OUT = __dirname;\nconst EXPECTED = JSON.parse(fs.readFileSync(path.join(OUT, 'expected.json'), 'utf8'));\nconst EXPECTED_BYTES = JSON.stringify(EXPECTED, null, 2);\nconst CHROME = 'C:/Program Files/Google/Chrome/Application/chrome.exe';\nconst PAGE_URL = () => pathToFileURL(path.join(OUT, 'diag.html')).href;\n\nfs.mkdirSync(path.join(OUT, 'evidence-originals'), { recursive: true });\n\n// 唯一诊断页\nfs.writeFileSync(path.join(OUT, 'diag.html'), `<!doctype html><meta charset=\"utf-8\">\n<button id=\"data\">data</button><button id=\"blob\">blob</button>\n<script>\ndocument.getElementById('data').onclick = () => {\n  const a = document.createElement('a');\n  a.href = 'data:application/json;charset=utf-8,' + encodeURIComponent(BYTES);\n  a.download = 'mindmap.json'; document.body.appendChild(a); a.click(); a.remove();\n};\ndocument.getElementById('blob').onclick = () => {\n  const u = URL.createObjectURL(new Blob([BYTES], { type: 'application/json' }));\n  const a = document.createElement('a');\n  a.href = u; a.download = 'mindmap.json'; document.body.appendChild(a); a.click(); a.remove();\n  setTimeout(() => URL.revokeObjectURL(u), 1000);\n};\n</script>`);\n\nconst sha256 = (p) => crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex');\nconst within = (p, dir) => path.resolve(p).toLowerCase().startsWith(path.resolve(dir).toLowerCase() + path.sep);\n\nasync function runGroup(name, useCDP, normalizePath) {\n  const dir = path.join(OUT, name);\n  ['profile', 'downloads', 'temp', 'home', 'home/AppData/Roaming', 'home/AppData/Local'].forEach(s => fs.mkdirSync(path.join(dir, s), { recursive: true }));\n  const dp = dir + '/downloads';\n  const result = { group: name, cdpDownloadPath: null, commandLineFlags: [], events: [], downloads: [], errors: [], saved: {}, byteMatch: {}, deepMatch: {} };\n  const evl = fs.createWriteStream(path.join(dir, 'cdp-events.jsonl'));\n  const bounded = (p, ms) => Promise.race([p, new Promise((_, rej) => setTimeout(() => rej(new Error('timeout ' + ms + 'ms')), ms))]);\n\n  const launch = {\n    executablePath: CHROME, headless: true, chromiumSandbox: true, ignoreDefaultArgs: true,\n    args: ['--headless=new', '--remote-debugging-pipe', '--user-data-dir=' + dir + '/profile', '--no-first-run', '--no-default-browser-check', '--disable-background-networking', '--disable-component-update', '--disable-sync', '--disable-extensions', '--enable-automation', '--window-size=1280,800'],\n    downloadsPath: dp, acceptDownloads: true, offline: true, serviceWorkers: 'block',\n    viewport: { width: 1280, height: 800 }, timeout: 30000,\n    env: { ...process.env, TEMP: dir + '/temp', TMP: dir + '/temp', HOME: dir + '/home', USERPROFILE: dir + '/home', APPDATA: dir + '/home/AppData/Roaming', LOCALAPPDATA: dir + '/home/AppData/Local' }\n  };\n  const browser = await chromium.launchPersistentContext(dir + '/profile', launch);\n  try {\n    const cdp = await browser.newBrowserCDPSession();\n    const cl = await cdp.send('Browser.getBrowserCommandLine');\n    result.commandLineFlags = cl.arguments.filter(a => /no-sandbox|disable-security/.test(a));\n    if (useCDP) {\n      const dpath = normalizePath ? path.win32.normalize(dp) : dp; // A: forward slashes; B: normalized (backslashes)\n      result.cdpDownloadPath = dpath;\n      await cdp.send('Browser.setDownloadBehavior', { behavior: 'allowAndName', downloadPath: dpath, eventsEnabled: true });\n    } else {\n      result.cdpDownloadPath = null; // C: 未调用 Browser.setDownloadBehavior，无 CDP 下载事件（诚实说明）\n    }\n    cdp.on('Browser.downloadWillBegin', e => { result.events.push({ t: Date.now(), ev: 'downloadWillBegin', ...e }); evl.write(JSON.stringify({ ev: 'downloadWillBegin', ...e }) + '\\n'); });\n    cdp.on('Browser.downloadProgress', e => { result.events.push({ t: Date.now(), ev: 'downloadProgress', ...e }); evl.write(JSON.stringify({ ev: 'downloadProgress', ...e }) + '\\n'); });\n\n    const page = await browser.newPage();\n    page.on('pageerror', e => result.errors.push('pageerror: ' + e.message));\n    page.on('console', m => { if (m.type() === 'error') result.errors.push('console.error: ' + m.text()); });\n    await page.route(/^https?:\\/\\//, r => r.abort());\n    await page.setOffline(true);\n    await page.screenshot({ path: path.join(dir, 's0-about-blank.png') });\n    await page.goto(PAGE_URL());\n\n    for (const kind of ['data', 'blob']) {\n      const d = { source: kind, url: null, suggestedFilename: null, path: null, failure: null, saveAs: null, filePathCDP: null };\n      try {\n        const dlPromise = page.waitForEvent('download', { timeout: 20000 });\n        await bounded(page.click('#' + kind), 20000);\n        const dl = await bounded(dlPromise, 20000);\n        d.url = dl.url(); d.suggestedFilename = dl.suggestedFilename();\n        try { d.path = await bounded(dl.path(), 20000); } catch (e) { d.pathError = String(e.message).slice(0, 200); }\n        try { d.failure = dl.failure(); } catch (e) { /* still running */ }\n        if (d.path && within(d.path, dir) && fs.existsSync(d.path)) {\n          d.sha256Original = sha256(d.path);\n          const copy = path.join(dir, 'evidence-originals', kind + '-mindmap.json');\n          fs.copyFileSync(d.path, copy);\n          const saved = path.join(dir, 'saved', kind + '.json');\n          fs.mkdirSync(path.join(dir, 'saved'), { recursive: true });\n          fs.copyFileSync(d.path, saved);\n          d.saveAs = saved; d.sha256Saved = sha256(saved);\n          result.byteMatch[kind] = fs.readFileSync(saved, 'utf8') === EXPECTED_BYTES;\n          result.deepMatch[kind] = JSON.stringify(JSON.parse(fs.readFileSync(saved, 'utf8')), null, 2) === EXPECTED_BYTES;\n        } else if (d.path) { d.pathOutsideOrMissing = true; }\n      } catch (e) { d.failure = d.failure || String(e.message).slice(0, 300); }\n      result.downloads.push(d);\n      try { await page.screenshot({ path: path.join(dir, 'after-' + kind + '.png') }); } catch (e) { /* ignore */ }\n    }\n  } catch (e) { result.errors.push(String(e.message).slice(0, 300)); }\n  finally {\n    evl.end();\n    await browser.close().catch(() => {});\n  }\n  fs.writeFileSync(path.join(dir, 'result.json'), JSON.stringify(result, null, 2));\n  return { group: name, cdpDownloadPath: result.cdpDownloadPath, downloads: result.downloads.map(d => ({ source: d.source, url: d.url, suggestedFilename: d.suggestedFilename, failure: d.failure, path: d.path, saveAs: d.saveAs, byteMatch: result.byteMatch[d.source], deepMatch: result.deepMatch[d.source] })), errors: result.errors };\n}\n\n(async () => {\n  const results = [];\n  for (const [name, useCDP, norm] of [['A', true, false], ['B', true, true], ['C', false, false]]) {\n    if (Date.now() - start > 180000) { results.push({ group: name, skipped: '180s budget exhausted' }); continue; }\n    results.push(await runGroup(name, useCDP, norm));\n  }\n  fs.writeFileSync(path.join(OUT, 'results.json'), JSON.stringify(results, null, 2));\n  console.log('diagnosis collection complete (exit 0 = collection done, not acceptance)');\n  process.exit(0);\n})().catch(e => { console.error('fatal:', e.message); process.exit(0); });\nconst start = Date.now();\n```",
+  "ttft_ms": 7481,
+  "type": "result",
+  "duration_ms": 37447,
+  "uuid": "a8efd828-982a-431f-a48a-709a00640cde",
+  "ttft_stream_ms": 974,
+  "time_to_request_ms": 129,
+  "first_content_frame_ms": 974,
+  "queued_turn_count": 0,
+  "result_index": 0
+}

@@ -1,0 +1,85 @@
+{
+  "duration_api_ms": 235528,
+  "stop_reason": "end_turn",
+  "session_id": "076f4bf4-65f7-4e5e-a9b1-73260b7e85ab",
+  "total_cost_usd": 0.32729,
+  "usage": {
+    "input_tokens": 7738,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "output_tokens": 11544,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "glm-5.3-flash": {
+      "inputTokens": 7738,
+      "outputTokens": 11544,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.32729,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000,
+      "thinkingTokens": 0,
+      "canonicalModel": "glm-5.3-flash",
+      "provider": "firstParty",
+      "costBasis": "unknown"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "is_error": false,
+  "num_turns": 1,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "```json\n{\n  \"files\": [\n    {\n      \"path\": \"cases.cjs\",\n      \"content\": \"'use strict';\\n/* T1 hidden acceptance cases H1-H9.\\n * Uses only the provided harness API (t), fs, path. No globals, no app internals.\\n * Fixture files are materialized ONLY under OUT/fixtures from ./fixtures.json.\\n * Expected trees are built in-test, independent of the actual UI.\\n * Node paths are zero-based child-index arrays, e.g. [0,1,0] = root.children[1].children[0].\\n */\\nconst fs = require('fs');\\nconst path = require('path');\\n\\nconst N = (title, children = []) => ({ title, children });\\nconst FIX = require('./fixtures.json');\\nconst fx = (name) => FIX.files.find((f) => f.name === name).content;\\n\\nasync function materialize(OUT) {\\n  const dir = path.join(OUT, 'fixtures');\\n  await fs.promises.mkdir(dir, { recursive: true });\\n  for (const f of FIX.files) {\\n    await fs.promises.writeFile(path.join(dir, f.name), f.content, 'utf8');\\n  }\\n  return dir;\\n}\\n\\nfunction nodeAt(tree, p) {\\n  let n = tree;\\n  for (const i of p) n = n.children[i];\\n  return n;\\n}\\n\\nmodule.exports = async function (t, OUT) {\\n  const fdir = await materialize(OUT);\\n  const fp = (name) => path.join(fdir, name);\\n\\n  const S0 = () => N('中心主题', [N('分支一'), N('分支二', [N('细节甲'), N('细节乙')]), N('分支三')]);\\n  const S0R = () => N('临时根', [N('分支一'), N('分支二', [N('细节甲'), N('细节乙')]), N('分支三')]);\\n\\n  // ---------- H1: empty-input generation rejected, undo record preserved ----------\\n  const h1 = async (id, data) => {\\n    await t.step(id + '-reset', null, async () => { await t.reset(); });\\n    await t.step(id + '-gen-S0', S0(), async () => { await t.gen(fx('S0.txt')); });\\n    await t.step(id + '-rename-root', S0R(), async () => { await t.rename([0], '临时根'); });\\n    await t.step(id + '-reject', S0R(), async () => { await t.gen(data); });\\n    await t.step(id + '-undo', S0(), async () => { await t.undo(); });\\n  };\\n  await h1('H1-empty-textbox', '');\\n  await h1('H1-three-blank-lines', fx('H1-blank3.txt'));\\n\\n  // ---------- H2: single-root input is legal ----------\\n  await t.step('H2-reset', null, async () => { await t.reset(); });\\n  await t.step('H2-gen-single-root', N('根A'), async () => { await t.gen(fx('H2-rootA.txt')); });\\n  await t.step('H2-undo-noop', N('根A'), async () => { await t.undo(); });\\n\\n  // ---------- H3: format violations all rejected, S0 and empty undo record intact ----------\\n  const h3 = [\\n    ['H3-indent-first-line', 'H3-1.txt'],\\n    ['H3-jump-level', 'H3-2.txt'],\\n    ['H3-tab-middle', 'H3-3.txt'],\\n    ['H3-tab-leading', 'H3-4.txt'],\\n    ['H3-tab-trailing', 'H3-5.txt']\\n  ];\\n  for (const [id, fn] of h3) {\\n    await t.step(id + '-reset', null, async () => { await t.reset(); });\\n    await t.step(id + '-gen-S0', S0(), async () => { await t.gen(fx('S0.txt')); });\\n    await t.step(id + '-reject', S0(), async () => { await t.gen(fx(fn)); });\\n    await t.step(id + '-undo-noop', S0(), async () => { await t.undo(); });\\n  }\\n\\n  // ---------- H4: duplicate titles identified by position ----------\\n  const h4a = () => N('根', [N('待办'), N('组', [N('待办')])]);\\n  const h4b = () => N('根', [N('待办改'), N('组', [N('待办')])]);\\n  await t.step('H4-reset', null, async () => { await t.reset(); });\\n  await t.step('H4-gen-dup', h4a(), async () => { await t.gen(fx('H4.txt')); });\\n  await t.step('H4-rename-first-dup', h4b(), async () => { await t.rename([0, 0], '待办改'); });\\n\\n  // ---------- H5: invalid imports rejected, undo record preserved ----------\\n  const h5pre = async (id) => {\\n    await t.step(id + '-reset', null, async () => { await t.reset(); });\\n    await t.step(id + '-gen-S0', S0(), async () => { await t.gen(fx('S0.txt')); });\\n    await t.step(id + '-rename-root', S0R(), async () => { await t.rename([0], '临时根'); });\\n  };\\n  for (let i = 1; i <= 3; i++) {\\n    const id = 'H5-f' + i;\\n    await h5pre(id);\\n    await t.step(id + '-import-reject', S0R(), async () => { await t.importFile(fp('H5-f' + i + '.json')); });\\n    await t.step(id + '-undo', S0(), async () => { await t.undo(); });\\n  }\\n  await h5pre('H5-f4-6');\\n  for (let i = 4; i <= 6; i++) {\\n    await t.step('H5-f' + i + '-import-reject', S0R(), async () => { await t.importFile(fp('H5-f' + i + '.json')); });\\n  }\\n  await t.step('H5-f4-6-undo', S0(), async () => { await t.undo(); });\\n\\n  // ---------- H6: successful import = whole replace + stack cleared ----------\\n  const F1 = () => N('导入根A', [N('子一')]);\\n  const F1T = () => N('导入根A', [N('子一'), N('临时')]);\\n  const F2 = () => N('导入根B');\\n  await t.step('H6-reset', null, async () => { await t.reset(); });\\n  await t.step('H6-gen-S0', S0(), async () => { await t.gen(fx('S0.txt')); });\\n  await t.step('H6-rename-root', N('改根', [N('分支一'), N('分支二', [N('细节甲'), N('细节乙')]), N('分支三')]), async () => { await t.rename([0], '改根'); });\\n  await t.step('H6-import-F1', F1(), async () => { await t.importFile(fp('H6-f1.json')); });\\n  await t.step('H6-undo-noop-after-F1', F1(), async () => { await t.undo(); });\\n  await t.step('H6-add-temp', F1T(), async () => { await t.add([0], '临时'); });\\n  await t.step('H6-import-F2', F2(), async () => { await t.importFile(fp('H6-f2.json')); });\\n  await t.step('H6-undo-noop-after-F2', F2(), async () => { await t.undo(); });\\n\\n  // ---------- H7: deep tree, subtree delete, full restore ----------\\n  const H7full = () => N('主', [N('支一', [N('叶一', [N('子叶一')]), N('叶二')]), N('支二')]);\\n  await t.step('H7-reset', null, async () => { await t.reset(); });\\n  await t.step('H7-gen-deep', H7full(), async () => { await t.gen(fx('H7.txt')); });\\n  await t.step('H7-del-zhi1', N('主', [N('支二')]), async () => { await t.del([0]); });\\n  await t.step('H7-undo-restore', H7full(), async () => { await t.undo(); });\\n\\n  // ---------- H8: undo depth exactly at public lower bound 10 ----------\\n  const edits = [\\n    ['add', [0], '附4'],\\n    ['rename', [0, 3], '附肆'],\\n    ['add', [0, 0], '附1'],\\n    ['rename', [0, 1, 0], '改甲'],\\n    ['add', [0, 1, 1], '附2'],\\n    ['add', [0, 1], '附3'],\\n    ['rename', [0, 2], '改三'],\\n    ['add', [0, 2], '附5'],\\n    ['rename', [0], '改根'],\\n    ['add', [0, 0], '附6']\\n  ];\\n  let cur = S0();\\n  const snaps = [t.clone(cur)]; // snaps[k] = full expected tree before edit k+1\\n  for (let k = 0; k < 10; k++) {\\n    const [op, p, title] = edits[k];\\n    if (op === 'add') nodeAt(cur, p).children.push(N(title));\\n    else nodeAt(cur, p).title = title;\\n    const after = t.clone(cur);\\n    const kn = k + 1;\\n    await t.step('H8-edit' + kn, after, async () => {\\n      if (op === 'add') await t.add(p, title);\\n      else await t.rename(p, title);\\n    });\\n    snaps.push(after);\\n  }\\n  for (let j = 1; j <= 10; j++) {\\n    await t.step('H8-undo' + j, t.clone(snaps[10 - j]), async () => { await t.undo(); });\\n  }\\n  await t.step('H8-undo11-noop', t.clone(snaps[0]), async () => { await t.undo(); });\\n\\n  // ---------- H9: invalid edits (empty/tab titles) never enter the undo stack ----------\\n  const H9a = () => N('中心主题', [N('合法1'), N('分支二', [N('细节甲'), N('细节乙')]), N('分支三')]);\\n  await t.step('H9-reset', null, async () => { await t.reset(); });\\n  await t.step('H9-gen-S0', S0(), async () => { await t.gen(fx('S0.txt')); });\\n  await t.step('H9-rename-valid', H9a(), async () => { await t.rename([0, 0], '合法1'); });\\n  const h9inv = [\\n    ['H9-empty-title', 'H9-empty.txt'],\\n    ['H9-tab-leading', 'H9-tab1.txt'],\\n    ['H9-tab-trailing', 'H9-tab2.txt'],\\n    ['H9-tab-middle', 'H9-tab3.txt']\\n  ];\\n  for (const [id, fn] of h9inv) {\\n    await t.step(id + '-reject', H9a(), async () => { await t.rename([0, 1], fx(fn)); });\\n  }\\n  await t.step('H9-undo', S0(), async () => { await t.undo(); });\\n};\\n\"\n    },\n    {\n      \"path\": \"fixtures.json\",\n      \"content\": \"{\\\"files\\\":[{\\\"name\\\":\\\"S0.txt\\\",\\\"content\\\":\\\"中心主题\\\\n  分支一\\\\n  分支二\\\\n    细节甲\\\\n    细节乙\\\\n  分支三\\\"},{\\\"name\\\":\\\"H1-blank3.txt\\\",\\\"content\\\":\\\"\\\\n  \\\\n\\\"},{\\\"name\\\":\\\"H2-rootA.txt\\\",\\\"content\\\":\\\"根A\\\"},{\\\"name\\\":\\\"H3-1.txt\\\",\\\"content\\\":\\\"  首行缩进\\\"},{\\\"name\\\":\\\"H3-2.txt\\\",\\\"content\\\":\\\"A\\\\n    B\\\"},{\\\"name\\\":\\\"H3-3.txt\\\",\\\"content\\\":\\\"A\\\\tB\\\"},{\\\"name\\\":\\\"H3-4.txt\\\",\\\"content\\\":\\\"\\\\tA\\\"},{\\\"name\\\":\\\"H3-5.txt\\\",\\\"content\\\":\\\"A\\\\t\\\"},{\\\"name\\\":\\\"H4.txt\\\",\\\"content\\\":\\\"根\\\\n  待办\\\\n  组\\\\n    待办\\\"},{\\\"name\\\":\\\"H5-f1.json\\\",\\\"content\\\":\\\"hello\\\"},{\\\"name\\\":\\\"H5-f2.json\\\",\\\"content\\\":\\\"{\\\\\\\"children\\\\\\\":[]}\\\"},{\\\"name\\\":\\\"H5-f3.json\\\",\\\"content\\\":\\\"{\\\\\\\"title\\\\\\\":\\\\\\\"x\\\\\\\",\\\\\\\"children\\\\\\\":\\\\\\\"no\\\\\\\"}\\\"},{\\\"name\\\":\\\"H5-f4.json\\\",\\\"content\\\":\\\"{\\\\\\\"title\\\\\\\":\\\\\\\"\\\\\\\\t前\\\\\\\",\\\\\\\"children\\\\\\\":[]}\\\"},{\\\"name\\\":\\\"H5-f5.json\\\",\\\"content\\\":\\\"{\\\\\\\"title\\\\\\\":\\\\\\\"后\\\\\\\\t\\\\\\\",\\\\\\\"children\\\\\\\":[]}\\\"},{\\\"name\\\":\\\"H5-f6.json\\\",\\\"content\\\":\\\"{\\\\\\\"title\\\\\\\":\\\\\\\"中\\\\\\\\t间\\\\\\\",\\\\\\\"children\\\\\\\":[]}\\\"},{\\\"name\\\":\\\"H6-f1.json\\\",\\\"content\\\":\\\"{\\\\\\\"title\\\\\\\":\\\\\\\"导入根A\\\\\\\",\\\\\\\"children\\\\\\\":[{\\\\\\\"title\\\\\\\":\\\\\\\"子一\\\\\\\",\\\\\\\"children\\\\\\\":[]}]}\\\"},{\\\"name\\\":\\\"H6-f2.json\\\",\\\"content\\\":\\\"{\\\\\\\"title\\\\\\\":\\\\\\\"导入根B\\\\\\\",\\\\\\\"children\\\\\\\":[]}\\\"},{\\\"name\\\":\\\"H7.txt\\\",\\\"content\\\":\\\"主\\\\n  支一\\\\n    叶一\\\\n      子叶一\\\\n    叶二\\\\n  支二\\\"},{\\\"name\\\":\\\"H9-empty.txt\\\",\\\"content\\\":\\\"\\\"},{\\\"name\\\":\\\"H9-tab1.txt\\\",\\\"content\\\":\\\"\\\\t前导\\\"},{\\\"name\\\":\\\"H9-tab2.txt\\\",\\\"content\\\":\\\"尾随\\\\t\\\"},{\\\"name\\\":\\\"H9-tab3.txt\\\",\\\"content\\\":\\\"中\\\\t间\\\"}]}\"\n    }\n  ],\n  \"coverage\": [\n    \"H1: H1-empty-textbox (①空文本框), H1-three-blank-lines (②3空白行含1行仅空格) — each independent reset/S0/rename → reject (visible message, map unchanged) → undo restores 中心主题 proving stack preserved\",\n    \"H2: H2-reset, H2-gen-single-root (根A), H2-undo-noop\",\n    \"H3: H3-indent-first-line (首行缩进), H3-jump-level (跳层 A/4空格B), H3-tab-middle (A+Tab+B), H3-tab-leading (Tab+A), H3-tab-trailing (A+Tab) — each independent reset+S0, rejection step, then undo-noop step behaviorally proving empty stack\",\n    \"H4: H4-reset, H4-gen-dup (根/待办/组/待办), H4-rename-first-dup (path [0,0] only; 待办 under 组 unchanged)\",\n    \"H5: H5-f1/H5-f2/H5-f3 (each independent reset/S0/rename → import-reject → undo restores 中心主题); H5-f4-6 shared rebuild then H5-f4/H5-f5/H5-f6 import-rejects (leading/trailing/middle Tab titles) then single H5-f4-6-undo\",\n    \"H6: H6-reset, H6-gen-S0, H6-rename-root(改根), H6-import-F1, H6-undo-noop-after-F1, H6-add-temp(临时), H6-import-F2(单节点导入根B, 临时消失), H6-undo-noop-after-F2\",\n    \"H7: H7-reset, H7-gen-deep (主/支一/叶一/子叶一/叶二/支二), H7-del-zhi1 (余2节点), H7-undo-restore (整子树原位原序恢复6节点)\",\n    \"H8: H8-reset via H8-edit1 precondition from fresh S0? — no: H8 starts from S0 generated after H7; exact sequence H8-edit1..H8-edit10 (each step's expected tree = full tree after that edit; snaps record expected before each edit), H8-undo1..H8-undo10 (reverse, each expecting pre-edit state; undo10 = S0), H8-undo11-noop (no effect, no error)\",\n    \"H9: H9-reset, H9-gen-S0, H9-rename-valid (分支一→合法1, 栈=1), H9-empty-title/H9-tab-leading/H9-tab-trailing/H9-tab-middle rejects on 分支二 (state unchanged, no interruption), H9-undo (reverts H9-rename-valid only, back to S0)\"\n  ],\n  \"notes\": [\n    \"Each t.step asserts the full expected tree built independently in-test (zero-based child-index paths); null expectedTree used only for fresh-page empty state. UI errors are asserted absent automatically; messageError:true keeps rejection messages visible on H1/H3/H5 reject steps and all others.\",\n    \"H1 uses exactly '\\\\n  \\\\n' (3 rows, middle row spaces-only) per frozen instruction; two fully independent reset+S0+rename subcases.\",\n    \"H8 performs exactly 10 edits and exactly 10 undos plus one 11th no-op undo; no extra edits. H9 performs exactly 4 invalid renames (empty + 3 tab positions) and one undo restoring S0.\",\n    \"fixtures.json carries all fixed text inputs (S0, H1 blank lines, H2, H3×5, H4, H7, H9×4) and import file contents (H5-f1..f6, H6-f1/f2) with explicit \\\\t and \\\\n escapes; H5-f4/f5/f6 files contain JSON \\\\t escape sequences so parsed titles carry leading/trailing/middle Tab and fail the unified title rule.\",\n    \"cases.cjs materializes fixture files only under OUT/fixtures by reading ./fixtures.json (coordinator installs both in the same directory); no writes outside OUT/fixtures, no browser creation, no globals, only fs/path + fixtures.json require.\",\n    \"Behavioral stack checks only: rejections followed by a single undo whose expected tree proves the record was/was not cleared; no internal app state is accessed. No sleeps; synchronization is the harness's responsibility. Any failed step halts all remaining cases.\"\n  ]\n}\n```",
+  "ttft_ms": 163852,
+  "type": "result",
+  "duration_ms": 235632,
+  "uuid": "3e7b1c47-f6d7-42f2-af9a-aa8d899cca42",
+  "ttft_stream_ms": 1495,
+  "time_to_request_ms": 106,
+  "first_content_frame_ms": 1495,
+  "queued_turn_count": 0,
+  "result_index": 0
+}

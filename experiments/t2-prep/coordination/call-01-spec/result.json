@@ -1,0 +1,85 @@
+{
+  "duration_api_ms": 114018,
+  "stop_reason": "end_turn",
+  "session_id": "a08fc7ae-c74c-42c3-b0b4-0617a8bac820",
+  "total_cost_usd": 0.09156,
+  "usage": {
+    "input_tokens": 1722,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "output_tokens": 3318,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "glm-5.3-flash": {
+      "inputTokens": 1722,
+      "outputTokens": 3318,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.09156,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000,
+      "thinkingTokens": 0,
+      "canonicalModel": "glm-5.3-flash",
+      "provider": "firstParty",
+      "costBasis": "unknown"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "is_error": false,
+  "num_turns": 1,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "{\"files\":[{\"path\":\"spec/T2-SPEC-draft-v0.1.md\",\"content\":\"# T2 规格草案 v0.1（拟定，待会审，未获批）\\n\\n状态：仅准备文档，本批不含任何产品或测试代码，未运行任何验证。本文所有“固定判据”仅指本草案内部固定，不代表设计已冻结或获批；所有具体取值为拟定值，末尾汇总。\\n\\n## 0. 任务范围\\n- 未来产品仅为 `notes.py`（仅 Python 标准库）+ `README.md`，位于未来产品工作区根目录。\\n- 未来 `tests/` 由评价器提供，产品与规格均不得修改它。本规格不泄漏任何缺陷插入点、变异体或隐藏用例内容。\\n- 参考/隐藏/协调日志（含本文件所在协调目录）绝不进入未来产品工作区。\\n- 无任何第三方依赖；无运行、无实验执行。\\n\\n## 1. 产品概述（拟定）\\n`notes.py` 为笔记 CLI，仅四个子命令：`add`、`list`、`search`、`export`。数据存储于单一 store 文件（拟定 JSONL），导出为 JSON 数组文件。核心链：同一 store 上先写入（含转义）、再查询（读回）、再导出并可用 `--store` 重载导出的 JSON 文件继续操作。\\n\\n## 2. 固定公开判据总则\\n1. 全部行为归结为 R01–R12（§6）。评价用例必须可映射到这些 ID。\\n2. 固定公开用例共 10 个（§7），内容在本草案内固定；隐藏用例仅替换输入数据/标题/正文/查询词，不得引入新命令、新流程或新断言类型。\\n3. 缺陷判定：每个单要求变异至少违反一个 R ID（保留三个核心：字符串保真→R03/R09；查询折叠→R06；导出重载语义→R05/R07/R09）。插入点数量 2–3 个，具体位置本规格不泄漏。\\n4. 错误码：标准命令输入缺省/非法参数统一退出码 2；I/O 与坏存储错误退出码 3；成功为 0。退出码属 R08。\\n5. 非法输入（任何被拒绝的操作）不得改变既有数据：被拒命令执行前后，实际 `--store` 路径文件的原始 bytes 必须逐字节相同（不以解析后相等代替）。属 R09。\\n6. 成功的读操作（list/search/export）不得重写 store 文件（mtime 与 bytes 不变）。属 R09。\\n\\n## 3. 命令行接口（全部拟定）\\n统一形式：`python notes.py <子命令> [参数]`。\\n- `add --store <path> --title <t> --body <b>`：追加一条。三者均必填、值必须紧跟选项（`--opt value` 形式，亦接受 `--opt=value`）。`--store` 缺省无默认值，缺失→exit 2。\\n- `list --store <path>`：向 stdout 输出全部记录（R07 格式）。\\n- `search --store <path> --query <q>`：`--query` 必填，输出匹配记录（同 list 格式，保持 store 顺序）。\\n- `export --store <path> --out <path>`：写出 JSON 数组到 `--out`。`--out` 必填；若目标已存在→拒绝，exit 2，不触碰目标与 store。\\n- 位置参数一律不允许；未知子命令/未知选项/重复选项→exit 2；`--help` 行为不在核心判据内（拟定：打印用法，exit 0，不读 store）。\\n\\n## 4. 存储格式与双格式识别（拟定）\\n- **JSONL 格式**：UTF-8 文本，每行一个 JSON 对象（记录 schema 见 §5），行分隔符为 `\\\\n`；文件末尾可有或可无一个结束换行，两者均合法且不视为畸形。空文件合法（0 条记录）。\\n- **JSON 数组格式**：单个 JSON 数组，元素为记录对象；即 `export` 的输出格式。\\n- **识别规则（公开、简单）**：读取 store 时，取文件原始 bytes 按 UTF-8 严格解码后：`lstrip()` 后首字符为 `[` → 按 JSON 数组解析；否则按 JSONL 逐行解析。识别只看首字符，不做多次尝试回退。`add` 允许写入两种格式：按识别出的格式以同格式追加（JSONL 追加一行；JSON 数组则整体读出、追加元素、整体重写，见 R09 原子性说明）。此为保持格式最简的公开规则；备选方案（禁止 add 到 JSON 数组）已否决，理由见 §10 拟定值。\\n- 写出的 JSONL 每行与导出 JSON 均使用 `json.dumps(..., ensure_ascii=False)` 语义，分隔符、缩进拟定值见 §10。\\n\\n## 5. 记录 schema（固定于本草案）\\n记录对象恰有两个键：`\\\"title\\\"`（string）、`\\\"body\\\"`（string）。多键、缺键、键序不敏感但值类型错→畸形。畸形输入（任一行/元素非对象、类型不符、非法 JSON、UTF-8 严格解码失败含 BOM 与孤立代理）→整个命令失败，exit 3，stderr 报错（拟定格式见 §10），不修改任何文件。\\n\\n## 6. 需求 R01–R12（固定 ID）\\n- **R01 argv 语法**：§3 的子命令、选项、必填值、位置约束；违反→exit 2 + stderr 一行错误，不读不写 store。\\n- **R02 路径语义**：相对路径按进程 cwd 解析；绝对路径按字面使用。父目录不存在→exit 3 且不隐式创建目录（`add` 的 store 不存在则新建文件本身，但其父目录必须已存在；`export` 的 `--out` 父目录不存在→exit 3）。无权限→exit 3。\\n- **R03 写入保真**：`add` 后读回的 title/body 与输入逐字符相同，含逗号、双引号、反斜杠、LF（正文中的换行以 `\\\\n` 转义于 JSON 层面，读回还原）、制表符、全角/emoji 等 Unicode 字符。空 title→拒绝 exit 2；title 或 body 首尾空白不剥离（原样保存）；body 允许空串（拟定：`--body \\\"\\\"` 合法）。空白标题定义：`--title` 值去掉首尾空白后为空→拒绝 exit 2。\\n- **R04 重复标题**：`add` 时若新 title 与既有任一记录 title **精确匹配**（逐码点相等，不做折叠、不忽略大小写）→拒绝，exit 2，stderr 一行提示，store bytes 不变。\\n- **R05 导出**：`export` 产出合法 JSON 数组，元素顺序与 store 一致；目标已存在→拒绝 exit 2；写成功后目标文件内容为按 §4 序列化的 bytes。export 失败（任何一步）时，还须比较目标文件存在性与目标原始 bytes 与执行前一致（不存在则仍不存在）。\\n- **R06 查询折叠**：`search` 大小写不敏感，采用 `str.casefold()` 对 title 与 body 做子串匹配（查询词与被检文本均 casefold 后做 `in` 判定）；命中保持 store 顺序；无结果→exit 0，stdout 为空数组形式（见 R07）。\\n- **R07 输出格式**：`list`/`search` 向 stdout 输出单个 JSON 数组（同 §4 导出序列化规则），记录顺序为 store 顺序；无记录/无命中输出 `[]`（加或不加尾部换行均接受，拟定加一个 `\\\\n`）。stdout 除该数组外无其他内容。\\n- **R08 退出码**：成功 0；argv/缺参/重复标题/空标题/导出目标已存在等输入类错误 2；I/O、权限、畸形 store、解码失败等环境/数据类错误 3。stderr 仅错误信息一行，不写 stdout。\\n- **R09 数据完整与格式保持**：被拒操作不改变实际 `--store` 路径文件的原始 bytes（逐字节比较）；成功读操作不重写 store；`add` 到 JSON 数组格式时保持数组格式；任何命令不创建 `.tmp` 之外（拟定无临时文件需求）的残留文件；崩溃中断一致性不在核心判据内（见 §10 范围）。\\n- **R10 `--store` 双格式重载**：`export` 的输出可用 `--store` 指向它执行 `list`/`search`/`add`，结果与原 JSONL store 语义一致（同一记录集合）。导出后再 `add`：若识别为 JSON 数组格式，按 §4 规则整体重写并保持数组格式。\\n- **R11 路径边界**：源与目标为同一文件或同一文件别名（同一 inode 的硬链接、解析后相同的符号链接）时，`export --store X --out X` → 拒绝 exit 2（先做 `os.path.realpath` 比较与 `os.path.samefile`（若两者均存在）检查，命中即拒绝，不打开文件）。悬空符号链接按目标不存在处理；指向目录的路径→exit 3。\\n- **R12 并发与链接出界声明**：多进程并发写、外部进程在执行中替换 store、软/硬链接在执行中被改变——均**不在范围**，不做加锁，行为未定义但不得违反“被拒操作不写”这一固定点。\\n\\n## 7. 固定公开用例（10 个，数据拟定）\\n每个用例标注映射的 R ID；具体步骤从略——由评价器按判据构造，此处固定其覆盖点：\\n1. U01 add 后 list 读回，正文含逗号、双引号、反斜杠、LF（R03/R07）。\\n2. U02 标题含全角字符与 emoji，add/list 保真（R03）。\\n3. U03 重复精确标题被拒，bytes 不变（R04/R09）。\\n4. U04 大小写与 ß/SS 类 casefold 差异查询命中（R06）。\\n5. U05 仅正文命中、标题不命中的查询（R06/R07）。\\n6. U06 无命中输出 `[]`，exit 0（R06/R07/R08）。\\n7. U07 export 到不存在目标成功，目标 bytes 为规范序列化（R05）。\\n8. U08 export 目标已存在被拒，目标与 store bytes 均不变（R05/R09）。\\n9. U09 用 `--store` 指向导出的 JSON 数组执行 list 与 add，再 list 格式保持（R10/R09）。\\n10. U10 畸形 store（截断 JSON 行）导致读命令 exit 3 且 bytes 不变（R08/R09 及 §5）。\\n\\n## 8. 错误输出（拟定）\\nstderr 单行，格式 `<子命令>: <原因>`，如 `add: duplicate title`、`export: target exists`、`list: malformed store: line 3`。文案不作为判据，仅要求存在一行非空 stderr 且 stdout 为空。\\n\\n## 9. 顺序与编码细则（固定于本草案）\\n- 所有文件 I/O 以二进制模式读写并显式 `utf-8` 严格编解码（`errors=\\\"strict\\\"`），拒绝 BOM。读写顺序均为从头到尾单遍。\\n- 导出/输出数组序列化：`json.dumps(records, ensure_ascii=False)`，拟定分隔符 `(\\\", \\\", \\\": \\\")`，单行，尾部一个 `\\\\n`。评价判据仅要求“合法 JSON 数组 + 语义一致 + 顺序一致”，不锁定空白，降低脆弱性；但 R09 的 bytes 比较针对 store 文件（由产品自己写），自洽即可。\\n- `add` 到 JSONL：以追加模式写一行，行首若无结束换行则先补一个 `\\\\n`（保持 §4 合法性）。\\n\\n## 10. 设计拟定值汇总（待会审）\\n1. 存储为 JSONL、导出为 JSON 数组（拟定）；识别规则=首字符 `[`（拟定）。\\n2. 允许 `add` 到 JSON 数组并整体重写保持格式（拟定）；否决的更简备选：“add 到数组直接拒绝 exit 2”——否决原因：会破坏 R10 的“重载后语义一致”要求。\\n3. 重复标题=精确匹配拒绝（拟定）。\\n4. 查询=casefold 子串，作用于 title 与 body（拟定）。\\n5. 序列化参数 `ensure_ascii=False`、分隔符与尾换行（拟定，判据不锁定空白）。\\n6. 退出码 0/2/3 划分（拟定）。`--help` exit 0（拟定）。\\n7. `--body \\\"\\\"` 合法、`--title` 空白拒绝、不剥离首尾空白（拟定）。\\n8. 错误文案格式（拟定，非判据）。\\n\\n## 11. 明确不在范围\\n并发安全与加锁；执行中文件被外部替换；崩溃/断电一致性；隐藏用例的具体内容与缺陷插入点位置（本规格不知道也不得推测入文）；`edit`/`delete`/`import` 等未列子命令；目录递归、glob、配置文件、环境变量；Windows 与 POSIX 路径大小写不敏感差异（按字面路径处理）；性能指标；tests/ 的编写或修改。\\n\\n## 12. 声明\\n本文件为准备文档，未运行任何命令、未生成 `notes.py`/`README.md`/测试、未执行验证。所有判据以获批版本为准。\"}]}",
+  "ttft_ms": 4926,
+  "type": "result",
+  "duration_ms": 114119,
+  "uuid": "68913e5e-fa0a-43ff-afe4-cb2198d5ad0f",
+  "ttft_stream_ms": 3033,
+  "time_to_request_ms": 105,
+  "first_content_frame_ms": 3033,
+  "queued_turn_count": 0,
+  "result_index": 0
+}

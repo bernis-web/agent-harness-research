@@ -1,0 +1,115 @@
+{
+  "label": "H7-gen-deep",
+  "tree": {
+    "title": "主",
+    "children": [
+      {
+        "title": "支一",
+        "children": [
+          {
+            "title": "叶一",
+            "children": [
+              {
+                "title": "子叶一",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "叶二",
+            "children": []
+          }
+        ]
+      },
+      {
+        "title": "支二",
+        "children": []
+      }
+    ]
+  },
+  "errors": [],
+  "message": {
+    "visible": true,
+    "text": "生成成功：导图已整体替换，撤销记录已清空",
+    "color": "rgb(17, 119, 17)",
+    "isError": false
+  },
+  "step": {
+    "id": "H7-gen-deep",
+    "expected": {
+      "title": "主",
+      "children": [
+        {
+          "title": "支一",
+          "children": [
+            {
+              "title": "叶一",
+              "children": [
+                {
+                  "title": "子叶一",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "title": "叶二",
+              "children": []
+            }
+          ]
+        },
+        {
+          "title": "支二",
+          "children": []
+        }
+      ]
+    },
+    "status": "PASS",
+    "timestamp": "2026-09-18T03:37:55.122Z",
+    "actionCount": 1,
+    "actual": {
+      "title": "主",
+      "children": [
+        {
+          "title": "支一",
+          "children": [
+            {
+              "title": "叶一",
+              "children": [
+                {
+                  "title": "子叶一",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "title": "叶二",
+              "children": []
+            }
+          ]
+        },
+        {
+          "title": "支二",
+          "children": []
+        }
+      ]
+    },
+    "nodeCount": 6,
+    "uiMessage": {
+      "visible": true,
+      "text": "生成成功：导图已整体替换，撤销记录已清空",
+      "color": "rgb(17, 119, 17)",
+      "isError": false
+    },
+    "errors": [],
+    "assertions": {
+      "treeMatches": true,
+      "nodeCount": 6,
+      "message": {
+        "visible": true,
+        "text": "生成成功：导图已整体替换，撤销记录已清空",
+        "color": "rgb(17, 119, 17)",
+        "isError": false
+      }
+    }
+  }
+}

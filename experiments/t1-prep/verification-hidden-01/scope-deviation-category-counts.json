@@ -1,0 +1,21 @@
+{
+  "at": "2026-09-18T03:33:56.432Z",
+  "totalRead": 2146,
+  "oldBrowserProfileRead": 1256,
+  "categories": {
+    "Cookies": 0,
+    "LoginData": 0,
+    "WebData": 0,
+    "History": 2,
+    "Preferences": 2,
+    "LocalState": 1,
+    "LocalStorage": 10,
+    "SessionStorage": 10,
+    "DeviceBoundSessions": 4,
+    "EdgePushStorage": 3
+  },
+  "modelReceivedHistoricalBrowserMaterial": false,
+  "reason": "Model prompts contain supplied frozen spec/hidden cases and prior test harness source only. None contain broad hash manifest, history/profile bytes, old storage/config, or credential contents or digests.",
+  "retained": true,
+  "source": "Path-only classification of already-existing incident manifest; no historical file reopened."
+}

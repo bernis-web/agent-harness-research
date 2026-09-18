@@ -1,0 +1,4019 @@
+{
+ "run_id": "mut-cal-2",
+ "generated": "2026-09-18T13:14:33",
+ "suite": "mutants",
+ "notes": {
+  "path": "D:\\projects\\agent-harness-research\\experiments\\t2-eval\\reference\\notes.py",
+  "sha256": "cbc5121601ee17f0fc8c49bb3959a716d7c2a0d0cfdefe6fe8c2468c9a7daa0d"
+ },
+ "python": "C:\\Users\\28417\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+ "mutants": [
+  {
+   "id": "M01",
+   "notes_sha256": "2532c53e6e8ade017ca2a85b2fa661d9a3e8ea82b44ddabcebd5a2c808c5dde9",
+   "rows": [
+    {
+     "id": "U01",
+     "expected_fail": [
+      "1",
+      "2a",
+      "2b",
+      "2c",
+      "3",
+      "6",
+      "7",
+      "8",
+      "9a"
+     ],
+     "actual_fail": [
+      "1",
+      "2a",
+      "2b",
+      "2c",
+      "3",
+      "6",
+      "7",
+      "8",
+      "9a"
+     ],
+     "missing": [],
+     "unexpected": [],
+     "ok": true
+    },
+    {
+     "id": "U02",
+     "expected_fail": [],
+     "actual_fail": [],
+     "missing": [],
+     "unexpected": [],
+     "ok": true
+    },
+    {
+     "id": "U03",
+     "expected_fail": [],
+     "actual_fail": [],
+     "missing": [],
+     "unexpected": [],
+     "ok": true
+    },
+    {
+     "id": "U04",
+     "expected_fail": [],
+     "actual_fail": [],
+     "missing": [],
+     "unexpected": [],
+     "ok": true
+    },
+    {
+     "id": "U05",
+     "expected_fail": [
+      "1",
+      "2",
+      "3"
+     ],
+     "actual_fail": [
+      "1",
+      "2",
+      "3"
+     ],
+     "missing": [],
+     "unexpected": [],
+     "ok": true
+    },
+    {
+     "id": "U06",
+     "expected_fail": [],
+     "actual_fail": [],
+     "missing": [],
+     "unexpected": [],
+     "ok": true
+    },
+    {
+     "id": "U07",
+     "expected_fail": [],
+     "actual_fail": [],
+     "missing": [],
+     "unexpected": [],
+     "ok": true
+    },
+    {
+     "id": "U08",
+     "expected_fail": [],
+     "actual_fail": [],
+     "missing": [],
+     "unexpected": [],
+     "ok": true
+    },
+    {
+     "id": "U09",
+     "expected_fail": [],
+     "actual_fail": [],
+     "missing": [],
+     "unexpected": [],
+     "ok": true
+    },
+    {
+     "id": "U10",
+     "expected_fail": [],
+     "actual_fail": [],
+     "missing": [],
+     "unexpected": [],
+     "ok": true
+    }
+   ],
+   "cases": [
+    {
+     "id": "U01",
+     "pass": false,
+     "steps": [
+      {
+       "label": "1",
+       "argv": [
+        "add",
+        "--store",
+        "store.jsonl",
+        "--title",
+        "标题\"一\"",
+        "--body",
+        "行1\n行\t2\\end, \"q\"全角ＡＢ emoji😀"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": false,
+       "errors": [
+        "files_after store.jsonl: semantic mismatch: [{'title': '标题\"一\"', 'body': '行1\\\\n行\\t2\\\\end, \"q\"全角ＡＢ emoji😀'}] != [{'title': '标题\"一\"', 'body': '行1\\n行\\t2\\\\end, \"q\"全角ＡＢ emoji😀'}]"
+       ],
+       "stderr": ""
+      },
+      {
+       "label": "2a",
+       "argv": [
+        "add",
+        "--store",
+        "store.jsonl",
+        "--title",
+        "Straße",
+        "--body",
+        "UPPER lower MiXeD"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": false,
+       "errors": [
+        "files_after store.jsonl: semantic mismatch: [{'title': '标题\"一\"', 'body': '行1\\\\n行\\t2\\\\end, \"q\"全角ＡＢ emoji😀'}, {'title': 'Straße', 'body': 'UPPER lower MiXeD'}] != [{'title': '标题\"一\"', 'body': '行1\\n行\\t2\\\\end, \"q\"全角ＡＢ emoji😀'}, {'title': 'Straße', 'body': 'UPPER lower MiXeD'}]"
+       ],
+       "stderr": ""
+      },
+      {
+       "label": "2b",
+       "argv": [
+        "add",
+        "--store",
+        "store.jsonl",
+        "--title",
+        "STRASSE二",
+        "--body",
+        "无关"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": false,
+       "errors": [
+        "files_after store.jsonl: semantic mismatch: [{'title': '标题\"一\"', 'body': '行1\\\\n行\\t2\\\\end, \"q\"全角ＡＢ emoji😀'}, {'title': 'Straße', 'body': 'UPPER lower MiXeD'}, {'title': 'STRASSE二', 'body': '无关'}] != [{'title': '标题\"一\"', 'body': '行1\\n行\\t2\\\\end, \"q\"全角ＡＢ emoji😀'}, {'title': 'Straße', 'body': 'UPPER lower MiXeD'}, {'title': 'STRASSE二', 'body': '无关'}]"
+       ],
+       "stderr": ""
+      },
+      {
+       "label": "2c",
+       "argv": [
+        "add",
+        "--store",
+        "store.jsonl",
+        "--title",
+        "仅正文命中",
+        "--body",
+        "藏着 needle 在这里"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": false,
+       "errors": [
+        "files_after store.jsonl: semantic mismatch: [{'title': '标题\"一\"', 'body': '行1\\\\n行\\t2\\\\end, \"q\"全角ＡＢ emoji😀'}, {'title': 'Straße', 'body': 'UPPER lower MiXeD'}, {'title': 'STRASSE二', 'body': '无关'}, {'title': '仅正文命中', 'body': '藏着 needle 在这里'}] != [{'title': '标题\"一\"', 'body': '行1\\n行\\t2\\\\end, \"q\"全角ＡＢ emoji😀'}, {'title': 'Straße', 'body': 'UPPER lower MiXeD'}, {'title': 'STRASSE二', 'body': '无关'}, {'title': '仅正文命中', 'body': '藏着 needle 在这里'}]"
+       ],
+       "stderr": ""
+      },
+      {
+       "label": "3",
+       "argv": [
+        "list",
+        "--store",
+        "store.jsonl"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": false,
+       "errors": [
+        "stdout json mismatch: [{'title': '标题\"一\"', 'body': '行1\\\\n行\\t2\\\\end, \"q\"全角ＡＢ emoji😀'}, {'title': 'Straße', 'body': 'UPPER lower MiXeD'}, {'title': 'STRASSE二', 'body': '无关'}, {'title': '仅正文命中', 'body': '藏着 needle 在这里'}] != [{'title': '标题\"一\"', 'body': '行1\\n行\\t2\\\\end, \"q\"全角ＡＢ emoji😀'}, {'title': 'Straße', 'body': 'UPPER lower MiXeD'}, {'title': 'STRASSE二', 'body': '无关'}, {'title': '仅正文命中', 'body': '藏着 needle 在这里'}]"
+       ],
+       "stderr": ""
+      },
+      {
+       "label": "4",
+       "argv": [
+        "search",
+        "--store",
+        "store.jsonl",
+        "--query",
+        "strasse"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "5",
+       "argv": [
+        "search",
+        "--store",
+        "store.jsonl",
+        "--query",
+        "NEEDLE"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "6",
+       "argv": [
+        "export",
+        "--store",
+        "store.jsonl",
+        "--out",
+        "out.json"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": false,
+       "errors": [
+        "files_after out.json: semantic mismatch: [{'title': '标题\"一\"', 'body': '行1\\\\n行\\t2\\\\end, \"q\"全角ＡＢ emoji😀'}, {'title': 'Straße', 'body': 'UPPER lower MiXeD'}, {'title': 'STRASSE二', 'body': '无关'}, {'title': '仅正文命中', 'body': '藏着 needle 在这里'}] != [{'title': '标题\"一\"', 'body': '行1\\n行\\t2\\\\end, \"q\"全角ＡＢ emoji😀'}, {'title': 'Straße', 'body': 'UPPER lower MiXeD'}, {'title': 'STRASSE二', 'body': '无关'}, {'title': '仅正文命中', 'body': '藏着 needle 在这里'}]"
+       ],
+       "stderr": ""
+      },
+      {
+       "label": "7",
+       "argv": [
+        "list",
+        "--store",
+        "out.json"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": false,
+       "errors": [
+        "stdout json mismatch: [{'title': '标题\"一\"', 'body': '行1\\\\n行\\t2\\\\end, \"q\"全角ＡＢ emoji😀'}, {'title': 'Straße', 'body': 'UPPER lower MiXeD'}, {'title': 'STRASSE二', 'body': '无关'}, {'title': '仅正文命中', 'body': '藏着 needle 在这里'}] != [{'title': '标题\"一\"', 'body': '行1\\n行\\t2\\\\end, \"q\"全角ＡＢ emoji😀'}, {'title': 'Straße', 'body': 'UPPER lower MiXeD'}, {'title': 'STRASSE二', 'body': '无关'}, {'title': '仅正文命中', 'body': '藏着 needle 在这里'}]"
+       ],
+       "stderr": ""
+      },
+      {
+       "label": "8",
+       "argv": [
+        "add",
+        "--store",
+        "out.json",
+        "--title",
+        "重载新条",
+        "--body",
+        "reloaded"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": false,
+       "errors": [
+        "files_after out.json: semantic mismatch: [{'title': '标题\"一\"', 'body': '行1\\\\n行\\t2\\\\end, \"q\"全角ＡＢ emoji😀'}, {'title': 'Straße', 'body': 'UPPER lower MiXeD'}, {'title': 'STRASSE二', 'body': '无关'}, {'title': '仅正文命中', 'body': '藏着 needle 在这里'}, {'title': '重载新条', 'body': 'reloaded'}] != [{'title': '标题\"一\"', 'body': '行1\\n行\\t2\\\\end, \"q\"全角ＡＢ emoji😀'}, {'title': 'Straße', 'body': 'UPPER lower MiXeD'}, {'title': 'STRASSE二', 'body': '无关'}, {'title': '仅正文命中', 'body': '藏着 needle 在这里'}, {'title': '重载新条', 'body': 'reloaded'}]"
+       ],
+       "stderr": ""
+      },
+      {
+       "label": "9a",
+       "argv": [
+        "list",
+        "--store",
+        "out.json"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": false,
+       "errors": [
+        "stdout json mismatch: [{'title': '标题\"一\"', 'body': '行1\\\\n行\\t2\\\\end, \"q\"全角ＡＢ emoji😀'}, {'title': 'Straße', 'body': 'UPPER lower MiXeD'}, {'title': 'STRASSE二', 'body': '无关'}, {'title': '仅正文命中', 'body': '藏着 needle 在这里'}, {'title': '重载新条', 'body': 'reloaded'}] != [{'title': '标题\"一\"', 'body': '行1\\n行\\t2\\\\end, \"q\"全角ＡＢ emoji😀'}, {'title': 'Straße', 'body': 'UPPER lower MiXeD'}, {'title': 'STRASSE二', 'body': '无关'}, {'title': '仅正文命中', 'body': '藏着 needle 在这里'}, {'title': '重载新条', 'body': 'reloaded'}]"
+       ],
+       "stderr": ""
+      },
+      {
+       "label": "9b",
+       "argv": [
+        "search",
+        "--store",
+        "out.json",
+        "--query",
+        "strasse"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      }
+     ]
+    },
+    {
+     "id": "U02",
+     "pass": true,
+     "steps": [
+      {
+       "label": "1",
+       "argv": [
+        "list",
+        "--store",
+        "store.jsonl"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "2",
+       "argv": [
+        "search",
+        "--store",
+        "store.jsonl",
+        "--query",
+        "abc"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "3",
+       "argv": [
+        "search",
+        "--store",
+        "store.jsonl",
+        "--query",
+        "ＡＢＣ"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "4",
+       "argv": [
+        "add",
+        "--store",
+        "store.jsonl",
+        "--title",
+        "空body条",
+        "--body",
+        ""
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "5",
+       "argv": [
+        "add",
+        "--store",
+        "store.jsonl",
+        "--title",
+        "  保留两端  ",
+        "--body",
+        "x"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "6",
+       "argv": [
+        "search",
+        "--store",
+        "store.jsonl",
+        "--query",
+        "  保留两端  "
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "7",
+       "argv": [
+        "add",
+        "--store",
+        "store.jsonl",
+        "--title",
+        "ABC",
+        "--body",
+        "精确大小写"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "8",
+       "argv": [
+        "list",
+        "--store",
+        "store.jsonl"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      }
+     ]
+    },
+    {
+     "id": "U03",
+     "pass": true,
+     "steps": [
+      {
+       "label": "1",
+       "argv": [
+        "add",
+        "--store",
+        "store.jsonl",
+        "--title",
+        "存在",
+        "--body",
+        "x"
+       ],
+       "expected_exit": 2,
+       "actual_exit": 2,
+       "ok": true,
+       "errors": [],
+       "stderr": "add: duplicate title\n"
+      },
+      {
+       "label": "2",
+       "argv": [
+        "add",
+        "--store",
+        "store.jsonl",
+        "--title",
+        "",
+        "--body",
+        "x"
+       ],
+       "expected_exit": 2,
+       "actual_exit": 2,
+       "ok": true,
+       "errors": [],
+       "stderr": "add: blank title\n"
+      },
+      {
+       "label": "3",
+       "argv": [
+        "add",
+        "--store",
+        "store.jsonl",
+        "--title",
+        "   ",
+        "--body",
+        "x"
+       ],
+       "expected_exit": 2,
+       "actual_exit": 2,
+       "ok": true,
+       "errors": [],
+       "stderr": "add: blank title\n"
+      },
+      {
+       "label": "4",
+       "argv": [
+        "add",
+        "--store",
+        "store.jsonl",
+        "--title",
+        "x"
+       ],
+       "expected_exit": 2,
+       "actual_exit": 2,
+       "ok": true,
+       "errors": [],
+       "stderr": "add: missing required option: --body\n"
+      },
+      {
+       "label": "5",
+       "argv": [
+        "add",
+        "--title",
+        "x",
+        "--body",
+        "y"
+       ],
+       "expected_exit": 2,
+       "actual_exit": 2,
+       "ok": true,
+       "errors": [],
+       "stderr": "add: missing required option: --store\n"
+      },
+      {
+       "label": "6",
+       "argv": [
+        "add",
+        "--store",
+        "store.jsonl",
+        "--title",
+        "x",
+        "--title",
+        "y",
+        "--body",
+        "z"
+       ],
+       "expected_exit": 2,
+       "actual_exit": 2,
+       "ok": true,
+       "errors": [],
+       "stderr": "add: duplicate option: --title\n"
+      },
+      {
+       "label": "7",
+       "argv": [
+        "list"
+       ],
+       "expected_exit": 2,
+       "actual_exit": 2,
+       "ok": true,
+       "errors": [],
+       "stderr": "list: missing required option: --store\n"
+      },
+      {
+       "label": "8",
+       "argv": [
+        "search",
+        "--store",
+        "store.jsonl"
+       ],
+       "expected_exit": 2,
+       "actual_exit": 2,
+       "ok": true,
+       "errors": [],
+       "stderr": "search: missing required option: --query\n"
+      },
+      {
+       "label": "9",
+       "argv": [
+        "export",
+        "--store",
+        "store.jsonl"
+       ],
+       "expected_exit": 2,
+       "actual_exit": 2,
+       "ok": true,
+       "errors": [],
+       "stderr": "export: missing required option: --out\n"
+      },
+      {
+       "label": "10",
+       "argv": [
+        "list",
+        "--store",
+        "store.jsonl",
+        "--store",
+        "store.jsonl"
+       ],
+       "expected_exit": 2,
+       "actual_exit": 2,
+       "ok": true,
+       "errors": [],
+       "stderr": "list: duplicate option: --store\n"
+      },
+      {
+       "label": "11",
+       "argv": [
+        "frobnicate"
+       ],
+       "expected_exit": 2,
+       "actual_exit": 2,
+       "ok": true,
+       "errors": [],
+       "stderr": "frobnicate: unknown subcommand\n"
+      },
+      {
+       "label": "12",
+       "argv": [
+        "list",
+        "--bogus",
+        "v",
+        "--store",
+        "store.jsonl"
+       ],
+       "expected_exit": 2,
+       "actual_exit": 2,
+       "ok": true,
+       "errors": [],
+       "stderr": "list: unknown option: --bogus\n"
+      },
+      {
+       "label": "13",
+       "argv": [
+        "list",
+        "extra",
+        "--store",
+        "store.jsonl"
+       ],
+       "expected_exit": 2,
+       "actual_exit": 2,
+       "ok": true,
+       "errors": [],
+       "stderr": "list: unexpected argument: extra\n"
+      },
+      {
+       "label": "14",
+       "argv": [
+        "list",
+        "--store",
+        ""
+       ],
+       "expected_exit": 2,
+       "actual_exit": 2,
+       "ok": true,
+       "errors": [],
+       "stderr": "list: empty store path\n"
+      },
+      {
+       "label": "15",
+       "argv": [
+        "search",
+        "--store",
+        "store.jsonl",
+        "--query",
+        ""
+       ],
+       "expected_exit": 2,
+       "actual_exit": 2,
+       "ok": true,
+       "errors": [],
+       "stderr": "search: empty query\n"
+      },
+      {
+       "label": "16",
+       "argv": [
+        "list",
+        "--store",
+        "store.jsonl"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      }
+     ]
+    },
+    {
+     "id": "U04",
+     "pass": true,
+     "steps": [
+      {
+       "label": "1",
+       "argv": [
+        "search",
+        "--store",
+        "store.jsonl",
+        "--query",
+        "strasse"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "2",
+       "argv": [
+        "search",
+        "--store",
+        "store.jsonl",
+        "--query",
+        "STRASSE"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "3",
+       "argv": [
+        "search",
+        "--store",
+        "store.jsonl",
+        "--query",
+        "ß"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      }
+     ]
+    },
+    {
+     "id": "U05",
+     "pass": false,
+     "steps": [
+      {
+       "label": "1",
+       "argv": [
+        "add",
+        "--store",
+        "store.jsonl",
+        "--title",
+        "多行",
+        "--body",
+        "第一行\n\"引用段\"\t尾"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": false,
+       "errors": [
+        "files_after store.jsonl: semantic mismatch: [{'title': '多行', 'body': '第一行\\\\n\"引用段\"\\t尾'}] != [{'title': '多行', 'body': '第一行\\n\"引用段\"\\t尾'}]"
+       ],
+       "stderr": ""
+      },
+      {
+       "label": "2",
+       "argv": [
+        "search",
+        "--store",
+        "store.jsonl",
+        "--query",
+        "第一行\n\"引用段\""
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": false,
+       "errors": [
+        "stdout json mismatch: [] != [{'title': '多行', 'body': '第一行\\n\"引用段\"\\t尾'}]"
+       ],
+       "stderr": ""
+      },
+      {
+       "label": "3",
+       "argv": [
+        "search",
+        "--store",
+        "store.jsonl",
+        "--query",
+        "\"引用段\"\t尾"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": false,
+       "errors": [
+        "stdout json mismatch: [{'title': '多行', 'body': '第一行\\\\n\"引用段\"\\t尾'}] != [{'title': '多行', 'body': '第一行\\n\"引用段\"\\t尾'}]"
+       ],
+       "stderr": ""
+      },
+      {
+       "label": "4",
+       "argv": [
+        "search",
+        "--store",
+        "store.jsonl",
+        "--query",
+        "行\n无"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      }
+     ]
+    },
+    {
+     "id": "U06",
+     "pass": true,
+     "steps": [
+      {
+       "label": "1",
+       "argv": [
+        "list",
+        "--store",
+        "empty.jsonl"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "2",
+       "argv": [
+        "search",
+        "--store",
+        "empty.jsonl",
+        "--query",
+        "x"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "3a",
+       "argv": [
+        "search",
+        "--store",
+        "empty.jsonl",
+        "--query",
+        " "
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "3b",
+       "argv": [
+        "search",
+        "--store",
+        "one.jsonl",
+        "--query",
+        " "
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "4",
+       "argv": [
+        "list",
+        "--store",
+        "missing.jsonl"
+       ],
+       "expected_exit": 3,
+       "actual_exit": 3,
+       "ok": true,
+       "errors": [],
+       "stderr": "list: store not found: missing.jsonl\n"
+      },
+      {
+       "label": "5",
+       "argv": [
+        "search",
+        "--store",
+        "missing.jsonl",
+        "--query",
+        "q"
+       ],
+       "expected_exit": 3,
+       "actual_exit": 3,
+       "ok": true,
+       "errors": [],
+       "stderr": "search: store not found: missing.jsonl\n"
+      },
+      {
+       "label": "6",
+       "argv": [
+        "export",
+        "--store",
+        "missing.jsonl",
+        "--out",
+        "o.json"
+       ],
+       "expected_exit": 3,
+       "actual_exit": 3,
+       "ok": true,
+       "errors": [],
+       "stderr": "export: store not found: missing.jsonl\n"
+      }
+     ]
+    },
+    {
+     "id": "U07",
+     "pass": true,
+     "steps": [
+      {
+       "label": "1",
+       "argv": [
+        "export",
+        "--store",
+        "dir one/中文 store.jsonl",
+        "--out",
+        "out 相对.json"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "2",
+       "argv": [
+        "export",
+        "--store",
+        "ABS:dir one/中文 store.jsonl",
+        "--out",
+        "ABS:out 绝对.json"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "3",
+       "argv": [
+        "export",
+        "--store",
+        "empty.jsonl",
+        "--out",
+        "empty_out.json"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "4",
+       "argv": [
+        "export",
+        "--store",
+        "dir one/中文 store.jsonl",
+        "--out",
+        "out ro.json"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      }
+     ]
+    },
+    {
+     "id": "U08",
+     "pass": true,
+     "steps": [
+      {
+       "label": "1",
+       "argv": [
+        "export",
+        "--store",
+        "good.jsonl",
+        "--out",
+        "exists.json"
+       ],
+       "expected_exit": 2,
+       "actual_exit": 2,
+       "ok": true,
+       "errors": [],
+       "stderr": "export: out already exists\n"
+      },
+      {
+       "label": "2",
+       "argv": [
+        "export",
+        "--store",
+        "good.jsonl",
+        "--out",
+        "./sub/../good.jsonl"
+       ],
+       "expected_exit": 2,
+       "actual_exit": 2,
+       "ok": true,
+       "errors": [],
+       "stderr": "export: --out must differ from --store\n"
+      },
+      {
+       "label": "3",
+       "argv": [
+        "export",
+        "--store",
+        "good.jsonl",
+        "--out",
+        "adir"
+       ],
+       "expected_exit": 3,
+       "actual_exit": 3,
+       "ok": true,
+       "errors": [],
+       "stderr": "export: out is a directory\n"
+      },
+      {
+       "label": "4",
+       "argv": [
+        "export",
+        "--store",
+        "good.jsonl",
+        "--out",
+        "nodir/o.json"
+       ],
+       "expected_exit": 3,
+       "actual_exit": 3,
+       "ok": true,
+       "errors": [],
+       "stderr": "export: parent directory missing\n"
+      },
+      {
+       "label": "5",
+       "argv": [
+        "export",
+        "--store",
+        "good.jsonl",
+        "--out",
+        ""
+       ],
+       "expected_exit": 2,
+       "actual_exit": 2,
+       "ok": true,
+       "errors": [],
+       "stderr": "export: empty out path\n"
+      },
+      {
+       "label": "6",
+       "argv": [
+        "list",
+        "--store",
+        "adir"
+       ],
+       "expected_exit": 3,
+       "actual_exit": 3,
+       "ok": true,
+       "errors": [],
+       "stderr": "list: cannot read store: [Errno 13] Permission denied: 'adir'\n"
+      },
+      {
+       "label": "7",
+       "argv": [
+        "add",
+        "--store",
+        "adir",
+        "--title",
+        "x",
+        "--body",
+        "y"
+       ],
+       "expected_exit": 3,
+       "actual_exit": 3,
+       "ok": true,
+       "errors": [],
+       "stderr": "add: store is a directory\n"
+      },
+      {
+       "label": "8",
+       "argv": [
+        "add",
+        "--store",
+        "nodir/s.jsonl",
+        "--title",
+        "x",
+        "--body",
+        "y"
+       ],
+       "expected_exit": 3,
+       "actual_exit": 3,
+       "ok": true,
+       "errors": [],
+       "stderr": "add: parent directory missing\n"
+      },
+      {
+       "label": "9",
+       "argv": [
+        "export",
+        "--store",
+        "good.jsonl",
+        "--out",
+        "good.jsonl"
+       ],
+       "expected_exit": 2,
+       "actual_exit": 2,
+       "ok": true,
+       "errors": [],
+       "stderr": "export: --out must differ from --store\n"
+      },
+      {
+       "label": "10",
+       "argv": [
+        "list",
+        "--store",
+        "good.jsonl"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      }
+     ]
+    },
+    {
+     "id": "U09",
+     "pass": true,
+     "steps": [
+      {
+       "label": "1",
+       "argv": [
+        "export",
+        "--store",
+        "src.jsonl",
+        "--out",
+        "arr.json"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "2",
+       "argv": [
+        "search",
+        "--store",
+        "arr.json",
+        "--query",
+        "beta"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "3",
+       "argv": [
+        "add",
+        "--store",
+        "arr.json",
+        "--title",
+        "Gamma",
+        "--body",
+        "g"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "4",
+       "argv": [
+        "add",
+        "--store",
+        "arr.json",
+        "--title",
+        "Alpha",
+        "--body",
+        "dup"
+       ],
+       "expected_exit": 2,
+       "actual_exit": 2,
+       "ok": true,
+       "errors": [],
+       "stderr": "add: duplicate title\n"
+      },
+      {
+       "label": "5",
+       "argv": [
+        "list",
+        "--store",
+        "arr.json"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "6",
+       "argv": [
+        "export",
+        "--store",
+        "arr.json",
+        "--out",
+        "arr2.json"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "7",
+       "argv": [
+        "list",
+        "--store",
+        "src.jsonl"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      }
+     ]
+    },
+    {
+     "id": "U10",
+     "pass": true,
+     "steps": [
+      {
+       "label": "1",
+       "argv": [
+        "list",
+        "--store",
+        "trunc.jsonl"
+       ],
+       "expected_exit": 3,
+       "actual_exit": 3,
+       "ok": true,
+       "errors": [],
+       "stderr": "list: bad store: invalid JSON line\n"
+      },
+      {
+       "label": "2",
+       "argv": [
+        "add",
+        "--store",
+        "trunc.jsonl",
+        "--title",
+        "n",
+        "--body",
+        "b"
+       ],
+       "expected_exit": 3,
+       "actual_exit": 3,
+       "ok": true,
+       "errors": [],
+       "stderr": "add: bad store: invalid JSON line\n"
+      },
+      {
+       "label": "3",
+       "argv": [
+        "list",
+        "--store",
+        "bad.jsonl"
+       ],
+       "expected_exit": 3,
+       "actual_exit": 3,
+       "ok": true,
+       "errors": [],
+       "stderr": "list: bad store: not valid UTF-8\n"
+      },
+      {
+       "label": "4",
+       "argv": [
+        "add",
+        "--store",
+        "bad.jsonl",
+        "--title",
+        "n",
+        "--body",
+        "b"
+       ],
+       "expected_exit": 3,
+       "actual_exit": 3,
+       "ok": true,
+       "errors": [],
+       "stderr": "add: bad store: not valid UTF-8\n"
+      },
+      {
+       "label": "5",
+       "argv": [
+        "search",
+        "--store",
+        "trunc.jsonl",
+        "--query",
+        "a"
+       ],
+       "expected_exit": 3,
+       "actual_exit": 3,
+       "ok": true,
+       "errors": [],
+       "stderr": "search: bad store: invalid JSON line\n"
+      },
+      {
+       "label": "6",
+       "argv": [
+        "export",
+        "--store",
+        "bad.jsonl",
+        "--out",
+        "o10.json"
+       ],
+       "expected_exit": 3,
+       "actual_exit": 3,
+       "ok": true,
+       "errors": [],
+       "stderr": "export: bad store: not valid UTF-8\n"
+      }
+     ]
+    }
+   ],
+   "ok": true
+  },
+  {
+   "id": "M02",
+   "notes_sha256": "29c3cd228efcb4c54d0e175c7c587c9c79c8e8ee966e8ff1eaba6259d67c470c",
+   "rows": [
+    {
+     "id": "U01",
+     "expected_fail": [
+      "4",
+      "9b"
+     ],
+     "actual_fail": [
+      "4",
+      "9b"
+     ],
+     "missing": [],
+     "unexpected": [],
+     "ok": true
+    },
+    {
+     "id": "U02",
+     "expected_fail": [],
+     "actual_fail": [],
+     "missing": [],
+     "unexpected": [],
+     "ok": true
+    },
+    {
+     "id": "U03",
+     "expected_fail": [],
+     "actual_fail": [],
+     "missing": [],
+     "unexpected": [],
+     "ok": true
+    },
+    {
+     "id": "U04",
+     "expected_fail": [
+      "1",
+      "2",
+      "3"
+     ],
+     "actual_fail": [
+      "1",
+      "2",
+      "3"
+     ],
+     "missing": [],
+     "unexpected": [],
+     "ok": true
+    },
+    {
+     "id": "U05",
+     "expected_fail": [],
+     "actual_fail": [],
+     "missing": [],
+     "unexpected": [],
+     "ok": true
+    },
+    {
+     "id": "U06",
+     "expected_fail": [],
+     "actual_fail": [],
+     "missing": [],
+     "unexpected": [],
+     "ok": true
+    },
+    {
+     "id": "U07",
+     "expected_fail": [],
+     "actual_fail": [],
+     "missing": [],
+     "unexpected": [],
+     "ok": true
+    },
+    {
+     "id": "U08",
+     "expected_fail": [],
+     "actual_fail": [],
+     "missing": [],
+     "unexpected": [],
+     "ok": true
+    },
+    {
+     "id": "U09",
+     "expected_fail": [],
+     "actual_fail": [],
+     "missing": [],
+     "unexpected": [],
+     "ok": true
+    },
+    {
+     "id": "U10",
+     "expected_fail": [],
+     "actual_fail": [],
+     "missing": [],
+     "unexpected": [],
+     "ok": true
+    }
+   ],
+   "cases": [
+    {
+     "id": "U01",
+     "pass": false,
+     "steps": [
+      {
+       "label": "1",
+       "argv": [
+        "add",
+        "--store",
+        "store.jsonl",
+        "--title",
+        "标题\"一\"",
+        "--body",
+        "行1\n行\t2\\end, \"q\"全角ＡＢ emoji😀"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "2a",
+       "argv": [
+        "add",
+        "--store",
+        "store.jsonl",
+        "--title",
+        "Straße",
+        "--body",
+        "UPPER lower MiXeD"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "2b",
+       "argv": [
+        "add",
+        "--store",
+        "store.jsonl",
+        "--title",
+        "STRASSE二",
+        "--body",
+        "无关"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "2c",
+       "argv": [
+        "add",
+        "--store",
+        "store.jsonl",
+        "--title",
+        "仅正文命中",
+        "--body",
+        "藏着 needle 在这里"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "3",
+       "argv": [
+        "list",
+        "--store",
+        "store.jsonl"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "4",
+       "argv": [
+        "search",
+        "--store",
+        "store.jsonl",
+        "--query",
+        "strasse"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": false,
+       "errors": [
+        "stdout json mismatch: [{'title': 'STRASSE二', 'body': '无关'}] != [{'title': 'Straße', 'body': 'UPPER lower MiXeD'}, {'title': 'STRASSE二', 'body': '无关'}]"
+       ],
+       "stderr": ""
+      },
+      {
+       "label": "5",
+       "argv": [
+        "search",
+        "--store",
+        "store.jsonl",
+        "--query",
+        "NEEDLE"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "6",
+       "argv": [
+        "export",
+        "--store",
+        "store.jsonl",
+        "--out",
+        "out.json"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "7",
+       "argv": [
+        "list",
+        "--store",
+        "out.json"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "8",
+       "argv": [
+        "add",
+        "--store",
+        "out.json",
+        "--title",
+        "重载新条",
+        "--body",
+        "reloaded"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "9a",
+       "argv": [
+        "list",
+        "--store",
+        "out.json"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "9b",
+       "argv": [
+        "search",
+        "--store",
+        "out.json",
+        "--query",
+        "strasse"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": false,
+       "errors": [
+        "stdout json mismatch: [{'title': 'STRASSE二', 'body': '无关'}] != [{'title': 'Straße', 'body': 'UPPER lower MiXeD'}, {'title': 'STRASSE二', 'body': '无关'}]"
+       ],
+       "stderr": ""
+      }
+     ]
+    },
+    {
+     "id": "U02",
+     "pass": true,
+     "steps": [
+      {
+       "label": "1",
+       "argv": [
+        "list",
+        "--store",
+        "store.jsonl"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "2",
+       "argv": [
+        "search",
+        "--store",
+        "store.jsonl",
+        "--query",
+        "abc"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "3",
+       "argv": [
+        "search",
+        "--store",
+        "store.jsonl",
+        "--query",
+        "ＡＢＣ"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "4",
+       "argv": [
+        "add",
+        "--store",
+        "store.jsonl",
+        "--title",
+        "空body条",
+        "--body",
+        ""
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "5",
+       "argv": [
+        "add",
+        "--store",
+        "store.jsonl",
+        "--title",
+        "  保留两端  ",
+        "--body",
+        "x"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "6",
+       "argv": [
+        "search",
+        "--store",
+        "store.jsonl",
+        "--query",
+        "  保留两端  "
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "7",
+       "argv": [
+        "add",
+        "--store",
+        "store.jsonl",
+        "--title",
+        "ABC",
+        "--body",
+        "精确大小写"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "8",
+       "argv": [
+        "list",
+        "--store",
+        "store.jsonl"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      }
+     ]
+    },
+    {
+     "id": "U03",
+     "pass": true,
+     "steps": [
+      {
+       "label": "1",
+       "argv": [
+        "add",
+        "--store",
+        "store.jsonl",
+        "--title",
+        "存在",
+        "--body",
+        "x"
+       ],
+       "expected_exit": 2,
+       "actual_exit": 2,
+       "ok": true,
+       "errors": [],
+       "stderr": "add: duplicate title\n"
+      },
+      {
+       "label": "2",
+       "argv": [
+        "add",
+        "--store",
+        "store.jsonl",
+        "--title",
+        "",
+        "--body",
+        "x"
+       ],
+       "expected_exit": 2,
+       "actual_exit": 2,
+       "ok": true,
+       "errors": [],
+       "stderr": "add: blank title\n"
+      },
+      {
+       "label": "3",
+       "argv": [
+        "add",
+        "--store",
+        "store.jsonl",
+        "--title",
+        "   ",
+        "--body",
+        "x"
+       ],
+       "expected_exit": 2,
+       "actual_exit": 2,
+       "ok": true,
+       "errors": [],
+       "stderr": "add: blank title\n"
+      },
+      {
+       "label": "4",
+       "argv": [
+        "add",
+        "--store",
+        "store.jsonl",
+        "--title",
+        "x"
+       ],
+       "expected_exit": 2,
+       "actual_exit": 2,
+       "ok": true,
+       "errors": [],
+       "stderr": "add: missing required option: --body\n"
+      },
+      {
+       "label": "5",
+       "argv": [
+        "add",
+        "--title",
+        "x",
+        "--body",
+        "y"
+       ],
+       "expected_exit": 2,
+       "actual_exit": 2,
+       "ok": true,
+       "errors": [],
+       "stderr": "add: missing required option: --store\n"
+      },
+      {
+       "label": "6",
+       "argv": [
+        "add",
+        "--store",
+        "store.jsonl",
+        "--title",
+        "x",
+        "--title",
+        "y",
+        "--body",
+        "z"
+       ],
+       "expected_exit": 2,
+       "actual_exit": 2,
+       "ok": true,
+       "errors": [],
+       "stderr": "add: duplicate option: --title\n"
+      },
+      {
+       "label": "7",
+       "argv": [
+        "list"
+       ],
+       "expected_exit": 2,
+       "actual_exit": 2,
+       "ok": true,
+       "errors": [],
+       "stderr": "list: missing required option: --store\n"
+      },
+      {
+       "label": "8",
+       "argv": [
+        "search",
+        "--store",
+        "store.jsonl"
+       ],
+       "expected_exit": 2,
+       "actual_exit": 2,
+       "ok": true,
+       "errors": [],
+       "stderr": "search: missing required option: --query\n"
+      },
+      {
+       "label": "9",
+       "argv": [
+        "export",
+        "--store",
+        "store.jsonl"
+       ],
+       "expected_exit": 2,
+       "actual_exit": 2,
+       "ok": true,
+       "errors": [],
+       "stderr": "export: missing required option: --out\n"
+      },
+      {
+       "label": "10",
+       "argv": [
+        "list",
+        "--store",
+        "store.jsonl",
+        "--store",
+        "store.jsonl"
+       ],
+       "expected_exit": 2,
+       "actual_exit": 2,
+       "ok": true,
+       "errors": [],
+       "stderr": "list: duplicate option: --store\n"
+      },
+      {
+       "label": "11",
+       "argv": [
+        "frobnicate"
+       ],
+       "expected_exit": 2,
+       "actual_exit": 2,
+       "ok": true,
+       "errors": [],
+       "stderr": "frobnicate: unknown subcommand\n"
+      },
+      {
+       "label": "12",
+       "argv": [
+        "list",
+        "--bogus",
+        "v",
+        "--store",
+        "store.jsonl"
+       ],
+       "expected_exit": 2,
+       "actual_exit": 2,
+       "ok": true,
+       "errors": [],
+       "stderr": "list: unknown option: --bogus\n"
+      },
+      {
+       "label": "13",
+       "argv": [
+        "list",
+        "extra",
+        "--store",
+        "store.jsonl"
+       ],
+       "expected_exit": 2,
+       "actual_exit": 2,
+       "ok": true,
+       "errors": [],
+       "stderr": "list: unexpected argument: extra\n"
+      },
+      {
+       "label": "14",
+       "argv": [
+        "list",
+        "--store",
+        ""
+       ],
+       "expected_exit": 2,
+       "actual_exit": 2,
+       "ok": true,
+       "errors": [],
+       "stderr": "list: empty store path\n"
+      },
+      {
+       "label": "15",
+       "argv": [
+        "search",
+        "--store",
+        "store.jsonl",
+        "--query",
+        ""
+       ],
+       "expected_exit": 2,
+       "actual_exit": 2,
+       "ok": true,
+       "errors": [],
+       "stderr": "search: empty query\n"
+      },
+      {
+       "label": "16",
+       "argv": [
+        "list",
+        "--store",
+        "store.jsonl"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      }
+     ]
+    },
+    {
+     "id": "U04",
+     "pass": false,
+     "steps": [
+      {
+       "label": "1",
+       "argv": [
+        "search",
+        "--store",
+        "store.jsonl",
+        "--query",
+        "strasse"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": false,
+       "errors": [
+        "stdout json mismatch: [{'title': '别的', 'body': 'STRASSE 在正文'}, {'title': 'STRASSE双命中', 'body': 'strasse 也在这'}] != [{'title': 'Straße', 'body': 'x'}, {'title': '别的', 'body': 'STRASSE 在正文'}, {'title': 'STRASSE双命中', 'body': 'strasse 也在这'}]"
+       ],
+       "stderr": ""
+      },
+      {
+       "label": "2",
+       "argv": [
+        "search",
+        "--store",
+        "store.jsonl",
+        "--query",
+        "STRASSE"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": false,
+       "errors": [
+        "stdout json mismatch: [{'title': '别的', 'body': 'STRASSE 在正文'}, {'title': 'STRASSE双命中', 'body': 'strasse 也在这'}] != [{'title': 'Straße', 'body': 'x'}, {'title': '别的', 'body': 'STRASSE 在正文'}, {'title': 'STRASSE双命中', 'body': 'strasse 也在这'}]"
+       ],
+       "stderr": ""
+      },
+      {
+       "label": "3",
+       "argv": [
+        "search",
+        "--store",
+        "store.jsonl",
+        "--query",
+        "ß"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": false,
+       "errors": [
+        "stdout json mismatch: [{'title': 'Straße', 'body': 'x'}] != [{'title': 'Straße', 'body': 'x'}, {'title': '别的', 'body': 'STRASSE 在正文'}, {'title': 'STRASSE双命中', 'body': 'strasse 也在这'}]"
+       ],
+       "stderr": ""
+      }
+     ]
+    },
+    {
+     "id": "U05",
+     "pass": true,
+     "steps": [
+      {
+       "label": "1",
+       "argv": [
+        "add",
+        "--store",
+        "store.jsonl",
+        "--title",
+        "多行",
+        "--body",
+        "第一行\n\"引用段\"\t尾"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "2",
+       "argv": [
+        "search",
+        "--store",
+        "store.jsonl",
+        "--query",
+        "第一行\n\"引用段\""
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "3",
+       "argv": [
+        "search",
+        "--store",
+        "store.jsonl",
+        "--query",
+        "\"引用段\"\t尾"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "4",
+       "argv": [
+        "search",
+        "--store",
+        "store.jsonl",
+        "--query",
+        "行\n无"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      }
+     ]
+    },
+    {
+     "id": "U06",
+     "pass": true,
+     "steps": [
+      {
+       "label": "1",
+       "argv": [
+        "list",
+        "--store",
+        "empty.jsonl"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "2",
+       "argv": [
+        "search",
+        "--store",
+        "empty.jsonl",
+        "--query",
+        "x"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "3a",
+       "argv": [
+        "search",
+        "--store",
+        "empty.jsonl",
+        "--query",
+        " "
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "3b",
+       "argv": [
+        "search",
+        "--store",
+        "one.jsonl",
+        "--query",
+        " "
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "4",
+       "argv": [
+        "list",
+        "--store",
+        "missing.jsonl"
+       ],
+       "expected_exit": 3,
+       "actual_exit": 3,
+       "ok": true,
+       "errors": [],
+       "stderr": "list: store not found: missing.jsonl\n"
+      },
+      {
+       "label": "5",
+       "argv": [
+        "search",
+        "--store",
+        "missing.jsonl",
+        "--query",
+        "q"
+       ],
+       "expected_exit": 3,
+       "actual_exit": 3,
+       "ok": true,
+       "errors": [],
+       "stderr": "search: store not found: missing.jsonl\n"
+      },
+      {
+       "label": "6",
+       "argv": [
+        "export",
+        "--store",
+        "missing.jsonl",
+        "--out",
+        "o.json"
+       ],
+       "expected_exit": 3,
+       "actual_exit": 3,
+       "ok": true,
+       "errors": [],
+       "stderr": "export: store not found: missing.jsonl\n"
+      }
+     ]
+    },
+    {
+     "id": "U07",
+     "pass": true,
+     "steps": [
+      {
+       "label": "1",
+       "argv": [
+        "export",
+        "--store",
+        "dir one/中文 store.jsonl",
+        "--out",
+        "out 相对.json"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "2",
+       "argv": [
+        "export",
+        "--store",
+        "ABS:dir one/中文 store.jsonl",
+        "--out",
+        "ABS:out 绝对.json"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "3",
+       "argv": [
+        "export",
+        "--store",
+        "empty.jsonl",
+        "--out",
+        "empty_out.json"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "4",
+       "argv": [
+        "export",
+        "--store",
+        "dir one/中文 store.jsonl",
+        "--out",
+        "out ro.json"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      }
+     ]
+    },
+    {
+     "id": "U08",
+     "pass": true,
+     "steps": [
+      {
+       "label": "1",
+       "argv": [
+        "export",
+        "--store",
+        "good.jsonl",
+        "--out",
+        "exists.json"
+       ],
+       "expected_exit": 2,
+       "actual_exit": 2,
+       "ok": true,
+       "errors": [],
+       "stderr": "export: out already exists\n"
+      },
+      {
+       "label": "2",
+       "argv": [
+        "export",
+        "--store",
+        "good.jsonl",
+        "--out",
+        "./sub/../good.jsonl"
+       ],
+       "expected_exit": 2,
+       "actual_exit": 2,
+       "ok": true,
+       "errors": [],
+       "stderr": "export: --out must differ from --store\n"
+      },
+      {
+       "label": "3",
+       "argv": [
+        "export",
+        "--store",
+        "good.jsonl",
+        "--out",
+        "adir"
+       ],
+       "expected_exit": 3,
+       "actual_exit": 3,
+       "ok": true,
+       "errors": [],
+       "stderr": "export: out is a directory\n"
+      },
+      {
+       "label": "4",
+       "argv": [
+        "export",
+        "--store",
+        "good.jsonl",
+        "--out",
+        "nodir/o.json"
+       ],
+       "expected_exit": 3,
+       "actual_exit": 3,
+       "ok": true,
+       "errors": [],
+       "stderr": "export: parent directory missing\n"
+      },
+      {
+       "label": "5",
+       "argv": [
+        "export",
+        "--store",
+        "good.jsonl",
+        "--out",
+        ""
+       ],
+       "expected_exit": 2,
+       "actual_exit": 2,
+       "ok": true,
+       "errors": [],
+       "stderr": "export: empty out path\n"
+      },
+      {
+       "label": "6",
+       "argv": [
+        "list",
+        "--store",
+        "adir"
+       ],
+       "expected_exit": 3,
+       "actual_exit": 3,
+       "ok": true,
+       "errors": [],
+       "stderr": "list: cannot read store: [Errno 13] Permission denied: 'adir'\n"
+      },
+      {
+       "label": "7",
+       "argv": [
+        "add",
+        "--store",
+        "adir",
+        "--title",
+        "x",
+        "--body",
+        "y"
+       ],
+       "expected_exit": 3,
+       "actual_exit": 3,
+       "ok": true,
+       "errors": [],
+       "stderr": "add: store is a directory\n"
+      },
+      {
+       "label": "8",
+       "argv": [
+        "add",
+        "--store",
+        "nodir/s.jsonl",
+        "--title",
+        "x",
+        "--body",
+        "y"
+       ],
+       "expected_exit": 3,
+       "actual_exit": 3,
+       "ok": true,
+       "errors": [],
+       "stderr": "add: parent directory missing\n"
+      },
+      {
+       "label": "9",
+       "argv": [
+        "export",
+        "--store",
+        "good.jsonl",
+        "--out",
+        "good.jsonl"
+       ],
+       "expected_exit": 2,
+       "actual_exit": 2,
+       "ok": true,
+       "errors": [],
+       "stderr": "export: --out must differ from --store\n"
+      },
+      {
+       "label": "10",
+       "argv": [
+        "list",
+        "--store",
+        "good.jsonl"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      }
+     ]
+    },
+    {
+     "id": "U09",
+     "pass": true,
+     "steps": [
+      {
+       "label": "1",
+       "argv": [
+        "export",
+        "--store",
+        "src.jsonl",
+        "--out",
+        "arr.json"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "2",
+       "argv": [
+        "search",
+        "--store",
+        "arr.json",
+        "--query",
+        "beta"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "3",
+       "argv": [
+        "add",
+        "--store",
+        "arr.json",
+        "--title",
+        "Gamma",
+        "--body",
+        "g"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "4",
+       "argv": [
+        "add",
+        "--store",
+        "arr.json",
+        "--title",
+        "Alpha",
+        "--body",
+        "dup"
+       ],
+       "expected_exit": 2,
+       "actual_exit": 2,
+       "ok": true,
+       "errors": [],
+       "stderr": "add: duplicate title\n"
+      },
+      {
+       "label": "5",
+       "argv": [
+        "list",
+        "--store",
+        "arr.json"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "6",
+       "argv": [
+        "export",
+        "--store",
+        "arr.json",
+        "--out",
+        "arr2.json"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "7",
+       "argv": [
+        "list",
+        "--store",
+        "src.jsonl"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      }
+     ]
+    },
+    {
+     "id": "U10",
+     "pass": true,
+     "steps": [
+      {
+       "label": "1",
+       "argv": [
+        "list",
+        "--store",
+        "trunc.jsonl"
+       ],
+       "expected_exit": 3,
+       "actual_exit": 3,
+       "ok": true,
+       "errors": [],
+       "stderr": "list: bad store: invalid JSON line\n"
+      },
+      {
+       "label": "2",
+       "argv": [
+        "add",
+        "--store",
+        "trunc.jsonl",
+        "--title",
+        "n",
+        "--body",
+        "b"
+       ],
+       "expected_exit": 3,
+       "actual_exit": 3,
+       "ok": true,
+       "errors": [],
+       "stderr": "add: bad store: invalid JSON line\n"
+      },
+      {
+       "label": "3",
+       "argv": [
+        "list",
+        "--store",
+        "bad.jsonl"
+       ],
+       "expected_exit": 3,
+       "actual_exit": 3,
+       "ok": true,
+       "errors": [],
+       "stderr": "list: bad store: not valid UTF-8\n"
+      },
+      {
+       "label": "4",
+       "argv": [
+        "add",
+        "--store",
+        "bad.jsonl",
+        "--title",
+        "n",
+        "--body",
+        "b"
+       ],
+       "expected_exit": 3,
+       "actual_exit": 3,
+       "ok": true,
+       "errors": [],
+       "stderr": "add: bad store: not valid UTF-8\n"
+      },
+      {
+       "label": "5",
+       "argv": [
+        "search",
+        "--store",
+        "trunc.jsonl",
+        "--query",
+        "a"
+       ],
+       "expected_exit": 3,
+       "actual_exit": 3,
+       "ok": true,
+       "errors": [],
+       "stderr": "search: bad store: invalid JSON line\n"
+      },
+      {
+       "label": "6",
+       "argv": [
+        "export",
+        "--store",
+        "bad.jsonl",
+        "--out",
+        "o10.json"
+       ],
+       "expected_exit": 3,
+       "actual_exit": 3,
+       "ok": true,
+       "errors": [],
+       "stderr": "export: bad store: not valid UTF-8\n"
+      }
+     ]
+    }
+   ],
+   "ok": true
+  },
+  {
+   "id": "M03",
+   "notes_sha256": "5caa985117eac9444f87ced38ef54a3574410c880519c2ad6a593dfc914ec5a6",
+   "rows": [
+    {
+     "id": "U01",
+     "expected_fail": [
+      "7",
+      "8",
+      "9a"
+     ],
+     "actual_fail": [
+      "7",
+      "8",
+      "9a"
+     ],
+     "missing": [],
+     "unexpected": [],
+     "ok": true
+    },
+    {
+     "id": "U02",
+     "expected_fail": [],
+     "actual_fail": [],
+     "missing": [],
+     "unexpected": [],
+     "ok": true
+    },
+    {
+     "id": "U03",
+     "expected_fail": [],
+     "actual_fail": [],
+     "missing": [],
+     "unexpected": [],
+     "ok": true
+    },
+    {
+     "id": "U04",
+     "expected_fail": [],
+     "actual_fail": [],
+     "missing": [],
+     "unexpected": [],
+     "ok": true
+    },
+    {
+     "id": "U05",
+     "expected_fail": [],
+     "actual_fail": [],
+     "missing": [],
+     "unexpected": [],
+     "ok": true
+    },
+    {
+     "id": "U06",
+     "expected_fail": [],
+     "actual_fail": [],
+     "missing": [],
+     "unexpected": [],
+     "ok": true
+    },
+    {
+     "id": "U07",
+     "expected_fail": [],
+     "actual_fail": [],
+     "missing": [],
+     "unexpected": [],
+     "ok": true
+    },
+    {
+     "id": "U08",
+     "expected_fail": [],
+     "actual_fail": [],
+     "missing": [],
+     "unexpected": [],
+     "ok": true
+    },
+    {
+     "id": "U09",
+     "expected_fail": [
+      "3",
+      "5",
+      "6"
+     ],
+     "actual_fail": [
+      "3",
+      "5",
+      "6"
+     ],
+     "missing": [],
+     "unexpected": [],
+     "ok": true
+    },
+    {
+     "id": "U10",
+     "expected_fail": [],
+     "actual_fail": [],
+     "missing": [],
+     "unexpected": [],
+     "ok": true
+    }
+   ],
+   "cases": [
+    {
+     "id": "U01",
+     "pass": false,
+     "steps": [
+      {
+       "label": "1",
+       "argv": [
+        "add",
+        "--store",
+        "store.jsonl",
+        "--title",
+        "标题\"一\"",
+        "--body",
+        "行1\n行\t2\\end, \"q\"全角ＡＢ emoji😀"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "2a",
+       "argv": [
+        "add",
+        "--store",
+        "store.jsonl",
+        "--title",
+        "Straße",
+        "--body",
+        "UPPER lower MiXeD"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "2b",
+       "argv": [
+        "add",
+        "--store",
+        "store.jsonl",
+        "--title",
+        "STRASSE二",
+        "--body",
+        "无关"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "2c",
+       "argv": [
+        "add",
+        "--store",
+        "store.jsonl",
+        "--title",
+        "仅正文命中",
+        "--body",
+        "藏着 needle 在这里"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "3",
+       "argv": [
+        "list",
+        "--store",
+        "store.jsonl"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "4",
+       "argv": [
+        "search",
+        "--store",
+        "store.jsonl",
+        "--query",
+        "strasse"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "5",
+       "argv": [
+        "search",
+        "--store",
+        "store.jsonl",
+        "--query",
+        "NEEDLE"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "6",
+       "argv": [
+        "export",
+        "--store",
+        "store.jsonl",
+        "--out",
+        "out.json"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "7",
+       "argv": [
+        "list",
+        "--store",
+        "out.json"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": false,
+       "errors": [
+        "stdout json mismatch: [{'title': '仅正文命中', 'body': '藏着 needle 在这里'}, {'title': 'STRASSE二', 'body': '无关'}, {'title': 'Straße', 'body': 'UPPER lower MiXeD'}, {'title': '标题\"一\"', 'body': '行1\\n行\\t2\\\\end, \"q\"全角ＡＢ emoji😀'}] != [{'title': '标题\"一\"', 'body': '行1\\n行\\t2\\\\end, \"q\"全角ＡＢ emoji😀'}, {'title': 'Straße', 'body': 'UPPER lower MiXeD'}, {'title': 'STRASSE二', 'body': '无关'}, {'title': '仅正文命中', 'body': '藏着 needle 在这里'}]"
+       ],
+       "stderr": ""
+      },
+      {
+       "label": "8",
+       "argv": [
+        "add",
+        "--store",
+        "out.json",
+        "--title",
+        "重载新条",
+        "--body",
+        "reloaded"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": false,
+       "errors": [
+        "files_after out.json: semantic mismatch: [{'title': '仅正文命中', 'body': '藏着 needle 在这里'}, {'title': 'STRASSE二', 'body': '无关'}, {'title': 'Straße', 'body': 'UPPER lower MiXeD'}, {'title': '标题\"一\"', 'body': '行1\\n行\\t2\\\\end, \"q\"全角ＡＢ emoji😀'}, {'title': '重载新条', 'body': 'reloaded'}] != [{'title': '标题\"一\"', 'body': '行1\\n行\\t2\\\\end, \"q\"全角ＡＢ emoji😀'}, {'title': 'Straße', 'body': 'UPPER lower MiXeD'}, {'title': 'STRASSE二', 'body': '无关'}, {'title': '仅正文命中', 'body': '藏着 needle 在这里'}, {'title': '重载新条', 'body': 'reloaded'}]"
+       ],
+       "stderr": ""
+      },
+      {
+       "label": "9a",
+       "argv": [
+        "list",
+        "--store",
+        "out.json"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": false,
+       "errors": [
+        "stdout json mismatch: [{'title': '重载新条', 'body': 'reloaded'}, {'title': '标题\"一\"', 'body': '行1\\n行\\t2\\\\end, \"q\"全角ＡＢ emoji😀'}, {'title': 'Straße', 'body': 'UPPER lower MiXeD'}, {'title': 'STRASSE二', 'body': '无关'}, {'title': '仅正文命中', 'body': '藏着 needle 在这里'}] != [{'title': '标题\"一\"', 'body': '行1\\n行\\t2\\\\end, \"q\"全角ＡＢ emoji😀'}, {'title': 'Straße', 'body': 'UPPER lower MiXeD'}, {'title': 'STRASSE二', 'body': '无关'}, {'title': '仅正文命中', 'body': '藏着 needle 在这里'}, {'title': '重载新条', 'body': 'reloaded'}]"
+       ],
+       "stderr": ""
+      },
+      {
+       "label": "9b",
+       "argv": [
+        "search",
+        "--store",
+        "out.json",
+        "--query",
+        "strasse"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      }
+     ]
+    },
+    {
+     "id": "U02",
+     "pass": true,
+     "steps": [
+      {
+       "label": "1",
+       "argv": [
+        "list",
+        "--store",
+        "store.jsonl"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "2",
+       "argv": [
+        "search",
+        "--store",
+        "store.jsonl",
+        "--query",
+        "abc"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "3",
+       "argv": [
+        "search",
+        "--store",
+        "store.jsonl",
+        "--query",
+        "ＡＢＣ"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "4",
+       "argv": [
+        "add",
+        "--store",
+        "store.jsonl",
+        "--title",
+        "空body条",
+        "--body",
+        ""
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "5",
+       "argv": [
+        "add",
+        "--store",
+        "store.jsonl",
+        "--title",
+        "  保留两端  ",
+        "--body",
+        "x"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "6",
+       "argv": [
+        "search",
+        "--store",
+        "store.jsonl",
+        "--query",
+        "  保留两端  "
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "7",
+       "argv": [
+        "add",
+        "--store",
+        "store.jsonl",
+        "--title",
+        "ABC",
+        "--body",
+        "精确大小写"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "8",
+       "argv": [
+        "list",
+        "--store",
+        "store.jsonl"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      }
+     ]
+    },
+    {
+     "id": "U03",
+     "pass": true,
+     "steps": [
+      {
+       "label": "1",
+       "argv": [
+        "add",
+        "--store",
+        "store.jsonl",
+        "--title",
+        "存在",
+        "--body",
+        "x"
+       ],
+       "expected_exit": 2,
+       "actual_exit": 2,
+       "ok": true,
+       "errors": [],
+       "stderr": "add: duplicate title\n"
+      },
+      {
+       "label": "2",
+       "argv": [
+        "add",
+        "--store",
+        "store.jsonl",
+        "--title",
+        "",
+        "--body",
+        "x"
+       ],
+       "expected_exit": 2,
+       "actual_exit": 2,
+       "ok": true,
+       "errors": [],
+       "stderr": "add: blank title\n"
+      },
+      {
+       "label": "3",
+       "argv": [
+        "add",
+        "--store",
+        "store.jsonl",
+        "--title",
+        "   ",
+        "--body",
+        "x"
+       ],
+       "expected_exit": 2,
+       "actual_exit": 2,
+       "ok": true,
+       "errors": [],
+       "stderr": "add: blank title\n"
+      },
+      {
+       "label": "4",
+       "argv": [
+        "add",
+        "--store",
+        "store.jsonl",
+        "--title",
+        "x"
+       ],
+       "expected_exit": 2,
+       "actual_exit": 2,
+       "ok": true,
+       "errors": [],
+       "stderr": "add: missing required option: --body\n"
+      },
+      {
+       "label": "5",
+       "argv": [
+        "add",
+        "--title",
+        "x",
+        "--body",
+        "y"
+       ],
+       "expected_exit": 2,
+       "actual_exit": 2,
+       "ok": true,
+       "errors": [],
+       "stderr": "add: missing required option: --store\n"
+      },
+      {
+       "label": "6",
+       "argv": [
+        "add",
+        "--store",
+        "store.jsonl",
+        "--title",
+        "x",
+        "--title",
+        "y",
+        "--body",
+        "z"
+       ],
+       "expected_exit": 2,
+       "actual_exit": 2,
+       "ok": true,
+       "errors": [],
+       "stderr": "add: duplicate option: --title\n"
+      },
+      {
+       "label": "7",
+       "argv": [
+        "list"
+       ],
+       "expected_exit": 2,
+       "actual_exit": 2,
+       "ok": true,
+       "errors": [],
+       "stderr": "list: missing required option: --store\n"
+      },
+      {
+       "label": "8",
+       "argv": [
+        "search",
+        "--store",
+        "store.jsonl"
+       ],
+       "expected_exit": 2,
+       "actual_exit": 2,
+       "ok": true,
+       "errors": [],
+       "stderr": "search: missing required option: --query\n"
+      },
+      {
+       "label": "9",
+       "argv": [
+        "export",
+        "--store",
+        "store.jsonl"
+       ],
+       "expected_exit": 2,
+       "actual_exit": 2,
+       "ok": true,
+       "errors": [],
+       "stderr": "export: missing required option: --out\n"
+      },
+      {
+       "label": "10",
+       "argv": [
+        "list",
+        "--store",
+        "store.jsonl",
+        "--store",
+        "store.jsonl"
+       ],
+       "expected_exit": 2,
+       "actual_exit": 2,
+       "ok": true,
+       "errors": [],
+       "stderr": "list: duplicate option: --store\n"
+      },
+      {
+       "label": "11",
+       "argv": [
+        "frobnicate"
+       ],
+       "expected_exit": 2,
+       "actual_exit": 2,
+       "ok": true,
+       "errors": [],
+       "stderr": "frobnicate: unknown subcommand\n"
+      },
+      {
+       "label": "12",
+       "argv": [
+        "list",
+        "--bogus",
+        "v",
+        "--store",
+        "store.jsonl"
+       ],
+       "expected_exit": 2,
+       "actual_exit": 2,
+       "ok": true,
+       "errors": [],
+       "stderr": "list: unknown option: --bogus\n"
+      },
+      {
+       "label": "13",
+       "argv": [
+        "list",
+        "extra",
+        "--store",
+        "store.jsonl"
+       ],
+       "expected_exit": 2,
+       "actual_exit": 2,
+       "ok": true,
+       "errors": [],
+       "stderr": "list: unexpected argument: extra\n"
+      },
+      {
+       "label": "14",
+       "argv": [
+        "list",
+        "--store",
+        ""
+       ],
+       "expected_exit": 2,
+       "actual_exit": 2,
+       "ok": true,
+       "errors": [],
+       "stderr": "list: empty store path\n"
+      },
+      {
+       "label": "15",
+       "argv": [
+        "search",
+        "--store",
+        "store.jsonl",
+        "--query",
+        ""
+       ],
+       "expected_exit": 2,
+       "actual_exit": 2,
+       "ok": true,
+       "errors": [],
+       "stderr": "search: empty query\n"
+      },
+      {
+       "label": "16",
+       "argv": [
+        "list",
+        "--store",
+        "store.jsonl"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      }
+     ]
+    },
+    {
+     "id": "U04",
+     "pass": true,
+     "steps": [
+      {
+       "label": "1",
+       "argv": [
+        "search",
+        "--store",
+        "store.jsonl",
+        "--query",
+        "strasse"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "2",
+       "argv": [
+        "search",
+        "--store",
+        "store.jsonl",
+        "--query",
+        "STRASSE"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "3",
+       "argv": [
+        "search",
+        "--store",
+        "store.jsonl",
+        "--query",
+        "ß"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      }
+     ]
+    },
+    {
+     "id": "U05",
+     "pass": true,
+     "steps": [
+      {
+       "label": "1",
+       "argv": [
+        "add",
+        "--store",
+        "store.jsonl",
+        "--title",
+        "多行",
+        "--body",
+        "第一行\n\"引用段\"\t尾"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "2",
+       "argv": [
+        "search",
+        "--store",
+        "store.jsonl",
+        "--query",
+        "第一行\n\"引用段\""
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "3",
+       "argv": [
+        "search",
+        "--store",
+        "store.jsonl",
+        "--query",
+        "\"引用段\"\t尾"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "4",
+       "argv": [
+        "search",
+        "--store",
+        "store.jsonl",
+        "--query",
+        "行\n无"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      }
+     ]
+    },
+    {
+     "id": "U06",
+     "pass": true,
+     "steps": [
+      {
+       "label": "1",
+       "argv": [
+        "list",
+        "--store",
+        "empty.jsonl"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "2",
+       "argv": [
+        "search",
+        "--store",
+        "empty.jsonl",
+        "--query",
+        "x"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "3a",
+       "argv": [
+        "search",
+        "--store",
+        "empty.jsonl",
+        "--query",
+        " "
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "3b",
+       "argv": [
+        "search",
+        "--store",
+        "one.jsonl",
+        "--query",
+        " "
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "4",
+       "argv": [
+        "list",
+        "--store",
+        "missing.jsonl"
+       ],
+       "expected_exit": 3,
+       "actual_exit": 3,
+       "ok": true,
+       "errors": [],
+       "stderr": "list: store not found: missing.jsonl\n"
+      },
+      {
+       "label": "5",
+       "argv": [
+        "search",
+        "--store",
+        "missing.jsonl",
+        "--query",
+        "q"
+       ],
+       "expected_exit": 3,
+       "actual_exit": 3,
+       "ok": true,
+       "errors": [],
+       "stderr": "search: store not found: missing.jsonl\n"
+      },
+      {
+       "label": "6",
+       "argv": [
+        "export",
+        "--store",
+        "missing.jsonl",
+        "--out",
+        "o.json"
+       ],
+       "expected_exit": 3,
+       "actual_exit": 3,
+       "ok": true,
+       "errors": [],
+       "stderr": "export: store not found: missing.jsonl\n"
+      }
+     ]
+    },
+    {
+     "id": "U07",
+     "pass": true,
+     "steps": [
+      {
+       "label": "1",
+       "argv": [
+        "export",
+        "--store",
+        "dir one/中文 store.jsonl",
+        "--out",
+        "out 相对.json"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "2",
+       "argv": [
+        "export",
+        "--store",
+        "ABS:dir one/中文 store.jsonl",
+        "--out",
+        "ABS:out 绝对.json"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "3",
+       "argv": [
+        "export",
+        "--store",
+        "empty.jsonl",
+        "--out",
+        "empty_out.json"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "4",
+       "argv": [
+        "export",
+        "--store",
+        "dir one/中文 store.jsonl",
+        "--out",
+        "out ro.json"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      }
+     ]
+    },
+    {
+     "id": "U08",
+     "pass": true,
+     "steps": [
+      {
+       "label": "1",
+       "argv": [
+        "export",
+        "--store",
+        "good.jsonl",
+        "--out",
+        "exists.json"
+       ],
+       "expected_exit": 2,
+       "actual_exit": 2,
+       "ok": true,
+       "errors": [],
+       "stderr": "export: out already exists\n"
+      },
+      {
+       "label": "2",
+       "argv": [
+        "export",
+        "--store",
+        "good.jsonl",
+        "--out",
+        "./sub/../good.jsonl"
+       ],
+       "expected_exit": 2,
+       "actual_exit": 2,
+       "ok": true,
+       "errors": [],
+       "stderr": "export: --out must differ from --store\n"
+      },
+      {
+       "label": "3",
+       "argv": [
+        "export",
+        "--store",
+        "good.jsonl",
+        "--out",
+        "adir"
+       ],
+       "expected_exit": 3,
+       "actual_exit": 3,
+       "ok": true,
+       "errors": [],
+       "stderr": "export: out is a directory\n"
+      },
+      {
+       "label": "4",
+       "argv": [
+        "export",
+        "--store",
+        "good.jsonl",
+        "--out",
+        "nodir/o.json"
+       ],
+       "expected_exit": 3,
+       "actual_exit": 3,
+       "ok": true,
+       "errors": [],
+       "stderr": "export: parent directory missing\n"
+      },
+      {
+       "label": "5",
+       "argv": [
+        "export",
+        "--store",
+        "good.jsonl",
+        "--out",
+        ""
+       ],
+       "expected_exit": 2,
+       "actual_exit": 2,
+       "ok": true,
+       "errors": [],
+       "stderr": "export: empty out path\n"
+      },
+      {
+       "label": "6",
+       "argv": [
+        "list",
+        "--store",
+        "adir"
+       ],
+       "expected_exit": 3,
+       "actual_exit": 3,
+       "ok": true,
+       "errors": [],
+       "stderr": "list: cannot read store: [Errno 13] Permission denied: 'adir'\n"
+      },
+      {
+       "label": "7",
+       "argv": [
+        "add",
+        "--store",
+        "adir",
+        "--title",
+        "x",
+        "--body",
+        "y"
+       ],
+       "expected_exit": 3,
+       "actual_exit": 3,
+       "ok": true,
+       "errors": [],
+       "stderr": "add: store is a directory\n"
+      },
+      {
+       "label": "8",
+       "argv": [
+        "add",
+        "--store",
+        "nodir/s.jsonl",
+        "--title",
+        "x",
+        "--body",
+        "y"
+       ],
+       "expected_exit": 3,
+       "actual_exit": 3,
+       "ok": true,
+       "errors": [],
+       "stderr": "add: parent directory missing\n"
+      },
+      {
+       "label": "9",
+       "argv": [
+        "export",
+        "--store",
+        "good.jsonl",
+        "--out",
+        "good.jsonl"
+       ],
+       "expected_exit": 2,
+       "actual_exit": 2,
+       "ok": true,
+       "errors": [],
+       "stderr": "export: --out must differ from --store\n"
+      },
+      {
+       "label": "10",
+       "argv": [
+        "list",
+        "--store",
+        "good.jsonl"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      }
+     ]
+    },
+    {
+     "id": "U09",
+     "pass": false,
+     "steps": [
+      {
+       "label": "1",
+       "argv": [
+        "export",
+        "--store",
+        "src.jsonl",
+        "--out",
+        "arr.json"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "2",
+       "argv": [
+        "search",
+        "--store",
+        "arr.json",
+        "--query",
+        "beta"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      },
+      {
+       "label": "3",
+       "argv": [
+        "add",
+        "--store",
+        "arr.json",
+        "--title",
+        "Gamma",
+        "--body",
+        "g"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": false,
+       "errors": [
+        "files_after arr.json: semantic mismatch: [{'title': 'beta', 'body': '包含 Beta 词'}, {'title': 'Alpha', 'body': 'x'}, {'title': 'Gamma', 'body': 'g'}] != [{'title': 'Alpha', 'body': 'x'}, {'title': 'beta', 'body': '包含 Beta 词'}, {'title': 'Gamma', 'body': 'g'}]"
+       ],
+       "stderr": ""
+      },
+      {
+       "label": "4",
+       "argv": [
+        "add",
+        "--store",
+        "arr.json",
+        "--title",
+        "Alpha",
+        "--body",
+        "dup"
+       ],
+       "expected_exit": 2,
+       "actual_exit": 2,
+       "ok": true,
+       "errors": [],
+       "stderr": "add: duplicate title\n"
+      },
+      {
+       "label": "5",
+       "argv": [
+        "list",
+        "--store",
+        "arr.json"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": false,
+       "errors": [
+        "stdout json mismatch: [{'title': 'Gamma', 'body': 'g'}, {'title': 'Alpha', 'body': 'x'}, {'title': 'beta', 'body': '包含 Beta 词'}] != [{'title': 'Alpha', 'body': 'x'}, {'title': 'beta', 'body': '包含 Beta 词'}, {'title': 'Gamma', 'body': 'g'}]"
+       ],
+       "stderr": ""
+      },
+      {
+       "label": "6",
+       "argv": [
+        "export",
+        "--store",
+        "arr.json",
+        "--out",
+        "arr2.json"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": false,
+       "errors": [
+        "files_after arr2.json: semantic mismatch: [{'title': 'Gamma', 'body': 'g'}, {'title': 'Alpha', 'body': 'x'}, {'title': 'beta', 'body': '包含 Beta 词'}] != [{'title': 'Alpha', 'body': 'x'}, {'title': 'beta', 'body': '包含 Beta 词'}, {'title': 'Gamma', 'body': 'g'}]"
+       ],
+       "stderr": ""
+      },
+      {
+       "label": "7",
+       "argv": [
+        "list",
+        "--store",
+        "src.jsonl"
+       ],
+       "expected_exit": 0,
+       "actual_exit": 0,
+       "ok": true,
+       "errors": [],
+       "stderr": ""
+      }
+     ]
+    },
+    {
+     "id": "U10",
+     "pass": true,
+     "steps": [
+      {
+       "label": "1",
+       "argv": [
+        "list",
+        "--store",
+        "trunc.jsonl"
+       ],
+       "expected_exit": 3,
+       "actual_exit": 3,
+       "ok": true,
+       "errors": [],
+       "stderr": "list: bad store: invalid JSON line\n"
+      },
+      {
+       "label": "2",
+       "argv": [
+        "add",
+        "--store",
+        "trunc.jsonl",
+        "--title",
+        "n",
+        "--body",
+        "b"
+       ],
+       "expected_exit": 3,
+       "actual_exit": 3,
+       "ok": true,
+       "errors": [],
+       "stderr": "add: bad store: invalid JSON line\n"
+      },
+      {
+       "label": "3",
+       "argv": [
+        "list",
+        "--store",
+        "bad.jsonl"
+       ],
+       "expected_exit": 3,
+       "actual_exit": 3,
+       "ok": true,
+       "errors": [],
+       "stderr": "list: bad store: not valid UTF-8\n"
+      },
+      {
+       "label": "4",
+       "argv": [
+        "add",
+        "--store",
+        "bad.jsonl",
+        "--title",
+        "n",
+        "--body",
+        "b"
+       ],
+       "expected_exit": 3,
+       "actual_exit": 3,
+       "ok": true,
+       "errors": [],
+       "stderr": "add: bad store: not valid UTF-8\n"
+      },
+      {
+       "label": "5",
+       "argv": [
+        "search",
+        "--store",
+        "trunc.jsonl",
+        "--query",
+        "a"
+       ],
+       "expected_exit": 3,
+       "actual_exit": 3,
+       "ok": true,
+       "errors": [],
+       "stderr": "search: bad store: invalid JSON line\n"
+      },
+      {
+       "label": "6",
+       "argv": [
+        "export",
+        "--store",
+        "bad.jsonl",
+        "--out",
+        "o10.json"
+       ],
+       "expected_exit": 3,
+       "actual_exit": 3,
+       "ok": true,
+       "errors": [],
+       "stderr": "export: bad store: not valid UTF-8\n"
+      }
+     ]
+    }
+   ],
+   "ok": true
+  }
+ ]
+}

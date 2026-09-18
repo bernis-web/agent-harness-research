@@ -1,0 +1,50 @@
+[
+  {
+    "task": "model-env",
+    "pid": 7104,
+    "model": "glm-5.3-flash",
+    "observed": [
+      "glm-5.3-flash"
+    ],
+    "state": "EXITED",
+    "exit": 0,
+    "elapsed": 63.607,
+    "is_error": false
+  },
+  {
+    "task": "model-privacy",
+    "pid": 6680,
+    "model": "glm-5.3-flash",
+    "observed": [
+      "glm-5.3-flash"
+    ],
+    "state": "EXITED",
+    "exit": 0,
+    "elapsed": 36.355,
+    "is_error": false
+  },
+  {
+    "task": "model-interception",
+    "pid": 21196,
+    "model": "glm-5.3-flash",
+    "observed": [
+      "glm-5.3-flash"
+    ],
+    "state": "EXITED",
+    "exit": 0,
+    "elapsed": 30.041,
+    "is_error": false
+  },
+  {
+    "task": "model-report",
+    "pid": 33720,
+    "model": "glm-5.3-flash",
+    "observed": [
+      "glm-5.3-flash"
+    ],
+    "state": "EXITED",
+    "exit": 0,
+    "elapsed": 25.096,
+    "is_error": false
+  }
+]

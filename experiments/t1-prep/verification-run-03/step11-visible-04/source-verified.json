@@ -1,0 +1,26 @@
+[
+  {
+    "file": "D:/projects/npm-cache/_npx/cbf1b8a072280925/node_modules/playwright-core/lib/coreBundle.js",
+    "start": 22844,
+    "end": 22858,
+    "text": "      async setFileChooserInterceptedBy(progress2, enabled, by) {\n        await progress2.race(this._setFileChooserInterceptedBy(enabled, by));\n      }\n      async _setFileChooserInterceptedBy(enabled, by) {\n        const wasIntercepted = this.fileChooserIntercepted();\n        if (enabled)\n          this._fileChooserInterceptedBy.add(by);\n        else\n          this._fileChooserInterceptedBy.delete(by);\n        if (wasIntercepted !== this.fileChooserIntercepted())\n          await this.delegate.updateFileChooserInterception();\n      }\n      fileChooserIntercepted() {\n        return this._fileChooserInterceptedBy.size > 0;\n      }"
+  },
+  {
+    "file": "D:/projects/npm-cache/_npx/cbf1b8a072280925/node_modules/playwright-core/lib/coreBundle.js",
+    "start": 37344,
+    "end": 37349,
+    "text": "      async updateRequestInterception() {\n        await this._networkManager.setRequestInterception(this._page.needsRequestInterception());\n      }\n      async updateFileChooserInterception() {\n        await this._forAllFrameSessions((frame) => frame._updateFileChooserInterception(false));\n      }"
+  },
+  {
+    "file": "D:/projects/npm-cache/_npx/cbf1b8a072280925/node_modules/playwright-core/lib/coreBundle.js",
+    "start": 38026,
+    "end": 38032,
+    "text": "      async _updateFileChooserInterception(initial) {\n        const enabled = this._page.fileChooserIntercepted();\n        if (initial && !enabled)\n          return;\n        await this._client.send(\"Page.setInterceptFileChooserDialog\", { enabled }).catch(() => {\n        });\n      }"
+  },
+  {
+    "file": "D:/projects/npm-cache/_npx/cbf1b8a072280925/node_modules/playwright-core/lib/coreBundle.js",
+    "start": 63977,
+    "end": 63985,
+    "text": "  dispatcherConnection.onmessage = (message) => setImmediate(() => clientConnection.dispatch(message));\n  clientConnection.onmessage = (message) => setImmediate(() => dispatcherConnection.dispatch(message));\n  clientConnection.toImpl = (x) => {\n    if (x instanceof Connection)\n      return x === clientConnection ? dispatcherConnection : void 0;\n    if (!x)\n      return dispatcherConnection._dispatcherByGuid.get(\"\");\n    return dispatcherConnection._dispatcherByGuid.get(x._guid)._object;\n  };"
+  }
+]

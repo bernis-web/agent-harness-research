@@ -1,0 +1,29 @@
+{
+  "at": "2026-09-17T12:49:03.326Z",
+  "files": [
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/B/evidence-originals/data-mindmap.json",
+      "bytes": 397,
+      "sha256": "df8f17fbed15145cf88c091521a471fd1e0298d43388f55e3c0c1467a5020915",
+      "matchesExpected": true
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/B/evidence-originals/blob-mindmap.json",
+      "bytes": 397,
+      "sha256": "df8f17fbed15145cf88c091521a471fd1e0298d43388f55e3c0c1467a5020915",
+      "matchesExpected": true
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/verify-public-1-9/evidence/export-original-preserved.json",
+      "bytes": 397,
+      "sha256": "df8f17fbed15145cf88c091521a471fd1e0298d43388f55e3c0c1467a5020915",
+      "matchesExpected": true
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/verify-public-1-9/evidence/downloads/t1-map.json",
+      "bytes": 397,
+      "sha256": "df8f17fbed15145cf88c091521a471fd1e0298d43388f55e3c0c1467a5020915",
+      "matchesExpected": true
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+<!doctype html><meta charset="utf-8"><button id="choose">choose</button>
+<input type="file" id="file" hidden>
+<script>
+const log=(e)=>console.log('NATIVE_PROBE:'+JSON.stringify({type:e.type,isTrusted:e.isTrusted,filesLength:e.target.files?e.target.files.length:-1}));
+document.getElementById('file').addEventListener('cancel',log);
+document.getElementById('file').addEventListener('change',log);
+document.getElementById('choose').addEventListener('click',()=>document.getElementById('file').click());
+</script>

@@ -1,0 +1,23 @@
+{
+  "at": "2026-09-18T03:33:03.579Z",
+  "base": "D:/projects/agent-harness-research/experiments/project-continuation-20260918/model-revision/result.json",
+  "reviewer": "Codex lightweight evidence review",
+  "corrections": [
+    "unknown-not-absent",
+    "preserve-freeze",
+    "remove-false-quote",
+    "unknowns",
+    "reference-not-product",
+    "no-reapproval-invention",
+    "RQ1-causal-boundary",
+    "T2-targeted-confirmation",
+    "surrogate-probes",
+    "executable-product-analysis-milestones"
+  ],
+  "extra": "Added independent absolute-path evidence maps and latest delivery boundary. No research execution.",
+  "userRequestedCloseoutCorrections": [
+    "E11 downgraded to coordinator summary, not original independent evidence",
+    "Main coordinator advances under existing authorization; only new high-risk/scope review",
+    "T2 spec worker preparing draft is reported context only; no takeover"
+  ]
+}

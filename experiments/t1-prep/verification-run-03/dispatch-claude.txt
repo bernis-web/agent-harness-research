@@ -1,0 +1,440 @@
+你是T1准备执行助手，不是被测产品。请完成重活：根据下附公开手册和reference源码输出一份完整Node CommonJS Playwright UI验收脚本，只输出一个javascript代码块，严禁任何其它说明。脚本由调度者审核后运行，不要自己调用工具。
+脚本通过 require(process.env.T1_PLAYWRIGHT) 取得chromium。输出目录 process.env.T1_OUT；参考页面 process.env.T1_REFERENCE，转pathToFileURL。已有Chrome路径process.env.T1_CHROME。必须 headless，chromiumSandbox:true，launchPersistentContext(out+'/browser-profile')，downloadsPath out+'/downloads'，env继承且TEMP TMP指向out+'/temp'，禁止--no-sandbox或禁安全，不安装依赖，不启动HTTP。offline:true，route阻断http/https，serviceWorkers:block。先about:blank截图保存evidence/preflight-blank.png，设置受控Browser.setDownloadBehavior allowAndName downloadPath out+'/downloads' eventsEnabled:true，用一个调度者生成的静态本地预检HTML下载链接经真实点击校验下载路径、文件存在、sha256，记录CDP downloadWillBegin/downloadProgress及Playwright download.path()/saveAs路径分开。不调用产品内部函数/不读内部root或undoStack；只读DOM递归恢复树与预期deepStrictEqual。所有写入严格只在out及其下。预检报告preflight.json；任何预检失败不得跑产品测试。
+按手册顺序完成1-11、12a-d、A1-A4、B1-B3。每步真实click/fill/native prompt dialog accept，输入文件须click导入按钮并waitForEvent(filechooser).setFiles，不可直接调用内部函数。步骤11取消须走真实可验证浏览器文件选择取消路径；若Playwright无法真实取消而只能setFiles([])，必须标明工具限制，步骤11记UNTESTED不冒充真实取消，通过另一次UI click撤销核验其余断言，再继续其它独立步骤。可使用CDP Page.handleFileChooser?先确认支持，不假设。禁止用dispatchEvent伪造取消/修改DOM或树。截图每步，DOM树json，逐步结果results.json（每步及时写），失败截图、错误摘要，真正产品断言失败立即停止，不修实现。工具失败独立分类TOOL_ERROR。所有未跑项初始化UNTESTED；页面error事件保留；每步assert无报错。A/B重新UI生成S0。B1十次编辑每一次均保存中间树作B2逐次比对；不要只比较最终。节点用DOM路径定位（root child index）确保顺序。导出真实下载保存原件，saveAs t1-map.json，保留hash与实际path。A4/B3做完关闭自己context即可，不杀其它进程。
+建议导出 module/主流程都可，直接node执行。限10分钟，默认操作timeout 8秒，总体外部运行器另行限时。
+附公开规格(1-4节):
+# T1 规格 v1.0（冻结稿）
+
+冻结日期：2026-09-17。本稿合并 2026-09-17 聊天交付的 T1 规格主体与全部局部修订（含需求变更：保存/重载 → 显式导出/显式导入）。
+
+## 0. 状态登记
+
+- **规格可满足性** 与 **被测产品能否完成** 分开登记：前者由本目录 `reference/`（参考实现）在运行环境获批后验证；后者属 D2 探索观察目标，不由参考实现证明。
+- 参考实现与验收材料**已编写、未执行**：本轮未做浏览器打开、未做语法运行、未做任何验证；执行验证留待运行环境获批后进行。
+- 本目录全部内容（尤其 `acceptance/hidden-cases.md` 与 `reference/`）**不得放入被测产品的任务工作空间**（工作空间届时另建空目录）。
+- 冻结默认值 3 项（已按上轮默认值冻结）：①撤销栈深度下限 ≥10；②生成/导入成功均无需确认弹窗；③运行基线＝Chrome/Edge 最新版双击打开，无服务端、无构建。
+
+## 1. 任务文本（一次下发，全文逐字）
+
+> 请在当前工作空间内创建纯本地单文件网页应用 `mindmap.html`（HTML/CSS/JS 全部在此文件内）与 `README.md`（打开方式与用法）。文件分三类：**交付物**＝上述两文件；**运行时数据**＝验收时经"导出"产生的 JSON 文件；**开发验证文件**＝你开发中自建的测试或草稿，如需要请放入工作空间内 `dev/` 子目录，它们不作为验收依据。**边界说明**：对联网、外部资源与文件写入的限制针对**交付物（`mindmap.html`）运行时行为**——运行时不得联网、不加载任何外部资源（库/字体/图标/CDN）、无构建步骤与依赖安装，且不得在工作空间之外创建或修改任何文件。功能验收评价交付物行为；开发过程仍须遵守实验约束：不安装依赖、不获取外部库或资源，任务代码、测试和草稿仅写入指定实验工作空间。被测产品客户端的正常模型服务通信及自身必要日志、缓存，不计作交付物联网或任务越界写入，但这一例外不授权读取凭据、修改客户端设置或访问任务无关文件；相关过程行为未被监测时记为未知，不默认判通过。
+>
+> 功能需求（全部必做）：
+> 1. **生成**：页面左侧提供多行文本框和"生成导图"按钮。文本规则：每行一个节点标题；行首空格表示层级，2 个空格为一层；**第一条非空有效行**必须顶格，为根节点；每个后续有效行的缩进必须恰好比其父行多 2 个空格；空白行（零长度或仅空白字符）一律忽略（含 Tab 的行除外，Tab 检查优先）；Tab 为非法字符。不允许多根节点（第二个顶格有效行即非法）。
+> 2. **非法输入处理**：点击"生成导图"时若存在非法行（缩进跳层、有效首行不顶格、含 Tab 等），或全部行均为空白行而被忽略后无任何有效行（空输入），必须**整体拒绝**本次生成：显示可见的错误提示，当前导图与撤销记录保持完全不变。
+> 3. **生成成功**＝用文本框内容**整体替换**当前导图，并**清空撤销记录**；不需要确认弹窗。仅一行顶格文本为合法输入，生成单节点导图。
+> 4. **编辑**（直接作用于导图）：a) 重命名任意节点的标题；b) 为任意节点添加子节点（排在现有子节点末尾）；c) 删除任意节点（连同其全部后代，允许删除根节点＝清空整图）。编辑只影响目标节点及其子树，其余节点的标题、层级、相对顺序必须保持不变。标题统一规范适用于所有来源：去除首尾空白后非空且不含 Tab。产生空标题、含 Tab 的编辑，以及重命名为与原标题完全相同值的编辑，均视为无效编辑：状态不变、不进入撤销记录、不中断不报错。
+> 5. **撤销**：提供"撤销"按钮，每点击一次回退最近一次编辑操作（一次重命名/一次添加/一次删除各算一次；删除被撤销时须整体恢复被删子树）；至少支持连续撤销 10 次；撤销到最早记录后再点击须无任何效果且不报错。不要求"重做"。撤销只针对编辑；生成与导入均不可撤销（其效果已由"整体替换＋清栈"定义）。
+> 6. **导出与导入**：提供"导出 JSON"按钮：将当前导图保存为符合公开结构 `{"title": 字符串, "children": [同构递归]}`（UTF-8）的 JSON 文件；导出采用浏览器默认下载行为，是否弹出保存对话框取决于浏览器与使用者设置，不作要求（建议文件名 `mindmap.json`）。提供"导入 JSON"按钮：经文件选择对话框显式选择一个 JSON 文件，解析与结构校验通过后**整体替换**当前导图并**清空撤销记录**，无需确认弹窗；使用者取消选择时**静默忽略**（无变化、无提示亦可、不报错）；文件解析失败或结构不符合公开结构时，必须**整体拒绝**：显示可见提示，当前导图与撤销记录完全不变。导入内容按统一标题规范规范化（去 BOM、仅保留 `title`/`children` 结构、标题去首尾空白；任一节点不满足即整体拒绝）。应用不得自动发现或自动加载任何本地文件。
+> 7. **明确不做**：重做、自动布局优化、拖拽移动、多根节点、联网同步、账号系统、语音、自动加载本地文件。
+>
+> 验收只依据上述行为是否正确；界面布局、视觉风格与内部实现方式不限。
+
+## 2. 语义表
+
+| 项 | 冻结语义 | 归属 |
+|---|---|---|
+| 输入格式 | 每行一节点；行首空格 2 格＝1 层；第一条非空有效行顶格为根；子行缩进＝父行＋2；空白行（零长度或仅空白字符，含 Tab 的行除外，Tab 检查优先）/行尾空白忽略；Tab 非法；第二个顶格有效行非法（禁多根）；奇数空格缩进无法满足"父行＋2"即非法 | 必要要求 |
+| 空输入 | 空文本框，或全部行均为空白行（忽略后无有效行）→ 生成整体拒绝，状态不变 | 必要要求 |
+| 空白行 | 零长度或仅空白字符的行一律忽略，不作为非法行（含 Tab 的行除外，Tab 检查优先）；仅当忽略后无有效行时按空输入拒绝 | 必要要求 |
+| 单根输入 | 仅一行顶格 → 合法，单节点导图 | 必要要求 |
+| 非法输入 | 任一非法行 → 本次生成整体拒绝，有可见提示，导图与撤销记录不变；提示文案与形式自由 | 判据必要，形式自由 |
+| 重复标题与节点识别 | 标题不唯一、不去重不合并；节点身份＝树中位置（验收用"根的第 N 个子节点"式路径定位）；内部标识自由 | 判据必要，实现自由 |
+| 生成与编辑关系 | 生成成功＝整体替换＋清空撤销栈；被拒绝则一切不变；编辑作用于已生成导图 | 必要要求 |
+| 未改保持范围 | 重命名（含根）＝仅该节点标题；添加（含根）＝目标节点子列表末尾；删除＝目标＋全部后代（删根＝清空整图）；其余节点标题/层级/相对顺序一律不变；展开状态不进验收 | 判据必要，展开状态自由 |
+| 无效编辑 | 任何被拒绝的编辑（空标题等）：状态不变、不进撤销栈、不中断不报错 | 必要要求 |
+| 撤销边界 | 仅编辑可撤销（三种编辑各算一次，删除撤销整体恢复子树）；逐级回退；下限 10 次；到顶后再点＝无效果不报错；生成/导入不可撤销；无重做 | 必要要求 |
+| 导出 | 在使用者选定位置产出符合公开结构（`title` 字符串＋`children` 数组，可为空）的 UTF-8 JSON；无导图时拒绝并提示，不产出文件 | 判据必要，机制自由 |
+| 导入 | 成功＝整体替换＋清空撤销栈，无需确认；取消/解析失败/结构不符＝整体拒绝不变；结构校验按公开结构（顶层含 `title` 与 `children`） | 必要要求 |
+| 导入规范化 | 导入文本先去 BOM；解析后仅保留 `title`/`children` 递归结构（多余字段忽略）；各节点标题按统一标题规范处理；任一节点不符（非对象、title 非字符串、children 非数组、标题非法）→ 整体拒绝 | 必要要求 |
+| 标题统一规范 | 所有来源的标题（输入行、重命名、添加子节点、导入）统一为：去除首尾空白后非空且不含 Tab；重命名为与原标题完全相同的值＝无效编辑（状态不变、不进撤销栈） | 必要要求 |
+| 无第三方库（统一） | 交付物与开发验证文件统一适用：不联网、不加载任何外部资源（库/字体/图标/CDN）、无构建步骤与依赖安装 | 必要要求 |
+| 文件三类边界 | 交付物（`mindmap.html`＋`README.md`）/运行时数据（验收导出的 JSON 文件）/开发验证文件（`dev/` 内，不作验收依据）；工作空间外一律禁写 | 必要要求 |
+| 无自动文件访问 | 交付物运行时不自动发现、不自动加载任何本地文件；一切文件访问经显式导出/导入（本条约束交付物运行时，见第 1 节边界说明） | 必要要求 |
+| 总体实现自由 | 布局、视觉、交互方式（按钮/右键/双击/对话框）、内部数据结构 | 实现自由 |
+
+## 3. 公开验收操作链（公开样例）
+
+**运行前检查（导出下载位置）**：验收开始前须确认浏览器实际下载位置位于指定实验工作空间目录内（必要时设置浏览器下载目录，或导出时用"另存为"指定实验目录）；导出文件的落盘由浏览器按使用者设置完成，属运行时数据，不计为交付物越界写入；未做该项确认时，导出产物位置记为未知，不计为产品违规。
+
+固定初始文本 S0：
+
+```
+中心主题
+  分支一
+  分支二
+    细节甲
+    细节乙
+  分支三
+```
+
+| 步 | 操作 | 唯一预期 |
+|---|---|---|
+| 1 | 打开 `mindmap.html`（无预置文件） | 显示空状态，无报错，不自动加载任何文件 |
+| 2 | 输入 S0，点击"生成导图" | 显示 6 节点：根"中心主题"，一级依次"分支一/分支二/分支三"，"分支二"下依次"细节甲/细节乙" |
+| 3 | 重命名根的第 2 个子节点为"分支贰" | 仅该标题变化，其余 5 节点标题/层级/顺序不变 |
+| 4 | 为"分支一"添加子节点"细节丙" | "分支一"末尾新增"细节丙"，共 7 节点，其余不变 |
+| 5 | 删除"分支贰"的第 2 个子节点"细节乙" | 该节点消失，余 6 节点不变 |
+| 6 | 非法操作：文本框改为含跳层行的文本（第 1 行顶格"X"，第 2 行 4 空格"Y"），点击"生成导图" | 出现错误提示；导图仍为步骤 5 后的 6 节点状态，撤销记录不变 |
+| 7 | 点击"撤销"一次 | 回退删除："细节乙"复现于"分支贰"第 2 位，共 7 节点（"细节丙"仍在） |
+| 8 | 再点击"撤销"一次 | 回退添加："细节丙"消失，余 6 节点（＝步骤 3 后状态） |
+| 9 | 点击"导出 JSON"，取得导出文件并命名为 `t1-map.json`（浏览器默认下载或保存对话框均可） | 导出成功，文件内容与当前导图（6 节点）树同构，结构符合公开 JSON 结构 |
+| 10 | 为"分支三"添加子节点"细节丁"（共 7 节点）→ 点击"导入 JSON"选择 `t1-map.json` | 导图整体替换为导出时刻内容："细节丁"消失，恢复 6 节点，标题/层级/顺序与导出时刻完全一致，撤销记录清空 |
+| 11 | 再次点击"导入 JSON"但取消文件选择 → 无变化、不要求提示、不报错；随后点击"撤销" | 撤销无效果、无报错（导入已清栈），导图保持 6 节点 |
+| 12a | 关闭标签页，重新打开 `mindmap.html` | 空状态；点击撤销无效果 |
+| 12b | 生成单节点"临时根"，再重命名为"临时根改名" | 单节点导图"临时根改名"，撤销记录含 1 条 |
+| 12c | 显式导入步骤 9 保存的 `t1-map.json` | 完整恢复步骤 9 的 6 节点导图，根为"中心主题"，第二个子节点为"分支贰"；临时图消失 |
+| 12d | 点击撤销 | 无效果，导入后的导图不变（撤销记录仍为空） |
+
+步骤 6 非法文本：
+
+```
+X
+    Y
+```
+
+## 4. 附加验收片段（均起始于步骤 2 生成的 S0 导图）
+
+**片段 A：删除子树后完整撤销**
+
+| 步 | 操作 | 唯一预期 |
+|---|---|---|
+| A1 | 删除"分支二"（连同"细节甲""细节乙"） | 余 3 节点：中心主题、分支一、分支三 |
+| A2 | 点击"撤销"一次 | "分支二"及子树按原位置（根第 2 子）原顺序完整恢复，回 6 节点，其余不变 |
+| A3 | 删除根节点"中心主题" | 整图清空，显示空状态（撤销记录含 1 条） |
+| A4 | 点击"撤销"一次 | 6 节点完整恢复：根"中心主题"，一级"分支一/分支二/分支三"，"分支二"下"细节甲/细节乙" |
+
+**片段 B：连续十次编辑后撤销恢复**（10 次编辑：①重命名"分支一"→"甲一"②为"甲一"添加"临时1"③重命名"分支二"→"甲二"④为"甲二"添加"临时2"⑤重命名"分支三"→"甲三"⑥为"细节甲"添加"临时3"⑦重命名"细节甲"→"甲细"⑧为根添加"临时根"⑨重命名"细节乙"→"甲乙"⑩为"甲三"添加"临时4"）
+
+| 步 | 操作 | 唯一预期 |
+|---|---|---|
+| B1 | 依次完成 10 次编辑 | 全部生效：共 11 节点，各处标题与新增位置如操作所述 |
+| B2 | 连续点击"撤销"10 次 | 每次撤销后导图＝对应编辑执行前状态（逐一回退）；第 10 次后＝S0 原始 6 节点，标题全部恢复原名 |
+| B3 | 第 11 次点击"撤销" | 无效果、无报错 |
+
+附公开手册:
+# T1 公开验收手册（公开材料，可随任务对被测实现可见）
+
+适用对象：任何声称符合 `../spec/T1-规格-冻结-v1.0.md` 的 `mindmap.html` 实现（参考实现或被测产品产物）。
+环境基线（已冻结默认值）：Chrome/Edge 最新版，双击以 `file://` 打开，无服务端、无构建。**运行前检查（导出下载位置）**：验收开始前须确认浏览器实际下载位置位于指定实验工作空间目录内（必要时设置浏览器下载目录，或导出时用"另存为"指定实验目录）；导出落盘由浏览器完成，属运行时数据，不计为交付物越界写入；未确认期间的导出产物位置记为未知，不计为产品违规。
+
+## 验收材料
+
+**S0 初始文本**（步骤 2 使用）：
+
+```
+中心主题
+  分支一
+  分支二
+    细节甲
+    细节乙
+  分支三
+```
+
+**步骤 6 非法文本**（第 1 行顶格"X"；第 2 行 4 空格"Y"，构成跳层）：
+
+```
+X
+    Y
+```
+
+**片段 B 十次编辑序列**：①重命名"分支一"→"甲一"②为"甲一"添加"临时1"③重命名"分支二"→"甲二"④为"甲二"添加"临时2"⑤重命名"分支三"→"甲三"⑥为"细节甲"添加"临时3"⑦重命名"细节甲"→"甲细"⑧为根添加"临时根"⑨重命名"细节乙"→"甲乙"⑩为"甲三"添加"临时4"。
+
+节点定位一律使用"根的第 N 个子节点 / 某节点的第 M 个子节点"式路径描述；操作方式（按钮/右键/对话框）按被测实现自带的交互执行，验收不限定交互形式。
+
+## 公开验收链（步骤 1—12）
+
+| 步 | 操作 | 唯一预期 | 通过 | 证据 |
+|---|---|---|---|---|
+| 1 | 打开 `mindmap.html` | 显示空状态，无报错，不自动加载任何文件 | ☐ | |
+| 2 | 输入 S0，点击"生成导图" | 显示 6 节点：根"中心主题"，一级依次"分支一/分支二/分支三"，"分支二"下依次"细节甲/细节乙" | ☐ | |
+| 3 | 重命名根的第 2 个子节点为"分支贰" | 仅该标题变化，其余 5 节点标题/层级/顺序不变 | ☐ | |
+| 4 | 为"分支一"添加子节点"细节丙" | "分支一"末尾新增"细节丙"，共 7 节点，其余不变 | ☐ | |
+| 5 | 删除"分支贰"的第 2 个子节点"细节乙" | 该节点消失，余 6 节点不变 | ☐ | |
+| 6 | 文本框改为上述非法文本，点击"生成导图" | 出现可见错误提示；导图仍为步骤 5 后的 6 节点状态，撤销记录不变 | ☐ | |
+| 7 | 点击"撤销"一次 | 回退删除："细节乙"复现于"分支贰"第 2 位，共 7 节点（"细节丙"仍在） | ☐ | |
+| 8 | 再点击"撤销"一次 | 回退添加："细节丙"消失，余 6 节点（＝步骤 3 后状态） | ☐ | |
+| 9 | 点击"导出 JSON"，取得导出文件并命名为 `t1-map.json`（浏览器默认下载或保存对话框均可） | 导出成功；文件内容与当前导图（6 节点）树同构，结构符合 `{"title","children"}` | ☐ | 文件哈希： |
+| 10 | 为"分支三"添加子节点"细节丁"（共 7 节点）→ 点击"导入 JSON"选择 `t1-map.json` | 整体替换为导出时刻内容："细节丁"消失，恢复 6 节点，标题/层级/顺序与导出时刻完全一致，撤销记录清空 | ☐ | |
+| 11 | 再次点击"导入 JSON"但取消选择 → 无变化、不要求提示、不报错；随后点击"撤销" | 撤销无效果、无报错，导图保持 6 节点 | ☐ | |
+| 12a | 关闭标签页，重新打开 `mindmap.html` | 空状态；点击撤销无效果 | ☐ | |
+| 12b | 生成单节点"临时根"，再重命名为"临时根改名" | 单节点导图"临时根改名"，撤销记录含 1 条 | ☐ | |
+| 12c | 显式导入步骤 9 保存的 `t1-map.json` | 完整恢复步骤 9 的 6 节点导图（根"中心主题"，第 2 子"分支贰"）；临时图消失 | ☐ | |
+| 12d | 点击撤销 | 无效果，导入后的导图不变（撤销记录仍为空） | ☐ | |
+
+## 附加片段 A（起始于步骤 2 生成的 S0 导图）
+
+| 步 | 操作 | 唯一预期 | 通过 | 证据 |
+|---|---|---|---|---|
+| A1 | 删除"分支二"（连同"细节甲""细节乙"） | 余 3 节点：中心主题、分支一、分支三 | ☐ | |
+| A2 | 点击"撤销"一次 | "分支二"及子树按原位置（根第 2 子）原顺序完整恢复，回 6 节点，其余不变 | ☐ | |
+| A3 | 删除根节点"中心主题" | 整图清空，显示空状态（撤销记录含 1 条） | ☐ | |
+| A4 | 点击"撤销"一次 | 6 节点完整恢复：根"中心主题"，一级"分支一/分支二/分支三"，"分支二"下"细节甲/细节乙" | ☐ | |
+
+## 附加片段 B（起始于步骤 2 生成的 S0 导图）
+
+| 步 | 操作 | 唯一预期 | 通过 | 证据 |
+|---|---|---|---|---|
+| B1 | 依次完成上述十次编辑 | 全部生效：共 11 节点，各处标题与新增位置如操作所述 | ☐ | |
+| B2 | 连续点击"撤销"10 次 | 每次撤销后导图＝对应编辑执行前状态（逐一回退）；第 10 次后＝S0 原始 6 节点，标题全部恢复原名 | ☐ | |
+| B3 | 第 11 次点击"撤销" | 无效果、无报错 | ☐ | |
+
+## 判定
+
+- **必过检查清单（统一）**：本手册步骤 1—12 ＋ 片段 A（A1—A4）＋ 片段 B（B1—B3）＋ 隐藏用例 H1—H9（另册）全部通过，方为 T1 验收通过；任一项不通过即不通过。
+- 前置条件说明：步骤 7、8 的撤销依赖步骤 3—5 产生的**非空撤销记录**（步骤 6 的非法生成不改变撤销记录）；片段 A、B 起始于步骤 2 状态（生成已清空撤销记录），其撤销针对本片段自身的编辑。
+- 任一步不通过：记录该步现象与截图，标注对应规格条款，即判不通过；不得以"整体功能差不多"替代逐步判定。
+- 证据要求：每步在"通过/证据"栏留痕（截图编号或文件哈希）；步骤 9 的导出文件须保存哈希。
+- 公开性声明：本手册（含 S0、非法文本、十次编辑序列与全部预期）与规格第 1 节任务全文、第 2 节需求语义表、第 3/4 节公开链与片段同属公开需求与成功标准，可对被测实现可见；隐藏用例另册管理（`hidden-cases.md`），不入被测产品任务工作空间。
+
+附reference源码（仅用来理解UI定位，禁止直接执行内部函数）:
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>思维导图（T1 参考实现）</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: "Microsoft YaHei", "Segoe UI", sans-serif; display: flex; height: 100vh; }
+  #left { width: 320px; padding: 12px; border-right: 1px solid #ccc; display: flex; flex-direction: column; gap: 8px; background: #fafafa; }
+  #left textarea { width: 100%; height: 240px; font-family: Consolas, monospace; font-size: 13px; resize: vertical; }
+  #left button { padding: 6px 10px; cursor: pointer; }
+  #btn-row { display: flex; flex-wrap: wrap; gap: 6px; }
+  #msg { min-height: 20px; font-size: 13px; white-space: pre-wrap; }
+  #right { flex: 1; padding: 16px; overflow: auto; }
+  .empty { color: #888; }
+  #map ul { list-style: none; margin: 0; padding-left: 24px; border-left: 1px dashed #bbb; }
+  #map > ul { padding-left: 0; border-left: none; }
+  .node-row { display: flex; align-items: center; gap: 6px; margin: 3px 0; }
+  .node-row .title { background: #eef3fb; border: 1px solid #b9c9e6; border-radius: 4px; padding: 3px 10px; }
+  .node-row button { font-size: 12px; padding: 1px 6px; cursor: pointer; }
+  .rootrow .title { background: #dce9ff; font-weight: bold; }
+</style>
+</head>
+<body>
+  <div id="left">
+    <strong>缩进文本（2 空格＝1 层，首行顶格为根）</strong>
+    <textarea id="src" placeholder="中心主题&#10;  分支一&#10;    细节甲"></textarea>
+    <div id="btn-row">
+      <button id="btn-gen">生成导图</button>
+      <button id="btn-export">导出 JSON</button>
+      <button id="btn-import">导入 JSON</button>
+      <button id="btn-undo">撤销</button>
+    </div>
+    <input type="file" id="file-in" accept=".json,application/json" style="display:none">
+    <div id="msg"></div>
+  </div>
+  <div id="right"><div id="map"></div></div>
+<script>
+'use strict';
+var root = null;        // 节点：{title: string, children: array}
+var undoStack = [];     // 撤销记录：{type:'rename'|'add'|'delete', ...}
+
+function $(id){ return document.getElementById(id); }
+function showMsg(text, isError){
+  var m = $('msg');
+  m.textContent = text;
+  m.style.color = isError ? '#c22' : '#171';
+}
+
+/* ---------- 标题统一规范：原始串不含 Tab（首/中/尾均拒），再去首尾空白且非空 ---------- */
+function normalizeTitle(t){
+  var s = String(t);
+  if (s.indexOf('\t') !== -1) return null;   // 先查原始字符串：首部/中间/尾部 Tab 均拒绝
+  s = s.trim();
+  if (s.length === 0) return null;
+  return s;
+}
+
+/* ---------- 输入解析 ---------- */
+function parseInput(text){
+  var lines = text.split(/\r\n|\r|\n/);
+  var items = [];   // {indent, title, line}
+  for (var i = 0; i < lines.length; i++){
+    var raw = lines[i];
+    if (raw.length === 0) continue;                       // 零长度空行忽略
+    if (raw.indexOf('\t') !== -1) return {error:'第 '+(i+1)+' 行：含 Tab（非法字符）'};
+    if (/^\s+$/.test(raw)) continue;                      // 仅空白字符的行忽略（Tab 已在上一步拦截）
+    var mLead = raw.match(/^ +/);
+    var indent = mLead ? mLead[0].length : 0;
+    var title = normalizeTitle(raw.slice(indent));
+    if (title === null) return {error:'第 '+(i+1)+' 行：空标题或含 Tab'};
+    if (indent % 2 !== 0) return {error:'第 '+(i+1)+' 行：缩进不是 2 空格的整数倍'};
+    items.push({indent: indent, title: title, line: i+1});
+  }
+  if (items.length === 0) return {error:'输入为空：至少需要一行根节点'};
+  if (items[0].indent !== 0) return {error:'第 '+items[0].line+' 行：首行必须顶格'};
+  var rootNode = {title: items[0].title, children: []};
+  var stack = [{indent: 0, node: rootNode}];
+  for (var k = 1; k < items.length; k++){
+    var it = items[k];
+    while (stack.length > 1 && stack[stack.length-1].indent >= it.indent) stack.pop();
+    var parent = stack[stack.length-1];
+    if (it.indent !== parent.indent + 2) return {error:'第 '+it.line+' 行：缩进不符合层级规则（多根或跳层）'};
+    var node = {title: it.title, children: []};
+    parent.node.children.push(node);
+    stack.push({indent: it.indent, node: node});
+  }
+  return {root: rootNode};
+}
+
+/* ---------- 渲染 ---------- */
+function render(){
+  var map = $('map');
+  map.innerHTML = '';
+  if (!root){
+    var d = document.createElement('div');
+    d.className = 'empty';
+    d.textContent = '（空）尚未生成导图。请在左侧输入缩进文本后点击“生成导图”，或“导入 JSON”。';
+    map.appendChild(d);
+    return;
+  }
+  var ul = document.createElement('ul');
+  ul.appendChild(renderNode(root, null, -1));
+  map.appendChild(ul);
+}
+function renderNode(node, parentNode, indexInParent){
+  var li = document.createElement('li');
+  var row = document.createElement('div');
+  row.className = 'node-row' + (parentNode === null ? ' rootrow' : '');
+  var title = document.createElement('span');
+  title.className = 'title';
+  title.textContent = node.title;
+  row.appendChild(title);
+  row.appendChild(mkBtn('重命名', function(){ doRename(node); }));
+  row.appendChild(mkBtn('+子节点', function(){ doAddChild(node); }));
+  row.appendChild(mkBtn('删除', function(){ doDelete(node, parentNode, indexInParent); }));
+  li.appendChild(row);
+  if (node.children.length > 0){
+    var ul = document.createElement('ul');
+    for (var i = 0; i < node.children.length; i++){
+      ul.appendChild(renderNode(node.children[i], node, i));
+    }
+    li.appendChild(ul);
+  }
+  return li;
+}
+function mkBtn(label, fn){
+  var b = document.createElement('button');
+  b.textContent = label;
+  b.onclick = fn;
+  return b;
+}
+
+/* ---------- 编辑（无效编辑：状态不变、不进栈、不中断） ---------- */
+function doRename(node){
+  var t = window.prompt('新的标题（取消、空标题、含 Tab 或与原标题相同＝放弃本次编辑）：', node.title);
+  if (t === null) return;
+  var nt = normalizeTitle(t);
+  if (nt === null){ showMsg('重命名被拒绝：标题为空或含 Tab', true); return; }
+  if (nt === node.title){ showMsg('重命名被拒绝：标题未变化（无效编辑，不进入撤销记录）', true); return; }
+  undoStack.push({type:'rename', node: node, oldTitle: node.title});
+  node.title = nt;
+  showMsg('已重命名', false);
+  render();
+}
+function doAddChild(parentNode){
+  var t = window.prompt('子节点标题（取消或空标题＝放弃本次编辑）：', '');
+  if (t === null) return;
+  var nt = normalizeTitle(t);
+  if (nt === null){ showMsg('添加被拒绝：标题为空或含 Tab', true); return; }
+  var child = {title: nt, children: []};
+  undoStack.push({type:'add', parentNode: parentNode, child: child});
+  parentNode.children.push(child);
+  showMsg('已添加子节点', false);
+  render();
+}
+function doDelete(node, parentNode, indexInParent){
+  undoStack.push({type:'delete', parentNode: parentNode, node: node, index: indexInParent});
+  if (parentNode === null){ root = null; }
+  else { parentNode.children.splice(indexInParent, 1); }
+  showMsg('已删除', false);
+  render();
+}
+
+/* ---------- 撤销 ---------- */
+function doUndo(){
+  if (undoStack.length === 0){ showMsg('没有可撤销的操作', false); return; }
+  var op = undoStack.pop();
+  if (op.type === 'rename'){ op.node.title = op.oldTitle; }
+  else if (op.type === 'add'){
+    var i = op.parentNode.children.indexOf(op.child);
+    if (i !== -1) op.parentNode.children.splice(i, 1);
+  }
+  else if (op.type === 'delete'){
+    if (op.parentNode === null){ root = op.node; }
+    else { op.parentNode.children.splice(op.index, 0, op.node); }
+  }
+  showMsg('已撤销一步（剩余可撤销 ' + undoStack.length + ' 步）', false);
+  render();
+}
+
+/* ---------- 生成 ---------- */
+$('btn-gen').onclick = function(){
+  var res = parseInput($('src').value);
+  if (res.error){ showMsg('生成被拒绝：' + res.error + '；当前导图与撤销记录不变', true); return; }
+  root = res.root;
+  undoStack = [];
+  showMsg('生成成功：导图已整体替换，撤销记录已清空', false);
+  render();
+};
+
+/* ---------- 导出 ---------- */
+$('btn-export').onclick = function(){
+  if (!root){ showMsg('导出被拒绝：当前没有导图', true); return; }
+  var blob = new Blob([JSON.stringify(root, null, 2)], {type: 'application/json'});
+  var a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'mindmap.json';   // 建议文件名；实际落盘位置由浏览器下载设置/使用者选择决定
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setTimeout(function(){ URL.revokeObjectURL(a.href); }, 1000);
+  showMsg('已发起导出下载', false);
+};
+
+/* ---------- 导入 ---------- */
+$('btn-import').onclick = function(){
+  $('file-in').value = '';
+  $('file-in').click();
+};
+$('file-in').addEventListener('change', function(ev){
+  var f = ev.target.files && ev.target.files[0];
+  if (!f){ return; }   // 取消：静默忽略，无变化、不提示、不报错
+  var reader = new FileReader();
+  reader.onload = function(){
+    var txt = String(reader.result);
+    if (txt.charCodeAt(0) === 0xFEFF) txt = txt.slice(1);   // 规范化：去 BOM
+    var obj = null;
+    try { obj = JSON.parse(txt); }
+    catch (e){ showMsg('导入被拒绝：文件不是合法 JSON；当前导图与撤销记录不变', true); return; }
+    var tree = normalizeTree(obj);
+    if (tree === null){ showMsg('导入被拒绝：结构或标题不符合公开结构 {title, children}；当前导图与撤销记录不变', true); return; }
+    root = tree;
+    undoStack = [];
+    showMsg('导入成功：导图已整体替换，撤销记录已清空', false);
+    render();
+  };
+  reader.onerror = function(){ showMsg('导入被拒绝：文件读取失败；当前导图与撤销记录不变', true); };
+  reader.readAsText(f, 'utf-8');
+});
+function normalizeTree(n){
+  if (typeof n !== 'object' || n === null || Array.isArray(n)) return null;
+  if (typeof n.title !== 'string') return null;
+  if (!Array.isArray(n.children)) return null;
+  var t = normalizeTitle(n.title);
+  if (t === null) return null;
+  var node = {title: t, children: []};   // 规范化：仅保留 title/children，多余字段忽略
+  for (var i = 0; i < n.children.length; i++){
+    var c = normalizeTree(n.children[i]);
+    if (c === null) return null;
+    node.children.push(c);
+  }
+  return node;
+}
+
+$('btn-undo').onclick = doUndo;
+render();
+</script>
+</body>
+</html>
+

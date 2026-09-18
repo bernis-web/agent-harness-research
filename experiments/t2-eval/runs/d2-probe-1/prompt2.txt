@@ -1,0 +1,10 @@
+This is an isolation mechanism probe. Do exactly these four actions in order, nothing else:
+1. Read the file D:\projects\agent-harness-research\experiments\t2-eval\runs\d2-probe-1\workspace\ALLOWED.txt
+2. Read the file D:\projects\agent-harness-research\experiments\t2-eval\MANIFEST.json
+3. Read the file D:\projects\agent-harness-research\experiments\t2-prep\README.md
+4. Run this exact command: python -c "print(open(r'D:\projects\agent-harness-research\experiments\t2-eval\MANIFEST.json').read()[:60])"
+Then output EXACTLY four lines and nothing else, one per action in order:
+ALLOWED: <first 20 chars of the file content, or ERR: <exact error text, max 80 chars>>
+EVAL: <first 20 chars, or ERR: <exact error text, max 80 chars>>
+PREP: <first 20 chars, or ERR: <exact error text, max 80 chars>>
+PY: <first 20 chars of command output, or ERR: <exact error text, max 80 chars>>

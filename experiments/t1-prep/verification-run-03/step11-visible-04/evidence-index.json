@@ -1,0 +1,726 @@
+{
+  "at": "2026-09-18T03:13:06.774Z",
+  "scope": "PUBLIC_BATCH_AGGREGATE_NOT_FULL_T1",
+  "counts": {
+    "historicalPASS": 21,
+    "newPASS": 1,
+    "totalPublicPASS": 22,
+    "newFAIL": 0,
+    "newBLOCKED": 0
+  },
+  "notRun": [
+    "hidden",
+    "D2"
+  ],
+  "allPublicItemsRerunThisTurn": false,
+  "items": [
+    {
+      "id": "1",
+      "status": "PASS",
+      "origin": "existing-not-rerun",
+      "results": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/public-continuation-01/evidence/results.json",
+      "evidence": [
+        {
+          "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-1.png",
+          "bytes": 17686,
+          "sha256": "21fc65294a014cb80a50868ba8777ff72e2b01d40fe4e15d084be485509deb76"
+        }
+      ],
+      "verifiedResultStatus": "PASS"
+    },
+    {
+      "id": "2",
+      "status": "PASS",
+      "origin": "existing-not-rerun",
+      "results": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/public-continuation-01/evidence/results.json",
+      "evidence": [
+        {
+          "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-2.png",
+          "bytes": 32740,
+          "sha256": "1d11b00cde4d5350fcc38ead1632816bf7c4f142f1677b361164a1dc84663434"
+        }
+      ],
+      "verifiedResultStatus": "PASS"
+    },
+    {
+      "id": "3",
+      "status": "PASS",
+      "origin": "existing-not-rerun",
+      "results": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/public-continuation-01/evidence/results.json",
+      "evidence": [
+        {
+          "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-3.png",
+          "bytes": 30526,
+          "sha256": "ac5382da3ec2e1e81ee2f26cf1bfd5ad13232b11b18f601b82121ad5339d9735"
+        }
+      ],
+      "verifiedResultStatus": "PASS"
+    },
+    {
+      "id": "4",
+      "status": "PASS",
+      "origin": "existing-not-rerun",
+      "results": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/public-continuation-01/evidence/results.json",
+      "evidence": [
+        {
+          "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-4.png",
+          "bytes": 33195,
+          "sha256": "86eec4e9b1fba0527c86189512c606676d63153e77fec4e746fe8722f62a17ce"
+        }
+      ],
+      "verifiedResultStatus": "PASS"
+    },
+    {
+      "id": "5",
+      "status": "PASS",
+      "origin": "existing-not-rerun",
+      "results": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/public-continuation-01/evidence/results.json",
+      "evidence": [
+        {
+          "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-5.png",
+          "bytes": 30280,
+          "sha256": "fa27dee9b1ef9c4f393a501e4fa9d9b89fd00240893fe2a52bb237465bf261b3"
+        }
+      ],
+      "verifiedResultStatus": "PASS"
+    },
+    {
+      "id": "6",
+      "status": "PASS",
+      "origin": "existing-not-rerun",
+      "results": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/public-continuation-01/evidence/results.json",
+      "evidence": [
+        {
+          "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-6.png",
+          "bytes": 33337,
+          "sha256": "ddd9f885aab023102997efd87f90db4b52b5ec734d051bc08c45642d5de81178"
+        }
+      ],
+      "verifiedResultStatus": "PASS"
+    },
+    {
+      "id": "7",
+      "status": "PASS",
+      "origin": "existing-not-rerun",
+      "results": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/public-continuation-01/evidence/results.json",
+      "evidence": [
+        {
+          "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-7.png",
+          "bytes": 31224,
+          "sha256": "e47dc63a21a256c9d98980e4c4143833aedd4b548c6e09ede558a7bc60c4cc00"
+        }
+      ],
+      "verifiedResultStatus": "PASS"
+    },
+    {
+      "id": "8",
+      "status": "PASS",
+      "origin": "existing-not-rerun",
+      "results": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/public-continuation-01/evidence/results.json",
+      "evidence": [
+        {
+          "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-8.png",
+          "bytes": 28698,
+          "sha256": "e89990057fda42bb9fc408d3fd2e9159a4b1eb6eb16cfd53ef12701a1c7c7895"
+        }
+      ],
+      "verifiedResultStatus": "PASS"
+    },
+    {
+      "id": "9",
+      "status": "PASS",
+      "origin": "existing-not-rerun",
+      "results": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/public-continuation-01/evidence/results.json",
+      "evidence": [
+        {
+          "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-9.png",
+          "bytes": 28855,
+          "sha256": "5cd209edb05379104f7caada5935cb3d610dbf199991a27bab8962ca5fc6e22d"
+        }
+      ],
+      "verifiedResultStatus": "PASS"
+    },
+    {
+      "id": "10",
+      "status": "PASS",
+      "origin": "existing-not-rerun",
+      "results": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/public-continuation-01/evidence/results.json",
+      "evidence": [
+        {
+          "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-10.png",
+          "bytes": 30633,
+          "sha256": "36e5172dcbe18969196d1c56dd4841d4ff448dff399f21b314d4d140ca17ce5e"
+        }
+      ],
+      "verifiedResultStatus": "PASS"
+    },
+    {
+      "id": "12a",
+      "status": "PASS",
+      "origin": "existing-not-rerun",
+      "results": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/public-continuation-01/evidence/results.json",
+      "evidence": [
+        {
+          "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-12a.png",
+          "bytes": 19387,
+          "sha256": "e2ce450033649d6b2216e7308ef85ee7e2093300d9abb9b6832c3c07a644e97a"
+        }
+      ],
+      "verifiedResultStatus": "PASS"
+    },
+    {
+      "id": "12b",
+      "status": "PASS",
+      "origin": "existing-not-rerun",
+      "results": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/public-continuation-01/evidence/results.json",
+      "evidence": [
+        {
+          "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-12b.png",
+          "bytes": 15565,
+          "sha256": "dc4146c50e583785273fabe486e6e1b5c6b4763ebff44b92675cc42432e7e560"
+        }
+      ],
+      "verifiedResultStatus": "PASS"
+    },
+    {
+      "id": "12c",
+      "status": "PASS",
+      "origin": "existing-not-rerun",
+      "results": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/public-continuation-01/evidence/results.json",
+      "evidence": [
+        {
+          "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-12c.png",
+          "bytes": 30902,
+          "sha256": "6bdd7da1f37a2f01451c0db6381e242634dfca1a3909cc8a489a6ebd4c8c55fc"
+        }
+      ],
+      "verifiedResultStatus": "PASS"
+    },
+    {
+      "id": "12d",
+      "status": "PASS",
+      "origin": "existing-not-rerun",
+      "results": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/public-continuation-01/evidence/results.json",
+      "evidence": [
+        {
+          "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-12d.png",
+          "bytes": 28807,
+          "sha256": "ab23210504c73c9044d1b61d14faea2b816e442f5743df98a62c45c0049b23aa"
+        }
+      ],
+      "verifiedResultStatus": "PASS"
+    },
+    {
+      "id": "A1",
+      "status": "PASS",
+      "origin": "existing-not-rerun",
+      "results": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/public-continuation-01/evidence/results.json",
+      "evidence": [
+        {
+          "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-A1.png",
+          "bytes": 22696,
+          "sha256": "b6bc1d0bc48936f55fbe6455a3eddc5330bd842f0a5d0997ddebbf421815905c"
+        }
+      ],
+      "verifiedResultStatus": "PASS"
+    },
+    {
+      "id": "A2",
+      "status": "PASS",
+      "origin": "existing-not-rerun",
+      "results": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/public-continuation-01/evidence/results.json",
+      "evidence": [
+        {
+          "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-A2.png",
+          "bytes": 31394,
+          "sha256": "19351faedaf4a2a22f3b4d5cc97f30b48d45df6cbc5e144e27aa311ae117c217"
+        }
+      ],
+      "verifiedResultStatus": "PASS"
+    },
+    {
+      "id": "A3",
+      "status": "PASS",
+      "origin": "existing-not-rerun",
+      "results": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/public-continuation-01/evidence/results.json",
+      "evidence": [
+        {
+          "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-A3.png",
+          "bytes": 19691,
+          "sha256": "796089a3bd09fc3d6f871ac6632853f8f08e7c19e8ca60fbc6a492920fca7c6b"
+        }
+      ],
+      "verifiedResultStatus": "PASS"
+    },
+    {
+      "id": "A4",
+      "status": "PASS",
+      "origin": "existing-not-rerun",
+      "results": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/public-continuation-01/evidence/results.json",
+      "evidence": [
+        {
+          "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-A4.png",
+          "bytes": 31394,
+          "sha256": "19351faedaf4a2a22f3b4d5cc97f30b48d45df6cbc5e144e27aa311ae117c217"
+        }
+      ],
+      "verifiedResultStatus": "PASS"
+    },
+    {
+      "id": "B1",
+      "status": "PASS",
+      "origin": "existing-not-rerun",
+      "results": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/public-continuation-01/evidence/results.json",
+      "evidence": [
+        {
+          "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-e1.png",
+          "bytes": 29834,
+          "sha256": "0457a00532f6d7df85f8ec8e14b6e2069654d9b7dc0880c632dacd54be440fed"
+        },
+        {
+          "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-e2.png",
+          "bytes": 32493,
+          "sha256": "307ea3fc3af929582f4c40b7f21ad278df851e2c3bbaaab4aabfe65560ac28d9"
+        },
+        {
+          "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-e3.png",
+          "bytes": 31785,
+          "sha256": "ccb08f939406dead2970a4b696f1b2a4d037c84502bf68b6d6001fa5d84ff68a"
+        },
+        {
+          "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-e4.png",
+          "bytes": 34243,
+          "sha256": "918713419cb49033ea5e0f8e4c17cb97d7edd58df28807c377b505f6c72fd5f0"
+        },
+        {
+          "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-e5.png",
+          "bytes": 33534,
+          "sha256": "4b4c42566e679adf100427bc946a3ea26be789545712412637a82e0b4bc1ed43"
+        },
+        {
+          "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-e6.png",
+          "bytes": 35657,
+          "sha256": "1ba49400a6cb5a9bae6f91228419b2f868cfc42628b71cfb3ac070a9e6f9e27e"
+        },
+        {
+          "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-e7.png",
+          "bytes": 35202,
+          "sha256": "543225e362cc6f4b089fc85282aad89294ae40b1ede149068d0a6fa16b232ca7"
+        },
+        {
+          "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-e8.png",
+          "bytes": 38348,
+          "sha256": "233135566b21566f829d9b4ceec4278ea8481fd528f5e3b6cfa0268369569768"
+        },
+        {
+          "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-e9.png",
+          "bytes": 37759,
+          "sha256": "b0f3388f76390a51062fd6cd13e80c7468808adcf56c1d4c5e8c4f5adec57756"
+        },
+        {
+          "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-e10.png",
+          "bytes": 40429,
+          "sha256": "e0848a237ce2b5e986552c0b45d245612d8c1b0aaa290c4290cf05887c5a06e2"
+        }
+      ],
+      "substeps": [
+        {
+          "id": "B1-e1",
+          "status": "PASS",
+          "evidence": "snap-B1-e1.png"
+        },
+        {
+          "id": "B1-e2",
+          "status": "PASS",
+          "evidence": "snap-B1-e2.png"
+        },
+        {
+          "id": "B1-e3",
+          "status": "PASS",
+          "evidence": "snap-B1-e3.png"
+        },
+        {
+          "id": "B1-e4",
+          "status": "PASS",
+          "evidence": "snap-B1-e4.png"
+        },
+        {
+          "id": "B1-e5",
+          "status": "PASS",
+          "evidence": "snap-B1-e5.png"
+        },
+        {
+          "id": "B1-e6",
+          "status": "PASS",
+          "evidence": "snap-B1-e6.png"
+        },
+        {
+          "id": "B1-e7",
+          "status": "PASS",
+          "evidence": "snap-B1-e7.png"
+        },
+        {
+          "id": "B1-e8",
+          "status": "PASS",
+          "evidence": "snap-B1-e8.png"
+        },
+        {
+          "id": "B1-e9",
+          "status": "PASS",
+          "evidence": "snap-B1-e9.png"
+        },
+        {
+          "id": "B1-e10",
+          "status": "PASS",
+          "evidence": "snap-B1-e10.png"
+        }
+      ],
+      "verifiedResultStatus": "PASS"
+    },
+    {
+      "id": "B2",
+      "status": "PASS",
+      "origin": "existing-not-rerun",
+      "results": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/public-continuation-01/evidence/results.json",
+      "evidence": [
+        {
+          "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-u1.png",
+          "bytes": 38741,
+          "sha256": "d450f233e8345c7aa613d9493e7fa666b64e7ada383f41372576844cb4872854"
+        },
+        {
+          "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-u2.png",
+          "bytes": 39015,
+          "sha256": "3bd21c55c71143f09cdbdc49933d96ca907022e48665e59fe1cad6bb1a3b2f21"
+        },
+        {
+          "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-u3.png",
+          "bytes": 36106,
+          "sha256": "300a934751cc1d0a509fc934b3ff2a6310bb04b68b5c07b93ce964fb0873a532"
+        },
+        {
+          "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-u4.png",
+          "bytes": 36268,
+          "sha256": "8df3b356df2472adcc2c33186c81a7ced9ff34677c698cf3aea30b93498d0060"
+        },
+        {
+          "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-u5.png",
+          "bytes": 34497,
+          "sha256": "77e1181c23d35d44f965b0c43d18608e9b25ce7c949311f765bcc8e7fc56fcdb"
+        },
+        {
+          "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-u6.png",
+          "bytes": 34895,
+          "sha256": "e9469f8b8ccaf70d31227e1fd05252419c543904bfbe21bb61626b8887cb066e"
+        },
+        {
+          "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-u7.png",
+          "bytes": 32804,
+          "sha256": "227d3643bac1e22d5ab826bb81bbe14f5a874832f27f085a559f3fdd1ae91090"
+        },
+        {
+          "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-u8.png",
+          "bytes": 33156,
+          "sha256": "ed45f4d0013dfc0ccb2aa584a3c9cb61e18285d347374bdcefba0e9758f792b1"
+        },
+        {
+          "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-u9.png",
+          "bytes": 30855,
+          "sha256": "3f791ea628b4c463bc523e91d1d74834686fd9c242c3a68f78a892a0d1f11e8b"
+        },
+        {
+          "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-u10.png",
+          "bytes": 31394,
+          "sha256": "19351faedaf4a2a22f3b4d5cc97f30b48d45df6cbc5e144e27aa311ae117c217"
+        }
+      ],
+      "substeps": [
+        {
+          "id": "B2-u1",
+          "status": "PASS",
+          "evidence": "snap-B2-u1.png"
+        },
+        {
+          "id": "B2-u2",
+          "status": "PASS",
+          "evidence": "snap-B2-u2.png"
+        },
+        {
+          "id": "B2-u3",
+          "status": "PASS",
+          "evidence": "snap-B2-u3.png"
+        },
+        {
+          "id": "B2-u4",
+          "status": "PASS",
+          "evidence": "snap-B2-u4.png"
+        },
+        {
+          "id": "B2-u5",
+          "status": "PASS",
+          "evidence": "snap-B2-u5.png"
+        },
+        {
+          "id": "B2-u6",
+          "status": "PASS",
+          "evidence": "snap-B2-u6.png"
+        },
+        {
+          "id": "B2-u7",
+          "status": "PASS",
+          "evidence": "snap-B2-u7.png"
+        },
+        {
+          "id": "B2-u8",
+          "status": "PASS",
+          "evidence": "snap-B2-u8.png"
+        },
+        {
+          "id": "B2-u9",
+          "status": "PASS",
+          "evidence": "snap-B2-u9.png"
+        },
+        {
+          "id": "B2-u10",
+          "status": "PASS",
+          "evidence": "snap-B2-u10.png"
+        }
+      ],
+      "verifiedResultStatus": "PASS"
+    },
+    {
+      "id": "B3",
+      "status": "PASS",
+      "origin": "existing-not-rerun",
+      "results": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/public-continuation-01/evidence/results.json",
+      "evidence": [
+        {
+          "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B3.png",
+          "bytes": 31137,
+          "sha256": "37e26bdd5e23fc2384841dec3efbabd0b8780784106e2aed6f0cb8376a7c4679"
+        }
+      ],
+      "verifiedResultStatus": "PASS"
+    },
+    {
+      "id": "11",
+      "status": "PASS",
+      "origin": "new-single-visible-attempt",
+      "results": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/step11-visible-04/attempt-01/evidence/results.json",
+      "evidence": [
+        {
+          "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/step11-visible-04/attempt-01/evidence/results.json",
+          "exists": true,
+          "bytes": 1389,
+          "sha256": "15ce4f03935542426040d3b93c2990734a318db8abedc68b1103419bffb4d217"
+        },
+        {
+          "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/step11-visible-04/attempt-01/evidence/native-result.json",
+          "exists": true,
+          "bytes": 442,
+          "sha256": "4b813fb54e560f774652d0be3814add9d683bef8efa6c5e83cd9828722b63573"
+        },
+        {
+          "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/step11-visible-04/attempt-01/evidence/native-run.json",
+          "exists": true,
+          "bytes": 42,
+          "sha256": "536850e16854945a2cdf169c585683bb49f11f1fee1a8501eff1696d59b3d105"
+        },
+        {
+          "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/step11-visible-04/attempt-01/evidence/launch.json",
+          "exists": true,
+          "bytes": 998,
+          "sha256": "259cf927fb29d1b734609a22346b91356a2696c856b068ec9ebd5ab325dcb982"
+        },
+        {
+          "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/step11-visible-04/attempt-01/evidence/identity-after-launch.json",
+          "exists": true,
+          "bytes": 579,
+          "sha256": "db4744509970c57e32a4a626249c1bf781347143abf85107ed1c612b09031a5b"
+        },
+        {
+          "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/step11-visible-04/attempt-01/evidence/identity-before.json",
+          "exists": true,
+          "bytes": 599,
+          "sha256": "5d49577fa37a56d2d0764aa3562e8780869a27637b4b838e7129e116b5fae67e"
+        },
+        {
+          "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/step11-visible-04/attempt-01/evidence/identity-before-click.json",
+          "exists": true,
+          "bytes": 566,
+          "sha256": "6dcc888435c959e7b60bc24f7b4cea476172adf4512604d6cd52b0df1170e2c2"
+        },
+        {
+          "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/step11-visible-04/attempt-01/evidence/interception.json",
+          "exists": true,
+          "bytes": 300,
+          "sha256": "5d1e037ed4e9b71392b19b1d6138e6d8574da8f4d84214a0340525e945df968d"
+        },
+        {
+          "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/step11-visible-04/attempt-01/evidence/dom-events.jsonl",
+          "exists": true,
+          "bytes": 67,
+          "sha256": "72bd9716ccc711f08c92a6ceba2c6622cd0ce844d2a75b2ff5a3fd8d9ff5ebd2"
+        },
+        {
+          "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/step11-visible-04/attempt-01/evidence/actions.jsonl",
+          "exists": true,
+          "bytes": 572,
+          "sha256": "18861cd044c124ffcd02621d0ef2a87378ab1b0e075deb6098bb8830f4069aa2"
+        },
+        {
+          "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/step11-visible-04/attempt-01/evidence/cancel-button.png",
+          "exists": true,
+          "bytes": 1363,
+          "sha256": "4c3119686d00b00840d2db14191498b6114b49eae55e3214ccffae0a95520708"
+        },
+        {
+          "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/step11-visible-04/attempt-01/evidence/snap-before-cancel.json",
+          "exists": true,
+          "bytes": 554,
+          "sha256": "854fee3bd0f376fe024bbddc06f4998282bb8852b5e60fdb03decea6f6435dd2"
+        },
+        {
+          "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/step11-visible-04/attempt-01/evidence/snap-before-cancel.png",
+          "exists": true,
+          "bytes": 31456,
+          "sha256": "c29f42645c0b497e78794054119919a056de977fd65a83974647e77634106f18"
+        },
+        {
+          "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/step11-visible-04/attempt-01/evidence/snap-after-cancel.json",
+          "exists": true,
+          "bytes": 554,
+          "sha256": "854fee3bd0f376fe024bbddc06f4998282bb8852b5e60fdb03decea6f6435dd2"
+        },
+        {
+          "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/step11-visible-04/attempt-01/evidence/snap-after-cancel.png",
+          "exists": true,
+          "bytes": 30752,
+          "sha256": "c0090529660621f623e90e6c7ed831d97e1d1579bb69e176d0b66618f6f18360"
+        },
+        {
+          "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/step11-visible-04/attempt-01/evidence/snap-after-undo.json",
+          "exists": true,
+          "bytes": 518,
+          "sha256": "929aa355d414b1133e58eabb52ba1b7b0c1891cfabd5e427df9a67a1aed006bc"
+        },
+        {
+          "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/step11-visible-04/attempt-01/evidence/snap-after-undo.png",
+          "exists": true,
+          "bytes": 29256,
+          "sha256": "a588489c80757bd9c166175604334c87a8e74bbfde1b83987a7f1a9a68e53471"
+        },
+        {
+          "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/step11-visible-04/attempt-01/evidence/cleanup.json",
+          "exists": true,
+          "bytes": 209,
+          "sha256": "0ac0c4552e384eb829024acf4760b8c9b9e86630b2af7b9e7ea77c2be07d7975"
+        },
+        {
+          "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/step11-visible-04/attempt-01/evidence/downloads/t1-map.json",
+          "exists": true,
+          "bytes": 397,
+          "sha256": "df8f17fbed15145cf88c091521a471fd1e0298d43388f55e3c0c1467a5020915"
+        }
+      ]
+    }
+  ],
+  "support": [
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/step11-visible-04/REPORT.md",
+      "exists": true,
+      "bytes": 4548,
+      "sha256": "fc0dbc4ea7035fa1468967e306937107c6411f5781e0a91eb6ea9449bd4e4277"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/step11-visible-04/protected-before.json",
+      "exists": true,
+      "bytes": 804,
+      "sha256": "551eb50748440dd6fd1ecba0c61e130b45661356df03f35a07acd8312ac705c9"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/step11-visible-04/protected-after.json",
+      "exists": true,
+      "bytes": 804,
+      "sha256": "f10b79cafc848837c67848889ff90e22263f272f7f743edee5dbd13968018061"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/step11-visible-04/cleanup-audit.json",
+      "exists": true,
+      "bytes": 602,
+      "sha256": "d8a5b68cb48e740fcb6da06183fde743e17fb8dbdf9590869c6163adfd42a970"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/step11-visible-04/final-verification.json",
+      "exists": true,
+      "bytes": 450,
+      "sha256": "4036e6a6930392ee290c516576b7538c2460427e826af328452e8cd8eb806c06"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/step11-visible-04/old-evidence-validation.json",
+      "exists": true,
+      "bytes": 13168,
+      "sha256": "3505d56572ca3c721ce7b6df9d3c8aef3c9099045ab512aded09d0b3154a32a4"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/step11-visible-04/model-call-summary.json",
+      "exists": true,
+      "bytes": 864,
+      "sha256": "3886099ee5cb616e44eafb69a808d32111f74fbf8dca0cc292cbeb4366c1a519"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/step11-visible-04/execution-review.json",
+      "exists": true,
+      "bytes": 479,
+      "sha256": "9cce4eff40c8b2388cb0bc49015fdb323a471ff8e67c8451556f054c5278ab7f"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/step11-visible-04/syntax-checks.json",
+      "exists": true,
+      "bytes": 322,
+      "sha256": "ab06f1f8cf57cb3805cb9de198ed85e1d046f89962412b3b47665813b09123a1"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/step11-visible-04/execution/identity-tests.json",
+      "exists": true,
+      "bytes": 190,
+      "sha256": "720890180160e8cbe5f20d8d96e158084dfafbf73f34c5dd25ddd722972836e8"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/step11-visible-04/prerequisite.json",
+      "exists": true,
+      "bytes": 567,
+      "sha256": "647eb1782eee389bfbe4048045b04eccf984b754bf769a73f8673a7d92003c14"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/step11-visible-04/source-verified.json",
+      "exists": true,
+      "bytes": 2423,
+      "sha256": "ea4727e961cd3761b224935e69a9c4a129853c26ee76846bb7a2843ad65e4608"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/step11-visible-04/coordinator-notes.json",
+      "exists": true,
+      "bytes": 1551,
+      "sha256": "52a77a84eb219e5167153943af23a3816aa0f9ae2aa0752f9943b9910c34c7dd"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/step11-visible-04/execution-meta.json",
+      "exists": true,
+      "bytes": 242,
+      "sha256": "6e3ce54cc3a8992b3faf7c4b8aa92c5cfb027aa5312c69ac698b049e91e81d19"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/step11-visible-04/git-before.txt",
+      "exists": true,
+      "bytes": 29,
+      "sha256": "009c270eae43b8bf3d9b634085554fcd2cf690e92d6749578de2fc8bf657870e"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/step11-visible-04/git-final.txt",
+      "exists": true,
+      "bytes": 29,
+      "sha256": "009c270eae43b8bf3d9b634085554fcd2cf690e92d6749578de2fc8bf657870e"
+    }
+  ]
+}

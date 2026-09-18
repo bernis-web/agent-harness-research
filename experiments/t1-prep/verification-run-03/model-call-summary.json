@@ -1,0 +1,59 @@
+{
+  "updated": "2026-09-17T12:35:35.878Z",
+  "actualDriverModel": "glm-5.3-flash",
+  "calls": [
+    {
+      "name": "harness",
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/attempt04-model-glm53/flash-modules/harness",
+      "model": "glm-5.3-flash",
+      "observed_models": [
+        "glm-5.3-flash"
+      ],
+      "pid": 59612,
+      "state": "EXITED",
+      "elapsed_seconds": 56.312,
+      "exit_code": 0,
+      "result_received": true,
+      "result_is_error": false,
+      "prompt_sha256": "4cc953c1dbfa429896dc930bf5f369a2eea5c8d43b415aa180f491b11e1b8b20"
+    },
+    {
+      "name": "public-chain",
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/attempt04-model-glm53/flash-modules/public-chain",
+      "model": "glm-5.3-flash",
+      "observed_models": [
+        "glm-5.3-flash"
+      ],
+      "pid": 54368,
+      "state": "EXITED",
+      "elapsed_seconds": 148.671,
+      "exit_code": 0,
+      "result_received": true,
+      "result_is_error": false,
+      "prompt_sha256": "15c2f5e29d10bd596f77196f027ca091f365f5e88cdf2f03b9e1fe3693f2c258"
+    },
+    {
+      "name": "fragments",
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/attempt04-model-glm53/flash-modules/fragments",
+      "model": "glm-5.3-flash",
+      "observed_models": [
+        "glm-5.3-flash"
+      ],
+      "pid": 59984,
+      "state": "EXITED",
+      "elapsed_seconds": 16.362,
+      "exit_code": 0,
+      "result_received": true,
+      "result_is_error": false,
+      "prompt_sha256": "e6ef3dfa8874b66b0cc71b203051e92a4a2f161f10789ebc462e8a606ce18a55"
+    }
+  ],
+  "history": {
+    "attempt01": "bare isolated authentication failed; not general auth conclusion",
+    "attempt02": "normal-auth default model timeout 840.03s",
+    "attempt03": "explicit glm-5.3-flash READY success 10.315s",
+    "attempt04": "glm-5.3 timeout 480.692s; no text/result",
+    "flashImplementation01": "large flash request timeout 240.582s; no text/result"
+  },
+  "zcode": "No model call: safe MCP/hooks/memory disabling not confirmed; no credential bridge used"
+}

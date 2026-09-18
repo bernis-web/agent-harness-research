@@ -1,0 +1,41 @@
+{
+  "date": "2026-09-18",
+  "scope": "T1 frozen reference implementation acceptance only",
+  "referenceSHA256": "c3811f4e772e53fdbf4a047f015eebd2eb6f57df90e497c4b78608af0f5904ad",
+  "public": {
+    "items": 22,
+    "passed": 22,
+    "rerunThisRun": false,
+    "basis": [
+      "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/public-continuation-01/summary.json",
+      "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/step11-visible-04/final-verification.json",
+      "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/step11-visible-04/REPORT.md"
+    ],
+    "combination": "21 prior public items + independently completed step11 native cancel =22",
+    "sourceSnapshot": "prerequisite.json"
+  },
+  "hidden": {
+    "cases": 9,
+    "passedCases": 9,
+    "substeps": 101,
+    "passedSubsteps": 101,
+    "browserAttempts": 1,
+    "basis": "attempt-01/evidence/results.json",
+    "executionStart": "2026-09-18T11:37:40+0800",
+    "executionEnd": "2026-09-18T11:38:01+0800",
+    "method": "real UI actions and DOM-visible ordered-tree assertions; behavioral undo; headless automation"
+  },
+  "status": "FUNCTIONAL_REFERENCE_ACCEPTANCE_PASS_PENDING_FINAL_EVIDENCE_AUDIT",
+  "scopeLimits": [
+    "Not D2",
+    "Not future tested-product success",
+    "Not whole project complete",
+    "Not manual acceptance",
+    "Dedicated reference UI adapter; red color not a generic specification criterion"
+  ],
+  "processCompliance": "Not clean: acknowledged initial read-scope deviation; preserved separate incident records; functional pass does not waive process violation",
+  "protected": {
+    "exactWhitelistFiles": 7,
+    "allUnchanged": true
+  }
+}

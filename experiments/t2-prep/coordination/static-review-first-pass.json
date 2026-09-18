@@ -1,0 +1,47 @@
+{
+  "type": "Document-only static cross-check; no product/test execution",
+  "cases": [
+    [
+      "U01",
+      "链完整；待修订 Unicode casefold witness、JSONL尾换行断言"
+    ],
+    [
+      "U02",
+      "空正文/空白保留可复核；待补ABC与abc可同时存在的精确大小写对照"
+    ],
+    [
+      "U03",
+      "15个固定拒绝命令，逐命令原始字节快照；不当作15个独立编号测试"
+    ],
+    [
+      "U04",
+      "发现ß→ss也命中STRASSE；已交Flash修订前三条预期及真实双命中记录"
+    ],
+    [
+      "U05",
+      "发现JSONL转义展示歧义；改为公开add后查询链，避免非法夹入物理换行"
+    ],
+    [
+      "U06",
+      "修订初始文件说明与后续empty仍存在的矛盾"
+    ],
+    [
+      "U07",
+      "移除只读属性设置；仅普通文件导出与源bytes不变"
+    ],
+    [
+      "U08",
+      "将规范化同路径指向good，并明确sub预先存在，避免混入缺父目录错误"
+    ],
+    [
+      "U09",
+      "beta只命中第二条，待修订"
+    ],
+    [
+      "U10",
+      "非法UTF8fixture改成仅解码错误而非同时缺schema；不得隐藏扩展错误类别"
+    ]
+  ],
+  "publication": "public-cases initial content is preserved in call-05 raw output; corrections delegated to call-06",
+  "status": "Corrections pending; not acceptance PASS"
+}

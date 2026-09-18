@@ -1,0 +1,968 @@
+{
+  "scope": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\",
+  "at": "2026-09-17T13:05:55.179Z",
+  "files": [
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\cancel-probe\\evidence\\actions.jsonl",
+      "bytes": 131,
+      "sha256": "335ff15b43608437f43ead4ad9a2cca25e5e4464a92955efaaa22e8becee342e"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\cancel-probe\\evidence\\events.jsonl",
+      "bytes": 71,
+      "sha256": "c6c8357784e22ee750f207fd26ba554926919fd21e3acd089b2cd5e9c569679e"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\cancel-probe\\evidence\\probe-results.json",
+      "bytes": 636,
+      "sha256": "34ffec06c1501ac83cc8f0ccc52afc156535b89def587172a47ba41bca8af2f8"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\cancel-probe\\evidence\\probe.html",
+      "bytes": 510,
+      "sha256": "9e2fff4900973cdbe7898b005660d5309d575f371315d8323097665e828731b9"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\cancel-probe\\evidence\\results.json",
+      "bytes": 1029,
+      "sha256": "e3e0537a71479e2f8e55ce5a30620cde4e776a97846601e40db5c8cad7ebe972"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\cancel-probe\\evidence\\shot-mode1.png",
+      "bytes": 5478,
+      "sha256": "82f4ddf5f3eb1e63e1c165496ac394d0a9dee5c973a02806e7ffac8ad4740d36"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\cancel-probe\\evidence\\shot-mode2.png",
+      "bytes": 5528,
+      "sha256": "b1468f4102e87e148c7f3ab28441f992a2a3d4011ac5439046f9ed71010f8b81"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\cancel-probe\\evidence\\snap-about-blank.png",
+      "bytes": 4714,
+      "sha256": "3eab349ebf404dae5a2a20d041325042a032d46aeab4b9730d8f8962686fb9b0"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\cancel-probe\\harness.cjs",
+      "bytes": 11940,
+      "sha256": "f5a5af45172fc87db2b2aa49bdbd9c29233aa79705b54379ca3a8dbe89f008c1"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\cancel-probe\\probe.cjs",
+      "bytes": 5060,
+      "sha256": "e63d4ab442b72023ec790f691b874ffbd45ceedd7a9d095bae3615d2ad28cb08"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\cancel-probe\\probe.original.cjs",
+      "bytes": 5069,
+      "sha256": "69cf45d6448ca428e9edda8e8d8fd4447f929ea00add0ed1134cd51093de387e"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\cancel-probe\\review.json",
+      "bytes": 514,
+      "sha256": "25d019f7d592aac63c3a46cc13ca5a1813e9854e26d8cb8d1a5c17b3f02166cf"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\cancel-probe\\run.cjs",
+      "bytes": 371,
+      "sha256": "5b3aadb32d8ecc3224414d3efcbd7f68116f241e0f6b5ab391fb5180e5c52a79"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\cancel-probe\\stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\cancel-probe\\stdout.txt",
+      "bytes": 25,
+      "sha256": "1dff4c9b0d1e57a64a5370f99c583f6f893217ad8398154185457f55f84f4748"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\actions.jsonl",
+      "bytes": 12052,
+      "sha256": "c2fa681bd971e5101bf73b61af55db7e9fd619708f66a4e47f74451cef260a11"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\download-evidence.json",
+      "bytes": 1240,
+      "sha256": "3a0bc973d3fc3447a0012f92fbc6faf1510e72e1272b0ad1ea24bdea878c1a5f"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\downloads\\t1-map.json",
+      "bytes": 397,
+      "sha256": "df8f17fbed15145cf88c091521a471fd1e0298d43388f55e3c0c1467a5020915"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\export-original-preserved.json",
+      "bytes": 397,
+      "sha256": "df8f17fbed15145cf88c091521a471fd1e0298d43388f55e3c0c1467a5020915"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\fixed-expected-comparison.json",
+      "bytes": 129,
+      "sha256": "8424b832c96f251fbb302deb520ac269d78c2670cbd211f1906a09eb55b3e158"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\preserved-original-evidence.json",
+      "bytes": 521,
+      "sha256": "a9f53682e1174b21bc49a8f6120cb2ecb1159d7bd452e5bdddb1e5bb754e4c42"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\results.json",
+      "bytes": 5702,
+      "sha256": "3983156e5c2ea713cdd5264c789ab04a5a2d8bfa2e46c30bed7ac058260af990"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-1.json",
+      "bytes": 51,
+      "sha256": "d967a3b5a1bd6f997b9e9f9e3d2e94b303957fd79ed644bb50d04ac85d4ae472"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-1.png",
+      "bytes": 17686,
+      "sha256": "21fc65294a014cb80a50868ba8777ff72e2b01d40fe4e15d084be485509deb76"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-10.json",
+      "bytes": 554,
+      "sha256": "854fee3bd0f376fe024bbddc06f4998282bb8852b5e60fdb03decea6f6435dd2"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-10.png",
+      "bytes": 30633,
+      "sha256": "36e5172dcbe18969196d1c56dd4841d4ff448dff399f21b314d4d140ca17ce5e"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-11-unverified.json",
+      "bytes": 518,
+      "sha256": "929aa355d414b1133e58eabb52ba1b7b0c1891cfabd5e427df9a67a1aed006bc"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-11-unverified.png",
+      "bytes": 28540,
+      "sha256": "adaefd741073765ab1064c5e112ada37a1ecfa018de40576f3232252772fde55"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-12a.json",
+      "bytes": 75,
+      "sha256": "6fa34b6a6ad7eaafccbdb997c1523a8f491224a68a015bf74db08d217acc32ac"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-12a.png",
+      "bytes": 19387,
+      "sha256": "e2ce450033649d6b2216e7308ef85ee7e2093300d9abb9b6832c3c07a644e97a"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-12b-after-empty-undo.json",
+      "bytes": 121,
+      "sha256": "f8ffd638bc20794abdcc39977fd6d68c854e3460e685b918afc25d101dc2b8c4"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-12b-after-empty-undo.png",
+      "bytes": 16088,
+      "sha256": "9245cb35ccd9cffb826dd4a74fe9f2df31dd94c1b6b2fe128feaadab5f5b27fb"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-12b-after-first-undo.json",
+      "bytes": 139,
+      "sha256": "d78eb3552c63b195acfaef7b805f7ab1caa285515c3b2482772c9f263dfd6e6e"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-12b-after-first-undo.png",
+      "bytes": 16347,
+      "sha256": "a65c5f7fe8c64f5b88d7a039702a0223c296f2ca41bb657d9fae3bcc81e9f4ad"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-12b.json",
+      "bytes": 115,
+      "sha256": "5f70d837db9b8e5e7d3d52da381108ee52d6a10ae67eefbe6a782c226ae8a030"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-12b.png",
+      "bytes": 15565,
+      "sha256": "dc4146c50e583785273fabe486e6e1b5c6b4763ebff44b92675cc42432e7e560"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-12c.json",
+      "bytes": 554,
+      "sha256": "854fee3bd0f376fe024bbddc06f4998282bb8852b5e60fdb03decea6f6435dd2"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-12c.png",
+      "bytes": 30902,
+      "sha256": "6bdd7da1f37a2f01451c0db6381e242634dfca1a3909cc8a489a6ebd4c8c55fc"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-12d.json",
+      "bytes": 518,
+      "sha256": "929aa355d414b1133e58eabb52ba1b7b0c1891cfabd5e427df9a67a1aed006bc"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-12d.png",
+      "bytes": 28807,
+      "sha256": "ab23210504c73c9044d1b61d14faea2b816e442f5743df98a62c45c0049b23aa"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-2.json",
+      "bytes": 554,
+      "sha256": "1d6f0ebcc289c961be9d45a1cb2615c55e87f400a86b8f62cef2b6dbc12c77b8"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-2.png",
+      "bytes": 32740,
+      "sha256": "1d11b00cde4d5350fcc38ead1632816bf7c4f142f1677b361164a1dc84663434"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-3.json",
+      "bytes": 506,
+      "sha256": "8a140cf568ae0757676685c51272ccfcd6ad5c2f2c0704424e3a11244b4de3fb"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-3.png",
+      "bytes": 30526,
+      "sha256": "ac5382da3ec2e1e81ee2f26cf1bfd5ad13232b11b18f601b82121ad5339d9735"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-4.json",
+      "bytes": 606,
+      "sha256": "53f95e6834a3021ce4bea949cf085d85b237e52971d8c2e21563841ca336da58"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-4.png",
+      "bytes": 33195,
+      "sha256": "86eec4e9b1fba0527c86189512c606676d63153e77fec4e746fe8722f62a17ce"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-5.json",
+      "bytes": 511,
+      "sha256": "0b4e572f9529b78e9dbf858e6ba2f26d1fe9e4a169ac33817211bd7abfa82bc2"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-5.png",
+      "bytes": 30280,
+      "sha256": "fa27dee9b1ef9c4f393a501e4fa9d9b89fd00240893fe2a52bb237465bf261b3"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-6.json",
+      "bytes": 616,
+      "sha256": "1eeef5c52e6b35b9356329f3406e7116b46c4d8f78da82fda3d624008be653e2"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-6.png",
+      "bytes": 33337,
+      "sha256": "ddd9f885aab023102997efd87f90db4b52b5ec734d051bc08c45642d5de81178"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-7.json",
+      "bytes": 630,
+      "sha256": "1c1ebbe3f03f1ec6e3bc6c9882bbc3a61e2ef776964b7842fc6ae0080617d29a"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-7.png",
+      "bytes": 31224,
+      "sha256": "e47dc63a21a256c9d98980e4c4143833aedd4b548c6e09ede558a7bc60c4cc00"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-8.json",
+      "bytes": 536,
+      "sha256": "57ef2bdf2964a8eb93a6588aae95ec39b5c9048248e1c550a16513dd8efbdfb5"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-8.png",
+      "bytes": 28698,
+      "sha256": "e89990057fda42bb9fc408d3fd2e9159a4b1eb6eb16cfd53ef12701a1c7c7895"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-9-download-started.json",
+      "bytes": 515,
+      "sha256": "93d06624d07bdd5e8d9ebcc1609f21a167c15abc48b201c33411c31a5dadc5a9"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-9-download-started.png",
+      "bytes": 28855,
+      "sha256": "5cd209edb05379104f7caada5935cb3d610dbf199991a27bab8962ca5fc6e22d"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-9.json",
+      "bytes": 515,
+      "sha256": "93d06624d07bdd5e8d9ebcc1609f21a167c15abc48b201c33411c31a5dadc5a9"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-9.png",
+      "bytes": 28855,
+      "sha256": "5cd209edb05379104f7caada5935cb3d610dbf199991a27bab8962ca5fc6e22d"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-A1.json",
+      "bytes": 253,
+      "sha256": "ad665471fcf8b80c457e8cdd8f436809caf86cf5d02ff11cd492578b339a65e3"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-A1.png",
+      "bytes": 22696,
+      "sha256": "b6bc1d0bc48936f55fbe6455a3eddc5330bd842f0a5d0997ddebbf421815905c"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-A2.json",
+      "bytes": 536,
+      "sha256": "8283247d3df28548b221e0ac38e363470a989524954eae49fb366727d9930e5b"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-A2.png",
+      "bytes": 31394,
+      "sha256": "19351faedaf4a2a22f3b4d5cc97f30b48d45df6cbc5e144e27aa311ae117c217"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-A3.json",
+      "bytes": 60,
+      "sha256": "0978b0699d47b6154b31c2b3d1aa6897b2d4ece8e9d769527f051c64ed6b6016"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-A3.png",
+      "bytes": 19691,
+      "sha256": "796089a3bd09fc3d6f871ac6632853f8f08e7c19e8ca60fbc6a492920fca7c6b"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-A4.json",
+      "bytes": 536,
+      "sha256": "8283247d3df28548b221e0ac38e363470a989524954eae49fb366727d9930e5b"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-A4.png",
+      "bytes": 31394,
+      "sha256": "19351faedaf4a2a22f3b4d5cc97f30b48d45df6cbc5e144e27aa311ae117c217"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-about-blank.png",
+      "bytes": 4714,
+      "sha256": "3eab349ebf404dae5a2a20d041325042a032d46aeab4b9730d8f8962686fb9b0"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-e1.json",
+      "bytes": 503,
+      "sha256": "ccd7f8bda9b11b1bb5c08eb9d624f4702e97c7c46945f3329657837ed1ff4e31"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-e1.png",
+      "bytes": 29834,
+      "sha256": "0457a00532f6d7df85f8ec8e14b6e2069654d9b7dc0880c632dacd54be440fed"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-e10.json",
+      "bytes": 947,
+      "sha256": "d4c52e326a27db03204a52281c677bbd354e885e7cd4f2b18e5dab72e51088c5"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-e10.png",
+      "bytes": 40429,
+      "sha256": "e0848a237ce2b5e986552c0b45d245612d8c1b0aaa290c4290cf05887c5a06e2"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-e2.json",
+      "bytes": 601,
+      "sha256": "8eeca5bc0d5a1073d929772de6897f7e35e948247700c064f15638ff0fff791f"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-e2.png",
+      "bytes": 32493,
+      "sha256": "307ea3fc3af929582f4c40b7f21ad278df851e2c3bbaaab4aabfe65560ac28d9"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-e3.json",
+      "bytes": 592,
+      "sha256": "1716464c389dab1694a0cf1c7bcf9a908dc1f1412f99a7c1c3ec7414cb16cb2e"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-e3.png",
+      "bytes": 31785,
+      "sha256": "ccb08f939406dead2970a4b696f1b2a4d037c84502bf68b6d6001fa5d84ff68a"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-e4.json",
+      "bytes": 682,
+      "sha256": "4ed482ed4c9d544158975fef298fb1896d7648a8e66d5342854a77f3faa2c1e5"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-e4.png",
+      "bytes": 34243,
+      "sha256": "918713419cb49033ea5e0f8e4c17cb97d7edd58df28807c377b505f6c72fd5f0"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-e5.json",
+      "bytes": 673,
+      "sha256": "c4c06ad69ec774c1b12bc9b4591ce7f4d4fd2830da8edbbcf400ee98ff0cd595"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-e5.png",
+      "bytes": 33534,
+      "sha256": "4b4c42566e679adf100427bc946a3ea26be789545712412637a82e0b4bc1ed43"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-e6.json",
+      "bytes": 791,
+      "sha256": "7e8c00059a09857512b162c857f45514a7f9cfee2e69b7c3b9677a7cec5f61fe"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-e6.png",
+      "bytes": 35657,
+      "sha256": "1ba49400a6cb5a9bae6f91228419b2f868cfc42628b71cfb3ac070a9e6f9e27e"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-e7.json",
+      "bytes": 782,
+      "sha256": "a7d932f84a7caa15a885b4fa3b94931ed7692e20180245e71e4097bdba69b2f1"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-e7.png",
+      "bytes": 35202,
+      "sha256": "543225e362cc6f4b089fc85282aad89294ae40b1ede149068d0a6fa16b232ca7"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-e8.json",
+      "bytes": 858,
+      "sha256": "9709187b6e27d840d091790625aa0f692df35474e2dc224e4da3b069f6f1cd8c"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-e8.png",
+      "bytes": 38348,
+      "sha256": "233135566b21566f829d9b4ceec4278ea8481fd528f5e3b6cfa0268369569768"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-e9.json",
+      "bytes": 849,
+      "sha256": "337fd22104273b8b5121039ccea5f43200f38751c1b4ef7e601651e254c1ca2a"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-e9.png",
+      "bytes": 37759,
+      "sha256": "b0f3388f76390a51062fd6cd13e80c7468808adcf56c1d4c5e8c4f5adec57756"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-edit01.json",
+      "bytes": 503,
+      "sha256": "ccd7f8bda9b11b1bb5c08eb9d624f4702e97c7c46945f3329657837ed1ff4e31"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-edit01.png",
+      "bytes": 29834,
+      "sha256": "0457a00532f6d7df85f8ec8e14b6e2069654d9b7dc0880c632dacd54be440fed"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-edit02.json",
+      "bytes": 601,
+      "sha256": "8eeca5bc0d5a1073d929772de6897f7e35e948247700c064f15638ff0fff791f"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-edit02.png",
+      "bytes": 32493,
+      "sha256": "307ea3fc3af929582f4c40b7f21ad278df851e2c3bbaaab4aabfe65560ac28d9"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-edit03.json",
+      "bytes": 592,
+      "sha256": "1716464c389dab1694a0cf1c7bcf9a908dc1f1412f99a7c1c3ec7414cb16cb2e"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-edit03.png",
+      "bytes": 31785,
+      "sha256": "ccb08f939406dead2970a4b696f1b2a4d037c84502bf68b6d6001fa5d84ff68a"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-edit04.json",
+      "bytes": 682,
+      "sha256": "4ed482ed4c9d544158975fef298fb1896d7648a8e66d5342854a77f3faa2c1e5"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-edit04.png",
+      "bytes": 34243,
+      "sha256": "918713419cb49033ea5e0f8e4c17cb97d7edd58df28807c377b505f6c72fd5f0"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-edit05.json",
+      "bytes": 673,
+      "sha256": "c4c06ad69ec774c1b12bc9b4591ce7f4d4fd2830da8edbbcf400ee98ff0cd595"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-edit05.png",
+      "bytes": 33534,
+      "sha256": "4b4c42566e679adf100427bc946a3ea26be789545712412637a82e0b4bc1ed43"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-edit06.json",
+      "bytes": 791,
+      "sha256": "7e8c00059a09857512b162c857f45514a7f9cfee2e69b7c3b9677a7cec5f61fe"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-edit06.png",
+      "bytes": 35657,
+      "sha256": "1ba49400a6cb5a9bae6f91228419b2f868cfc42628b71cfb3ac070a9e6f9e27e"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-edit07.json",
+      "bytes": 782,
+      "sha256": "a7d932f84a7caa15a885b4fa3b94931ed7692e20180245e71e4097bdba69b2f1"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-edit07.png",
+      "bytes": 35202,
+      "sha256": "543225e362cc6f4b089fc85282aad89294ae40b1ede149068d0a6fa16b232ca7"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-edit08.json",
+      "bytes": 858,
+      "sha256": "9709187b6e27d840d091790625aa0f692df35474e2dc224e4da3b069f6f1cd8c"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-edit08.png",
+      "bytes": 38348,
+      "sha256": "233135566b21566f829d9b4ceec4278ea8481fd528f5e3b6cfa0268369569768"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-edit09.json",
+      "bytes": 849,
+      "sha256": "337fd22104273b8b5121039ccea5f43200f38751c1b4ef7e601651e254c1ca2a"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-edit09.png",
+      "bytes": 37759,
+      "sha256": "b0f3388f76390a51062fd6cd13e80c7468808adcf56c1d4c5e8c4f5adec57756"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-edit10.json",
+      "bytes": 947,
+      "sha256": "d4c52e326a27db03204a52281c677bbd354e885e7cd4f2b18e5dab72e51088c5"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-edit10.png",
+      "bytes": 40429,
+      "sha256": "e0848a237ce2b5e986552c0b45d245612d8c1b0aaa290c4290cf05887c5a06e2"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-u1.json",
+      "bytes": 879,
+      "sha256": "4c99f908586fae480e33cd275ba6d44c28293c8ff3fc6d67c3a47290fffdcdba"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-u1.png",
+      "bytes": 38741,
+      "sha256": "d450f233e8345c7aa613d9493e7fa666b64e7ada383f41372576844cb4872854"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-u10.json",
+      "bytes": 536,
+      "sha256": "8283247d3df28548b221e0ac38e363470a989524954eae49fb366727d9930e5b"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-u10.png",
+      "bytes": 31394,
+      "sha256": "19351faedaf4a2a22f3b4d5cc97f30b48d45df6cbc5e144e27aa311ae117c217"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-u2.json",
+      "bytes": 882,
+      "sha256": "7ce2f77a1097ef19b8d4a5dd5906fe5a65e8793993a7f62d589bb0dc1b3c52f1"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-u2.png",
+      "bytes": 39015,
+      "sha256": "3bd21c55c71143f09cdbdc49933d96ca907022e48665e59fe1cad6bb1a3b2f21"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-u3.json",
+      "bytes": 812,
+      "sha256": "96277972dacb9fed2badaed813d90366b9c5b97197bbd5684f038ded06b7267c"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-u3.png",
+      "bytes": 36106,
+      "sha256": "300a934751cc1d0a509fc934b3ff2a6310bb04b68b5c07b93ce964fb0873a532"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-u4.json",
+      "bytes": 815,
+      "sha256": "b842ff34337589dcde77a7143b9da307a10113acacc3d705646732bf97b1890d"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-u4.png",
+      "bytes": 36268,
+      "sha256": "8df3b356df2472adcc2c33186c81a7ced9ff34677c698cf3aea30b93498d0060"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-u5.json",
+      "bytes": 703,
+      "sha256": "0a926fb894620bc4e2d2583f036ea731add9cda38600375f062ca9aad147dba2"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-u5.png",
+      "bytes": 34497,
+      "sha256": "77e1181c23d35d44f965b0c43d18608e9b25ce7c949311f765bcc8e7fc56fcdb"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-u6.json",
+      "bytes": 706,
+      "sha256": "bdaa2c690259bd25a1053cd4eb7ac75adfd0cd272f02aac13b812ed1462b8b5b"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-u6.png",
+      "bytes": 34895,
+      "sha256": "e9469f8b8ccaf70d31227e1fd05252419c543904bfbe21bb61626b8887cb066e"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-u7.json",
+      "bytes": 622,
+      "sha256": "3554c48e25341c75f68d40eb251aefd1e28ea511cdb76ce1154cfeff60942d1d"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-u7.png",
+      "bytes": 32804,
+      "sha256": "227d3643bac1e22d5ab826bb81bbe14f5a874832f27f085a559f3fdd1ae91090"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-u8.json",
+      "bytes": 625,
+      "sha256": "b0acaa37c7c745cadd4a8ad34da0e068cbcde2ad78c8ff7adb6bf0be781f8b8c"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-u8.png",
+      "bytes": 33156,
+      "sha256": "ed45f4d0013dfc0ccb2aa584a3c9cb61e18285d347374bdcefba0e9758f792b1"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-u9.json",
+      "bytes": 533,
+      "sha256": "10082073d09d7e0f86561cf19b9ad8c9a735184e81010d30517be72226f70f58"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-u9.png",
+      "bytes": 30855,
+      "sha256": "3f791ea628b4c463bc523e91d1d74834686fd9c242c3a68f78a892a0d1f11e8b"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-undo01.json",
+      "bytes": 879,
+      "sha256": "4c99f908586fae480e33cd275ba6d44c28293c8ff3fc6d67c3a47290fffdcdba"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-undo01.png",
+      "bytes": 38741,
+      "sha256": "d450f233e8345c7aa613d9493e7fa666b64e7ada383f41372576844cb4872854"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-undo02.json",
+      "bytes": 882,
+      "sha256": "7ce2f77a1097ef19b8d4a5dd5906fe5a65e8793993a7f62d589bb0dc1b3c52f1"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-undo02.png",
+      "bytes": 39015,
+      "sha256": "3bd21c55c71143f09cdbdc49933d96ca907022e48665e59fe1cad6bb1a3b2f21"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-undo03.json",
+      "bytes": 812,
+      "sha256": "96277972dacb9fed2badaed813d90366b9c5b97197bbd5684f038ded06b7267c"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-undo03.png",
+      "bytes": 36106,
+      "sha256": "300a934751cc1d0a509fc934b3ff2a6310bb04b68b5c07b93ce964fb0873a532"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-undo04.json",
+      "bytes": 815,
+      "sha256": "b842ff34337589dcde77a7143b9da307a10113acacc3d705646732bf97b1890d"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-undo04.png",
+      "bytes": 36268,
+      "sha256": "8df3b356df2472adcc2c33186c81a7ced9ff34677c698cf3aea30b93498d0060"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-undo05.json",
+      "bytes": 703,
+      "sha256": "0a926fb894620bc4e2d2583f036ea731add9cda38600375f062ca9aad147dba2"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-undo05.png",
+      "bytes": 34497,
+      "sha256": "77e1181c23d35d44f965b0c43d18608e9b25ce7c949311f765bcc8e7fc56fcdb"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-undo06.json",
+      "bytes": 706,
+      "sha256": "bdaa2c690259bd25a1053cd4eb7ac75adfd0cd272f02aac13b812ed1462b8b5b"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-undo06.png",
+      "bytes": 34895,
+      "sha256": "e9469f8b8ccaf70d31227e1fd05252419c543904bfbe21bb61626b8887cb066e"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-undo07.json",
+      "bytes": 622,
+      "sha256": "3554c48e25341c75f68d40eb251aefd1e28ea511cdb76ce1154cfeff60942d1d"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-undo07.png",
+      "bytes": 32804,
+      "sha256": "227d3643bac1e22d5ab826bb81bbe14f5a874832f27f085a559f3fdd1ae91090"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-undo08.json",
+      "bytes": 625,
+      "sha256": "b0acaa37c7c745cadd4a8ad34da0e068cbcde2ad78c8ff7adb6bf0be781f8b8c"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-undo08.png",
+      "bytes": 33156,
+      "sha256": "ed45f4d0013dfc0ccb2aa584a3c9cb61e18285d347374bdcefba0e9758f792b1"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-undo09.json",
+      "bytes": 533,
+      "sha256": "10082073d09d7e0f86561cf19b9ad8c9a735184e81010d30517be72226f70f58"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-undo09.png",
+      "bytes": 30855,
+      "sha256": "3f791ea628b4c463bc523e91d1d74834686fd9c242c3a68f78a892a0d1f11e8b"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-undo10.json",
+      "bytes": 536,
+      "sha256": "8283247d3df28548b221e0ac38e363470a989524954eae49fb366727d9930e5b"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-undo10.png",
+      "bytes": 31394,
+      "sha256": "19351faedaf4a2a22f3b4d5cc97f30b48d45df6cbc5e144e27aa311ae117c217"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B3.json",
+      "bytes": 518,
+      "sha256": "44b6bb06a7551209901cdbcc0ed3210c64aa8cdca54a2fdf7616ac3df65e3101"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B3.png",
+      "bytes": 31137,
+      "sha256": "37e26bdd5e23fc2384841dec3efbabd0b8780784106e2aed6f0cb8376a7c4679"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-snap10-before-import.json",
+      "bytes": 606,
+      "sha256": "e5e55db8c730192719ff21d121239162aabaefb8db1e3b150061a22b37b18109"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-snap10-before-import.png",
+      "bytes": 30368,
+      "sha256": "931107f77022f6d4f2ef88ff2a1c43701cf5469dead484316e2d1588ca392422"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence-audit.json",
+      "bytes": 22783,
+      "sha256": "71826bf0265ed28dbbc9c92bcdad5986bac9a877f64a711da1030c2a24c4da2e"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\execution\\continuation.cjs",
+      "bytes": 3854,
+      "sha256": "b7b788dd133e6315d5e30699f7d24879885e51a3ebe7e2fca411d3b0b7b1c5de"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\execution\\continuation.original.cjs",
+      "bytes": 3492,
+      "sha256": "f7ae83e49e3c3836a3ef77bcb89097650eb45d64c3b4ca769e08dbb5fae53230"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\execution\\fragments.cjs",
+      "bytes": 3026,
+      "sha256": "d5357752f9deb83c30177fbfbee3e9a92ef969c60979ae24fe052cd820b248ec"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\execution\\harness.cjs",
+      "bytes": 12136,
+      "sha256": "6ea3ce94ce8a403eda12c8ace21dc6c5a0fd7cf83ac2fdb0d63765469c147301"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\execution\\harness.inherited.cjs",
+      "bytes": 11940,
+      "sha256": "f5a5af45172fc87db2b2aa49bdbd9c29233aa79705b54379ca3a8dbe89f008c1"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\execution\\prerequisite-1-9.cjs",
+      "bytes": 2868,
+      "sha256": "719f6a377ab2ccde6dc3d53319e70eb6af1ba0fff949439facd2922d972dd21c"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\execution\\review.json",
+      "bytes": 1108,
+      "sha256": "c252942798844d1e0b003f1a59df938d5d8fbbe304a13f474c6e4e0352bccd2c"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\execution\\run.cjs",
+      "bytes": 1603,
+      "sha256": "eb30747b13d63ed08e4a6cb5d050b3cb7482972578ac2408887ee2859694df95"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\execution-meta.json",
+      "bytes": 272,
+      "sha256": "af5467c16c5ee1ea74286f329e0e3c62ee59a1c782def0dbad5bf6939a0f1317"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\expected-export.json",
+      "bytes": 397,
+      "sha256": "df8f17fbed15145cf88c091521a471fd1e0298d43388f55e3c0c1467a5020915"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\git-final.txt",
+      "bytes": 65,
+      "sha256": "66c80604b7484aa2f5a37fc591a7efcb48c15ab37128f682486e419a988261cd"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\model-call-summary.json",
+      "bytes": 1397,
+      "sha256": "a4d47e81317c8e7c8a09483201037fce6f092943bb684cf6c933204d72439764"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\model-cancel-probe\\empty-mcp.json",
+      "bytes": 17,
+      "sha256": "691f62624936af38f0e6b2ac6c8b43162a23696696f62d5037d9eb2b43bd73c5"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\model-cancel-probe\\invoke-stream.py",
+      "bytes": 3829,
+      "sha256": "dd6dc934ac473a16be41e1431d30e3a5f81cfc600a50bf54a5288399d9d07ac7"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\model-cancel-probe\\model-call.json",
+      "bytes": 2536,
+      "sha256": "0aed3a7318e0f69749c3a500e7055c0a2d422f06d33ab54e7ea21c7f63f95d26"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\model-cancel-probe\\prompt.txt",
+      "bytes": 2571,
+      "sha256": "df21255c057edd6c857c869e866085f4142ee86a477a6095f7093346740b1906"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\model-cancel-probe\\result.json",
+      "bytes": 7298,
+      "sha256": "abfdcb59dbd6bc4a19f1b99ab29f0ee503bb81bbcd4cd678f48edd3d4ac5af30"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\model-cancel-probe\\runner-stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\model-cancel-probe\\runner-stdout.txt",
+      "bytes": 225,
+      "sha256": "ed0101d63ee2df9080a7941e0fa7d82821a2067292d185c2f2515a1856c2a017"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\model-cancel-probe\\settings.json",
+      "bytes": 70,
+      "sha256": "2fe7c6bc57f34cce4f6dd9d766ea293d10786faf95fe91978a0b6f35254ca845"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\model-cancel-probe\\stderr.txt",
+      "bytes": 81,
+      "sha256": "5a60532f16c7d02a3b8c045f73f93781042c9e2ed50905b80bf4b771b304c883"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\model-cancel-probe\\stdout.jsonl",
+      "bytes": 345124,
+      "sha256": "24ab01539ccb78c41f52615f45fbdec51a61a7bc52cf1bb0c4bdf5c19c7390f8"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\model-continuation\\empty-mcp.json",
+      "bytes": 17,
+      "sha256": "691f62624936af38f0e6b2ac6c8b43162a23696696f62d5037d9eb2b43bd73c5"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\model-continuation\\invoke-stream.py",
+      "bytes": 3829,
+      "sha256": "dd6dc934ac473a16be41e1431d30e3a5f81cfc600a50bf54a5288399d9d07ac7"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\model-continuation\\model-call.json",
+      "bytes": 2548,
+      "sha256": "8231e542020f4ee08d83bb91657fab1742a02a1b1accfe3bb402573b81798263"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\model-continuation\\prompt.txt",
+      "bytes": 4255,
+      "sha256": "9d03e98ff798c6496986207188080e0bc449ed782df875cbb1283f00c777fb71"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\model-continuation\\result.json",
+      "bytes": 5717,
+      "sha256": "692d173bac178c883358c4eabbf565d846a6071ef6d8ccc70d53fb5758b23600"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\model-continuation\\runner-stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\model-continuation\\runner-stdout.txt",
+      "bytes": 224,
+      "sha256": "87c457e3173a0a62f7677b81055fb980b14eba83e67329074d9a4815a9d37c58"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\model-continuation\\settings.json",
+      "bytes": 70,
+      "sha256": "2fe7c6bc57f34cce4f6dd9d766ea293d10786faf95fe91978a0b6f35254ca845"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\model-continuation\\stderr.txt",
+      "bytes": 81,
+      "sha256": "5a60532f16c7d02a3b8c045f73f93781042c9e2ed50905b80bf4b771b304c883"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\model-continuation\\stdout.jsonl",
+      "bytes": 258019,
+      "sha256": "75dddca245b660628cbf3e506d78d1e344ae323b295691fb238335379beeb415"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\protected-after.json",
+      "bytes": 829,
+      "sha256": "51e73113339f610b90731b2a58358f7a9cebf0f2f146f1d7bf44cfe09f0f9550"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\protected-before.json",
+      "bytes": 828,
+      "sha256": "6a927dd8f23c3eb1104e1f9083bc57999652d52530e9a0ff62f535e11aedb581"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\REPORT.md",
+      "bytes": 6443,
+      "sha256": "ec662d690d11c4e4f427e87c6cc9d54ea844414886347920749a108d52653929"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\stdout.txt",
+      "bytes": 45,
+      "sha256": "26306442fc41a72e097851c52fcfaf4167719ed9eef458a83ccf75b01650e073"
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\summary.json",
+      "bytes": 1174,
+      "sha256": "28163018bbba16a443747a1547cb1ede5a54d6b243a92145311a61c5c1a37e5d"
+    }
+  ],
+  "runtimeDirectoriesNotRead": [
+    "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\cancel-probe\\evidence\\home",
+    "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\cancel-probe\\evidence\\profile",
+    "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\cancel-probe\\evidence\\temp",
+    "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\home",
+    "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\profile",
+    "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\temp",
+    "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\model-cancel-probe\\temp",
+    "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\model-continuation\\temp"
+  ],
+  "selfHashOmitted": true,
+  "referenceSpecManualUntouched": true
+}

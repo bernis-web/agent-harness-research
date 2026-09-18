@@ -1,0 +1,33 @@
+{
+  "at": "2026-09-18T03:13:45.652Z",
+  "guidanceRead": [
+    "C:/Users/28417/.codex/guidance/dox-hierarchy.md",
+    "C:/Users/28417/.codex/guidance/windows-and-context.md",
+    "D:/projects/codex-data/codex-home/skills/powershell-safe-execution/SKILL.md"
+  ],
+  "instructionChain": "User global AGENTS applied; no AGENTS/override on repository-root to target chain",
+  "initialGit": "?? experiments/; ?? research/; no user changes reverted",
+  "offlineIssues": [
+    {
+      "issue": "node REPL process global unavailable",
+      "effect": "First CLI spawn expression did not run",
+      "resolution": "Spawn with inherited environment, no process-global reference; model metadata proves only actual calls"
+    },
+    {
+      "issue": "Old unpacked Playwright source paths absent",
+      "effect": "Read-only lookup failed",
+      "resolution": "Read bounded verified excerpts from actual lib/coreBundle.js"
+    },
+    {
+      "issue": "Model privacy old-string had extra blank line",
+      "effect": "Patch rejected before native file write",
+      "resolution": "Exact source block boundaries matched; reviewed patch saved"
+    }
+  ],
+  "browserRuns": 1,
+  "oldDriversNotResumed": true,
+  "browserRunFailure": false,
+  "reportModelPid": 33720,
+  "privacy": "No personal directory list, credential config, global window-title inventory or full-desktop screenshot read/recorded; task profile initial path hint not independently UI-confirmed",
+  "unchangedDocuments": "reference/spec/manual and all five protected artifacts; no AGENTS change needed"
+}

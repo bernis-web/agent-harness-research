@@ -1,0 +1,43 @@
+{
+  "calls": [
+    {
+      "directory": "model-cancel-probe",
+      "model": "glm-5.3-flash",
+      "observedModels": [
+        "glm-5.3-flash"
+      ],
+      "effort": "low",
+      "pid": 55440,
+      "started": "2026-09-17T20:57:13+0800",
+      "ended": "2026-09-17T20:57:43+0800",
+      "elapsedSeconds": 29.894,
+      "exitCode": 0,
+      "resultReceived": true,
+      "resultIsError": false
+    },
+    {
+      "directory": "model-continuation",
+      "model": "glm-5.3-flash",
+      "observedModels": [
+        "glm-5.3-flash"
+      ],
+      "effort": "low",
+      "pid": 61696,
+      "started": "2026-09-17T20:59:40+0800",
+      "ended": "2026-09-17T20:59:57+0800",
+      "elapsedSeconds": 16.94,
+      "exitCode": 0,
+      "resultReceived": true,
+      "resultIsError": false
+    }
+  ],
+  "authorship": {
+    "newProbeAndContinuation": "Claude CLI glm-5.3-flash",
+    "inheritedHarnessPrerequisitesAndFragments": "Previously generated Claude CLI glm-5.3-flash modules",
+    "coordinator": "Codex static review, explicitly documented driver corrections, glue, execution and evidence closeout"
+  },
+  "reviews": [
+    "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\execution\\review.json",
+    "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\cancel-probe\\review.json"
+  ]
+}

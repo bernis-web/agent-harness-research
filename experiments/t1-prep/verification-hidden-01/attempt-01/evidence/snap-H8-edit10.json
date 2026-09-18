@@ -1,0 +1,193 @@
+{
+  "label": "H8-edit10",
+  "tree": {
+    "title": "改根",
+    "children": [
+      {
+        "title": "分支一",
+        "children": [
+          {
+            "title": "附1",
+            "children": []
+          },
+          {
+            "title": "附6",
+            "children": []
+          }
+        ]
+      },
+      {
+        "title": "分支二",
+        "children": [
+          {
+            "title": "改甲",
+            "children": []
+          },
+          {
+            "title": "细节乙",
+            "children": [
+              {
+                "title": "附2",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "附3",
+            "children": []
+          }
+        ]
+      },
+      {
+        "title": "改三",
+        "children": [
+          {
+            "title": "附5",
+            "children": []
+          }
+        ]
+      },
+      {
+        "title": "附肆",
+        "children": []
+      }
+    ]
+  },
+  "errors": [],
+  "message": {
+    "visible": true,
+    "text": "已添加子节点",
+    "color": "rgb(17, 119, 17)",
+    "isError": false
+  },
+  "step": {
+    "id": "H8-edit10",
+    "expected": {
+      "title": "改根",
+      "children": [
+        {
+          "title": "分支一",
+          "children": [
+            {
+              "title": "附1",
+              "children": []
+            },
+            {
+              "title": "附6",
+              "children": []
+            }
+          ]
+        },
+        {
+          "title": "分支二",
+          "children": [
+            {
+              "title": "改甲",
+              "children": []
+            },
+            {
+              "title": "细节乙",
+              "children": [
+                {
+                  "title": "附2",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "title": "附3",
+              "children": []
+            }
+          ]
+        },
+        {
+          "title": "改三",
+          "children": [
+            {
+              "title": "附5",
+              "children": []
+            }
+          ]
+        },
+        {
+          "title": "附肆",
+          "children": []
+        }
+      ]
+    },
+    "status": "PASS",
+    "timestamp": "2026-09-18T03:37:57.821Z",
+    "actionCount": 2,
+    "actual": {
+      "title": "改根",
+      "children": [
+        {
+          "title": "分支一",
+          "children": [
+            {
+              "title": "附1",
+              "children": []
+            },
+            {
+              "title": "附6",
+              "children": []
+            }
+          ]
+        },
+        {
+          "title": "分支二",
+          "children": [
+            {
+              "title": "改甲",
+              "children": []
+            },
+            {
+              "title": "细节乙",
+              "children": [
+                {
+                  "title": "附2",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "title": "附3",
+              "children": []
+            }
+          ]
+        },
+        {
+          "title": "改三",
+          "children": [
+            {
+              "title": "附5",
+              "children": []
+            }
+          ]
+        },
+        {
+          "title": "附肆",
+          "children": []
+        }
+      ]
+    },
+    "nodeCount": 12,
+    "uiMessage": {
+      "visible": true,
+      "text": "已添加子节点",
+      "color": "rgb(17, 119, 17)",
+      "isError": false
+    },
+    "errors": [],
+    "assertions": {
+      "treeMatches": true,
+      "nodeCount": 12,
+      "message": {
+        "visible": true,
+        "text": "已添加子节点",
+        "color": "rgb(17, 119, 17)",
+        "isError": false
+      }
+    }
+  }
+}

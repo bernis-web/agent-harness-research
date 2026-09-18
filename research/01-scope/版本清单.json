@@ -1,0 +1,70 @@
+{
+  "version": "2026-09-15",
+  "status": "P0初版;待P3前补充模型与端点信息",
+  "entries": [
+    {
+      "item": "本项目仓库(实验工作根 D:/projects/agent-harness-research)",
+      "version": "git commit 295b6f6(主线计划提交后基线)",
+      "verified_at": "2026-09-15",
+      "verified_by": "本执行者 git log",
+      "notes": "与 E:/科研实践2026秋 为同一 GitHub 仓库的两个工作副本,基线 59f84d7 之上推进"
+    },
+    {
+      "item": "dsh(deepseek-harness)本地克隆",
+      "version": "git commit c291e7961a515f6d7af9304e7fd1d257929aef26 (v0.1.5-rc.2)",
+      "verified_at": "2026-09-15",
+      "verified_by": "本执行者 git log(D:/projects/agent-harness-research/workspace/deepseek-harness)",
+      "notes": "解剖笔记与证据矩阵 CM-03~07 的固定依据;浅克隆,无历史"
+    },
+    {
+      "item": "Deep Agents(langchain-ai/deepagents)",
+      "version": "候选对照 commit 1d3232c0852c47af09119edea10eeec887e4f0da",
+      "verified_at": "2026-09-15(由计划撰写方核查;本执行者未独立克隆)",
+      "verified_by": "计划撰写方记录(docs/superpowers/plans 详细计划 §5 S4)",
+      "notes": "候选对照;正式依赖版本在将来独立获批的依赖接入阶段审计锁定(当前为零安装范围)"
+    },
+    {
+      "item": "S1 Anthropic《Effective harnesses for long-running agents》",
+      "version": "发布 2025-11-26;访问 2026-09-15",
+      "verified_at": "2026-09-15",
+      "verified_by": "本执行者 WebFetch(存在且主题相符)",
+      "url": "https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents"
+    },
+    {
+      "item": "S2 Claude Code 官方《How Claude Code works》",
+      "version": "访问 2026-09-15",
+      "verified_at": "2026-09-15",
+      "verified_by": "本执行者 WebFetch(存在且主题相符)",
+      "url": "https://code.claude.com/docs/en/how-claude-code-works"
+    },
+    {
+      "item": "S3 Anthropic《Effective context engineering for AI agents》",
+      "version": "访问日期待执行时记录",
+      "verified_at": null,
+      "verified_by": null,
+      "url": "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+      "notes": "P0仅登记;引用前需访问并留存内容哈希"
+    },
+    {
+      "item": "Claude Code 客户端版本(实验A观察对象)",
+      "version": null,
+      "verified_at": null,
+      "verified_by": null,
+      "notes": "原因:观察实验未开始,且不得从用户全局配置读取;实验A开始时以专用实验配置登记"
+    },
+    {
+      "item": "研究用模型标识/端点",
+      "version": null,
+      "verified_at": null,
+      "verified_by": null,
+      "notes": "原因:需用户确认(P3前);不探查凭据,只引用环境变量名称"
+    },
+    {
+      "item": "region.ts:491-493 surfaceOp replace 实际调用(CM-04 实现层定位)",
+      "version": "dsh@c291e79",
+      "verified_at": "2026-09-15",
+      "verified_by": "v2 独立复审方逐行核对;执行者采纳为其证据矩阵引用",
+      "notes": "复审方声明未重新核验外部网页,历史网页核查不升级为本轮独立验证"
+    }
+  ]
+}

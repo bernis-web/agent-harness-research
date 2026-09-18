@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>思维导图（T1 参考实现）</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: "Microsoft YaHei", "Segoe UI", sans-serif; display: flex; height: 100vh; }
+  #left { width: 320px; padding: 12px; border-right: 1px solid #ccc; display: flex; flex-direction: column; gap: 8px; background: #fafafa; }
+  #left textarea { width: 100%; height: 240px; font-family: Consolas, monospace; font-size: 13px; resize: vertical; }
+  #left button { padding: 6px 10px; cursor: pointer; }
+  #btn-row { display: flex; flex-wrap: wrap; gap: 6px; }
+  #msg { min-height: 20px; font-size: 13px; white-space: pre-wrap; }
+  #right { flex: 1; padding: 16px; overflow: auto; }
+  .empty { color: #888; }
+  #map ul { list-style: none; margin: 0; padding-left: 24px; border-left: 1px dashed #bbb; }
+  #map > ul { padding-left: 0; border-left: none; }
+  .node-row { display: flex; align-items: center; gap: 6px; margin: 3px 0; }
+  .node-row .title { background: #eef3fb; border: 1px solid #b9c9e6; border-radius: 4px; padding: 3px 10px; }
+  .node-row button { font-size: 12px; padding: 1px 6px; cursor: pointer; }
+  .rootrow .title { background: #dce9ff; font-weight: bold; }
+</style>
+</head>
+<body>
+  <div id="left">
+    <strong>缩进文本（2 空格＝1 层，首行顶格为根）</strong>
+    <textarea id="src" placeholder="中心主题&#10;  分支一&#10;    细节甲"></textarea>
+    <div id="btn-row">
+      <button id="btn-gen">生成导图</button>
+      <button id="btn-export">导出 JSON</button>
+      <button id="btn-import">导入 JSON</button>
+      <button id="btn-undo">撤销</button>
+    </div>
+    <input type="file" id="file-in" accept=".json,application/json" style="display:none">
+    <div id="msg"></div>
+  </div>
+  <div id="right"><div id="map"></div></div>
+<script>
+'use strict';
+var root = null;        // 节点：{title: string, children: array}
+var undoStack = [];     // 撤销记录：{type:'rename'|'add'|'delete', ...}
+
+function $(id){ return document.getElementById(id); }
+function showMsg(text, isError){
+  var m = $('msg');
+  m.textContent = text;
+  m.style.color = isError ? '#c22' : '#171';
+}
+
+/* ---------- 标题统一规范：原始串不含 Tab（首/中/尾均拒），再去首尾空白且非空 ---------- */
+function normalizeTitle(t){
+  var s = String(t);
+  if (s.indexOf('\t') !== -1) return null;   // 先查原始字符串：首部/中间/尾部 Tab 均拒绝
+  s = s.trim();
+  if (s.length === 0) return null;
+  return s;
+}
+
+/* ---------- 输入解析 ---------- */
+function parseInput(text){
+  var lines = text.split(/\r\n|\r|\n/);
+  var items = [];   // {indent, title, line}
+  for (var i = 0; i < lines.length; i++){
+    var raw = lines[i];
+    if (raw.length === 0) continue;                       // 零长度空行忽略
+    if (raw.indexOf('\t') !== -1) return {error:'第 '+(i+1)+' 行：含 Tab（非法字符）'};
+    if (/^\s+$/.test(raw)) continue;                      // 仅空白字符的行忽略（Tab 已在上一步拦截）
+    var mLead = raw.match(/^ +/);
+    var indent = mLead ? mLead[0].length : 0;
+    var title = normalizeTitle(raw.slice(indent));
+    if (title === null) return {error:'第 '+(i+1)+' 行：空标题或含 Tab'};
+    if (indent % 2 !== 0) return {error:'第 '+(i+1)+' 行：缩进不是 2 空格的整数倍'};
+    items.push({indent: indent, title: title, line: i+1});
+  }
+  if (items.length === 0) return {error:'输入为空：至少需要一行根节点'};
+  if (items[0].indent !== 0) return {error:'第 '+items[0].line+' 行：首行必须顶格'};
+  var rootNode = {title: items[0].title, children: []};
+  var stack = [{indent: 0, node: rootNode}];
+  for (var k = 1; k < items.length; k++){
+    var it = items[k];
+    while (stack.length > 1 && stack[stack.length-1].indent >= it.indent) stack.pop();
+    var parent = stack[stack.length-1];
+    if (it.indent !== parent.indent + 2) return {error:'第 '+it.line+' 行：缩进不符合层级规则（多根或跳层）'};
+    var node = {title: it.title, children: []};
+    parent.node.children.push(node);
+    stack.push({indent: it.indent, node: node});
+  }
+  return {root: rootNode};
+}
+
+/* ---------- 渲染 ---------- */
+function render(){
+  var map = $('map');
+  map.innerHTML = '';
+  if (!root){
+    var d = document.createElement('div');
+    d.className = 'empty';
+    d.textContent = '（空）尚未生成导图。请在左侧输入缩进文本后点击“生成导图”，或“导入 JSON”。';
+    map.appendChild(d);
+    return;
+  }
+  var ul = document.createElement('ul');
+  ul.appendChild(renderNode(root, null, -1));
+  map.appendChild(ul);
+}
+function renderNode(node, parentNode, indexInParent){
+  var li = document.createElement('li');
+  var row = document.createElement('div');
+  row.className = 'node-row' + (parentNode === null ? ' rootrow' : '');
+  var title = document.createElement('span');
+  title.className = 'title';
+  title.textContent = node.title;
+  row.appendChild(title);
+  row.appendChild(mkBtn('重命名', function(){ doRename(node); }));
+  row.appendChild(mkBtn('+子节点', function(){ doAddChild(node); }));
+  row.appendChild(mkBtn('删除', function(){ doDelete(node, parentNode, indexInParent); }));
+  li.appendChild(row);
+  if (node.children.length > 0){
+    var ul = document.createElement('ul');
+    for (var i = 0; i < node.children.length; i++){
+      ul.appendChild(renderNode(node.children[i], node, i));
+    }
+    li.appendChild(ul);
+  }
+  return li;
+}
+function mkBtn(label, fn){
+  var b = document.createElement('button');
+  b.textContent = label;
+  b.onclick = fn;
+  return b;
+}
+
+/* ---------- 编辑（无效编辑：状态不变、不进栈、不中断） ---------- */
+function doRename(node){
+  var t = window.prompt('新的标题（取消、空标题、含 Tab 或与原标题相同＝放弃本次编辑）：', node.title);
+  if (t === null) return;
+  var nt = normalizeTitle(t);
+  if (nt === null){ showMsg('重命名被拒绝：标题为空或含 Tab', true); return; }
+  if (nt === node.title){ showMsg('重命名被拒绝：标题未变化（无效编辑，不进入撤销记录）', true); return; }
+  undoStack.push({type:'rename', node: node, oldTitle: node.title});
+  node.title = nt;
+  showMsg('已重命名', false);
+  render();
+}
+function doAddChild(parentNode){
+  var t = window.prompt('子节点标题（取消或空标题＝放弃本次编辑）：', '');
+  if (t === null) return;
+  var nt = normalizeTitle(t);
+  if (nt === null){ showMsg('添加被拒绝：标题为空或含 Tab', true); return; }
+  var child = {title: nt, children: []};
+  undoStack.push({type:'add', parentNode: parentNode, child: child});
+  parentNode.children.push(child);
+  showMsg('已添加子节点', false);
+  render();
+}
+function doDelete(node, parentNode, indexInParent){
+  undoStack.push({type:'delete', parentNode: parentNode, node: node, index: indexInParent});
+  if (parentNode === null){ root = null; }
+  else { parentNode.children.splice(indexInParent, 1); }
+  showMsg('已删除', false);
+  render();
+}
+
+/* ---------- 撤销 ---------- */
+function doUndo(){
+  if (undoStack.length === 0){ showMsg('没有可撤销的操作', false); return; }
+  var op = undoStack.pop();
+  if (op.type === 'rename'){ op.node.title = op.oldTitle; }
+  else if (op.type === 'add'){
+    var i = op.parentNode.children.indexOf(op.child);
+    if (i !== -1) op.parentNode.children.splice(i, 1);
+  }
+  else if (op.type === 'delete'){
+    if (op.parentNode === null){ root = op.node; }
+    else { op.parentNode.children.splice(op.index, 0, op.node); }
+  }
+  showMsg('已撤销一步（剩余可撤销 ' + undoStack.length + ' 步）', false);
+  render();
+}
+
+/* ---------- 生成 ---------- */
+$('btn-gen').onclick = function(){
+  var res = parseInput($('src').value);
+  if (res.error){ showMsg('生成被拒绝：' + res.error + '；当前导图与撤销记录不变', true); return; }
+  root = res.root;
+  undoStack = [];
+  showMsg('生成成功：导图已整体替换，撤销记录已清空', false);
+  render();
+};
+
+/* ---------- 导出 ---------- */
+$('btn-export').onclick = function(){
+  if (!root){ showMsg('导出被拒绝：当前没有导图', true); return; }
+  var blob = new Blob([JSON.stringify(root, null, 2)], {type: 'application/json'});
+  var a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'mindmap.json';   // 建议文件名；实际落盘位置由浏览器下载设置/使用者选择决定
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setTimeout(function(){ URL.revokeObjectURL(a.href); }, 1000);
+  showMsg('已发起导出下载', false);
+};
+
+/* ---------- 导入 ---------- */
+$('btn-import').onclick = function(){
+  $('file-in').value = '';
+  $('file-in').click();
+};
+$('file-in').addEventListener('change', function(ev){
+  var f = ev.target.files && ev.target.files[0];
+  if (!f){ return; }   // 取消：静默忽略，无变化、不提示、不报错
+  var reader = new FileReader();
+  reader.onload = function(){
+    var txt = String(reader.result);
+    if (txt.charCodeAt(0) === 0xFEFF) txt = txt.slice(1);   // 规范化：去 BOM
+    var obj = null;
+    try { obj = JSON.parse(txt); }
+    catch (e){ showMsg('导入被拒绝：文件不是合法 JSON；当前导图与撤销记录不变', true); return; }
+    var tree = normalizeTree(obj);
+    if (tree === null){ showMsg('导入被拒绝：结构或标题不符合公开结构 {title, children}；当前导图与撤销记录不变', true); return; }
+    root = tree;
+    undoStack = [];
+    showMsg('导入成功：导图已整体替换，撤销记录已清空', false);
+    render();
+  };
+  reader.onerror = function(){ showMsg('导入被拒绝：文件读取失败；当前导图与撤销记录不变', true); };
+  reader.readAsText(f, 'utf-8');
+});
+function normalizeTree(n){
+  if (typeof n !== 'object' || n === null || Array.isArray(n)) return null;
+  if (typeof n.title !== 'string') return null;
+  if (!Array.isArray(n.children)) return null;
+  var t = normalizeTitle(n.title);
+  if (t === null) return null;
+  var node = {title: t, children: []};   // 规范化：仅保留 title/children，多余字段忽略
+  for (var i = 0; i < n.children.length; i++){
+    var c = normalizeTree(n.children[i]);
+    if (c === null) return null;
+    node.children.push(c);
+  }
+  return node;
+}
+
+$('btn-undo').onclick = doUndo;
+render();
+</script>
+</body>
+</html>

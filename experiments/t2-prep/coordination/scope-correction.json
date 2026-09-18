@@ -1,0 +1,82 @@
+{
+  "date": "2026-09-18",
+  "reason": "User scope correction: unnecessary recursive metadata inventory",
+  "scan_root": "D:/projects/agent-harness-research",
+  "exclusion": "Directory entries named .git skipped; directory symlinks were not traversed",
+  "entries": 17019,
+  "preflight_bytes": 3520031,
+  "metadata_fields": [
+    "repository-relative path",
+    "size",
+    "mtimeMs",
+    "type"
+  ],
+  "file_contents_read_by_inventory": false,
+  "repository_wide_hashing": false,
+  "existing_file_hashes_computed": [
+    "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/step11-visible-04/model-report/invoke-stream.py"
+  ],
+  "new_content_hashes_computed": [
+    "call-01-spec/prompt.txt (invocation identity only)"
+  ],
+  "largest_inventory_prefixes": [
+    [
+      "experiments/t1-prep/verification-run-03",
+      5334
+    ],
+    [
+      "workspace/deepseek-harness/packages",
+      5093
+    ],
+    [
+      "workspace/deepseek-harness/.agents",
+      2949
+    ],
+    [
+      "experiments/t1-prep/verification",
+      1276
+    ],
+    [
+      "workspace/deepseek-harness/snapshots",
+      882
+    ],
+    [
+      "workspace/deepseek-harness/apps",
+      456
+    ],
+    [
+      "workspace/deepseek-harness/docs",
+      375
+    ],
+    [
+      "workspace/deepseek-harness/scripts",
+      249
+    ],
+    [
+      "workspace/deepseek-harness/native",
+      78
+    ],
+    [
+      "workspace/deepseek-harness/vendor",
+      74
+    ],
+    [
+      "workspace/deepseek-harness/.github",
+      38
+    ],
+    [
+      "workspace/deepseek-harness/python",
+      37
+    ]
+  ],
+  "acknowledgement": "Scope was unnecessarily broad and did not exclude old browser/config/credential-related directories; metadata enumeration may include these paths. Evidence retained without deletion or overwrite.",
+  "effective_boundary": "No further recursive old-directory scan. Only exact Git status/HEAD calls, listed AGENTS/guidance/upstream documents if necessary, and exact current-turn T2 documents/call artifacts. No protective hashes: no approved frozen-document whitelist exists. Do not repeat baseline inventory for comparison.",
+  "already_read_upstream_documents": [
+    "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/step11-visible-04/model-report/invoke-stream.py",
+    "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/step11-visible-04/model-report/settings.json",
+    "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/step11-visible-04/model-report/empty-mcp.json",
+    "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/step11-visible-04/model-report/model-call.json",
+    "D:/projects/agent-harness-research/experiments/t1-prep/README.md"
+  ],
+  "next_action": "Continue document-only Flash preparation under new boundary"
+}

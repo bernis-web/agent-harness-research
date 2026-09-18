@@ -1,0 +1,53 @@
+{
+  "tree": {
+    "title": "中心主题",
+    "children": [
+      {
+        "title": "甲一",
+        "children": [
+          {
+            "title": "临时1",
+            "children": []
+          }
+        ]
+      },
+      {
+        "title": "甲二",
+        "children": [
+          {
+            "title": "甲细",
+            "children": [
+              {
+                "title": "临时3",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "甲乙",
+            "children": []
+          },
+          {
+            "title": "临时2",
+            "children": []
+          }
+        ]
+      },
+      {
+        "title": "甲三",
+        "children": [
+          {
+            "title": "临时4",
+            "children": []
+          }
+        ]
+      },
+      {
+        "title": "临时根",
+        "children": []
+      }
+    ]
+  },
+  "errors": [],
+  "message": "已添加子节点"
+}

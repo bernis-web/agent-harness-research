@@ -1,0 +1,25 @@
+只输出一个完整 CommonJS 脚本 diagnosis.cjs，约150行，不要论证。不使用工具。你是准备执行助手，给协调者审核后运行。
+目标：Windows Chrome file:// 下载出现canceled的最小诊断。只在 D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01 写入，绝不改reference或其他文件。require现存Playwright路径 D:/projects/npm-cache/_npx/cbf1b8a072280925/node_modules/playwright-core。脚本__dirname=D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01。固定期望从同目录expected.json读入(公开6节点树)，字节内容JSON.stringify(expected,null,2)。
+证据：旧第9步Blob下载CDP willBegin然后397字节inProgress然后canceled；Playwright download.failure()='canceled'。旧预检data链接下载成功，预检CDP path.join生成反斜杠路径，失败驱动CDP OUT+'/downloads'正斜杠。不能凭猜测下结论。
+预先固定三组，不得增加：A=cDP allowAndName downloadPath forward slashes；B=仅CDP downloadPath改成path.win32.normalize(同一语义路径)；C=相对A仅不调用Browser.setDownloadBehavior，由Playwright acceptDownloads:true管理。三组的Playwright downloadsPath均正斜杠，其他安全启动参数完全相同（各组自己的隔离目录除外）。每组顺序点击data和blob按钮，两者相同application/json、相同字节、建议名mindmap.json，区别只URL来源。每组新context/profile，不读普通profile/凭据/配置。每个点击20秒内完成或捕获错误，组内下载失败是预期诊断数据，可继续另一来源。总限180秒并关闭自己context。
+生成静态diag.html（唯一诊断页）包含#data及#blob两个按钮，页面自身onclick生成a.download、a.click后移除a；Blob使用URL.createObjectURL，1秒后revoke，模拟参考下载。驱动只真实page.click，禁止page.evaluate内部调用/修改DOM；可只读DOM/CDP getBrowserCommandLine断言无no-sandbox/disable-security flags。页面file://，context offline:true,setOffline(true),route阻断http(s)，serviceWorkers block。
+所有TEMP TMP HOME USERPROFILE APPDATA LOCALAPPDATA及browser profile/downloads位于对应组子目录，先创建。启动按下方已验证代码，chromiumSandbox:true,ignoreDefaultArgs:true无unsafe flags。各组capture about:blank截图后goto诊断页。CDP原始downloadWillBegin/downloadProgress事件实时JSONL保存（C没有这些事件可诚实说明，不额外setDownloadBehavior）；也保存真实Playwright download URL、failure、suggestedFilename、path、saveAs路径。on pageerror/console.error记录。下载成功必须在关闭context前记录原件path及SHA256，将其另存saved/data.json或blob.json并hash，copy原件为evidence-originals保留副本（Playwright可能关闭删除临时原件，准确标识副本），固定期望JSON深比较、原始字节相等。实际原件与保存副本路径必须验证within对应组目录，原件路径优先download.path，CDP完成filePath另记录；不得只猜建议名位置。目录列表仅downloads，禁止读profile。失败也截图与实时记录，不等待只completed而忽视canceled。使用清理timeout的bounded helper。写每组result.json和总results.json，包括配置实际字符串，不输出环境变量值。最终exit 0表示诊断收集结束，不代表应用验收通过。
+已验证启动模板（只当资料，OUT按组设置；S0/TREE忽略）：
+// harness.cjs — CommonJS，保存为 harness.cjs
+const { chromium } = require(process.env.T1_PLAYWRIGHT);
+const fs = require('fs'), path = require('path'), crypto = require('crypto');
+const { pathToFileURL } = require('url');
+
+const OUT = process.env.T1_OUT;
+const FILE_URL = pathToFileURL(process.env.T1_REFERENCE).href;
+const LAUNCH = {
+  executablePath: 'C:/Program Files/Google/Chrome/Application/chrome.exe',
+  headless: true, chromiumSandbox: true, ignoreDefaultArgs: true,
+  args: ['--headless=new','--remote-debugging-pipe','--user-data-dir='+OUT+'/profile','--no-first-run','--no-default-browser-check','--disable-background-networking','--disable-component-update','--disable-sync','--disable-extensions','--enable-automation','--window-size=1280,800'],
+  downloadsPath: OUT + '/downloads', acceptDownloads: true, offline: true,
+  serviceWorkers: 'block', viewport: {width:1280,height:800}, timeout: 30000,
+  env: {...process.env, TEMP:OUT+'/temp', TMP:OUT+'/temp', HOME:OUT+'/home', USERPROFILE:OUT+'/home', APPDATA:OUT+'/home/AppData/Roaming', LOCALAPPDATA:OUT+'/home/AppData/Local'}
+};
+const S0 = '中心主题\n  分支一\n  分支二\n    细节甲\n    细节乙\n  分支三';
+const TREE = (() => { const r={title:'中心主题',children:[]}; const b1={title:'分支一',children:[]}, b2={title:'分支二',children:[{title:'细节甲',children:[]},{title:'细节乙',children:[]}]}, b3={title:'分支三',children:[]}; r.children.push(b1,b2,b3); return r; })();
+const clone = (x) => JSON.parse(JSON.stringify(x));

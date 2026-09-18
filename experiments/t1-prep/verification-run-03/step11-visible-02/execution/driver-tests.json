@@ -1,0 +1,28 @@
+{
+  "syntaxChecks": [
+    "step11.cjs",
+    "harness.cjs",
+    "run.cjs"
+  ],
+  "cases": [
+    {
+      "name": "valid",
+      "pass": true
+    },
+    {
+      "name": "legacy-wrong-field",
+      "pass": true,
+      "error": "getProcessInfo: processInfo is not an array"
+    },
+    {
+      "name": "ambiguous",
+      "pass": true,
+      "error": "browser pid ambiguous"
+    },
+    {
+      "name": "bad-pid",
+      "pass": true,
+      "error": "browser pid is not a positive safe integer"
+    }
+  ]
+}

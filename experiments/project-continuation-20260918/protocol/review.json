@@ -1,0 +1,30 @@
+{
+  "at": "2026-09-18T03:41:24.559Z",
+  "source": "D:/projects/agent-harness-research/experiments/project-continuation-20260918/protocol/model/result.json",
+  "analysisAuthor": "Real Claude CLI glm-5.3-flash --effort low",
+  "coordinatorRole": "Lightweight evidence/boundary review and field corrections",
+  "jsonRepair": "Three escaped newlines outside JSON strings repaired for parsing only; raw result retained unchanged.",
+  "corrections": [
+    "both-products",
+    "separate-cost-token",
+    "run-vs-attempt",
+    "time-stop-semantics",
+    "limit-scope",
+    "A-risk-scope",
+    "B-risk-scope",
+    "authorization-not-isolation",
+    "canary-layout",
+    "read-vs-write-proof",
+    "network-control",
+    "existing-T1-status",
+    "D1-D2-separation",
+    "all-runs-independent-scoring",
+    "worker-dependency"
+  ],
+  "probesExecuted": false,
+  "files": [
+    "run-protocol-draft.md",
+    "isolation-preflight-plan.md",
+    "completion-checklist.md"
+  ]
+}

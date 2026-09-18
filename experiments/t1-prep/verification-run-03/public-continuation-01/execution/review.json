@@ -1,0 +1,25 @@
+{
+  "at": "2026-09-17T13:01:15.684Z",
+  "authors": {
+    "probe": "Claude CLI glm-5.3-flash new call",
+    "continuation": "Claude CLI glm-5.3-flash new call",
+    "harnessPrerequisiteFragments": "Claude CLI glm-5.3-flash previously completed modules"
+  },
+  "coordinator": "Codex review/glue/execution only",
+  "changes": [
+    "Restore 22 public result IDs in inherited harness",
+    "Ensure genuine partial-step exception records FAIL before stopping",
+    "Correct continuation oracle: t.TREE is unrenamed S0, use independent fixed S9 with 分支贰 for step10/11",
+    "Save both added step12b undo-state screenshots",
+    "Keep native CDP path fix verified in prior diagnosis"
+  ],
+  "prohibitedOperationsAbsent": [
+    "no dispatchEvent",
+    "no empty setFiles/setInputFiles",
+    "no product internal state access",
+    "no visible windows",
+    "no implementation edits"
+  ],
+  "orderAdjustment": "11 remains UNTESTED/BLOCKED; continue independent12/A/B per explicit authorization",
+  "snapshots": "B1 and B2 each require ten individually asserted/screenshot states; inherited fragments retained"
+}

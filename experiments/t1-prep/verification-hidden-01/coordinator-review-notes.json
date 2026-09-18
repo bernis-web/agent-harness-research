@@ -1,0 +1,26 @@
+{
+  "boundaries": {
+    "writeRoot": "D:/projects/agent-harness-research/experiments/t1-prep/verification-hidden-01",
+    "protectedWhitelist": [
+      "README.md",
+      "experiments/t1-prep/README.md",
+      "experiments/t1-prep/spec/T1-规格-冻结-v1.0.md",
+      "experiments/t1-prep/reference/mindmap.html",
+      "experiments/t1-prep/reference/README.md",
+      "experiments/t1-prep/acceptance/验收手册-公开链与片段.md",
+      "experiments/t1-prep/acceptance/hidden-cases.md"
+    ],
+    "noInstall": true,
+    "noProductD2": true,
+    "hiddenConfidential": true,
+    "noManualClaim": true,
+    "oldEvidenceNotRerun": true
+  },
+  "preExecutionFindings": [
+    {
+      "id": "MSG_RENDERING",
+      "finding": "Reference #msg uses inline style color, not CSS error class. Coordinator original harness prompt incorrectly assumed class. Must correct generated driver before browser run; judge visible nonempty rejection plus UI-rendered red status, not internal state."
+    }
+  ],
+  "scopeDeviation": "See scope-deviation.json; initial broad hashing violated read boundaries and is not concealed."
+}

@@ -1,0 +1,142 @@
+{
+  "items": [
+    {
+      "id": "1",
+      "status": "PASS",
+      "evidence": "snap-1.png",
+      "reason": null
+    },
+    {
+      "id": "2",
+      "status": "PASS",
+      "evidence": "snap-2.png",
+      "reason": null
+    },
+    {
+      "id": "3",
+      "status": "PASS",
+      "evidence": "snap-3.png",
+      "reason": null
+    },
+    {
+      "id": "4",
+      "status": "PASS",
+      "evidence": "snap-4.png",
+      "reason": null
+    },
+    {
+      "id": "5",
+      "status": "PASS",
+      "evidence": "snap-5.png",
+      "reason": null
+    },
+    {
+      "id": "6",
+      "status": "PASS",
+      "evidence": "snap-6.png",
+      "reason": null
+    },
+    {
+      "id": "7",
+      "status": "PASS",
+      "evidence": "snap-7.png",
+      "reason": null
+    },
+    {
+      "id": "8",
+      "status": "PASS",
+      "evidence": "snap-8.png",
+      "reason": null
+    },
+    {
+      "id": "9",
+      "status": "FAIL",
+      "evidence": "snap-9-fail.png",
+      "reason": "DOWNLOAD_FAILURE: canceled"
+    },
+    {
+      "id": "10",
+      "status": "UNTESTED",
+      "evidence": null,
+      "reason": null
+    },
+    {
+      "id": "11",
+      "status": "UNTESTED",
+      "evidence": null,
+      "reason": null
+    },
+    {
+      "id": "12a",
+      "status": "UNTESTED",
+      "evidence": null,
+      "reason": null
+    },
+    {
+      "id": "12b",
+      "status": "UNTESTED",
+      "evidence": null,
+      "reason": null
+    },
+    {
+      "id": "12c",
+      "status": "UNTESTED",
+      "evidence": null,
+      "reason": null
+    },
+    {
+      "id": "12d",
+      "status": "UNTESTED",
+      "evidence": null,
+      "reason": null
+    },
+    {
+      "id": "A1",
+      "status": "UNTESTED",
+      "evidence": null,
+      "reason": null
+    },
+    {
+      "id": "A2",
+      "status": "UNTESTED",
+      "evidence": null,
+      "reason": null
+    },
+    {
+      "id": "A3",
+      "status": "UNTESTED",
+      "evidence": null,
+      "reason": null
+    },
+    {
+      "id": "A4",
+      "status": "UNTESTED",
+      "evidence": null,
+      "reason": null
+    },
+    {
+      "id": "B1",
+      "status": "UNTESTED",
+      "evidence": null,
+      "reason": null
+    },
+    {
+      "id": "B2",
+      "status": "UNTESTED",
+      "evidence": null,
+      "reason": null
+    },
+    {
+      "id": "B3",
+      "status": "UNTESTED",
+      "evidence": null,
+      "reason": null
+    }
+  ],
+  "notes": {},
+  "summary": {
+    "PASS": 8,
+    "FAIL": 1,
+    "UNTESTED": 13
+  }
+}

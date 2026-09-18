@@ -1,0 +1,29 @@
+[launch] A exe=C:/Program Files/Google/Chrome/Application/chrome.exe user-data-dir=D:\projects\agent-harness-research\experiments\t1-prep\verification-run-03\download-diagnosis-01\A/profile downloads-path=D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/A/downloads
+[launch] B exe=C:/Program Files/Google/Chrome/Application/chrome.exe user-data-dir=D:\projects\agent-harness-research\experiments\t1-prep\verification-run-03\download-diagnosis-01\B/profile downloads-path=D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/B/downloads
+[launch] C exe=C:/Program Files/Google/Chrome/Application/chrome.exe user-data-dir=D:\projects\agent-harness-research\experiments\t1-prep\verification-run-03\download-diagnosis-01\C/profile downloads-path=D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/C/downloads
+summary: [
+  {
+    "group": "A",
+    "downloads": [
+      "data:FAIL",
+      "blob:FAIL"
+    ],
+    "errors": []
+  },
+  {
+    "group": "B",
+    "downloads": [
+      "data:OK",
+      "blob:OK"
+    ],
+    "errors": []
+  },
+  {
+    "group": "C",
+    "downloads": [
+      "data:FAIL",
+      "blob:FAIL"
+    ],
+    "errors": []
+  }
+]

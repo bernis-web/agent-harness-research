@@ -1,0 +1,16 @@
+<!doctype html><meta charset="utf-8">
+<button id="data">data</button><button id="blob">blob</button>
+<script>
+const BYTES = "{\n  \"title\": \"中心主题\",\n  \"children\": [\n    {\n      \"title\": \"分支一\",\n      \"children\": []\n    },\n    {\n      \"title\": \"分支贰\",\n      \"children\": [\n        {\n          \"title\": \"细节甲\",\n          \"children\": []\n        },\n        {\n          \"title\": \"细节乙\",\n          \"children\": []\n        }\n      ]\n    },\n    {\n      \"title\": \"分支三\",\n      \"children\": []\n    }\n  ]\n}";
+document.getElementById('data').onclick = () => {
+  const a = document.createElement('a');
+  a.href = 'data:application/json;charset=utf-8,' + encodeURIComponent(BYTES);
+  a.download = 'mindmap.json'; document.body.appendChild(a); a.click(); a.remove();
+};
+document.getElementById('blob').onclick = () => {
+  const u = URL.createObjectURL(new Blob([BYTES], { type: 'application/json' }));
+  const a = document.createElement('a');
+  a.href = u; a.download = 'mindmap.json'; document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(u), 1000);
+};
+</script>

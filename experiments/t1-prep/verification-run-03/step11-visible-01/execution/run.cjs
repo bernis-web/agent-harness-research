@@ -1,0 +1,5 @@
+'use strict';
+const fs=require('fs');
+process.env.T1_OUT="D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/step11-visible-01/evidence";process.env.T1_REFERENCE="D:/projects/agent-harness-research/experiments/t1-prep/reference/mindmap.html";process.env.T1_PLAYWRIGHT='D:/projects/npm-cache/_npx/cbf1b8a072280925/node_modules/playwright-core';
+let t;const timer=setTimeout(async()=>{fs.writeFileSync(process.env.T1_OUT+'/timeout.json',JSON.stringify({timeoutSeconds:90}));if(t)await t.close();process.exit(124)},90000);
+(async()=>{try{t=await require('./harness.cjs').createHarness();const r=await require('./step11.cjs')(t,process.env.T1_OUT);console.log(JSON.stringify({status:r.status,classification:r.classification}));}catch(e){fs.writeFileSync(process.env.T1_OUT+'/execution-error.json',JSON.stringify({name:e.name,message:e.message}));process.exitCode=1;}finally{clearTimeout(timer);if(t)await t.close();fs.writeFileSync(process.env.T1_OUT+'/cleanup.json',JSON.stringify({ownedContextCloseCompleted:true,at:new Date().toISOString()}));}})();

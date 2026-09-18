@@ -1,0 +1,85 @@
+{
+  "duration_api_ms": 105961,
+  "stop_reason": "end_turn",
+  "session_id": "2575825a-9e73-413f-8ced-cf1aa874d460",
+  "total_cost_usd": 0.11215,
+  "usage": {
+    "input_tokens": 53,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 3520,
+    "output_tokens": 4405,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "glm-5.3-flash": {
+      "inputTokens": 53,
+      "outputTokens": 4405,
+      "cacheReadInputTokens": 3520,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.11215,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000,
+      "thinkingTokens": 0,
+      "canonicalModel": "glm-5.3-flash",
+      "provider": "firstParty",
+      "costBasis": "unknown"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "is_error": false,
+  "num_turns": 1,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "```js\n// diagnosis.cjs — Windows Chrome file:// download \"canceled\" minimal diagnosis (A/B/C three fixed groups)\nconst { chromium } = require('D:/projects/npm-cache/_npx/cbf1b8a072280925/node_modules/playwright-core');\nconst fs = require('fs'), path = require('path'), crypto = require('crypto');\nconst { pathToFileURL } = require('url');\n\nconst OUT = __dirname;\nconst EXPECTED = JSON.parse(fs.readFileSync(path.join(OUT, 'expected.json'), 'utf8'));\nconst EXPECTED_BYTES = JSON.stringify(EXPECTED, null, 2);\nconst CHROME = 'C:/Program Files/Google/Chrome/Application/chrome.exe';\nconst PAGE_URL = () => pathToFileURL(path.join(OUT, 'diag.html')).href;\nconst START = Date.now();\nconst BUDGET_MS = 180000, DL_DEADLINE_MS = 20000;\nconst FORBIDDEN = ['--no-sandbox', '--disable-web-security', '--disable-site-isolation-trials', '--allow-running-insecure-content'];\n\n// 诊断页（BYTES 在 html 内定义）\nfs.writeFileSync(path.join(OUT, 'diag.html'), `<!doctype html><meta charset=\"utf-8\">\n<button id=\"data\">data</button><button id=\"blob\">blob</button>\n<script>\nconst BYTES = ${EXPECTED_BYTES};\ndocument.getElementById('data').onclick = () => {\n  const a = document.createElement('a');\n  a.href = 'data:application/json;charset=utf-8,' + encodeURIComponent(BYTES);\n  a.download = 'mindmap.json'; document.body.appendChild(a); a.click(); a.remove();\n};\ndocument.getElementById('blob').onclick = () => {\n  const u = URL.createObjectURL(new Blob([BYTES], { type: 'application/json' }));\n  const a = document.createElement('a');\n  a.href = u; a.download = 'mindmap.json'; document.body.appendChild(a); a.click(); a.remove();\n  setTimeout(() => URL.revokeObjectURL(u), 1000);\n};\n</script>`);\n\nconst sha256 = (p) => crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex');\nconst within = (p, dir) => path.resolve(p).toLowerCase().startsWith(path.resolve(dir).toLowerCase() + path.sep);\n\n// bounded：每一步限时且 finally 清理定时器\nasync function bounded(p, ms, label) {\n  if (ms <= 0) throw new Error('deadline exceeded before ' + label);\n  let t;\n  const timer = new Promise((_, rej) => { t = setTimeout(() => rej(new Error('timeout ' + label + ' ' + Math.round(ms) + 'ms')), ms); });\n  try { return await Promise.race([Promise.resolve(p), timer]); }\n  finally { clearTimeout(t); }\n}\n\nasync function runGroup(name, useCDP, normalizePath) {\n  const dir = path.join(OUT, name);\n  ['profile', 'downloads', 'temp', 'home', 'home/AppData/Roaming', 'home/AppData/Local', 'evidence-originals', 'saved']\n    .forEach(s => fs.mkdirSync(path.join(dir, s), { recursive: true }));\n  const dp = path.join(dir, 'downloads').replaceAll('\\\\', '/'); // 完整正斜杠\n  const result = { group: name, cdpDownloadPath: null, commandLineFlags: [], events: [], downloads: [], errors: [], saved: {}, byteMatch: {}, deepMatch: {} };\n  const evl = fs.createWriteStream(path.join(dir, 'events.jsonl'), { flags: 'a' });\n  const ev = (o) => { const line = { t: Date.now(), ...o }; result.events.push(line); evl.write(JSON.stringify(line) + '\\n'); };\n\n  const launch = {\n    executablePath: CHROME, headless: true, chromiumSandbox: true, ignoreDefaultArgs: true,\n    args: ['--headless=new', '--remote-debugging-pipe', '--user-data-dir=' + dir + '/profile', '--no-first-run', '--no-default-browser-check', '--disable-background-networking', '--disable-component-update', '--disable-sync', '--disable-extensions', '--enable-automation', '--window-size=1280,800'],\n    downloadsPath: dp, acceptDownloads: true, offline: true, serviceWorkers: 'block',\n    viewport: { width: 1280, height: 800 }, timeout: 30000,\n    env: { ...process.env, TEMP: dir + '/temp', TMP: dir + '/temp', HOME: dir + '/home', USERPROFILE: dir + '/home', APPDATA: dir + '/home/AppData/Roaming', LOCALAPPDATA: dir + '/home/AppData/Local' }\n  };\n  console.log('[launch]', name, 'exe=' + CHROME, 'user-data-dir=' + dir + '/profile', 'downloads-path=' + dp);\n  const context = await chromium.launchPersistentContext(dir + '/profile', launch);\n  try {\n    const page = context.pages()[0] || await context.newPage();\n    const cdp = await context.newCDPSession(page); // BrowserContext 无 newBrowserCDPSession，须基于 page\n    const cl = await cdp.send('Browser.getBrowserCommandLine');\n    result.commandLineFlags = cl.arguments.filter(a => FORBIDDEN.some(f => a.toLowerCase().startsWith(f)) || /no-sandbox|disable-security/.test(a));\n    const bad = cl.arguments.filter(a => FORBIDDEN.some(f => a.toLowerCase().startsWith(f)));\n    if (bad.length) throw new Error('forbidden flags present: ' + bad.join(' ')); // 实际断言抛出\n    if (useCDP) {\n      const dpath = normalizePath ? path.win32.normalize(dp) : dp; // A: 正斜杠; B: 仅 normalize CDP 路径\n      result.cdpDownloadPath = dpath;\n      await cdp.send('Browser.setDownloadBehavior', { behavior: 'allowAndName', downloadPath: dpath, eventsEnabled: true });\n    }\n    // CDP 下载事件实时 JSONL\n    const guidPath = {};\n    cdp.on('Browser.downloadWillBegin', e => { guidPath[e.guid] = null; ev({ ev: 'downloadWillBegin', ...e }); });\n    cdp.on('Browser.downloadProgress', e => {\n      ev({ ev: 'downloadProgress', ...e });\n      if (e.state === 'completed' && e.filePath) { guidPath[e.guid] = e.filePath; }\n    });\n\n    // PW 事件实时 JSONL\n    page.on('download', dl => ev({ ev: 'pw-download', url: dl.url(), suggestedFilename: dl.suggestedFilename() }));\n    page.on('pageerror', e => { ev({ ev: 'pageerror', message: String(e.message).slice(0, 300) }); result.errors.push('pageerror: ' + e.message); });\n    page.on('console', m => { if (m.type() === 'error') ev({ ev: 'console.error', text: m.text() }); });\n    // 严禁任何网页网络：route 与 offline 都在 context 上\n    await context.route(/^https?:\\/\\//, r => r.abort());\n    await context.setOffline(true);\n    await page.screenshot({ path: path.join(dir, 's0-about-blank.png') });\n    await page.goto(PAGE_URL());\n\n    for (const kind of ['data', 'blob']) {\n      const d = { source: kind, url: null, suggestedFilename: null, path: null, failure: null, saveAs: null, filePathCDP: null };\n      const dlDeadline = Date.now() + DL_DEADLINE_MS; // 每个下载总 20s\n      const remaining = () => dlDeadline - Date.now();\n      try {\n        const dlP = page.waitForEvent('download', { timeout: remaining() });\n        await bounded(page.click('#' + kind), remaining(), 'click'); // 真实 UI 点击\n        const dl = await bounded(dlP, remaining(), 'download-event');\n        d.url = dl.url(); d.suggestedFilename = dl.suggestedFilename();\n        try { d.path = await bounded(dl.path(), remaining(), 'dl.path'); } catch (e) { d.pathError = String(e.message).slice(0, 200); }\n        try { d.failure = (await bounded(dl.failure(), remaining(), 'dl.failure')) || null; } catch (e) { /* 超时则继续按失败处理 */ }\n        if (d.path && !d.failure && fs.existsSync(d.path)) {\n          if (!within(d.path, dir)) throw new Error('original outside sandbox, refusing to read: ' + d.path); // 越界 throw 不读\n          d.sha256Original = sha256(d.path);\n          const preserved = path.join(dir, 'evidence-originals', kind + '-mindmap.json');\n          fs.copyFileSync(d.path, preserved); d.preservedOriginal = preserved; // 原件保留，另存副本\n          const saved = path.join(dir, 'saved', kind + '.json');\n          await bounded(dl.saveAs(saved), remaining(), 'saveAs'); // 真正 saveAs\n          d.saveAs = saved; d.sha256Saved = sha256(saved);\n          result.byteMatch[kind] = fs.readFileSync(saved, 'utf8') === EXPECTED_BYTES;\n          result.deepMatch[kind] = JSON.stringify(JSON.parse(fs.readFileSync(saved, 'utf8')), null, 2) === EXPECTED_BYTES;\n        } else if (d.path && !within(d.path, dir)) { d.pathOutside = true; }\n        // CDP guid 完成事件 filePath 匹配（不猜路径）\n        const guid = Object.keys(guidPath).find(g => true);\n        const doneGuid = Object.entries(guidPath).find(([, fp]) => fp);\n        if (doneGuid) {\n          const [, fp] = doneGuid; d.filePathCDP = fp;\n          if (fs.existsSync(fp) && within(fp, dir)) d.sha256CDPFile = sha256(fp);\n        }\n        if (!d.failure && !d.sha256Original && !d.sha256CDPFile) d.failure = d.failure || 'no completed file (canceled?)';\n      } catch (e) { d.failure = d.failure || String(e.message).slice(0, 300); }\n      result.downloads.push(d);\n      await page.screenshot({ path: path.join(dir, 'after-' + kind + '.png') }).catch(() => {}); // 截图完成后再落盘 result\n    }\n  } catch (e) { result.errors.push(String(e.message).slice(0, 300)); }\n  finally {\n    evl.end();\n    await context.close().catch(() => {});\n  }\n  fs.writeFileSync(path.join(dir, 'result.json'), JSON.stringify(result, null, 2));\n  return { group: name, cdpDownloadPath: result.cdpDownloadPath, downloads: result.downloads.map(d => ({ source: d.source, url: d.url, suggestedFilename: d.suggestedFilename, failure: d.failure, path: d.path, saveAs: d.saveAs, preservedOriginal: d.preservedOriginal, filePathCDP: d.filePathCDP, sha256Original: d.sha256Original, sha256Saved: d.sha256Saved, byteMatch: result.byteMatch[d.source], deepMatch: result.deepMatch[d.source] })), errors: result.errors };\n}\n\nconst start = Date.now(); // 必须在 IIFE 前定义（避免 TDZ）\n(async () => {\n  const results = [];\n  let currentContext = null;\n  const watchdog = setTimeout(() => { // 独立 180s watchdog：关 context 并写部分结果\n    try { if (currentContext) currentContext.close().catch(() => {}); } catch (e) {}\n    fs.writeFileSync(path.join(OUT, 'results.json'), JSON.stringify({ partial: true, reason: '180s budget exhausted', results }, null, 2));\n    console.error('watchdog: 180s budget exhausted, partial results written');\n    process.exit(1);\n  }, BUDGET_MS - (Date.now() - start));\n\n  for (const [name, useCDP, norm] of [['A', true, false], ['B', true, true], ['C', false, false]]) {\n    if (Date.now() - start > BUDGET_MS) { results.push({ group: name, skipped: '180s budget exhausted' }); continue; }\n    const r = await runGroup(name, useCDP, norm);\n    results.push(r);\n  }\n  clearTimeout(watchdog);\n  fs.writeFileSync(path.join(OUT, 'results.json'), JSON.stringify(results, null, 2));\n  const failed = results.some(r => r.errors && r.errors.length);\n  console.log('summary:', JSON.stringify(results.map(r => ({ group: r.group, downloads: (r.downloads || []).map(d => d.failure ? d.source + ':FAIL' : d.source + ':OK'), errors: r.errors })), null, 2));\n  process.exit(failed ? 1 : 0);\n})().catch(e => { console.error('fatal:', e.message); process.exit(1); }); // 出错退出非 0\n```",
+  "ttft_ms": 51817,
+  "type": "result",
+  "duration_ms": 106086,
+  "uuid": "bda12626-783f-4583-bdcb-6d104981cca7",
+  "ttft_stream_ms": 5568,
+  "time_to_request_ms": 129,
+  "first_content_frame_ms": 5569,
+  "queued_turn_count": 0,
+  "result_index": 0
+}

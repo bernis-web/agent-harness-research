@@ -1,0 +1,10 @@
+{
+  "item": 11,
+  "name": "native-visible-dialog-cancel",
+  "PASS": false,
+  "classification": "FAIL",
+  "checks": {},
+  "evidence": {},
+  "error": "Error: ENOENT: no such file or directory, stat 'D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\step11-visible-03\\attempt-02\\evidence\\downloads\\t1-map.json'",
+  "status": "FAIL"
+}

@@ -1,0 +1,3537 @@
+{
+  "at": "2026-09-18T03:37:32.434Z",
+  "mode": "SCRIPT_ENUMERATION_ONLY_NO_BROWSER_NO_PASS_CLAIM",
+  "totalSteps": 101,
+  "caseCounts": {
+    "H1": 10,
+    "H2": 3,
+    "H3": 20,
+    "H4": 3,
+    "H5": 22,
+    "H6": 8,
+    "H7": 4,
+    "H8": 23,
+    "H9": 8
+  },
+  "H8": {
+    "edits": 10,
+    "undos": 11,
+    "finalEditNodes": 12,
+    "tenthUndoNodes": 6
+  },
+  "requiredVisibleRejections": true,
+  "steps": [
+    {
+      "id": "H1-empty-textbox-reset",
+      "expected": null,
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": []
+        }
+      ]
+    },
+    {
+      "id": "H1-empty-textbox-gen-S0",
+      "expected": {
+        "title": "中心主题",
+        "children": [
+          {
+            "title": "分支一",
+            "children": []
+          },
+          {
+            "title": "分支二",
+            "children": [
+              {
+                "title": "细节甲",
+                "children": []
+              },
+              {
+                "title": "细节乙",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支三",
+            "children": []
+          }
+        ]
+      },
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": [
+            "中心主题\n  分支一\n  分支二\n    细节甲\n    细节乙\n  分支三"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "H1-empty-textbox-rename-root",
+      "expected": {
+        "title": "临时根",
+        "children": [
+          {
+            "title": "分支一",
+            "children": []
+          },
+          {
+            "title": "分支二",
+            "children": [
+              {
+                "title": "细节甲",
+                "children": []
+              },
+              {
+                "title": "细节乙",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支三",
+            "children": []
+          }
+        ]
+      },
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": [
+            [],
+            "临时根"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "H1-empty-textbox-reject",
+      "expected": {
+        "title": "临时根",
+        "children": [
+          {
+            "title": "分支一",
+            "children": []
+          },
+          {
+            "title": "分支二",
+            "children": [
+              {
+                "title": "细节甲",
+                "children": []
+              },
+              {
+                "title": "细节乙",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支三",
+            "children": []
+          }
+        ]
+      },
+      "options": {
+        "messageError": true
+      },
+      "actions": [
+        {
+          "action": "importFile",
+          "args": [
+            ""
+          ]
+        }
+      ]
+    },
+    {
+      "id": "H1-empty-textbox-undo",
+      "expected": {
+        "title": "中心主题",
+        "children": [
+          {
+            "title": "分支一",
+            "children": []
+          },
+          {
+            "title": "分支二",
+            "children": [
+              {
+                "title": "细节甲",
+                "children": []
+              },
+              {
+                "title": "细节乙",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支三",
+            "children": []
+          }
+        ]
+      },
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": []
+        }
+      ]
+    },
+    {
+      "id": "H1-three-blank-lines-reset",
+      "expected": null,
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": []
+        }
+      ]
+    },
+    {
+      "id": "H1-three-blank-lines-gen-S0",
+      "expected": {
+        "title": "中心主题",
+        "children": [
+          {
+            "title": "分支一",
+            "children": []
+          },
+          {
+            "title": "分支二",
+            "children": [
+              {
+                "title": "细节甲",
+                "children": []
+              },
+              {
+                "title": "细节乙",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支三",
+            "children": []
+          }
+        ]
+      },
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": [
+            "中心主题\n  分支一\n  分支二\n    细节甲\n    细节乙\n  分支三"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "H1-three-blank-lines-rename-root",
+      "expected": {
+        "title": "临时根",
+        "children": [
+          {
+            "title": "分支一",
+            "children": []
+          },
+          {
+            "title": "分支二",
+            "children": [
+              {
+                "title": "细节甲",
+                "children": []
+              },
+              {
+                "title": "细节乙",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支三",
+            "children": []
+          }
+        ]
+      },
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": [
+            [],
+            "临时根"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "H1-three-blank-lines-reject",
+      "expected": {
+        "title": "临时根",
+        "children": [
+          {
+            "title": "分支一",
+            "children": []
+          },
+          {
+            "title": "分支二",
+            "children": [
+              {
+                "title": "细节甲",
+                "children": []
+              },
+              {
+                "title": "细节乙",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支三",
+            "children": []
+          }
+        ]
+      },
+      "options": {
+        "messageError": true
+      },
+      "actions": [
+        {
+          "action": "importFile",
+          "args": [
+            "\n  \n"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "H1-three-blank-lines-undo",
+      "expected": {
+        "title": "中心主题",
+        "children": [
+          {
+            "title": "分支一",
+            "children": []
+          },
+          {
+            "title": "分支二",
+            "children": [
+              {
+                "title": "细节甲",
+                "children": []
+              },
+              {
+                "title": "细节乙",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支三",
+            "children": []
+          }
+        ]
+      },
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": []
+        }
+      ]
+    },
+    {
+      "id": "H2-reset",
+      "expected": null,
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": []
+        }
+      ]
+    },
+    {
+      "id": "H2-gen-single-root",
+      "expected": {
+        "title": "根A",
+        "children": []
+      },
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": [
+            "根A"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "H2-undo-noop",
+      "expected": {
+        "title": "根A",
+        "children": []
+      },
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": []
+        }
+      ]
+    },
+    {
+      "id": "H3-indent-first-line-reset",
+      "expected": null,
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": []
+        }
+      ]
+    },
+    {
+      "id": "H3-indent-first-line-gen-S0",
+      "expected": {
+        "title": "中心主题",
+        "children": [
+          {
+            "title": "分支一",
+            "children": []
+          },
+          {
+            "title": "分支二",
+            "children": [
+              {
+                "title": "细节甲",
+                "children": []
+              },
+              {
+                "title": "细节乙",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支三",
+            "children": []
+          }
+        ]
+      },
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": [
+            "中心主题\n  分支一\n  分支二\n    细节甲\n    细节乙\n  分支三"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "H3-indent-first-line-reject",
+      "expected": {
+        "title": "中心主题",
+        "children": [
+          {
+            "title": "分支一",
+            "children": []
+          },
+          {
+            "title": "分支二",
+            "children": [
+              {
+                "title": "细节甲",
+                "children": []
+              },
+              {
+                "title": "细节乙",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支三",
+            "children": []
+          }
+        ]
+      },
+      "options": {
+        "messageError": true
+      },
+      "actions": [
+        {
+          "action": "importFile",
+          "args": [
+            "  首行缩进"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "H3-indent-first-line-undo-noop",
+      "expected": {
+        "title": "中心主题",
+        "children": [
+          {
+            "title": "分支一",
+            "children": []
+          },
+          {
+            "title": "分支二",
+            "children": [
+              {
+                "title": "细节甲",
+                "children": []
+              },
+              {
+                "title": "细节乙",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支三",
+            "children": []
+          }
+        ]
+      },
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": []
+        }
+      ]
+    },
+    {
+      "id": "H3-jump-level-reset",
+      "expected": null,
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": []
+        }
+      ]
+    },
+    {
+      "id": "H3-jump-level-gen-S0",
+      "expected": {
+        "title": "中心主题",
+        "children": [
+          {
+            "title": "分支一",
+            "children": []
+          },
+          {
+            "title": "分支二",
+            "children": [
+              {
+                "title": "细节甲",
+                "children": []
+              },
+              {
+                "title": "细节乙",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支三",
+            "children": []
+          }
+        ]
+      },
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": [
+            "中心主题\n  分支一\n  分支二\n    细节甲\n    细节乙\n  分支三"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "H3-jump-level-reject",
+      "expected": {
+        "title": "中心主题",
+        "children": [
+          {
+            "title": "分支一",
+            "children": []
+          },
+          {
+            "title": "分支二",
+            "children": [
+              {
+                "title": "细节甲",
+                "children": []
+              },
+              {
+                "title": "细节乙",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支三",
+            "children": []
+          }
+        ]
+      },
+      "options": {
+        "messageError": true
+      },
+      "actions": [
+        {
+          "action": "importFile",
+          "args": [
+            "A\n    B"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "H3-jump-level-undo-noop",
+      "expected": {
+        "title": "中心主题",
+        "children": [
+          {
+            "title": "分支一",
+            "children": []
+          },
+          {
+            "title": "分支二",
+            "children": [
+              {
+                "title": "细节甲",
+                "children": []
+              },
+              {
+                "title": "细节乙",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支三",
+            "children": []
+          }
+        ]
+      },
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": []
+        }
+      ]
+    },
+    {
+      "id": "H3-tab-middle-reset",
+      "expected": null,
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": []
+        }
+      ]
+    },
+    {
+      "id": "H3-tab-middle-gen-S0",
+      "expected": {
+        "title": "中心主题",
+        "children": [
+          {
+            "title": "分支一",
+            "children": []
+          },
+          {
+            "title": "分支二",
+            "children": [
+              {
+                "title": "细节甲",
+                "children": []
+              },
+              {
+                "title": "细节乙",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支三",
+            "children": []
+          }
+        ]
+      },
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": [
+            "中心主题\n  分支一\n  分支二\n    细节甲\n    细节乙\n  分支三"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "H3-tab-middle-reject",
+      "expected": {
+        "title": "中心主题",
+        "children": [
+          {
+            "title": "分支一",
+            "children": []
+          },
+          {
+            "title": "分支二",
+            "children": [
+              {
+                "title": "细节甲",
+                "children": []
+              },
+              {
+                "title": "细节乙",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支三",
+            "children": []
+          }
+        ]
+      },
+      "options": {
+        "messageError": true
+      },
+      "actions": [
+        {
+          "action": "importFile",
+          "args": [
+            "A\nA\tB"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "H3-tab-middle-undo-noop",
+      "expected": {
+        "title": "中心主题",
+        "children": [
+          {
+            "title": "分支一",
+            "children": []
+          },
+          {
+            "title": "分支二",
+            "children": [
+              {
+                "title": "细节甲",
+                "children": []
+              },
+              {
+                "title": "细节乙",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支三",
+            "children": []
+          }
+        ]
+      },
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": []
+        }
+      ]
+    },
+    {
+      "id": "H3-tab-leading-reset",
+      "expected": null,
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": []
+        }
+      ]
+    },
+    {
+      "id": "H3-tab-leading-gen-S0",
+      "expected": {
+        "title": "中心主题",
+        "children": [
+          {
+            "title": "分支一",
+            "children": []
+          },
+          {
+            "title": "分支二",
+            "children": [
+              {
+                "title": "细节甲",
+                "children": []
+              },
+              {
+                "title": "细节乙",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支三",
+            "children": []
+          }
+        ]
+      },
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": [
+            "中心主题\n  分支一\n  分支二\n    细节甲\n    细节乙\n  分支三"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "H3-tab-leading-reject",
+      "expected": {
+        "title": "中心主题",
+        "children": [
+          {
+            "title": "分支一",
+            "children": []
+          },
+          {
+            "title": "分支二",
+            "children": [
+              {
+                "title": "细节甲",
+                "children": []
+              },
+              {
+                "title": "细节乙",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支三",
+            "children": []
+          }
+        ]
+      },
+      "options": {
+        "messageError": true
+      },
+      "actions": [
+        {
+          "action": "importFile",
+          "args": [
+            "\tA"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "H3-tab-leading-undo-noop",
+      "expected": {
+        "title": "中心主题",
+        "children": [
+          {
+            "title": "分支一",
+            "children": []
+          },
+          {
+            "title": "分支二",
+            "children": [
+              {
+                "title": "细节甲",
+                "children": []
+              },
+              {
+                "title": "细节乙",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支三",
+            "children": []
+          }
+        ]
+      },
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": []
+        }
+      ]
+    },
+    {
+      "id": "H3-tab-trailing-reset",
+      "expected": null,
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": []
+        }
+      ]
+    },
+    {
+      "id": "H3-tab-trailing-gen-S0",
+      "expected": {
+        "title": "中心主题",
+        "children": [
+          {
+            "title": "分支一",
+            "children": []
+          },
+          {
+            "title": "分支二",
+            "children": [
+              {
+                "title": "细节甲",
+                "children": []
+              },
+              {
+                "title": "细节乙",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支三",
+            "children": []
+          }
+        ]
+      },
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": [
+            "中心主题\n  分支一\n  分支二\n    细节甲\n    细节乙\n  分支三"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "H3-tab-trailing-reject",
+      "expected": {
+        "title": "中心主题",
+        "children": [
+          {
+            "title": "分支一",
+            "children": []
+          },
+          {
+            "title": "分支二",
+            "children": [
+              {
+                "title": "细节甲",
+                "children": []
+              },
+              {
+                "title": "细节乙",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支三",
+            "children": []
+          }
+        ]
+      },
+      "options": {
+        "messageError": true
+      },
+      "actions": [
+        {
+          "action": "importFile",
+          "args": [
+            "A\t"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "H3-tab-trailing-undo-noop",
+      "expected": {
+        "title": "中心主题",
+        "children": [
+          {
+            "title": "分支一",
+            "children": []
+          },
+          {
+            "title": "分支二",
+            "children": [
+              {
+                "title": "细节甲",
+                "children": []
+              },
+              {
+                "title": "细节乙",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支三",
+            "children": []
+          }
+        ]
+      },
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": []
+        }
+      ]
+    },
+    {
+      "id": "H4-reset",
+      "expected": null,
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": []
+        }
+      ]
+    },
+    {
+      "id": "H4-gen-dup",
+      "expected": {
+        "title": "根",
+        "children": [
+          {
+            "title": "待办",
+            "children": []
+          },
+          {
+            "title": "组",
+            "children": [
+              {
+                "title": "待办",
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": [
+            "根\n  待办\n  组\n    待办"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "H4-rename-first-dup",
+      "expected": {
+        "title": "根",
+        "children": [
+          {
+            "title": "待办改",
+            "children": []
+          },
+          {
+            "title": "组",
+            "children": [
+              {
+                "title": "待办",
+                "children": []
+              }
+            ]
+          }
+        ]
+      },
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": [
+            [
+              0
+            ],
+            "待办改"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "H5-f1-reset",
+      "expected": null,
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": []
+        }
+      ]
+    },
+    {
+      "id": "H5-f1-gen-S0",
+      "expected": {
+        "title": "中心主题",
+        "children": [
+          {
+            "title": "分支一",
+            "children": []
+          },
+          {
+            "title": "分支二",
+            "children": [
+              {
+                "title": "细节甲",
+                "children": []
+              },
+              {
+                "title": "细节乙",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支三",
+            "children": []
+          }
+        ]
+      },
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": [
+            "中心主题\n  分支一\n  分支二\n    细节甲\n    细节乙\n  分支三"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "H5-f1-rename-root",
+      "expected": {
+        "title": "临时根",
+        "children": [
+          {
+            "title": "分支一",
+            "children": []
+          },
+          {
+            "title": "分支二",
+            "children": [
+              {
+                "title": "细节甲",
+                "children": []
+              },
+              {
+                "title": "细节乙",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支三",
+            "children": []
+          }
+        ]
+      },
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": [
+            [],
+            "临时根"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "H5-f1-import-reject",
+      "expected": {
+        "title": "临时根",
+        "children": [
+          {
+            "title": "分支一",
+            "children": []
+          },
+          {
+            "title": "分支二",
+            "children": [
+              {
+                "title": "细节甲",
+                "children": []
+              },
+              {
+                "title": "细节乙",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支三",
+            "children": []
+          }
+        ]
+      },
+      "options": {
+        "messageError": true
+      },
+      "actions": [
+        {
+          "action": "importFile",
+          "args": [
+            "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-hidden-01\\preflight\\fixtures\\H5-f1.json"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "H5-f1-undo",
+      "expected": {
+        "title": "中心主题",
+        "children": [
+          {
+            "title": "分支一",
+            "children": []
+          },
+          {
+            "title": "分支二",
+            "children": [
+              {
+                "title": "细节甲",
+                "children": []
+              },
+              {
+                "title": "细节乙",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支三",
+            "children": []
+          }
+        ]
+      },
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": []
+        }
+      ]
+    },
+    {
+      "id": "H5-f2-reset",
+      "expected": null,
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": []
+        }
+      ]
+    },
+    {
+      "id": "H5-f2-gen-S0",
+      "expected": {
+        "title": "中心主题",
+        "children": [
+          {
+            "title": "分支一",
+            "children": []
+          },
+          {
+            "title": "分支二",
+            "children": [
+              {
+                "title": "细节甲",
+                "children": []
+              },
+              {
+                "title": "细节乙",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支三",
+            "children": []
+          }
+        ]
+      },
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": [
+            "中心主题\n  分支一\n  分支二\n    细节甲\n    细节乙\n  分支三"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "H5-f2-rename-root",
+      "expected": {
+        "title": "临时根",
+        "children": [
+          {
+            "title": "分支一",
+            "children": []
+          },
+          {
+            "title": "分支二",
+            "children": [
+              {
+                "title": "细节甲",
+                "children": []
+              },
+              {
+                "title": "细节乙",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支三",
+            "children": []
+          }
+        ]
+      },
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": [
+            [],
+            "临时根"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "H5-f2-import-reject",
+      "expected": {
+        "title": "临时根",
+        "children": [
+          {
+            "title": "分支一",
+            "children": []
+          },
+          {
+            "title": "分支二",
+            "children": [
+              {
+                "title": "细节甲",
+                "children": []
+              },
+              {
+                "title": "细节乙",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支三",
+            "children": []
+          }
+        ]
+      },
+      "options": {
+        "messageError": true
+      },
+      "actions": [
+        {
+          "action": "importFile",
+          "args": [
+            "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-hidden-01\\preflight\\fixtures\\H5-f2.json"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "H5-f2-undo",
+      "expected": {
+        "title": "中心主题",
+        "children": [
+          {
+            "title": "分支一",
+            "children": []
+          },
+          {
+            "title": "分支二",
+            "children": [
+              {
+                "title": "细节甲",
+                "children": []
+              },
+              {
+                "title": "细节乙",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支三",
+            "children": []
+          }
+        ]
+      },
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": []
+        }
+      ]
+    },
+    {
+      "id": "H5-f3-reset",
+      "expected": null,
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": []
+        }
+      ]
+    },
+    {
+      "id": "H5-f3-gen-S0",
+      "expected": {
+        "title": "中心主题",
+        "children": [
+          {
+            "title": "分支一",
+            "children": []
+          },
+          {
+            "title": "分支二",
+            "children": [
+              {
+                "title": "细节甲",
+                "children": []
+              },
+              {
+                "title": "细节乙",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支三",
+            "children": []
+          }
+        ]
+      },
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": [
+            "中心主题\n  分支一\n  分支二\n    细节甲\n    细节乙\n  分支三"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "H5-f3-rename-root",
+      "expected": {
+        "title": "临时根",
+        "children": [
+          {
+            "title": "分支一",
+            "children": []
+          },
+          {
+            "title": "分支二",
+            "children": [
+              {
+                "title": "细节甲",
+                "children": []
+              },
+              {
+                "title": "细节乙",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支三",
+            "children": []
+          }
+        ]
+      },
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": [
+            [],
+            "临时根"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "H5-f3-import-reject",
+      "expected": {
+        "title": "临时根",
+        "children": [
+          {
+            "title": "分支一",
+            "children": []
+          },
+          {
+            "title": "分支二",
+            "children": [
+              {
+                "title": "细节甲",
+                "children": []
+              },
+              {
+                "title": "细节乙",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支三",
+            "children": []
+          }
+        ]
+      },
+      "options": {
+        "messageError": true
+      },
+      "actions": [
+        {
+          "action": "importFile",
+          "args": [
+            "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-hidden-01\\preflight\\fixtures\\H5-f3.json"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "H5-f3-undo",
+      "expected": {
+        "title": "中心主题",
+        "children": [
+          {
+            "title": "分支一",
+            "children": []
+          },
+          {
+            "title": "分支二",
+            "children": [
+              {
+                "title": "细节甲",
+                "children": []
+              },
+              {
+                "title": "细节乙",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支三",
+            "children": []
+          }
+        ]
+      },
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": []
+        }
+      ]
+    },
+    {
+      "id": "H5-f4-6-reset",
+      "expected": null,
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": []
+        }
+      ]
+    },
+    {
+      "id": "H5-f4-6-gen-S0",
+      "expected": {
+        "title": "中心主题",
+        "children": [
+          {
+            "title": "分支一",
+            "children": []
+          },
+          {
+            "title": "分支二",
+            "children": [
+              {
+                "title": "细节甲",
+                "children": []
+              },
+              {
+                "title": "细节乙",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支三",
+            "children": []
+          }
+        ]
+      },
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": [
+            "中心主题\n  分支一\n  分支二\n    细节甲\n    细节乙\n  分支三"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "H5-f4-6-rename-root",
+      "expected": {
+        "title": "临时根",
+        "children": [
+          {
+            "title": "分支一",
+            "children": []
+          },
+          {
+            "title": "分支二",
+            "children": [
+              {
+                "title": "细节甲",
+                "children": []
+              },
+              {
+                "title": "细节乙",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支三",
+            "children": []
+          }
+        ]
+      },
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": [
+            [],
+            "临时根"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "H5-f4-import-reject",
+      "expected": {
+        "title": "临时根",
+        "children": [
+          {
+            "title": "分支一",
+            "children": []
+          },
+          {
+            "title": "分支二",
+            "children": [
+              {
+                "title": "细节甲",
+                "children": []
+              },
+              {
+                "title": "细节乙",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支三",
+            "children": []
+          }
+        ]
+      },
+      "options": {
+        "messageError": true
+      },
+      "actions": [
+        {
+          "action": "importFile",
+          "args": [
+            "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-hidden-01\\preflight\\fixtures\\H5-f4.json"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "H5-f5-import-reject",
+      "expected": {
+        "title": "临时根",
+        "children": [
+          {
+            "title": "分支一",
+            "children": []
+          },
+          {
+            "title": "分支二",
+            "children": [
+              {
+                "title": "细节甲",
+                "children": []
+              },
+              {
+                "title": "细节乙",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支三",
+            "children": []
+          }
+        ]
+      },
+      "options": {
+        "messageError": true
+      },
+      "actions": [
+        {
+          "action": "importFile",
+          "args": [
+            "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-hidden-01\\preflight\\fixtures\\H5-f5.json"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "H5-f6-import-reject",
+      "expected": {
+        "title": "临时根",
+        "children": [
+          {
+            "title": "分支一",
+            "children": []
+          },
+          {
+            "title": "分支二",
+            "children": [
+              {
+                "title": "细节甲",
+                "children": []
+              },
+              {
+                "title": "细节乙",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支三",
+            "children": []
+          }
+        ]
+      },
+      "options": {
+        "messageError": true
+      },
+      "actions": [
+        {
+          "action": "importFile",
+          "args": [
+            "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-hidden-01\\preflight\\fixtures\\H5-f6.json"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "H5-f4-6-undo",
+      "expected": {
+        "title": "中心主题",
+        "children": [
+          {
+            "title": "分支一",
+            "children": []
+          },
+          {
+            "title": "分支二",
+            "children": [
+              {
+                "title": "细节甲",
+                "children": []
+              },
+              {
+                "title": "细节乙",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支三",
+            "children": []
+          }
+        ]
+      },
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": []
+        }
+      ]
+    },
+    {
+      "id": "H6-reset",
+      "expected": null,
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": []
+        }
+      ]
+    },
+    {
+      "id": "H6-gen-S0",
+      "expected": {
+        "title": "中心主题",
+        "children": [
+          {
+            "title": "分支一",
+            "children": []
+          },
+          {
+            "title": "分支二",
+            "children": [
+              {
+                "title": "细节甲",
+                "children": []
+              },
+              {
+                "title": "细节乙",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支三",
+            "children": []
+          }
+        ]
+      },
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": [
+            "中心主题\n  分支一\n  分支二\n    细节甲\n    细节乙\n  分支三"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "H6-rename-root",
+      "expected": {
+        "title": "改根",
+        "children": [
+          {
+            "title": "分支一",
+            "children": []
+          },
+          {
+            "title": "分支二",
+            "children": [
+              {
+                "title": "细节甲",
+                "children": []
+              },
+              {
+                "title": "细节乙",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支三",
+            "children": []
+          }
+        ]
+      },
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": [
+            [],
+            "改根"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "H6-import-F1",
+      "expected": {
+        "title": "导入根A",
+        "children": [
+          {
+            "title": "子一",
+            "children": []
+          }
+        ]
+      },
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": [
+            "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-hidden-01\\preflight\\fixtures\\H6-f1.json"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "H6-undo-noop-after-F1",
+      "expected": {
+        "title": "导入根A",
+        "children": [
+          {
+            "title": "子一",
+            "children": []
+          }
+        ]
+      },
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": []
+        }
+      ]
+    },
+    {
+      "id": "H6-add-temp",
+      "expected": {
+        "title": "导入根A",
+        "children": [
+          {
+            "title": "子一",
+            "children": []
+          },
+          {
+            "title": "临时",
+            "children": []
+          }
+        ]
+      },
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": [
+            [],
+            "临时"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "H6-import-F2",
+      "expected": {
+        "title": "导入根B",
+        "children": []
+      },
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": [
+            "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-hidden-01\\preflight\\fixtures\\H6-f2.json"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "H6-undo-noop-after-F2",
+      "expected": {
+        "title": "导入根B",
+        "children": []
+      },
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": []
+        }
+      ]
+    },
+    {
+      "id": "H7-reset",
+      "expected": null,
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": []
+        }
+      ]
+    },
+    {
+      "id": "H7-gen-deep",
+      "expected": {
+        "title": "主",
+        "children": [
+          {
+            "title": "支一",
+            "children": [
+              {
+                "title": "叶一",
+                "children": [
+                  {
+                    "title": "子叶一",
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "title": "叶二",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "支二",
+            "children": []
+          }
+        ]
+      },
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": [
+            "主\n  支一\n    叶一\n      子叶一\n    叶二\n  支二"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "H7-del-zhi1",
+      "expected": {
+        "title": "主",
+        "children": [
+          {
+            "title": "支二",
+            "children": []
+          }
+        ]
+      },
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": [
+            [
+              0
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "H7-undo-restore",
+      "expected": {
+        "title": "主",
+        "children": [
+          {
+            "title": "支一",
+            "children": [
+              {
+                "title": "叶一",
+                "children": [
+                  {
+                    "title": "子叶一",
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "title": "叶二",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "支二",
+            "children": []
+          }
+        ]
+      },
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": []
+        }
+      ]
+    },
+    {
+      "id": "H8-reset",
+      "expected": null,
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": []
+        }
+      ]
+    },
+    {
+      "id": "H8-gen-S0",
+      "expected": {
+        "title": "中心主题",
+        "children": [
+          {
+            "title": "分支一",
+            "children": []
+          },
+          {
+            "title": "分支二",
+            "children": [
+              {
+                "title": "细节甲",
+                "children": []
+              },
+              {
+                "title": "细节乙",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支三",
+            "children": []
+          }
+        ]
+      },
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": [
+            "中心主题\n  分支一\n  分支二\n    细节甲\n    细节乙\n  分支三"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "H8-edit1",
+      "expected": {
+        "title": "中心主题",
+        "children": [
+          {
+            "title": "分支一",
+            "children": []
+          },
+          {
+            "title": "分支二",
+            "children": [
+              {
+                "title": "细节甲",
+                "children": []
+              },
+              {
+                "title": "细节乙",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支三",
+            "children": []
+          },
+          {
+            "title": "附4",
+            "children": []
+          }
+        ]
+      },
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": [
+            [],
+            "附4"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "H8-edit2",
+      "expected": {
+        "title": "中心主题",
+        "children": [
+          {
+            "title": "分支一",
+            "children": []
+          },
+          {
+            "title": "分支二",
+            "children": [
+              {
+                "title": "细节甲",
+                "children": []
+              },
+              {
+                "title": "细节乙",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支三",
+            "children": []
+          },
+          {
+            "title": "附肆",
+            "children": []
+          }
+        ]
+      },
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": [
+            [
+              3
+            ],
+            "附肆"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "H8-edit3",
+      "expected": {
+        "title": "中心主题",
+        "children": [
+          {
+            "title": "分支一",
+            "children": [
+              {
+                "title": "附1",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支二",
+            "children": [
+              {
+                "title": "细节甲",
+                "children": []
+              },
+              {
+                "title": "细节乙",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支三",
+            "children": []
+          },
+          {
+            "title": "附肆",
+            "children": []
+          }
+        ]
+      },
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": [
+            [
+              0
+            ],
+            "附1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "H8-edit4",
+      "expected": {
+        "title": "中心主题",
+        "children": [
+          {
+            "title": "分支一",
+            "children": [
+              {
+                "title": "附1",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支二",
+            "children": [
+              {
+                "title": "改甲",
+                "children": []
+              },
+              {
+                "title": "细节乙",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支三",
+            "children": []
+          },
+          {
+            "title": "附肆",
+            "children": []
+          }
+        ]
+      },
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": [
+            [
+              1,
+              0
+            ],
+            "改甲"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "H8-edit5",
+      "expected": {
+        "title": "中心主题",
+        "children": [
+          {
+            "title": "分支一",
+            "children": [
+              {
+                "title": "附1",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支二",
+            "children": [
+              {
+                "title": "改甲",
+                "children": []
+              },
+              {
+                "title": "细节乙",
+                "children": [
+                  {
+                    "title": "附2",
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "title": "分支三",
+            "children": []
+          },
+          {
+            "title": "附肆",
+            "children": []
+          }
+        ]
+      },
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": [
+            [
+              1,
+              1
+            ],
+            "附2"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "H8-edit6",
+      "expected": {
+        "title": "中心主题",
+        "children": [
+          {
+            "title": "分支一",
+            "children": [
+              {
+                "title": "附1",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支二",
+            "children": [
+              {
+                "title": "改甲",
+                "children": []
+              },
+              {
+                "title": "细节乙",
+                "children": [
+                  {
+                    "title": "附2",
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "title": "附3",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支三",
+            "children": []
+          },
+          {
+            "title": "附肆",
+            "children": []
+          }
+        ]
+      },
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": [
+            [
+              1
+            ],
+            "附3"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "H8-edit7",
+      "expected": {
+        "title": "中心主题",
+        "children": [
+          {
+            "title": "分支一",
+            "children": [
+              {
+                "title": "附1",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支二",
+            "children": [
+              {
+                "title": "改甲",
+                "children": []
+              },
+              {
+                "title": "细节乙",
+                "children": [
+                  {
+                    "title": "附2",
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "title": "附3",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "改三",
+            "children": []
+          },
+          {
+            "title": "附肆",
+            "children": []
+          }
+        ]
+      },
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": [
+            [
+              2
+            ],
+            "改三"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "H8-edit8",
+      "expected": {
+        "title": "中心主题",
+        "children": [
+          {
+            "title": "分支一",
+            "children": [
+              {
+                "title": "附1",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支二",
+            "children": [
+              {
+                "title": "改甲",
+                "children": []
+              },
+              {
+                "title": "细节乙",
+                "children": [
+                  {
+                    "title": "附2",
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "title": "附3",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "改三",
+            "children": [
+              {
+                "title": "附5",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "附肆",
+            "children": []
+          }
+        ]
+      },
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": [
+            [
+              2
+            ],
+            "附5"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "H8-edit9",
+      "expected": {
+        "title": "改根",
+        "children": [
+          {
+            "title": "分支一",
+            "children": [
+              {
+                "title": "附1",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支二",
+            "children": [
+              {
+                "title": "改甲",
+                "children": []
+              },
+              {
+                "title": "细节乙",
+                "children": [
+                  {
+                    "title": "附2",
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "title": "附3",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "改三",
+            "children": [
+              {
+                "title": "附5",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "附肆",
+            "children": []
+          }
+        ]
+      },
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": [
+            [],
+            "改根"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "H8-edit10",
+      "expected": {
+        "title": "改根",
+        "children": [
+          {
+            "title": "分支一",
+            "children": [
+              {
+                "title": "附1",
+                "children": []
+              },
+              {
+                "title": "附6",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支二",
+            "children": [
+              {
+                "title": "改甲",
+                "children": []
+              },
+              {
+                "title": "细节乙",
+                "children": [
+                  {
+                    "title": "附2",
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "title": "附3",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "改三",
+            "children": [
+              {
+                "title": "附5",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "附肆",
+            "children": []
+          }
+        ]
+      },
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": [
+            [
+              0
+            ],
+            "附6"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "H8-undo1",
+      "expected": {
+        "title": "改根",
+        "children": [
+          {
+            "title": "分支一",
+            "children": [
+              {
+                "title": "附1",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支二",
+            "children": [
+              {
+                "title": "改甲",
+                "children": []
+              },
+              {
+                "title": "细节乙",
+                "children": [
+                  {
+                    "title": "附2",
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "title": "附3",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "改三",
+            "children": [
+              {
+                "title": "附5",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "附肆",
+            "children": []
+          }
+        ]
+      },
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": []
+        }
+      ]
+    },
+    {
+      "id": "H8-undo2",
+      "expected": {
+        "title": "中心主题",
+        "children": [
+          {
+            "title": "分支一",
+            "children": [
+              {
+                "title": "附1",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支二",
+            "children": [
+              {
+                "title": "改甲",
+                "children": []
+              },
+              {
+                "title": "细节乙",
+                "children": [
+                  {
+                    "title": "附2",
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "title": "附3",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "改三",
+            "children": [
+              {
+                "title": "附5",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "附肆",
+            "children": []
+          }
+        ]
+      },
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": []
+        }
+      ]
+    },
+    {
+      "id": "H8-undo3",
+      "expected": {
+        "title": "中心主题",
+        "children": [
+          {
+            "title": "分支一",
+            "children": [
+              {
+                "title": "附1",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支二",
+            "children": [
+              {
+                "title": "改甲",
+                "children": []
+              },
+              {
+                "title": "细节乙",
+                "children": [
+                  {
+                    "title": "附2",
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "title": "附3",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "改三",
+            "children": []
+          },
+          {
+            "title": "附肆",
+            "children": []
+          }
+        ]
+      },
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": []
+        }
+      ]
+    },
+    {
+      "id": "H8-undo4",
+      "expected": {
+        "title": "中心主题",
+        "children": [
+          {
+            "title": "分支一",
+            "children": [
+              {
+                "title": "附1",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支二",
+            "children": [
+              {
+                "title": "改甲",
+                "children": []
+              },
+              {
+                "title": "细节乙",
+                "children": [
+                  {
+                    "title": "附2",
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "title": "附3",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支三",
+            "children": []
+          },
+          {
+            "title": "附肆",
+            "children": []
+          }
+        ]
+      },
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": []
+        }
+      ]
+    },
+    {
+      "id": "H8-undo5",
+      "expected": {
+        "title": "中心主题",
+        "children": [
+          {
+            "title": "分支一",
+            "children": [
+              {
+                "title": "附1",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支二",
+            "children": [
+              {
+                "title": "改甲",
+                "children": []
+              },
+              {
+                "title": "细节乙",
+                "children": [
+                  {
+                    "title": "附2",
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "title": "分支三",
+            "children": []
+          },
+          {
+            "title": "附肆",
+            "children": []
+          }
+        ]
+      },
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": []
+        }
+      ]
+    },
+    {
+      "id": "H8-undo6",
+      "expected": {
+        "title": "中心主题",
+        "children": [
+          {
+            "title": "分支一",
+            "children": [
+              {
+                "title": "附1",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支二",
+            "children": [
+              {
+                "title": "改甲",
+                "children": []
+              },
+              {
+                "title": "细节乙",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支三",
+            "children": []
+          },
+          {
+            "title": "附肆",
+            "children": []
+          }
+        ]
+      },
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": []
+        }
+      ]
+    },
+    {
+      "id": "H8-undo7",
+      "expected": {
+        "title": "中心主题",
+        "children": [
+          {
+            "title": "分支一",
+            "children": [
+              {
+                "title": "附1",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支二",
+            "children": [
+              {
+                "title": "细节甲",
+                "children": []
+              },
+              {
+                "title": "细节乙",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支三",
+            "children": []
+          },
+          {
+            "title": "附肆",
+            "children": []
+          }
+        ]
+      },
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": []
+        }
+      ]
+    },
+    {
+      "id": "H8-undo8",
+      "expected": {
+        "title": "中心主题",
+        "children": [
+          {
+            "title": "分支一",
+            "children": []
+          },
+          {
+            "title": "分支二",
+            "children": [
+              {
+                "title": "细节甲",
+                "children": []
+              },
+              {
+                "title": "细节乙",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支三",
+            "children": []
+          },
+          {
+            "title": "附肆",
+            "children": []
+          }
+        ]
+      },
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": []
+        }
+      ]
+    },
+    {
+      "id": "H8-undo9",
+      "expected": {
+        "title": "中心主题",
+        "children": [
+          {
+            "title": "分支一",
+            "children": []
+          },
+          {
+            "title": "分支二",
+            "children": [
+              {
+                "title": "细节甲",
+                "children": []
+              },
+              {
+                "title": "细节乙",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支三",
+            "children": []
+          },
+          {
+            "title": "附4",
+            "children": []
+          }
+        ]
+      },
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": []
+        }
+      ]
+    },
+    {
+      "id": "H8-undo10",
+      "expected": {
+        "title": "中心主题",
+        "children": [
+          {
+            "title": "分支一",
+            "children": []
+          },
+          {
+            "title": "分支二",
+            "children": [
+              {
+                "title": "细节甲",
+                "children": []
+              },
+              {
+                "title": "细节乙",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支三",
+            "children": []
+          }
+        ]
+      },
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": []
+        }
+      ]
+    },
+    {
+      "id": "H8-undo11-noop",
+      "expected": {
+        "title": "中心主题",
+        "children": [
+          {
+            "title": "分支一",
+            "children": []
+          },
+          {
+            "title": "分支二",
+            "children": [
+              {
+                "title": "细节甲",
+                "children": []
+              },
+              {
+                "title": "细节乙",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支三",
+            "children": []
+          }
+        ]
+      },
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": []
+        }
+      ]
+    },
+    {
+      "id": "H9-reset",
+      "expected": null,
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": []
+        }
+      ]
+    },
+    {
+      "id": "H9-gen-S0",
+      "expected": {
+        "title": "中心主题",
+        "children": [
+          {
+            "title": "分支一",
+            "children": []
+          },
+          {
+            "title": "分支二",
+            "children": [
+              {
+                "title": "细节甲",
+                "children": []
+              },
+              {
+                "title": "细节乙",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支三",
+            "children": []
+          }
+        ]
+      },
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": [
+            "中心主题\n  分支一\n  分支二\n    细节甲\n    细节乙\n  分支三"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "H9-rename-valid",
+      "expected": {
+        "title": "中心主题",
+        "children": [
+          {
+            "title": "合法1",
+            "children": []
+          },
+          {
+            "title": "分支二",
+            "children": [
+              {
+                "title": "细节甲",
+                "children": []
+              },
+              {
+                "title": "细节乙",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支三",
+            "children": []
+          }
+        ]
+      },
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": [
+            [
+              0
+            ],
+            "合法1"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "H9-empty-title-reject",
+      "expected": {
+        "title": "中心主题",
+        "children": [
+          {
+            "title": "合法1",
+            "children": []
+          },
+          {
+            "title": "分支二",
+            "children": [
+              {
+                "title": "细节甲",
+                "children": []
+              },
+              {
+                "title": "细节乙",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支三",
+            "children": []
+          }
+        ]
+      },
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": [
+            [
+              1
+            ],
+            ""
+          ]
+        }
+      ]
+    },
+    {
+      "id": "H9-tab-leading-reject",
+      "expected": {
+        "title": "中心主题",
+        "children": [
+          {
+            "title": "合法1",
+            "children": []
+          },
+          {
+            "title": "分支二",
+            "children": [
+              {
+                "title": "细节甲",
+                "children": []
+              },
+              {
+                "title": "细节乙",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支三",
+            "children": []
+          }
+        ]
+      },
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": [
+            [
+              1
+            ],
+            "\t前导"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "H9-tab-trailing-reject",
+      "expected": {
+        "title": "中心主题",
+        "children": [
+          {
+            "title": "合法1",
+            "children": []
+          },
+          {
+            "title": "分支二",
+            "children": [
+              {
+                "title": "细节甲",
+                "children": []
+              },
+              {
+                "title": "细节乙",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支三",
+            "children": []
+          }
+        ]
+      },
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": [
+            [
+              1
+            ],
+            "尾随\t"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "H9-tab-middle-reject",
+      "expected": {
+        "title": "中心主题",
+        "children": [
+          {
+            "title": "合法1",
+            "children": []
+          },
+          {
+            "title": "分支二",
+            "children": [
+              {
+                "title": "细节甲",
+                "children": []
+              },
+              {
+                "title": "细节乙",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支三",
+            "children": []
+          }
+        ]
+      },
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": [
+            [
+              1
+            ],
+            "中\t间"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "H9-undo",
+      "expected": {
+        "title": "中心主题",
+        "children": [
+          {
+            "title": "分支一",
+            "children": []
+          },
+          {
+            "title": "分支二",
+            "children": [
+              {
+                "title": "细节甲",
+                "children": []
+              },
+              {
+                "title": "细节乙",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "分支三",
+            "children": []
+          }
+        ]
+      },
+      "options": {},
+      "actions": [
+        {
+          "action": "importFile",
+          "args": []
+        }
+      ]
+    }
+  ]
+}

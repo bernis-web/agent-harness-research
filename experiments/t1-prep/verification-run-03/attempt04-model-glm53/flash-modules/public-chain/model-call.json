@@ -1,0 +1,85 @@
+{
+  "started": "2026-09-17T20:19:25+0800",
+  "requested_model": "glm-5.3-flash",
+  "timeout_seconds": 180,
+  "args": [
+    "D:/projects/node-global/node_modules/@anthropic-ai/claude-code/bin/claude.exe",
+    "--print",
+    "--safe-mode",
+    "--effort",
+    "low",
+    "--model",
+    "glm-5.3-flash",
+    "--tools",
+    "",
+    "--disable-slash-commands",
+    "--strict-mcp-config",
+    "--mcp-config",
+    "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\attempt04-model-glm53\\flash-modules\\public-chain\\empty-mcp.json",
+    "--setting-sources",
+    "user",
+    "--settings",
+    "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\attempt04-model-glm53\\flash-modules\\public-chain\\settings.json",
+    "--no-session-persistence",
+    "--system-prompt-snapshot",
+    "off",
+    "--no-chrome",
+    "--output-format",
+    "stream-json",
+    "--verbose",
+    "--include-partial-messages"
+  ],
+  "prompt_sha256": "15c2f5e29d10bd596f77196f027ca091f365f5e88cdf2f03b9e1fe3693f2c258",
+  "authentication": "normal inherited HOME; no config or credential inspection",
+  "output": "sanitized stream-json/stdout and stderr flushed line by line",
+  "state": "EXITED",
+  "pid": 54368,
+  "ended": "2026-09-17T20:21:53+0800",
+  "elapsed_seconds": 148.671,
+  "exit_code": 0,
+  "observed_models": [
+    "glm-5.3-flash"
+  ],
+  "result_received": true,
+  "output_threads_finished": true,
+  "result_is_error": false,
+  "result_subtype": "success",
+  "usage": {
+    "input_tokens": 30,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 2944,
+    "output_tokens": 4381,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "glm-5.3-flash": {
+      "inputTokens": 30,
+      "outputTokens": 4381,
+      "cacheReadInputTokens": 2944,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.11114700000000001,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000,
+      "thinkingTokens": 0,
+      "canonicalModel": "glm-5.3-flash",
+      "provider": "firstParty",
+      "costBasis": "unknown"
+    }
+  },
+  "result_text": "[see result.json]"
+}

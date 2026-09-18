@@ -1,0 +1,13 @@
+{
+  "author": "Claude CLI glm-5.3-flash",
+  "reviewer": "Codex",
+  "corrections": [
+    "Reference is HTML, use local reviewed harness module",
+    "Observe browser console directly in Node; no injected console override or page globals",
+    "Track exact owned context for timeout",
+    "Subscribe before click; do not await event before trigger",
+    "Restrict interface observation to public method names",
+    "Cancel total timer and close only owned context",
+    "Avoid dangling watchdog on fatal error"
+  ]
+}

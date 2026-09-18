@@ -1,0 +1,240 @@
+{
+  "group": "B",
+  "cdpDownloadPath": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\download-diagnosis-01\\B\\downloads",
+  "commandLineFlags": [],
+  "events": [
+    {
+      "t": 1789649147986,
+      "ev": "downloadWillBegin",
+      "frameId": "67BD701000C814F72758708A94A974AE",
+      "guid": "eb893f16-2a7d-4b03-be7a-49fd92d21d92",
+      "url": "data:application/json;charset=utf-8,%7B%0A%20%20%22title%22%3A%20%22%E4%B8%AD%E5%BF%83%E4%B8%BB%E9%A2%98%22%2C%0A%20%20%22children%22%3A%20%5B%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%22title%22%3A%20%22%E5%88%86%E6%94%AF%E4%B8%80%22%2C%0A%20%20%20%20%20%20%22children%22%3A%20%5B%5D%0A%20%20%20%20%7D%2C%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%22title%22%3A%20%22%E5%88%86%E6%94%AF%E8%B4%B0%22%2C%0A%20%20%20%20%20%20%22children%22%3A%20%5B%0A%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%22title%22%3A%20%22%E7%BB%86%E8%8A%82%E7%94%B2%22%2C%0A%20%20%20%20%20%20%20%20%20%20%22children%22%3A%20%5B%5D%0A%20%20%20%20%20%20%20%20%7D%2C%0A%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%22title%22%3A%20%22%E7%BB%86%E8%8A%82%E4%B9%99%22%2C%0A%20%20%20%20%20%20%20%20%20%20%22children%22%3A%20%5B%5D%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%5D%0A%20%20%20%20%7D%2C%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%22title%22%3A%20%22%E5%88%86%E6%94%AF%E4%B8%89%22%2C%0A%20%20%20%20%20%20%22children%22%3A%20%5B%5D%0A%20%20%20%20%7D%0A%20%20%5D%0A%7D",
+      "suggestedFilename": "mindmap.json"
+    },
+    {
+      "t": 1789649147987,
+      "ev": "pw-download",
+      "url": "data:application/json;charset=utf-8,%7B%0A%20%20%22title%22%3A%20%22%E4%B8%AD%E5%BF%83%E4%B8%BB%E9%A2%98%22%2C%0A%20%20%22children%22%3A%20%5B%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%22title%22%3A%20%22%E5%88%86%E6%94%AF%E4%B8%80%22%2C%0A%20%20%20%20%20%20%22children%22%3A%20%5B%5D%0A%20%20%20%20%7D%2C%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%22title%22%3A%20%22%E5%88%86%E6%94%AF%E8%B4%B0%22%2C%0A%20%20%20%20%20%20%22children%22%3A%20%5B%0A%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%22title%22%3A%20%22%E7%BB%86%E8%8A%82%E7%94%B2%22%2C%0A%20%20%20%20%20%20%20%20%20%20%22children%22%3A%20%5B%5D%0A%20%20%20%20%20%20%20%20%7D%2C%0A%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%22title%22%3A%20%22%E7%BB%86%E8%8A%82%E4%B9%99%22%2C%0A%20%20%20%20%20%20%20%20%20%20%22children%22%3A%20%5B%5D%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%5D%0A%20%20%20%20%7D%2C%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%22title%22%3A%20%22%E5%88%86%E6%94%AF%E4%B8%89%22%2C%0A%20%20%20%20%20%20%22children%22%3A%20%5B%5D%0A%20%20%20%20%7D%0A%20%20%5D%0A%7D",
+      "suggestedFilename": "mindmap.json"
+    },
+    {
+      "t": 1789649147988,
+      "ev": "downloadProgress",
+      "guid": "eb893f16-2a7d-4b03-be7a-49fd92d21d92",
+      "totalBytes": 0,
+      "receivedBytes": 0,
+      "state": "inProgress"
+    },
+    {
+      "t": 1789649147988,
+      "ev": "downloadProgress",
+      "guid": "eb893f16-2a7d-4b03-be7a-49fd92d21d92",
+      "totalBytes": 0,
+      "receivedBytes": 397,
+      "state": "inProgress"
+    },
+    {
+      "t": 1789649147988,
+      "ev": "downloadProgress",
+      "guid": "eb893f16-2a7d-4b03-be7a-49fd92d21d92",
+      "totalBytes": 0,
+      "receivedBytes": 397,
+      "state": "inProgress"
+    },
+    {
+      "t": 1789649147989,
+      "ev": "downloadProgress",
+      "guid": "eb893f16-2a7d-4b03-be7a-49fd92d21d92",
+      "totalBytes": 397,
+      "receivedBytes": 397,
+      "state": "inProgress"
+    },
+    {
+      "t": 1789649148116,
+      "ev": "downloadProgress",
+      "guid": "eb893f16-2a7d-4b03-be7a-49fd92d21d92",
+      "totalBytes": 397,
+      "receivedBytes": 397,
+      "state": "inProgress"
+    },
+    {
+      "t": 1789649148145,
+      "ev": "downloadProgress",
+      "guid": "eb893f16-2a7d-4b03-be7a-49fd92d21d92",
+      "totalBytes": 397,
+      "receivedBytes": 397,
+      "state": "completed",
+      "filePath": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\download-diagnosis-01\\B\\downloads\\eb893f16-2a7d-4b03-be7a-49fd92d21d92"
+    },
+    {
+      "t": 1789649148155,
+      "ev": "download-outcome",
+      "source": "data",
+      "url": "data:application/json;charset=utf-8,%7B%0A%20%20%22title%22%3A%20%22%E4%B8%AD%E5%BF%83%E4%B8%BB%E9%A2%98%22%2C%0A%20%20%22children%22%3A%20%5B%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%22title%22%3A%20%22%E5%88%86%E6%94%AF%E4%B8%80%22%2C%0A%20%20%20%20%20%20%22children%22%3A%20%5B%5D%0A%20%20%20%20%7D%2C%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%22title%22%3A%20%22%E5%88%86%E6%94%AF%E8%B4%B0%22%2C%0A%20%20%20%20%20%20%22children%22%3A%20%5B%0A%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%22title%22%3A%20%22%E7%BB%86%E8%8A%82%E7%94%B2%22%2C%0A%20%20%20%20%20%20%20%20%20%20%22children%22%3A%20%5B%5D%0A%20%20%20%20%20%20%20%20%7D%2C%0A%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%22title%22%3A%20%22%E7%BB%86%E8%8A%82%E4%B9%99%22%2C%0A%20%20%20%20%20%20%20%20%20%20%22children%22%3A%20%5B%5D%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%5D%0A%20%20%20%20%7D%2C%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%22title%22%3A%20%22%E5%88%86%E6%94%AF%E4%B8%89%22%2C%0A%20%20%20%20%20%20%22children%22%3A%20%5B%5D%0A%20%20%20%20%7D%0A%20%20%5D%0A%7D",
+      "suggestedFilename": "mindmap.json",
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\download-diagnosis-01\\B\\downloads\\eb893f16-2a7d-4b03-be7a-49fd92d21d92",
+      "failure": null,
+      "saveAs": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\download-diagnosis-01\\B\\saved\\data.json",
+      "filePathCDP": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\download-diagnosis-01\\B\\downloads\\eb893f16-2a7d-4b03-be7a-49fd92d21d92",
+      "sha256Original": "df8f17fbed15145cf88c091521a471fd1e0298d43388f55e3c0c1467a5020915",
+      "preservedOriginal": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\download-diagnosis-01\\B\\evidence-originals\\data-mindmap.json",
+      "sha256Saved": "df8f17fbed15145cf88c091521a471fd1e0298d43388f55e3c0c1467a5020915",
+      "guid": "eb893f16-2a7d-4b03-be7a-49fd92d21d92",
+      "sha256CDPFile": "df8f17fbed15145cf88c091521a471fd1e0298d43388f55e3c0c1467a5020915"
+    },
+    {
+      "t": 1789649148194,
+      "ev": "downloadWillBegin",
+      "frameId": "67BD701000C814F72758708A94A974AE",
+      "guid": "bb1fdbfa-edb1-43b5-a80c-af7fbdf5fa15",
+      "url": "blob:null/584414ce-73b4-4186-a681-4f3a1b120565",
+      "suggestedFilename": "mindmap.json"
+    },
+    {
+      "t": 1789649148194,
+      "ev": "pw-download",
+      "url": "blob:null/584414ce-73b4-4186-a681-4f3a1b120565",
+      "suggestedFilename": "mindmap.json"
+    },
+    {
+      "t": 1789649148195,
+      "ev": "downloadProgress",
+      "guid": "bb1fdbfa-edb1-43b5-a80c-af7fbdf5fa15",
+      "totalBytes": 397,
+      "receivedBytes": 0,
+      "state": "inProgress"
+    },
+    {
+      "t": 1789649148195,
+      "ev": "downloadProgress",
+      "guid": "bb1fdbfa-edb1-43b5-a80c-af7fbdf5fa15",
+      "totalBytes": 397,
+      "receivedBytes": 397,
+      "state": "inProgress"
+    },
+    {
+      "t": 1789649148195,
+      "ev": "downloadProgress",
+      "guid": "bb1fdbfa-edb1-43b5-a80c-af7fbdf5fa15",
+      "totalBytes": 397,
+      "receivedBytes": 397,
+      "state": "inProgress"
+    },
+    {
+      "t": 1789649148197,
+      "ev": "downloadProgress",
+      "guid": "bb1fdbfa-edb1-43b5-a80c-af7fbdf5fa15",
+      "totalBytes": 397,
+      "receivedBytes": 397,
+      "state": "inProgress"
+    },
+    {
+      "t": 1789649148224,
+      "ev": "downloadProgress",
+      "guid": "bb1fdbfa-edb1-43b5-a80c-af7fbdf5fa15",
+      "totalBytes": 397,
+      "receivedBytes": 397,
+      "state": "inProgress"
+    },
+    {
+      "t": 1789649148256,
+      "ev": "downloadProgress",
+      "guid": "bb1fdbfa-edb1-43b5-a80c-af7fbdf5fa15",
+      "totalBytes": 397,
+      "receivedBytes": 397,
+      "state": "completed",
+      "filePath": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\download-diagnosis-01\\B\\downloads\\bb1fdbfa-edb1-43b5-a80c-af7fbdf5fa15"
+    },
+    {
+      "t": 1789649148264,
+      "ev": "download-outcome",
+      "source": "blob",
+      "url": "blob:null/584414ce-73b4-4186-a681-4f3a1b120565",
+      "suggestedFilename": "mindmap.json",
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\download-diagnosis-01\\B\\downloads\\bb1fdbfa-edb1-43b5-a80c-af7fbdf5fa15",
+      "failure": null,
+      "saveAs": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\download-diagnosis-01\\B\\saved\\blob.json",
+      "filePathCDP": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\download-diagnosis-01\\B\\downloads\\bb1fdbfa-edb1-43b5-a80c-af7fbdf5fa15",
+      "sha256Original": "df8f17fbed15145cf88c091521a471fd1e0298d43388f55e3c0c1467a5020915",
+      "preservedOriginal": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\download-diagnosis-01\\B\\evidence-originals\\blob-mindmap.json",
+      "sha256Saved": "df8f17fbed15145cf88c091521a471fd1e0298d43388f55e3c0c1467a5020915",
+      "guid": "bb1fdbfa-edb1-43b5-a80c-af7fbdf5fa15",
+      "sha256CDPFile": "df8f17fbed15145cf88c091521a471fd1e0298d43388f55e3c0c1467a5020915"
+    }
+  ],
+  "downloads": [
+    {
+      "source": "data",
+      "url": "data:application/json;charset=utf-8,%7B%0A%20%20%22title%22%3A%20%22%E4%B8%AD%E5%BF%83%E4%B8%BB%E9%A2%98%22%2C%0A%20%20%22children%22%3A%20%5B%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%22title%22%3A%20%22%E5%88%86%E6%94%AF%E4%B8%80%22%2C%0A%20%20%20%20%20%20%22children%22%3A%20%5B%5D%0A%20%20%20%20%7D%2C%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%22title%22%3A%20%22%E5%88%86%E6%94%AF%E8%B4%B0%22%2C%0A%20%20%20%20%20%20%22children%22%3A%20%5B%0A%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%22title%22%3A%20%22%E7%BB%86%E8%8A%82%E7%94%B2%22%2C%0A%20%20%20%20%20%20%20%20%20%20%22children%22%3A%20%5B%5D%0A%20%20%20%20%20%20%20%20%7D%2C%0A%20%20%20%20%20%20%20%20%7B%0A%20%20%20%20%20%20%20%20%20%20%22title%22%3A%20%22%E7%BB%86%E8%8A%82%E4%B9%99%22%2C%0A%20%20%20%20%20%20%20%20%20%20%22children%22%3A%20%5B%5D%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%5D%0A%20%20%20%20%7D%2C%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%22title%22%3A%20%22%E5%88%86%E6%94%AF%E4%B8%89%22%2C%0A%20%20%20%20%20%20%22children%22%3A%20%5B%5D%0A%20%20%20%20%7D%0A%20%20%5D%0A%7D",
+      "suggestedFilename": "mindmap.json",
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\download-diagnosis-01\\B\\downloads\\eb893f16-2a7d-4b03-be7a-49fd92d21d92",
+      "failure": null,
+      "saveAs": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\download-diagnosis-01\\B\\saved\\data.json",
+      "filePathCDP": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\download-diagnosis-01\\B\\downloads\\eb893f16-2a7d-4b03-be7a-49fd92d21d92",
+      "sha256Original": "df8f17fbed15145cf88c091521a471fd1e0298d43388f55e3c0c1467a5020915",
+      "preservedOriginal": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\download-diagnosis-01\\B\\evidence-originals\\data-mindmap.json",
+      "sha256Saved": "df8f17fbed15145cf88c091521a471fd1e0298d43388f55e3c0c1467a5020915",
+      "guid": "eb893f16-2a7d-4b03-be7a-49fd92d21d92",
+      "sha256CDPFile": "df8f17fbed15145cf88c091521a471fd1e0298d43388f55e3c0c1467a5020915"
+    },
+    {
+      "source": "blob",
+      "url": "blob:null/584414ce-73b4-4186-a681-4f3a1b120565",
+      "suggestedFilename": "mindmap.json",
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\download-diagnosis-01\\B\\downloads\\bb1fdbfa-edb1-43b5-a80c-af7fbdf5fa15",
+      "failure": null,
+      "saveAs": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\download-diagnosis-01\\B\\saved\\blob.json",
+      "filePathCDP": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\download-diagnosis-01\\B\\downloads\\bb1fdbfa-edb1-43b5-a80c-af7fbdf5fa15",
+      "sha256Original": "df8f17fbed15145cf88c091521a471fd1e0298d43388f55e3c0c1467a5020915",
+      "preservedOriginal": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\download-diagnosis-01\\B\\evidence-originals\\blob-mindmap.json",
+      "sha256Saved": "df8f17fbed15145cf88c091521a471fd1e0298d43388f55e3c0c1467a5020915",
+      "guid": "bb1fdbfa-edb1-43b5-a80c-af7fbdf5fa15",
+      "sha256CDPFile": "df8f17fbed15145cf88c091521a471fd1e0298d43388f55e3c0c1467a5020915"
+    }
+  ],
+  "errors": [],
+  "saved": {},
+  "byteMatch": {
+    "data": true,
+    "blob": true
+  },
+  "deepMatch": {
+    "data": true,
+    "blob": true
+  },
+  "launch": {
+    "args": [
+      "--headless=new",
+      "--remote-debugging-pipe",
+      "--user-data-dir=D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\download-diagnosis-01\\B/profile",
+      "--no-first-run",
+      "--no-default-browser-check",
+      "--disable-background-networking",
+      "--disable-component-update",
+      "--disable-sync",
+      "--disable-extensions",
+      "--enable-automation",
+      "--window-size=1280,800"
+    ],
+    "downloadsPath": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/B/downloads",
+    "chromiumSandbox": true,
+    "ignoreDefaultArgs": true
+  },
+  "actualCommandLine": [
+    "C:/Program Files/Google/Chrome/Application/chrome.exe",
+    "--headless=new",
+    "--remote-debugging-pipe",
+    "--user-data-dir=D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\download-diagnosis-01\\B/profile",
+    "--no-first-run",
+    "--no-default-browser-check",
+    "--disable-background-networking",
+    "--disable-component-update",
+    "--disable-sync",
+    "--disable-extensions",
+    "--enable-automation",
+    "--window-size=1280,800",
+    "--noerrdialogs",
+    "--flag-switches-begin",
+    "--flag-switches-end"
+  ]
+}

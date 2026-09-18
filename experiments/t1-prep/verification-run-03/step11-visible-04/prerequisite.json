@@ -1,0 +1,8 @@
+{
+  "source": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/public-continuation-01/evidence/downloads/t1-map.json",
+  "destination": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/step11-visible-04/attempt-01/evidence/downloads/t1-map.json",
+  "sha256": "df8f17fbed15145cf88c091521a471fd1e0298d43388f55e3c0c1467a5020915",
+  "steps": "UI generate temporary -> UI rename changed -> UI import nonempty original JSON clears undo stack, equivalent post10 only; old21 not rerun",
+  "hidden": false,
+  "D2": false
+}

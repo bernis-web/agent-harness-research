@@ -1,0 +1,5 @@
+git status --short
+?? experiments/
+?? research/
+
+git diff --stat

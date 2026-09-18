@@ -1,0 +1,12 @@
+{
+  "maxVisibleRuns": 2,
+  "attempts": [
+    {
+      "id": 1,
+      "hypothesis": "unverified CDP pid and possible chooser interception; capture real spawn and verify live identity, explicitly disable interception, retain strict owner",
+      "state": "AWAIT_MODEL_CODE_REVIEW"
+    }
+  ],
+  "noRepeatWithoutDistinctEvidence": true,
+  "prior21NotRerun": true
+}

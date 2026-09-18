@@ -1,0 +1,154 @@
+{
+  "updated": "2026-09-17T12:35:35.875Z",
+  "scope": "public chain 1-11,12a-d; A1-A4; B1-B3",
+  "overall": "STOPPED_AT_STEP_9_DOWNLOAD_CANCELED",
+  "preflight": "PASS: retained preflight proves screenshots/file navigation/controlled data download; does not prove current blob download succeeds",
+  "driverAuthor": "Claude CLI actual model glm-5.3-flash (3 completed module calls)",
+  "reviewerExecutor": "Codex: driver-only static fixes, glue, execution",
+  "passed": 8,
+  "failed": 1,
+  "untested": 13,
+  "failureAttribution": "Acceptance step 9 did not succeed in this run. Browser download.failure()=canceled; CDP canceled. Implementation vs environment root cause not established. Not an authentication/model-dispatch failure.",
+  "batchEvidence": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/public-batch-02",
+  "priorBatch": {
+    "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/public-batch-01",
+    "pid": 59324,
+    "exitCode": 124,
+    "status": "driver unbounded completed-only CDP wait, global timeout 300s"
+  },
+  "items": [
+    {
+      "id": "1",
+      "status": "PASS",
+      "evidence": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/public-batch-02/snap-1.png",
+      "reason": null
+    },
+    {
+      "id": "2",
+      "status": "PASS",
+      "evidence": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/public-batch-02/snap-2.png",
+      "reason": null
+    },
+    {
+      "id": "3",
+      "status": "PASS",
+      "evidence": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/public-batch-02/snap-3.png",
+      "reason": null
+    },
+    {
+      "id": "4",
+      "status": "PASS",
+      "evidence": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/public-batch-02/snap-4.png",
+      "reason": null
+    },
+    {
+      "id": "5",
+      "status": "PASS",
+      "evidence": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/public-batch-02/snap-5.png",
+      "reason": null
+    },
+    {
+      "id": "6",
+      "status": "PASS",
+      "evidence": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/public-batch-02/snap-6.png",
+      "reason": null
+    },
+    {
+      "id": "7",
+      "status": "PASS",
+      "evidence": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/public-batch-02/snap-7.png",
+      "reason": null
+    },
+    {
+      "id": "8",
+      "status": "PASS",
+      "evidence": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/public-batch-02/snap-8.png",
+      "reason": null
+    },
+    {
+      "id": "9",
+      "status": "FAIL",
+      "evidence": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/public-batch-02/snap-9-fail.png",
+      "reason": "DOWNLOAD_FAILURE: canceled"
+    },
+    {
+      "id": "10",
+      "status": "UNTESTED",
+      "evidence": null,
+      "reason": "Stopped immediately after step9 download failure"
+    },
+    {
+      "id": "11",
+      "status": "UNTESTED",
+      "evidence": null,
+      "reason": "Not reached; genuine native file-picker cancellation also unsupported by this headless driver"
+    },
+    {
+      "id": "12a",
+      "status": "UNTESTED",
+      "evidence": null,
+      "reason": "Stopped immediately after step9 download failure"
+    },
+    {
+      "id": "12b",
+      "status": "UNTESTED",
+      "evidence": null,
+      "reason": "Stopped immediately after step9 download failure"
+    },
+    {
+      "id": "12c",
+      "status": "UNTESTED",
+      "evidence": null,
+      "reason": "Stopped immediately after step9 download failure"
+    },
+    {
+      "id": "12d",
+      "status": "UNTESTED",
+      "evidence": null,
+      "reason": "Stopped immediately after step9 download failure"
+    },
+    {
+      "id": "A1",
+      "status": "UNTESTED",
+      "evidence": null,
+      "reason": "Stopped immediately after step9 download failure"
+    },
+    {
+      "id": "A2",
+      "status": "UNTESTED",
+      "evidence": null,
+      "reason": "Stopped immediately after step9 download failure"
+    },
+    {
+      "id": "A3",
+      "status": "UNTESTED",
+      "evidence": null,
+      "reason": "Stopped immediately after step9 download failure"
+    },
+    {
+      "id": "A4",
+      "status": "UNTESTED",
+      "evidence": null,
+      "reason": "Stopped immediately after step9 download failure"
+    },
+    {
+      "id": "B1",
+      "status": "UNTESTED",
+      "evidence": null,
+      "reason": "Stopped immediately after step9 download failure"
+    },
+    {
+      "id": "B2",
+      "status": "UNTESTED",
+      "evidence": null,
+      "reason": "Stopped immediately after step9 download failure"
+    },
+    {
+      "id": "B3",
+      "status": "UNTESTED",
+      "evidence": null,
+      "reason": "Stopped immediately after step9 download failure"
+    }
+  ],
+  "protectedSourcesUnchanged": true
+}

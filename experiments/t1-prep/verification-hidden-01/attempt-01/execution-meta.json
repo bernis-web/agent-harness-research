@@ -1,0 +1,32 @@
+{
+  "started": "2026-09-18T11:37:40+0800",
+  "attempt": "attempt-01",
+  "output": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-hidden-01\\attempt-01\\evidence",
+  "envKeys": [
+    "APPDATA",
+    "COMSPEC",
+    "HOME",
+    "HOMEDRIVE",
+    "HOMEPATH",
+    "LOCALAPPDATA",
+    "PATH",
+    "PATHEXT",
+    "PROGRAMDATA",
+    "PROGRAMFILES",
+    "PROGRAMFILES(X86)",
+    "SYSTEMDRIVE",
+    "SYSTEMROOT",
+    "T1_OUT",
+    "T1_PLAYWRIGHT",
+    "T1_REFERENCE",
+    "TEMP",
+    "TMP",
+    "USERPROFILE",
+    "WINDIR"
+  ],
+  "noValuesLogged": true,
+  "visibleBrowser": false,
+  "driverPid": 34024,
+  "driverExitCode": 0,
+  "ended": "2026-09-18T11:38:01+0800"
+}

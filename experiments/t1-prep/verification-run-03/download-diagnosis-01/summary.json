@@ -1,0 +1,142 @@
+{
+  "updated": "2026-09-17T12:48:36.522Z",
+  "status": "DRIVER_PATH_CAUSE_ISOLATED_AND_PUBLIC_1_9_PASS",
+  "conclusion": "In this Windows environment, forward-slash downloadPath produced canceled; native Windows path in CDP changed only this setting and allowed both data/Blob. Same single-setting fix allowed unmodified reference public1-9 to pass. Double CDP/Playwright management and Blob-specific failure are not supported as the cause.",
+  "limits": "Chromium internal error cause not traced. No claims about other versions/hosts. Public10+ not run; no hidden cases or D2.",
+  "controls": [
+    {
+      "group": "A",
+      "cdpDownloadPath": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/A/downloads",
+      "downloads": [
+        {
+          "source": "data",
+          "failure": "canceled"
+        },
+        {
+          "source": "blob",
+          "failure": "canceled"
+        }
+      ]
+    },
+    {
+      "group": "B",
+      "cdpDownloadPath": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\download-diagnosis-01\\B\\downloads",
+      "downloads": [
+        {
+          "source": "data",
+          "failure": null,
+          "byteMatch": true,
+          "deepMatch": true,
+          "sha256": "df8f17fbed15145cf88c091521a471fd1e0298d43388f55e3c0c1467a5020915"
+        },
+        {
+          "source": "blob",
+          "failure": null,
+          "byteMatch": true,
+          "deepMatch": true,
+          "sha256": "df8f17fbed15145cf88c091521a471fd1e0298d43388f55e3c0c1467a5020915"
+        }
+      ]
+    },
+    {
+      "group": "C",
+      "cdpDownloadPath": null,
+      "downloads": [
+        {
+          "source": "data",
+          "failure": "canceled"
+        },
+        {
+          "source": "blob",
+          "failure": "canceled"
+        }
+      ]
+    }
+  ],
+  "publicAcceptance": {
+    "scope": "1-9 only",
+    "PASS": 9,
+    "FAIL": 0,
+    "UNTESTED": 0,
+    "items": [
+      {
+        "id": "1",
+        "status": "PASS",
+        "evidence": "snap-1.png",
+        "reason": null
+      },
+      {
+        "id": "2",
+        "status": "PASS",
+        "evidence": "snap-2.png",
+        "reason": null
+      },
+      {
+        "id": "3",
+        "status": "PASS",
+        "evidence": "snap-3.png",
+        "reason": null
+      },
+      {
+        "id": "4",
+        "status": "PASS",
+        "evidence": "snap-4.png",
+        "reason": null
+      },
+      {
+        "id": "5",
+        "status": "PASS",
+        "evidence": "snap-5.png",
+        "reason": null
+      },
+      {
+        "id": "6",
+        "status": "PASS",
+        "evidence": "snap-6.png",
+        "reason": null
+      },
+      {
+        "id": "7",
+        "status": "PASS",
+        "evidence": "snap-7.png",
+        "reason": null
+      },
+      {
+        "id": "8",
+        "status": "PASS",
+        "evidence": "snap-8.png",
+        "reason": null
+      },
+      {
+        "id": "9",
+        "status": "PASS",
+        "evidence": "snap-9.png",
+        "reason": null
+      }
+    ]
+  },
+  "export": {
+    "jsonDeepEqual": true,
+    "bytesEqual": true,
+    "sha256": "df8f17fbed15145cf88c091521a471fd1e0298d43388f55e3c0c1467a5020915",
+    "expectedSHA256": "df8f17fbed15145cf88c091521a471fd1e0298d43388f55e3c0c1467a5020915",
+    "expectedFile": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/expected.json",
+    "actualFile": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/verify-public-1-9/evidence/downloads/t1-map.json",
+    "original": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\download-diagnosis-01\\verify-public-1-9\\evidence\\downloads\\b7b16c6f-2f02-4477-af05-975418c4f267",
+    "saveAs": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\download-diagnosis-01\\verify-public-1-9\\evidence\\downloads\\t1-map.json",
+    "preservedCopy": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\download-diagnosis-01\\verify-public-1-9\\evidence\\export-original-preserved.json"
+  },
+  "sourceProtection": true,
+  "processes": [
+    {
+      "role": "diagnosis",
+      "pid": 62068,
+      "exit": 0
+    },
+    {
+      "role": "public1-9",
+      "pid": 63084,
+      "exit": 0
+    }
+  ]
+}

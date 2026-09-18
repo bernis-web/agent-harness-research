@@ -1,0 +1,28 @@
+{
+  "observations": [
+    {
+      "mode": "no-listener",
+      "events": [
+        {
+          "type": "cancel",
+          "isTrusted": true,
+          "filesLength": 0
+        }
+      ]
+    },
+    {
+      "mode": "with-listener-escape",
+      "events": [],
+      "filechooserApiMethods": [
+        "element",
+        "isMultiple",
+        "page",
+        "setFiles"
+      ]
+    }
+  ],
+  "classification": "BROWSER_AUTO_CANCEL",
+  "nativeUserCancelProven": false,
+  "reason": "headless下无用户操作时出现isTrusted cancel,记为浏览器自动取消,非用户在真实原生窗口点取消",
+  "apiCancelMethodAvailable": false
+}

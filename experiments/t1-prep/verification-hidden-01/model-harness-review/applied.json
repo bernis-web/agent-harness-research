@@ -1,0 +1,56 @@
+[
+  {
+    "index": 0,
+    "exactMatches": 1,
+    "oldSha256": "4e72ac4aba09a891d587172f3f8639f50408c2e8915d064e7dfc3439301a327c",
+    "newSha256": "4832f401c5836a52194298635ed79288c0e395f25adfebebd390cad1ec133697"
+  },
+  {
+    "index": 1,
+    "exactMatches": 1,
+    "oldSha256": "634f0d7b24ecf19c0f9674c561b4fc1a12d9ee784d182a36ae7d3f532d9d3a4c",
+    "newSha256": "0853cf9d7c5a72f661e2194fcdcb8fafc0924980a7494219344c5095d83485de"
+  },
+  {
+    "index": 2,
+    "exactMatches": 1,
+    "oldSha256": "f34aef277015809bedfafe40ddeb9db9e6c92b1df3b67fe3bae811e5c3471d83",
+    "newSha256": "a3d298adbdfc466dbc4badce453e899337e9c472742d2ed8790be02224a60ed6"
+  },
+  {
+    "index": 3,
+    "exactMatches": 1,
+    "oldSha256": "150cd2e803f3d8775616628dba5cca9d39dc8969b364a8124694b6073db788dd",
+    "newSha256": "5df134266b113b25fd887086a455f26327edeb13fa30c3184c7c49f7a3b55902"
+  },
+  {
+    "index": 4,
+    "exactMatches": 1,
+    "oldSha256": "b53c6e5e8a44485328dc23b4e9cd690a822f948ab7161cb87af8d17ffba9361e",
+    "newSha256": "87bdff767c21e68601c71d8d5bcedaaa6f462d2ba97e2d30e37af14e8b52c6db"
+  },
+  {
+    "index": 5,
+    "exactMatches": 1,
+    "oldSha256": "c9dba028278f9e0415fc80b4d0a5e6726891868a3ba35844a4ee67e7ea43bc69",
+    "newSha256": "104ac0fc972f382dfd016589c9c112145b67bf63e27c68c12d02f6043aa20d43"
+  },
+  {
+    "index": 6,
+    "exactMatches": 1,
+    "oldSha256": "4a8dbefc4530374d1908a0ee1c7f422a5faa362dc35a2098d1d2ae8a4eb988db",
+    "newSha256": "429d9187afdd735e14be833fc9b77c40bfe8edfb2400527ddf58155cfc8edc10"
+  },
+  {
+    "index": 7,
+    "exactMatches": 1,
+    "oldSha256": "739bdafd6ba1af952bb3bf7657e3d8d1c23a34faea8e90d56a054e4d3c991c80",
+    "newSha256": "10f4373aec425e1911838d7e44f40e48c6d683904796a8e1700dccab1ba6eb36"
+  },
+  {
+    "index": 8,
+    "exactMatches": 1,
+    "oldSha256": "4a67f48007e8c419b90cdc584a1d2d907223cc62e2d52a056ddbf9dd7f72c96a",
+    "newSha256": "146833984dfc436e8c4a64231fb565775d170fa6198aec57a27406848179f90d"
+  }
+]

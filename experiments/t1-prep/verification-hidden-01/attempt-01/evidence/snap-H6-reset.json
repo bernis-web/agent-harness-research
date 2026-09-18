@@ -1,0 +1,38 @@
+{
+  "label": "H6-reset",
+  "tree": null,
+  "errors": [],
+  "message": {
+    "visible": true,
+    "text": "",
+    "color": "rgb(0, 0, 0)",
+    "isError": false
+  },
+  "step": {
+    "id": "H6-reset",
+    "expected": null,
+    "status": "PASS",
+    "timestamp": "2026-09-18T03:37:53.383Z",
+    "actionCount": 1,
+    "actual": null,
+    "nodeCount": 0,
+    "uiMessage": {
+      "visible": true,
+      "text": "",
+      "color": "rgb(0, 0, 0)",
+      "isError": false
+    },
+    "errors": [],
+    "assertions": {
+      "treeMatches": true,
+      "nodeCount": 0,
+      "message": {
+        "visible": true,
+        "text": "",
+        "color": "rgb(0, 0, 0)",
+        "isError": false
+      },
+      "emptyVisible": true
+    }
+  }
+}

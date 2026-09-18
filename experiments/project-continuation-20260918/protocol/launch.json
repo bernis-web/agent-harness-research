@@ -1,0 +1,11 @@
+{
+  "at": "2026-09-18T03:38:16.137Z",
+  "wrapperPid": 31600,
+  "windowsHide": true,
+  "model": "glm-5.3-flash",
+  "effort": "low",
+  "wrapperSource": "D:/projects/agent-harness-research/experiments/project-continuation-20260918/model/invoke-stream.py",
+  "promptBytes": 7448,
+  "maxTaskMinutes": 20,
+  "systemOrProductProbes": false
+}

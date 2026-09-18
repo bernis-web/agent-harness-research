@@ -1,0 +1,12 @@
+{
+  "at": "2026-09-17T12:46:57.882Z",
+  "driverAuthor": "Claude CLI glm-5.3-flash (previous public modules)",
+  "coordinatorChanges": [
+    "Only behavioral fix: native path.win32.normalize on CDP downloadPath, supported by A/B evidence",
+    "Scope trim to public1-9 and 9 result IDs",
+    "Preserve original copy before browser close",
+    "Minimal runner compares exported bytes/JSON with independent expected.json"
+  ],
+  "noReferenceEdits": true,
+  "controlsEvidence": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/results.json"
+}

@@ -1,0 +1,20 @@
+{
+  "checkedAt": "2026-09-17T11:56:35.154Z",
+  "attempt": 2,
+  "existingTaskOnly": true,
+  "modelInvocationsAddedThisTurn": 0,
+  "started": "2026-09-17T19:41:23+0800",
+  "timeoutSeconds": 840,
+  "elapsedSeconds": 840.03,
+  "status": "TIMEOUT",
+  "runnerSession": "73180",
+  "runnerSessionReaped": true,
+  "runnerExitCode": 0,
+  "runnerExitMeaning": "bookkeeping script finished; not model-task success",
+  "resultFilePresent": false,
+  "stderrFilePresent": false,
+  "partialOutputPreserved": false,
+  "partialOutputCaveat": "The original runner captures output in memory and did not persist TimeoutExpired stdout/stderr. No API or authentication root cause can be inferred.",
+  "processHandling": "Existing subprocess.run timeout handling terminates and waits for its direct child. No extra kill, profile scan, or unrelated-process cleanup was performed.",
+  "waitTransport": "One deadline-bounded supervisor loop; transport returned after 300s but the same loop continued, and its finished state was collected without starting another task."
+}

@@ -1,0 +1,5 @@
+Initial observed and final rechecked status:
+?? experiments/
+?? research/
+
+Final git diff --stat: empty. Existing untracked research/ preserved.

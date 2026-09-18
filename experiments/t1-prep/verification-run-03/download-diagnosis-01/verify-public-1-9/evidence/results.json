@@ -1,0 +1,64 @@
+{
+  "items": [
+    {
+      "id": "1",
+      "status": "PASS",
+      "evidence": "snap-1.png",
+      "reason": null
+    },
+    {
+      "id": "2",
+      "status": "PASS",
+      "evidence": "snap-2.png",
+      "reason": null
+    },
+    {
+      "id": "3",
+      "status": "PASS",
+      "evidence": "snap-3.png",
+      "reason": null
+    },
+    {
+      "id": "4",
+      "status": "PASS",
+      "evidence": "snap-4.png",
+      "reason": null
+    },
+    {
+      "id": "5",
+      "status": "PASS",
+      "evidence": "snap-5.png",
+      "reason": null
+    },
+    {
+      "id": "6",
+      "status": "PASS",
+      "evidence": "snap-6.png",
+      "reason": null
+    },
+    {
+      "id": "7",
+      "status": "PASS",
+      "evidence": "snap-7.png",
+      "reason": null
+    },
+    {
+      "id": "8",
+      "status": "PASS",
+      "evidence": "snap-8.png",
+      "reason": null
+    },
+    {
+      "id": "9",
+      "status": "PASS",
+      "evidence": "snap-9.png",
+      "reason": null
+    }
+  ],
+  "notes": {},
+  "summary": {
+    "PASS": 9,
+    "FAIL": 0,
+    "UNTESTED": 0
+  }
+}

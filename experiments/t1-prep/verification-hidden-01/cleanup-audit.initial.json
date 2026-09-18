@@ -1,0 +1,47 @@
+{
+  "at": "2026-09-18T11:40:40+0800",
+  "method": "Exact recorded PID existence check only; no enumeration, no commandlines, no termination",
+  "records": [
+    {
+      "source": "model-harness",
+      "pid": 34544,
+      "recordedState": "EXITED",
+      "pidExists": true
+    },
+    {
+      "source": "model-cases",
+      "pid": 33144,
+      "recordedState": "EXITED",
+      "pidExists": false
+    },
+    {
+      "source": "model-harness-review",
+      "pid": 33288,
+      "recordedState": "EXITED",
+      "pidExists": false
+    },
+    {
+      "source": "model-cases-review",
+      "pid": 30996,
+      "recordedState": "EXITED",
+      "pidExists": false
+    },
+    {
+      "source": "model-audit",
+      "pid": 18692,
+      "recordedState": "RUNNING",
+      "pidExists": true
+    },
+    {
+      "source": "browser",
+      "pid": 5184,
+      "pidExists": false
+    },
+    {
+      "source": "driver",
+      "pid": 34024,
+      "pidExists": false
+    }
+  ],
+  "browserDriverAbsent": true
+}

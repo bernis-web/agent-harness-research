@@ -1,0 +1,10 @@
+{
+  "directory": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\attempt04-model-glm53",
+  "charsByDeltaType": {
+    "thinking_delta": 119544
+  },
+  "completeAssistantTextMessages": 0,
+  "extractedTextChars": 0,
+  "hasCodeFence": false,
+  "extraction": "Streaming JSON event scan; thinking text not copied into context or used as final code"
+}

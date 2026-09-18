@@ -1,0 +1,12 @@
+Previous answer rejected: you invented resp.info.processList. VERIFIED LOCAL PRIMARY SOURCE D:/projects/npm-cache/_npx/cbf1b8a072280925/node_modules/playwright-core/types/protocol.d.ts lines18565-18570: export type getProcessInfoReturnValue = { processInfo: ProcessInfo[]; }. Return ONLY JSON {diagnosis,old,new,reason,classification,cleanupReplacement}. old/new replace exact snippet below. Use resp.processInfo. await cdp.detach immediately after send; write raw resp without swallowing failure; require array and exactly one browser with positive safe integer PID. Schema/PID errors classify BLOCKED_DRIVER. cleanupReplacement: replacement for exact harness close function below; stop swallowing close error, verify context no longer has pages after await ctx.close() and throw if not, return {ownedContextCloseCompleted:true,pagesRemaining:0}; only task context. Tiny scoped patch only. No browser actions.
+SNIPPET:
+const info = await cdp.send('SystemInfo.getProcessInfo');
+    const browserProcs = info.processList.filter(p => p.type === 'browser');
+    if (browserProcs.length !== 1) throw { classify: 'BLOCKED', msg: 'browser pid ambiguous' };
+    const browserPid = browserProcs[0].id;
+    await cdp.detach();
+CLOSE:
+  t.close = async () => {
+    writeResults();
+    try { await ctx.close(); } catch (e) {}
+  };

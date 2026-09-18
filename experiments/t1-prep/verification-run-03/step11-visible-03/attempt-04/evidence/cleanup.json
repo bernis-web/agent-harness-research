@@ -1,0 +1,11 @@
+{
+  "ownedContextCloseCompleted": true,
+  "at": "2026-09-17T17:07:33.583Z",
+  "pagesRemaining": 0,
+  "launchGuard": {
+    "captured": true,
+    "pid": 33944,
+    "verified": true,
+    "childAlive": false
+  }
+}

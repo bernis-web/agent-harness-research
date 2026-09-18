@@ -1,0 +1,85 @@
+{
+  "duration_api_ms": 34017,
+  "stop_reason": "end_turn",
+  "session_id": "f5ff4e61-e94f-413b-aa19-6360f0109ed8",
+  "total_cost_usd": 0.04033,
+  "usage": {
+    "input_tokens": 1771,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "output_tokens": 1259,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "glm-5.3-flash": {
+      "inputTokens": 1771,
+      "outputTokens": 1259,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.04033,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000,
+      "thinkingTokens": 0,
+      "canonicalModel": "glm-5.3-flash",
+      "provider": "firstParty",
+      "costBasis": "unknown"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "is_error": false,
+  "num_turns": 1,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "{\"files\":[{\"path\":\"README.md\",\"content\":\"# T2 探索准备文档（草案 v0.1，全部拟定待会审）\\n\\n## 定位声明\\n- 本目录是**探索任务 T2** 的准备文档，与旧六阶段 P1、旧 P2 无关，不混用任何评分体系。\\n- 用户**尚未冻结任何设计**。本文档中所有选择均为**拟定值，待协调员会审后另行决定制作**。\\n- 本轮仅产出静态准备文档：不实现 notes.py、不写测试、不做参考实现、不安装依赖、不联网、不提交 git。\\n- 模型调用为用户授权的真实 CLI（GLM，即用户所述 glm-5.3-flash），coordination/ 中保留真实证据，不谎称未调用 API。\\n\\n## 预定目录结构（拟定）\\n- `spec/T2-SPEC-draft-v0.1.md` — 规格草案，所有设计选项以并列待判项索引，不复制未定细节。\\n- `acceptance/public-cases.md` — 10 个编号公开用例（精确数据、步骤、断言）。\\n- `acceptance/hidden-groups.md` — 固定数据替换组，仅复用公开步骤与断言，不新增判据。\\n- `acceptance/mutation-map.md` — 2–3 条单要求变异，映射到公开条款，仅索引不实现。\\n- `coordination/` — 真实 CLI 原始输出与摘要，作为审查证据。\\n\\n## 隔离与输入边界（拟定，内部固定 ≠ 用户已获批）\\n- 未来产品工作区只允许 `notes.py` 及产品自写 README；未来 `tests/` 一经生成**不可修改**。\\n- 未来任务输入仅允许：公开 spec 与 public-cases 文档。\\n- 参考/隐藏组/变异图/协调日志**绝不进入产品工作区**；未来参考目录与产品目录须分别新建、独立授权，本轮不创建。\\n- 静态文档核对不等于产品通过；本轮未做产品验证、单元测试、mutation kill 或故障注入。\\n\\n## 判据框架（拟定）\\n- 公开 10 组逐组 PASS/FAIL：组内**每条断言都满足**才 PASS。\\n- 隐藏组逐组 PASS/FAIL，同规则。\\n- N/A、BLOCKED 不得计为 PASS；静态 UNRUN 一律不计分。\\n- 成功标准 = 公开全过 + 隐藏全过。\\n- 变异杀伤仅评价验收校准，不混入产品评分。\\n\\n## 隔离环境事实（拟定基线，待复核）\\n- 计划采用：safe-mode、tools 空、disable-slash、strict-empty MCP、disableAllHooks。\\n- 认证继承自真实环境，凭据内容未读取。\\n- 未来 init 中插件注册清单非空，但 tools / skills / MCP 均为空——**不得写「插件名单为空」**。\\n\\n## 已发生范围纠偏（必须明示）\\n- `coordination/preflight.json` 约 3.52MB：一次**不必要的旧仓递归元数据清单**（17019 条，仅路径/大小/mtime/类型，未读文件内容，未做全仓哈希）。证据保留，后续不再复扫。\\n- `coordination/scope-correction.json` 记录该说明。\\n- 除上述已发生偏差外，**不声称本轮全程精确白名单**。\\n\\n## 结尾约束\\n后续制作须由协调员会审并另行授权后才能决定；本准备文档自身不得写入执行计划或自行启动执行。\\n\"},{\"path\":\"acceptance/README.md\",\"content\":\"# T2 验收文档索引（草案，全部拟定待会审）\\n\\n## 本目录预定文件\\n- `public-cases.md` — 10 个编号公开用例（TC-01 至 TC-10），每个含：精确输入数据、可复现步骤、逐条断言。\\n- `hidden-groups.md` — 固定数据替换组：仅替换数据，**逐字复用**对应公开用例的步骤与断言，不新增判据。\\n- `mutation-map.md` — 2–3 条单要求变异，每条映射到公开条款编号，仅索引不实现。\\n\\n## 判据规则（内部固定草案，非用户已冻结）\\n1. 公开 10 组逐组 PASS/FAIL；组内每条断言全部满足才 PASS。\\n2. 隐藏组逐组 PASS/FAIL，规则同上。\\n3. N/A / BLOCKED 不计 PASS；静态 UNRUN 不计分。\\n4. 成功标准：公开全过 + 隐藏全过。\\n5. 变异杀伤仅评价验收校准质量，不混入产品评分。\\n6. 不使用旧 P1 评分，也不与旧 P2 混算。\\n\\n## 边界（拟定）\\n- 未来仅 public-cases.md（及公开 spec）可作为任务输入；hidden-groups 与 mutation-map 不得进入产品工作区。\\n- 未来 tests/ 不可修改；产品仅 notes.py + 其自写 README。\\n- 本验收草案未执行任何产品验证或变异实验；文档静态核对不构成产品通过。\\n\\n## 会审前提\\n以下均为待判项：用例数据、断言文本、隐藏组数量与替换值、变异条目。协调员会审后方可决定是否制作与执行；本 README 不包含执行计划。\\n\"}]}",
+  "ttft_ms": 3080,
+  "type": "result",
+  "duration_ms": 34117,
+  "uuid": "2c3965ba-1121-49e7-afbc-25da78638208",
+  "ttft_stream_ms": 2786,
+  "time_to_request_ms": 103,
+  "first_content_frame_ms": 2786,
+  "queued_turn_count": 0,
+  "result_index": 0
+}

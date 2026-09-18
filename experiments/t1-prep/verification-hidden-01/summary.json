@@ -1,0 +1,139 @@
+{
+  "schema": "t1-hidden-reference-closeout-v1",
+  "at": "2026-09-18T03:58:41.104Z",
+  "scope": "Frozen T1 reference implementation only; H1-H9 hidden reference verification; no D2 or whole-project/product claim.",
+  "execution": {
+    "attempt": "attempt-01",
+    "started": "2026-09-18T11:37:40+0800",
+    "ended": "2026-09-18T11:38:01+0800",
+    "driverExitCode": 0,
+    "browserExitCode": 0
+  },
+  "hidden": {
+    "cases": [
+      "H1",
+      "H2",
+      "H3",
+      "H4",
+      "H5",
+      "H6",
+      "H7",
+      "H8",
+      "H9"
+    ],
+    "caseCount": 9,
+    "substeps": 101,
+    "pass": 101,
+    "referenceFailures": 0,
+    "driverErrors": 0,
+    "counts": {
+      "H1": 10,
+      "H2": 3,
+      "H3": 20,
+      "H4": 3,
+      "H5": 22,
+      "H6": 8,
+      "H7": 4,
+      "H8": 23,
+      "H9": 8
+    },
+    "allSnapshotJsonTreesMatch": true,
+    "allOperationsMatchFixedSequence": true
+  },
+  "specialSequences": {
+    "H5": {
+      "resets": 4,
+      "imports": 6
+    },
+    "H8": {
+      "editActions": 10,
+      "undoActions": 11,
+      "eleventhUndo": "no-op"
+    },
+    "H9": {
+      "renameAttempts": 5,
+      "undoActions": 1
+    }
+  },
+  "artifacts": {
+    "screenshots": 101,
+    "stateSnapshots": 101,
+    "fixtures": 23,
+    "results": "attempt-01/evidence/results.json",
+    "caseIndex": "CASE-INDEX.md"
+  },
+  "publicPrerequisite": {
+    "previousPublicItems": 22,
+    "source": "verification-run-03/public-continuation-01 plus step11-visible-04",
+    "rerun": false
+  },
+  "protection": {
+    "exactWhitelistFiles": 7,
+    "allUnchanged": true,
+    "files": [
+      "README.md",
+      "experiments/t1-prep/README.md",
+      "experiments/t1-prep/spec/T1-规格-冻结-v1.0.md",
+      "experiments/t1-prep/reference/mindmap.html",
+      "experiments/t1-prep/reference/README.md",
+      "experiments/t1-prep/acceptance/验收手册-公开链与片段.md",
+      "experiments/t1-prep/acceptance/hidden-cases.md"
+    ],
+    "hashEvidence": {
+      "before": "protected-before-whitelist.json",
+      "after": "protected-after-whitelist.json",
+      "mode": "EXACT_7_FILE_WHITELIST_ONLY"
+    }
+  },
+  "processCompliance": {
+    "status": "DEVIATION_RECORDED",
+    "initialBroadHashScan": {
+      "projectFilesRead": 2146,
+      "historicalProfileFilesRead": 1256,
+      "categories": {
+        "Cookies": 0,
+        "Login Data": 0,
+        "Web Data": 0,
+        "History": 2,
+        "Preferences/Secure Preferences": 2,
+        "Local State": 1,
+        "Local Storage": 10,
+        "Session Storage": 10,
+        "Device Bound Sessions": 4,
+        "EdgePushStorage": 3
+      },
+      "bytesReadForSha256": true,
+      "parsedOrCopied": false,
+      "providedToModel": false
+    },
+    "correction": "After disclosure, exact seven-file whitelist only; no further historical browser-profile recursion/read/hash; incident records retained"
+  },
+  "methodLimits": [
+    "Real UI actions and DOM-visible ordered-tree assertions only",
+    "Behavioral undo verification; no internal stack/state inspection",
+    "Reference-specific red-message color adapter is not a generic specification criterion",
+    "Automation evidence is not human/manual acceptance"
+  ],
+  "modelAudit": {
+    "designAndImplementationCalls": "glm-5.3-flash, effort low, tools/MCP/hooks/skills disabled; successful calls retained in model-call-summary.partial.json",
+    "auditCalls": {
+      "modelAudit": "TIMEOUT after 360s; no result",
+      "modelAuditSmall": "TIMEOUT after 180s; no result"
+    },
+    "noAdditionalCalls": true
+  },
+  "networkAndCleanup": {
+    "headless": true,
+    "chromiumSandbox": true,
+    "offline": true,
+    "httpHttpsAborted": true,
+    "serviceWorkersBlocked": true,
+    "allowedApp": "file:///D:/projects/agent-harness-research/experiments/t1-prep/reference/mindmap.html",
+    "hostChanges": false,
+    "ownedBrowserAndDriverExited": true,
+    "contextScopedClose": true,
+    "cleanupEvidence": "cleanup-audit.json"
+  },
+  "conclusion": "FUNCTIONAL_REFERENCE_ACCEPTANCE_PASS",
+  "gaps": []
+}

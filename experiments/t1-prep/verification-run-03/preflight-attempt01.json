@@ -1,0 +1,65 @@
+{
+  "started": "2026-09-17T11:36:32.444Z",
+  "scope": "environment-only; no reference page or acceptance execution",
+  "status": "TOOL_ERROR",
+  "events": [],
+  "network": [],
+  "launch": {
+    "executablePath": "C:/Program Files/Google/Chrome/Application/chrome.exe",
+    "args": [
+      "--headless=new",
+      "--remote-debugging-pipe",
+      "--user-data-dir=D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\browser-profile",
+      "--no-first-run",
+      "--no-default-browser-check",
+      "--disable-background-networking",
+      "--disable-component-update",
+      "--disable-sync",
+      "--disable-extensions",
+      "--enable-automation",
+      "--window-size=1280,800"
+    ],
+    "chromiumSandbox": true,
+    "ignoreDefaultArgs": true,
+    "downloadsPath": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\downloads",
+    "TEMP": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\temp",
+    "TMP": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\temp"
+  },
+  "blankScreenshot": {
+    "status": "PASS",
+    "bytes": 4714
+  },
+  "browserVersion": {
+    "protocolVersion": "1.3",
+    "product": "Chrome/152.0.7977.83",
+    "revision": "@79460ebecaa5625e57a5fb679a735659e73dc687",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+    "jsVersion": "15.2.124.21"
+  },
+  "actualCommandLine": {
+    "arguments": [
+      "C:/Program Files/Google/Chrome/Application/chrome.exe",
+      "--headless=new",
+      "--remote-debugging-pipe",
+      "--user-data-dir=D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\browser-profile",
+      "--no-first-run",
+      "--no-default-browser-check",
+      "--disable-background-networking",
+      "--disable-component-update",
+      "--disable-sync",
+      "--disable-extensions",
+      "--enable-automation",
+      "--window-size=1280,800",
+      "--noerrdialogs",
+      "--flag-switches-begin",
+      "--flag-switches-end"
+    ]
+  },
+  "offline": false,
+  "error": {
+    "name": "AssertionError",
+    "message": "The expression evaluated to a falsy value:\n\n  assert(report.offline)\n",
+    "stack": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert(report.offline)\n\n    at D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\browser-preflight.cjs:29:68"
+  },
+  "ended": "2026-09-17T11:36:34.653Z"
+}

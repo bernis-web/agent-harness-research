@@ -1,0 +1,35 @@
+{
+  "at": "2026-09-18T11:14:42+0800",
+  "processes": [
+    {
+      "pid": 21576,
+      "exists": false
+    },
+    {
+      "pid": 32568,
+      "exists": false
+    },
+    {
+      "pid": 21464,
+      "exists": false
+    },
+    {
+      "pid": 7104,
+      "exists": false
+    },
+    {
+      "pid": 6680,
+      "exists": false
+    },
+    {
+      "pid": 21196,
+      "exists": false
+    },
+    {
+      "pid": 33720,
+      "exists": false
+    }
+  ],
+  "allRecordedProcessesAbsent": true,
+  "scope": "Exact recorded PIDs only; no kill, no process commandline or config reads"
+}

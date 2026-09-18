@@ -1,0 +1,8 @@
+{
+  "started": "2026-09-17T13:01:16.004Z",
+  "pid": 59636,
+  "timeoutSeconds": 180,
+  "scope": "prerequisites1-9; remaining10,11,12a-d,A1-A4,B1-B3",
+  "step11": "UNTESTED unless genuine native user cancel can be proven; probe did not prove it",
+  "noVisibleWindow": true
+}

@@ -1,0 +1,8 @@
+{
+  "started": "2026-09-17T12:33:58.550Z",
+  "pid": 56612,
+  "timeout_seconds": 75,
+  "driverAuthor": "Claude CLI glm-5.3-flash",
+  "reviewerExecutor": "Codex",
+  "purpose": "single bounded retry after documented unbounded CDP observation bug"
+}

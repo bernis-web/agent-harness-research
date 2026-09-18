@@ -1,0 +1,30 @@
+[
+  {
+    "folder": "model-native",
+    "requested": "glm-5.3-flash",
+    "observed": [
+      "glm-5.3-flash"
+    ],
+    "effort": "low",
+    "pid": 36532,
+    "elapsedSeconds": 20.939,
+    "exitCode": 0,
+    "resultIsError": false,
+    "accepted": false,
+    "source": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/step11-visible-02/model-native/result.json"
+  },
+  {
+    "folder": "model-correction",
+    "requested": "glm-5.3-flash",
+    "observed": [
+      "glm-5.3-flash"
+    ],
+    "effort": "low",
+    "pid": 36700,
+    "elapsedSeconds": 55.833,
+    "exitCode": 0,
+    "resultIsError": false,
+    "accepted": true,
+    "source": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/step11-visible-02/model-correction/result.json"
+  }
+]

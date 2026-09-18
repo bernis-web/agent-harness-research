@@ -1,0 +1,12 @@
+{
+  "checkedAt": "2026-09-17T11:56:35.156Z",
+  "status": "NOT_RUN_CONSTRAINTS_UNVERIFIED",
+  "entry": "D:/zcode/resources/glm/zcode.cjs",
+  "helpEvidence": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\zcode-help.txt",
+  "helpSha256": "35d92b7a653724832aef38a3e4872bbe11b952093ef8a151ace44cdeb6760273",
+  "readyModelRequestSent": false,
+  "reason": "Local help advertises tool allow/deny lists and alternate settings but provides no verified combination that disables MCP startup, hooks, and memory while retaining normal client authentication. Tool-call denial alone does not establish startup isolation. User instruction explicitly says not to run if constraints cannot be enforced.",
+  "scope": "Not claiming the application can never support this; only that the required safe combination was not established from available local help. No credential bridge, personal configuration reading, unpacking, or reverse engineering.",
+  "requestedMaximumSeconds": 120,
+  "finalDecision": "Do not execute: required MCP/hooks/memory isolation not verified; no further environment probing."
+}

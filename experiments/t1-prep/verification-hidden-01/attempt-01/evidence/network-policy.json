@@ -1,0 +1,7 @@
+{
+  "offline": true,
+  "httpHttpsRouteAbort": true,
+  "serviceWorkers": "block",
+  "allowedApp": "file:///D:/projects/agent-harness-research/experiments/t1-prep/reference/mindmap.html",
+  "noHostNetworkChanges": true
+}

@@ -1,0 +1,112 @@
+{
+  "label": "H9-empty-title-reject",
+  "tree": {
+    "title": "中心主题",
+    "children": [
+      {
+        "title": "合法1",
+        "children": []
+      },
+      {
+        "title": "分支二",
+        "children": [
+          {
+            "title": "细节甲",
+            "children": []
+          },
+          {
+            "title": "细节乙",
+            "children": []
+          }
+        ]
+      },
+      {
+        "title": "分支三",
+        "children": []
+      }
+    ]
+  },
+  "errors": [],
+  "message": {
+    "visible": true,
+    "text": "重命名被拒绝：标题为空或含 Tab",
+    "color": "rgb(204, 34, 34)",
+    "isError": true
+  },
+  "step": {
+    "id": "H9-empty-title-reject",
+    "expected": {
+      "title": "中心主题",
+      "children": [
+        {
+          "title": "合法1",
+          "children": []
+        },
+        {
+          "title": "分支二",
+          "children": [
+            {
+              "title": "细节甲",
+              "children": []
+            },
+            {
+              "title": "细节乙",
+              "children": []
+            }
+          ]
+        },
+        {
+          "title": "分支三",
+          "children": []
+        }
+      ]
+    },
+    "status": "PASS",
+    "timestamp": "2026-09-18T03:38:00.740Z",
+    "actionCount": 2,
+    "actual": {
+      "title": "中心主题",
+      "children": [
+        {
+          "title": "合法1",
+          "children": []
+        },
+        {
+          "title": "分支二",
+          "children": [
+            {
+              "title": "细节甲",
+              "children": []
+            },
+            {
+              "title": "细节乙",
+              "children": []
+            }
+          ]
+        },
+        {
+          "title": "分支三",
+          "children": []
+        }
+      ]
+    },
+    "nodeCount": 6,
+    "uiMessage": {
+      "visible": true,
+      "text": "重命名被拒绝：标题为空或含 Tab",
+      "color": "rgb(204, 34, 34)",
+      "isError": true
+    },
+    "errors": [],
+    "assertions": {
+      "treeMatches": true,
+      "nodeCount": 6,
+      "message": {
+        "visible": true,
+        "text": "重命名被拒绝：标题为空或含 Tab",
+        "color": "rgb(204, 34, 34)",
+        "isError": true
+      }
+    }
+  }
+}

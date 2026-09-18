@@ -1,0 +1,1 @@
+{"state": "EXITED", "requested_model": "glm-5.3-flash", "observed_models": ["glm-5.3-flash"], "elapsed_seconds": 25.096, "exit_code": 0, "result_received": true, "result_is_error": false, "result_text": "[see result.json]"}

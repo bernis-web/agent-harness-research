@@ -1,0 +1,85 @@
+{
+  "duration_api_ms": 48921,
+  "stop_reason": "end_turn",
+  "session_id": "f2e207b8-34c7-4577-84b8-8ea899951038",
+  "total_cost_usd": 0.092725,
+  "usage": {
+    "input_tokens": 4405,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "output_tokens": 2828,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "glm-5.3-flash": {
+      "inputTokens": 4405,
+      "outputTokens": 2828,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.092725,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000,
+      "thinkingTokens": 0,
+      "canonicalModel": "glm-5.3-flash",
+      "provider": "firstParty",
+      "costBasis": "unknown"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "is_error": false,
+  "num_turns": 1,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "```json\n{\n  \"replacements\": [\n    {\n      \"file\": \"fixtures.json\",\n      \"old\": \"{\\\"name\\\":\\\"H3-3.txt\\\",\\\"content\\\":\\\"A\\\\tB\\\"}\",\n      \"new\": \"{\\\"name\\\":\\\"H3-3.txt\\\",\\\"content\\\":\\\"A\\\\nA\\\\tB\\\"}\"\n    },\n    {\n      \"file\": \"fixtures.json\",\n      \"old\": \"{\\\"name\\\":\\\"H1-blank3.txt\\\"\",\n      \"new\": \"{\\\"name\\\":\\\"H1-empty.txt\\\",\\\"content\\\":\\\"\\\"},{\\\"name\\\":\\\"H1-blank3.txt\\\"\"\n    },\n    {\n      \"file\": \"cases.cjs\",\n      \"old\": \" * Node paths are zero-based child-index arrays, e.g. [0,1,0] = root.children[1].children[0].\",\n      \"new\": \" * Node paths are zero-based child-index arrays: [] = root, [1] = root's second child, [1,0] = that child's first child.\"\n    },\n    {\n      \"file\": \"cases.cjs\",\n      \"old\": \"  await h1('H1-empty-textbox', '');\",\n      \"new\": \"  await h1('H1-empty-textbox', fx('H1-empty.txt'));\"\n    },\n    {\n      \"file\": \"cases.cjs\",\n      \"old\": \"    await t.step(id + '-rename-root', S0R(), async () => { await t.rename([0], '临时根'); });\\n    await t.step(id + '-reject', S0R(), async () => { await t.gen(data); });\",\n      \"new\": \"    await t.step(id + '-rename-root', S0R(), async () => { await t.rename([], '临时根'); });\\n    await t.step(id + '-reject', S0R(), async () => { await t.gen(data); }, { messageError: true });\"\n    },\n    {\n      \"file\": \"cases.cjs\",\n      \"old\": \"    await t.step(id + '-rename-root', S0R(), async () => { await t.rename([0], '临时根'); });\\n  };\",\n      \"new\": \"    await t.step(id + '-rename-root', S0R(), async () => { await t.rename([], '临时根'); });\\n  };\"\n    },\n    {\n      \"file\": \"cases.cjs\",\n      \"old\": \"    await t.step(id + '-reject', S0(), async () => { await t.gen(fx(fn)); });\",\n      \"new\": \"    await t.step(id + '-reject', S0(), async () => { await t.gen(fx(fn)); }, { messageError: true });\"\n    },\n    {\n      \"file\": \"cases.cjs\",\n      \"old\": \"  await t.step('H4-rename-first-dup', h4b(), async () => { await t.rename([0, 0], '待办改'); });\",\n      \"new\": \"  await t.step('H4-rename-first-dup', h4b(), async () => { await t.rename([0], '待办改'); });\"\n    },\n    {\n      \"file\": \"cases.cjs\",\n      \"old\": \"    await t.step(id + '-import-reject', S0R(), async () => { await t.importFile(fp('H5-f' + i + '.json')); });\",\n      \"new\": \"    await t.step(id + '-import-reject', S0R(), async () => { await t.importFile(fp('H5-f' + i + '.json')); }, { messageError: true });\"\n    },\n    {\n      \"file\": \"cases.cjs\",\n      \"old\": \"    await t.step('H5-f' + i + '-import-reject', S0R(), async () => { await t.importFile(fp('H5-f' + i + '.json')); });\",\n      \"new\": \"    await t.step('H5-f' + i + '-import-reject', S0R(), async () => { await t.importFile(fp('H5-f' + i + '.json')); }, { messageError: true });\"\n    },\n    {\n      \"file\": \"cases.cjs\",\n      \"old\": \"  await t.step('H6-rename-root', N('改根', [N('分支一'), N('分支二', [N('细节甲'), N('细节乙')]), N('分支三')]), async () => { await t.rename([0], '改根'); });\",\n      \"new\": \"  await t.step('H6-rename-root', N('改根', [N('分支一'), N('分支二', [N('细节甲'), N('细节乙')]), N('分支三')]), async () => { await t.rename([], '改根'); });\"\n    },\n    {\n      \"file\": \"cases.cjs\",\n      \"old\": \"  let cur = S0();\\n  const snaps = [t.clone(cur)]; // snaps[k] = full expected tree before edit k+1\",\n      \"new\": \"  await t.step('H8-reset', null, async () => { await t.reset(); });\\n  await t.step('H8-gen-S0', S0(), async () => { await t.gen(fx('S0.txt')); });\\n  let cur = S0();\\n  const snaps = [t.clone(cur)]; // snaps[k] = full expected tree before edit k+1\"\n    },\n    {\n      \"file\": \"cases.cjs\",\n      \"old\": \"  const edits = [\\n    ['add', [0], '附4'],\\n    ['rename', [0, 3], '附肆'],\\n    ['add', [0, 0], '附1'],\\n    ['rename', [0, 1, 0], '改甲'],\\n    ['add', [0, 1, 1], '附2'],\\n    ['add', [0, 1], '附3'],\\n    ['rename', [0, 2], '改三'],\\n    ['add', [0, 2], '附5'],\\n    ['rename', [0], '改根'],\\n    ['add', [0, 0], '附6']\\n  ];\",\n      \"new\": \"  const edits = [\\n    ['add', [], '附4'],\\n    ['rename', [3], '附肆'],\\n    ['add', [0], '附1'],\\n    ['rename', [1, 0], '改甲'],\\n    ['add', [1, 1], '附2'],\\n    ['add', [1], '附3'],\\n    ['rename', [2], '改三'],\\n    ['add', [2], '附5'],\\n    ['rename', [], '改根'],\\n    ['add', [0], '附6']\\n  ];\"\n    },\n    {\n      \"file\": \"cases.cjs\",\n      \"old\": \"  await t.step('H9-rename-valid', H9a(), async () => { await t.rename([0, 0], '合法1'); });\",\n      \"new\": \"  await t.step('H9-rename-valid', H9a(), async () => { await t.rename([0], '合法1'); });\"\n    },\n    {\n      \"file\": \"cases.cjs\",\n      \"old\": \"    await t.step(id + '-reject', H9a(), async () => { await t.rename([0, 1], fx(fn)); });\",\n      \"new\": \"    await t.step(id + '-reject', H9a(), async () => { await t.rename([1], fx(fn)); });\"\n    }\n  ],\n  \"notes\": []\n}\n```",
+  "ttft_ms": 26723,
+  "type": "result",
+  "duration_ms": 49029,
+  "uuid": "b07aaf19-e1ef-4713-bbe4-5e1d2e2d26ce",
+  "ttft_stream_ms": 1408,
+  "time_to_request_ms": 112,
+  "first_content_frame_ms": 1409,
+  "queued_turn_count": 0,
+  "result_index": 0
+}

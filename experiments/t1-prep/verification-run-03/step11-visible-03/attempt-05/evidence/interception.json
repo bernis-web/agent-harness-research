@@ -1,0 +1,11 @@
+{
+  "filechooserListenerCount": 0,
+  "updateSubscription": {
+    "event": "fileChooser",
+    "enabled": false
+  },
+  "cdpSetInterceptFileChooserDialog": {
+    "enabled": false
+  },
+  "atMs": 1789665138078
+}

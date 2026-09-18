@@ -1,0 +1,20 @@
+{
+  "at": "2026-09-17T12:45:45.282Z",
+  "author": "Claude CLI glm-5.3-flash original+repair",
+  "reviewer": "Codex",
+  "originalRejectedBeforeExecution": true,
+  "coordinatorDriverOnlyCorrections": [
+    "Serialize payload as JS string, not object: identical expected JSON bytes for both URLs",
+    "Wire total-timeout cleanup to actual owned context",
+    "Record non-sensitive launch evidence",
+    "Remove shadow context",
+    "Await context close on watchdog",
+    "Close only owned context before timeout exit",
+    "Clear owned context after close",
+    "Match completed CDP original by download URL/GUID, not first prior download",
+    "Persist per-download outcome before context close",
+    "Retain actual browser safety-flag evidence"
+  ],
+  "controls": "A/B/C unchanged",
+  "noReferenceEdits": true
+}

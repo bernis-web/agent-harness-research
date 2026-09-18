@@ -1,0 +1,85 @@
+{
+  "duration_api_ms": 47131,
+  "stop_reason": "end_turn",
+  "session_id": "b21d9f73-6ede-42db-bd71-0ded4e534e4f",
+  "total_cost_usd": 0.08771999999999999,
+  "usage": {
+    "input_tokens": 8184,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "output_tokens": 1872,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "glm-5.3-flash": {
+      "inputTokens": 8184,
+      "outputTokens": 1872,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.08771999999999999,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000,
+      "thinkingTokens": 0,
+      "canonicalModel": "glm-5.3-flash",
+      "provider": "firstParty",
+      "costBasis": "unknown"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "is_error": false,
+  "num_turns": 1,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "```json\n{\n  \"project_status_md\": \"# 项目状态（2026-09-18，只读核对，本文档撰写即本次交付）\\n\\n## 研究主线与当前范围\\n- 主线：长程软件开发任务中智能体持续执行机制研究，以 Claude Code 为观察对象（`D:/projects/agent-harness-research/research/01-scope/研究问题与边界.md`）。RQ1 行为观察 / RQ2 状态交接 / RQ3 测试反馈 / RQ4 交互；RQ5/实验 C 为可选、需单独批准 [E1]。\\n- 当前活跃范围：T1（本地单文件思维导图应用）准备与 WB/CC（WorkBuddy/Claude Code）行为观察，属研究准备轮。T1 是**单条完整任务**，不同于旧 dsh/六阶段 PA/PB 任务、2x2 四条件实验 B 及候选扩展 [E2][E3]，两者不得混成同一评分体系。\\n\\n## 已完成（有证据）\\n- P0/P1 八份规格：范围、先导任务 v2.1、评分规则 v2.1、数据契约、运行器设计，状态均为**待用户审核/复审**——文档存在不等于已审核 [E1][E2][E3][E4]。\\n- T1 冻结规格 v1.0、参考实现、公开验收手册已编写（`D:/projects/agent-harness-research/experiments/t1-prep/README.md`）；编写过程未跑浏览器、未装依赖、未调 API [E5]。\\n- step11 可见项验证 PASS：真实浏览器单次运行，22 公开项 = 旧 21 项沿用证据 + 步骤 11 新证据，`final-verification.json` 全项通过，清理完成 [E6][E7][E8]。\\n- 旧 21 项**未重跑**，仅核对源结果状态与 39 份证据文件 SHA256 [E6]。\\n\\n## 待做\\n- 22 公开项 PASS **不等完整 T1**：hidden 用例 H1—H9 与 D2 未执行 [E6][E8]。\\n- T1 隐藏验证已交另一隐藏 worker 在 `verification-hidden-01` 执行——此为用户告知，**结果未在本任务核验**，不写作已通过。\\n- D2（真实产品生成代码隔离）**未放行**：运行器设计明示普通子进程+进程组控制不是完整沙箱，未验证前不执行真实生成代码；cwd 隔离/禁用工具**不等于**生成代码沙箱 [E4]。\\n\\n## 安全门槛与边界\\n- 禁跑浏览器/产品、禁读隐藏用例/旧 P2/KG/记忆/私有配置、禁安装、禁提交（本任务当前约束）。\\n- 旧 P4 正式批次（96+6=102 次）与可选实验 C 需单独范围审批，持续推进不等于立即执行 [E9][E10]。\\n\\n## 未知\\n- hidden-01 结果、D2 验证方案与结果、T2 具体规格、9/15 scope 文档审核结论：均为未知。README 的陈旧状态由本次两文档局部更新，旧文件本身未改 [E5][E11]。\",\n  \"next_work_plan_md\": \"# 下一步工作计划（本任务停止在文档交付，未执行任何批次）\\n\\n## 完成定义\\n- **当前 T1/T2 批次完成**：T1 hidden 结果接收并核验 + D2 隔离验证通过 + T2 规格定稿与离线评价器就绪。**不得**以本次两文档交付宣称整个研究项目完成。\\n- **更大研究项目条件式完成**：主线（2x2 实验 B 等）按依赖推进并通过各闸门后方谈完成；当前不启动 [E3][E9]。\\n\\n## 里程碑与任务（按依赖排序）\\n\\n### M0 接收隐藏 worker 摘要\\n- 任务：接收 `verification-hidden-01` 结果摘要并登记，**不重复、不代跑**隐藏工作；结果未经本任务核验前标注\\\"未核验\\\"。\\n- 完成判据：摘要入档，标注核验状态。\\n- 所需证据：hidden-01 报告路径 + 哈希。负责人：协调员。闸门：无。\\n\\n### M1 T2 规格定稿 + 合成夹具 + 新离线评价器（下一安全项，**待实施**）\\n- 任务：在不虚构、不预设 T2 具体规格的前提下，起草 T2 任务规格（提交用户审核）；配套合成夹具（synthetic 标注）与可重复离线评价器（仅受信任人工样例）。不碰旧 P2。此为**计划项，不代替实施**。\\n- 完成判据：T2 规格 v1.0 冻结待审；夹具与评价器通过受信任样例离线验证，未接触真实模型输出。\\n- 所需证据：规格文件、夹具哈希、评价器对合成样例的运行记录。负责人：执行 worker，协调员核对。\\n- 闸门：规格须用户审核后冻结。**不依赖先跑真实产品**，不依赖 hidden-01 结果。\\n\\n### M2 D2 隔离验证\\n- 任务：验证真实生成代码执行隔离。要求：**真实 OS 级隔离**（用户级隔离/系统调用过滤或等效机制）与**失败关闭**（`isolation_profile` 未验收即拒绝执行真实生成代码，报错不降级）；明确 cwd/临时目录/禁工具**不构成**生成代码沙箱 [E4]。\\n- 完成判据：隔离方案选定并按运行器设计 §7 验收；失败关闭行为有测试记录。\\n- 所需证据：验收脚本输出 + 拒绝路径测试日志。负责人：执行 worker。闸门：用户批准隔离方案，通过前 D2 不放行。\\n\\n### M3 T1 完整收尾\\n- 任务：hidden-01 结果核验（依赖 M0）+ 评价器固化（人工评分表，`experiments/t1-prep/README.md` 待批项 3）[E5]。\\n- 完成判据：完整 T1 判定（公开 22 + hidden）成立或如实记录失败。\\n- 闸门：浏览器/产品运行需逐项申请。\\n\\n### M4 后续（条件触发，非默认执行）\\n- 旧 P4 102 次正式批次、可选实验 C：仅在 T1/T2 批次完成、协议冻结并获用户单独范围审批后启动 [E9][E10]。7 个候选扩展不自动全执行，逐项评估后单独申请。\\n\\n## 边界重申\\n- 本任务**未跑产品/浏览器**，全部为只读核对与文档撰写；文中所有历史执行结果仅核对既有记录，未重跑。\\n- 费用：Claude/ZCode 不限额、可用 glm53/flash，**不等于**其他 API/产品授权，不扩展、不重复追问；不把范围或安全门槛误归因为费用。\\n\\n## 证据编号映射\\n[E1] research/01-scope/研究问题与边界.md；[E2] research/02-design/先导任务说明.md 与 评分规则.md；[E3] research/02-design/数据契约.md；[E4] research/02-design/运行器设计.md L61-L70；[E5] experiments/t1-prep/README.md；[E6] experiments/t1-prep/verification-run-03/step11-visible-04/REPORT.md；[E7] 同目录 final-verification.json；[E8] 同目录 evidence-index-validation.json；[E9] docs/superpowers/plans/2026-09-15-claude-code-long-horizon-research-plan.md L226-L234；[E10] 同文件 L296-L307；[E11] experiments/project-continuation-20260918/current-user-context.md（用户上下文，非文件证据）。\"\n}\n```",
+  "ttft_ms": 1919,
+  "type": "result",
+  "duration_ms": 47256,
+  "uuid": "ef20b7ab-951d-4281-9c2c-8eee72a86cff",
+  "ttft_stream_ms": 1243,
+  "time_to_request_ms": 127,
+  "first_content_frame_ms": 1243,
+  "queued_turn_count": 0,
+  "result_index": 0
+}

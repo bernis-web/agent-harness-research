@@ -1,0 +1,94 @@
+{
+  "schema": "model-call-summary-v1",
+  "note": "No credentials/config values included; normal inherited authentication only.",
+  "calls": [
+    {
+      "name": "model-harness",
+      "requested": "glm-5.3-flash",
+      "observed": [
+        "glm-5.3-flash"
+      ],
+      "exit": 0,
+      "effort": "low",
+      "elapsed": 97.831,
+      "tools": [],
+      "mcp": [],
+      "skills": [],
+      "toolUseCount": 0
+    },
+    {
+      "name": "model-cases",
+      "requested": "glm-5.3-flash",
+      "observed": [
+        "glm-5.3-flash"
+      ],
+      "exit": 0,
+      "effort": "low",
+      "elapsed": 236.27,
+      "tools": [],
+      "mcp": [],
+      "skills": [],
+      "toolUseCount": 0
+    },
+    {
+      "name": "model-harness-review",
+      "requested": "glm-5.3-flash",
+      "observed": [
+        "glm-5.3-flash"
+      ],
+      "exit": 0,
+      "effort": "low",
+      "elapsed": 210.871,
+      "tools": [],
+      "mcp": [],
+      "skills": [],
+      "toolUseCount": 0
+    },
+    {
+      "name": "model-cases-review",
+      "requested": "glm-5.3-flash",
+      "observed": [
+        "glm-5.3-flash"
+      ],
+      "exit": 0,
+      "effort": "low",
+      "elapsed": 49.66,
+      "tools": [],
+      "mcp": [],
+      "skills": [],
+      "toolUseCount": 0
+    },
+    {
+      "name": "model-audit",
+      "requested": "glm-5.3-flash",
+      "observed": [
+        "glm-5.3-flash"
+      ],
+      "exit": 1,
+      "effort": "low",
+      "elapsed": 360.367,
+      "tools": [],
+      "mcp": [],
+      "skills": [],
+      "toolUseCount": 0,
+      "state": "TIMEOUT",
+      "resultReceived": false
+    },
+    {
+      "name": "model-audit-small",
+      "requested": "glm-5.3-flash",
+      "observed": [
+        "glm-5.3-flash"
+      ],
+      "exit": 1,
+      "effort": "low",
+      "elapsed": 180.039,
+      "tools": [],
+      "mcp": [],
+      "skills": [],
+      "toolUseCount": 0,
+      "state": "TIMEOUT",
+      "resultReceived": false
+    }
+  ]
+}

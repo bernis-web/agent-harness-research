@@ -1,0 +1,73 @@
+{
+  "label": "H6-add-temp",
+  "tree": {
+    "title": "导入根A",
+    "children": [
+      {
+        "title": "子一",
+        "children": []
+      },
+      {
+        "title": "临时",
+        "children": []
+      }
+    ]
+  },
+  "errors": [],
+  "message": {
+    "visible": true,
+    "text": "已添加子节点",
+    "color": "rgb(17, 119, 17)",
+    "isError": false
+  },
+  "step": {
+    "id": "H6-add-temp",
+    "expected": {
+      "title": "导入根A",
+      "children": [
+        {
+          "title": "子一",
+          "children": []
+        },
+        {
+          "title": "临时",
+          "children": []
+        }
+      ]
+    },
+    "status": "PASS",
+    "timestamp": "2026-09-18T03:37:54.341Z",
+    "actionCount": 2,
+    "actual": {
+      "title": "导入根A",
+      "children": [
+        {
+          "title": "子一",
+          "children": []
+        },
+        {
+          "title": "临时",
+          "children": []
+        }
+      ]
+    },
+    "nodeCount": 3,
+    "uiMessage": {
+      "visible": true,
+      "text": "已添加子节点",
+      "color": "rgb(17, 119, 17)",
+      "isError": false
+    },
+    "errors": [],
+    "assertions": {
+      "treeMatches": true,
+      "nodeCount": 3,
+      "message": {
+        "visible": true,
+        "text": "已添加子节点",
+        "color": "rgb(17, 119, 17)",
+        "isError": false
+      }
+    }
+  }
+}

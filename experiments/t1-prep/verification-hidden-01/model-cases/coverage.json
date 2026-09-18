@@ -1,0 +1,11 @@
+[
+  "H1: H1-empty-textbox (①空文本框), H1-three-blank-lines (②3空白行含1行仅空格) — each independent reset/S0/rename → reject (visible message, map unchanged) → undo restores 中心主题 proving stack preserved",
+  "H2: H2-reset, H2-gen-single-root (根A), H2-undo-noop",
+  "H3: H3-indent-first-line (首行缩进), H3-jump-level (跳层 A/4空格B), H3-tab-middle (A+Tab+B), H3-tab-leading (Tab+A), H3-tab-trailing (A+Tab) — each independent reset+S0, rejection step, then undo-noop step behaviorally proving empty stack",
+  "H4: H4-reset, H4-gen-dup (根/待办/组/待办), H4-rename-first-dup (path [0,0] only; 待办 under 组 unchanged)",
+  "H5: H5-f1/H5-f2/H5-f3 (each independent reset/S0/rename → import-reject → undo restores 中心主题); H5-f4-6 shared rebuild then H5-f4/H5-f5/H5-f6 import-rejects (leading/trailing/middle Tab titles) then single H5-f4-6-undo",
+  "H6: H6-reset, H6-gen-S0, H6-rename-root(改根), H6-import-F1, H6-undo-noop-after-F1, H6-add-temp(临时), H6-import-F2(单节点导入根B, 临时消失), H6-undo-noop-after-F2",
+  "H7: H7-reset, H7-gen-deep (主/支一/叶一/子叶一/叶二/支二), H7-del-zhi1 (余2节点), H7-undo-restore (整子树原位原序恢复6节点)",
+  "H8: H8-reset via H8-edit1 precondition from fresh S0? — no: H8 starts from S0 generated after H7; exact sequence H8-edit1..H8-edit10 (each step's expected tree = full tree after that edit; snaps record expected before each edit), H8-undo1..H8-undo10 (reverse, each expecting pre-edit state; undo10 = S0), H8-undo11-noop (no effect, no error)",
+  "H9: H9-reset, H9-gen-S0, H9-rename-valid (分支一→合法1, 栈=1), H9-empty-title/H9-tab-leading/H9-tab-trailing/H9-tab-middle rejects on 分支二 (state unchanged, no interruption), H9-undo (reverts H9-rename-valid only, back to S0)"
+]

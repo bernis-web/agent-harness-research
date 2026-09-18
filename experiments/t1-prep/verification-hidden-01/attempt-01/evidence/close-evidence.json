@@ -1,0 +1,14 @@
+{
+  "ownedExit": {
+    "pid": 5184,
+    "exitedAt": "2026-09-18T03:38:01.826Z",
+    "exitCode": 0
+  },
+  "pages": [
+    "file:///D:/projects/agent-harness-research/experiments/t1-prep/reference/mindmap.html"
+  ],
+  "pagesAfterClose": [],
+  "closeError": null,
+  "closedAt": "2026-09-18T03:38:01.831Z",
+  "note": "context-scoped close only; no global kill"
+}

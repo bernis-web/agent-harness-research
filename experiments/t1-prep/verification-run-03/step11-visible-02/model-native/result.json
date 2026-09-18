@@ -1,0 +1,85 @@
+{
+  "duration_api_ms": 20174,
+  "stop_reason": "end_turn",
+  "session_id": "7f9774d8-b1ed-49f8-ac4b-34c2369e2fe8",
+  "total_cost_usd": 0.0211,
+  "usage": {
+    "input_tokens": 1410,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "output_tokens": 562,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "glm-5.3-flash": {
+      "inputTokens": 1410,
+      "outputTokens": 562,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0211,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000,
+      "thinkingTokens": 0,
+      "canonicalModel": "glm-5.3-flash",
+      "provider": "firstParty",
+      "costBasis": "unknown"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "is_error": false,
+  "num_turns": 1,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "{\"diagnosis\":\"CDP SystemInfo.getProcessInfo returns the process list under the nested 'info' field (info.info.processList), not info.processList. The code reads processList from the top-level response, which is undefined, so .filter throws. Fix: read info.info.processList, guard with Array.isArray, validate the browser PID as a positive number, persist the raw process info to cdp-process-info.json in the evidence directory before detaching, and detach in a finally block before any validation exception propagates. Classification remains BLOCKED_DRIVER since this is a driver/schema defect, not product failure.\",\"old\":\"const info = await cdp.send('SystemInfo.getProcessInfo');\\n    const browserProcs = info.processList.filter(p => p.type === 'browser');\\n    if (browserProcs.length !== 1) throw { classify: 'BLOCKED', msg: 'browser pid ambiguous' };\\n    const browserPid = browserProcs[0].id;\\n    await cdp.detach();\",\"new\":\"const resp = await cdp.send('SystemInfo.getProcessInfo');\\n    const processList = resp && resp.info && Array.isArray(resp.info.processList) ? resp.info.processList : null;\\n    if (!processList) {\\n      await cdp.detach();\\n      throw { classify: 'BLOCKED_DRIVER', msg: 'SystemInfo.getProcessInfo: missing or invalid info.processList' };\\n    }\\n    try {\\n      fs.writeFileSync(path.join(out, 'cdp-process-info.json'), JSON.stringify(resp.info, null, 2));\\n    } catch (e) { /* evidence write failure must not mask pid validation */ }\\n    const browserProcs = processList.filter(p => p.type === 'browser');\\n    const browserPid = browserProcs.length === 1 ? browserProcs[0].id : null;\\n    if (typeof browserPid !== 'number' || !Number.isFinite(browserPid) || browserPid <= 0) {\\n      await cdp.detach();\\n      throw { classify: 'BLOCKED_DRIVER', msg: 'browser pid ambiguous or invalid: ' + JSON.stringify(browserProcs.map(p => p.id)) };\\n    }\\n    await cdp.detach();\",\"reason\":\"CDP nests the payload under resp.info; resp.processList is undefined. Guarding with Array.isArray and validating the PID as a positive finite number rejects malformed/ambiguous responses, detaches before throwing (with BLOCKED_DRIVER classification), and saves the dedicated browser's raw process info as evidence without touching product code.\",\"classification\":\"BLOCKED_DRIVER\"}",
+  "ttft_ms": 6632,
+  "type": "result",
+  "duration_ms": 20289,
+  "uuid": "609750f6-b408-48a8-a5fb-75908a988967",
+  "ttft_stream_ms": 5833,
+  "time_to_request_ms": 115,
+  "first_content_frame_ms": 5833,
+  "queued_turn_count": 0,
+  "result_index": 0
+}

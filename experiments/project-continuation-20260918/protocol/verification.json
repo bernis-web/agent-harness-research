@@ -1,0 +1,86 @@
+{
+  "at": "2026-09-18T03:42:11.107Z",
+  "passed": true,
+  "scope": "Documentation content checks only; NOT isolation/product qualification.",
+  "checks": {
+    "realFlashExitZero": true,
+    "effortLow": true,
+    "noToolsMcpSkills": true,
+    "exactWrapperReused": true,
+    "promptHashMatches": true,
+    "upstreamFiveFileWhitelistUnchanged": true,
+    "threeMainFiles": true,
+    "historicalVersionsNotNewVerification": true,
+    "executorSeparated": true,
+    "unknownCostAndTokens": true,
+    "oneShotNoThreeFailureStop": true,
+    "failureSealedNewAttempt": true,
+    "limitsProposedNotApplied": true,
+    "isolationNotRunAndClosed": true,
+    "twoRoutesCanaryCoverage": true,
+    "realIsolationNotShellClaim": true,
+    "networkChildrenCleanup": true,
+    "no102Expansion": true,
+    "allRunsScored": true,
+    "within20Minutes": true
+  },
+  "sourceChecks": [
+    {
+      "path": "D:/projects/agent-harness-research/experiments/project-continuation-20260918/project-status.md",
+      "unchanged": true
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/project-continuation-20260918/next-work-plan.md",
+      "unchanged": true
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/project-continuation-20260918/model/invoke-stream.py",
+      "unchanged": true
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/project-continuation-20260918/model/settings.json",
+      "unchanged": true
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/project-continuation-20260918/model/empty-mcp.json",
+      "unchanged": true
+    }
+  ],
+  "call": {
+    "pid": 31028,
+    "model": [
+      "glm-5.3-flash"
+    ],
+    "effort": "low",
+    "elapsedSeconds": 78,
+    "exitCode": 0,
+    "tools": [],
+    "mcpServers": [],
+    "skills": [],
+    "toolUseCount": 0
+  },
+  "files": [
+    {
+      "path": "D:/projects/agent-harness-research/experiments/project-continuation-20260918/protocol/run-protocol-draft.md",
+      "sha256": "7acc1088bb5e785b6829db7fc205ba1e0231af1145639ce32eda173bc90cdb91"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/project-continuation-20260918/protocol/isolation-preflight-plan.md",
+      "sha256": "cd1e759fef73fa440e12fdd3ff26974fc8a6fe9698751134408ed72c91d57d02"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/project-continuation-20260918/protocol/completion-checklist.md",
+      "sha256": "0bba915f36b25bdf0f42dbc637420316eeaf57f94f8709188052d64464ecc0d3"
+    }
+  ],
+  "actionsNotPerformed": [
+    "system/product/network probes",
+    "reading credentials or private product configuration",
+    "reading hidden cases",
+    "installing dependencies",
+    "committing",
+    "recursive profile/archive hashing"
+  ],
+  "authBoundary": "Existing task-local empty MCP and no-hooks settings reused; CLI inherits normal auth without coordinator reading credentials.",
+  "date": "2026-09-18"
+}

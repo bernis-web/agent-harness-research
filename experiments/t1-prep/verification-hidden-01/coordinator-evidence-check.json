@@ -1,0 +1,821 @@
+{
+  "at": "2026-09-18T03:40:03.468Z",
+  "allSteps": 101,
+  "allMatch": true,
+  "checks": [
+    {
+      "id": "H1-empty-textbox-reset",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 17686,
+      "status": "PASS"
+    },
+    {
+      "id": "H1-empty-textbox-gen-S0",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 32740,
+      "status": "PASS"
+    },
+    {
+      "id": "H1-empty-textbox-rename-root",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 30216,
+      "status": "PASS"
+    },
+    {
+      "id": "H1-empty-textbox-reject",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 32993,
+      "status": "PASS"
+    },
+    {
+      "id": "H1-empty-textbox-undo",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 29909,
+      "status": "PASS"
+    },
+    {
+      "id": "H1-three-blank-lines-reset",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 17686,
+      "status": "PASS"
+    },
+    {
+      "id": "H1-three-blank-lines-gen-S0",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 32740,
+      "status": "PASS"
+    },
+    {
+      "id": "H1-three-blank-lines-rename-root",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 30216,
+      "status": "PASS"
+    },
+    {
+      "id": "H1-three-blank-lines-reject",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 31411,
+      "status": "PASS"
+    },
+    {
+      "id": "H1-three-blank-lines-undo",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 28224,
+      "status": "PASS"
+    },
+    {
+      "id": "H2-reset",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 17686,
+      "status": "PASS"
+    },
+    {
+      "id": "H2-gen-single-root",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 17423,
+      "status": "PASS"
+    },
+    {
+      "id": "H2-undo-noop",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 15757,
+      "status": "PASS"
+    },
+    {
+      "id": "H3-indent-first-line-reset",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 17686,
+      "status": "PASS"
+    },
+    {
+      "id": "H3-indent-first-line-gen-S0",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 32740,
+      "status": "PASS"
+    },
+    {
+      "id": "H3-indent-first-line-reject",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 31862,
+      "status": "PASS"
+    },
+    {
+      "id": "H3-indent-first-line-undo-noop",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 28772,
+      "status": "PASS"
+    },
+    {
+      "id": "H3-jump-level-reset",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 17686,
+      "status": "PASS"
+    },
+    {
+      "id": "H3-jump-level-gen-S0",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 32740,
+      "status": "PASS"
+    },
+    {
+      "id": "H3-jump-level-reject",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 33107,
+      "status": "PASS"
+    },
+    {
+      "id": "H3-jump-level-undo-noop",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 28268,
+      "status": "PASS"
+    },
+    {
+      "id": "H3-tab-middle-reset",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 17686,
+      "status": "PASS"
+    },
+    {
+      "id": "H3-tab-middle-gen-S0",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 32740,
+      "status": "PASS"
+    },
+    {
+      "id": "H3-tab-middle-reject",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 31756,
+      "status": "PASS"
+    },
+    {
+      "id": "H3-tab-middle-undo-noop",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 28432,
+      "status": "PASS"
+    },
+    {
+      "id": "H3-tab-leading-reset",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 17686,
+      "status": "PASS"
+    },
+    {
+      "id": "H3-tab-leading-gen-S0",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 32740,
+      "status": "PASS"
+    },
+    {
+      "id": "H3-tab-leading-reject",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 31403,
+      "status": "PASS"
+    },
+    {
+      "id": "H3-tab-leading-undo-noop",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 28144,
+      "status": "PASS"
+    },
+    {
+      "id": "H3-tab-trailing-reset",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 17686,
+      "status": "PASS"
+    },
+    {
+      "id": "H3-tab-trailing-gen-S0",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 32740,
+      "status": "PASS"
+    },
+    {
+      "id": "H3-tab-trailing-reject",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 31412,
+      "status": "PASS"
+    },
+    {
+      "id": "H3-tab-trailing-undo-noop",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 28153,
+      "status": "PASS"
+    },
+    {
+      "id": "H4-reset",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 17686,
+      "status": "PASS"
+    },
+    {
+      "id": "H4-gen-dup",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 25153,
+      "status": "PASS"
+    },
+    {
+      "id": "H4-rename-first-dup",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 22989,
+      "status": "PASS"
+    },
+    {
+      "id": "H5-f1-reset",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 17686,
+      "status": "PASS"
+    },
+    {
+      "id": "H5-f1-gen-S0",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 32740,
+      "status": "PASS"
+    },
+    {
+      "id": "H5-f1-rename-root",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 30216,
+      "status": "PASS"
+    },
+    {
+      "id": "H5-f1-import-reject",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 34103,
+      "status": "PASS"
+    },
+    {
+      "id": "H5-f1-undo",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 31394,
+      "status": "PASS"
+    },
+    {
+      "id": "H5-f2-reset",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 17686,
+      "status": "PASS"
+    },
+    {
+      "id": "H5-f2-gen-S0",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 32740,
+      "status": "PASS"
+    },
+    {
+      "id": "H5-f2-rename-root",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 30216,
+      "status": "PASS"
+    },
+    {
+      "id": "H5-f2-import-reject",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 35357,
+      "status": "PASS"
+    },
+    {
+      "id": "H5-f2-undo",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 31394,
+      "status": "PASS"
+    },
+    {
+      "id": "H5-f3-reset",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 17686,
+      "status": "PASS"
+    },
+    {
+      "id": "H5-f3-gen-S0",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 32740,
+      "status": "PASS"
+    },
+    {
+      "id": "H5-f3-rename-root",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 30216,
+      "status": "PASS"
+    },
+    {
+      "id": "H5-f3-import-reject",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 35357,
+      "status": "PASS"
+    },
+    {
+      "id": "H5-f3-undo",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 31394,
+      "status": "PASS"
+    },
+    {
+      "id": "H5-f4-6-reset",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 17686,
+      "status": "PASS"
+    },
+    {
+      "id": "H5-f4-6-gen-S0",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 32740,
+      "status": "PASS"
+    },
+    {
+      "id": "H5-f4-6-rename-root",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 30216,
+      "status": "PASS"
+    },
+    {
+      "id": "H5-f4-import-reject",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 35357,
+      "status": "PASS"
+    },
+    {
+      "id": "H5-f5-import-reject",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 35357,
+      "status": "PASS"
+    },
+    {
+      "id": "H5-f6-import-reject",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 35357,
+      "status": "PASS"
+    },
+    {
+      "id": "H5-f4-6-undo",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 31394,
+      "status": "PASS"
+    },
+    {
+      "id": "H6-reset",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 17686,
+      "status": "PASS"
+    },
+    {
+      "id": "H6-gen-S0",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 32740,
+      "status": "PASS"
+    },
+    {
+      "id": "H6-rename-root",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 30165,
+      "status": "PASS"
+    },
+    {
+      "id": "H6-import-F1",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 22907,
+      "status": "PASS"
+    },
+    {
+      "id": "H6-undo-noop-after-F1",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 20817,
+      "status": "PASS"
+    },
+    {
+      "id": "H6-add-temp",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 22601,
+      "status": "PASS"
+    },
+    {
+      "id": "H6-import-F2",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 20778,
+      "status": "PASS"
+    },
+    {
+      "id": "H6-undo-noop-after-F2",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 18682,
+      "status": "PASS"
+    },
+    {
+      "id": "H7-reset",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 17686,
+      "status": "PASS"
+    },
+    {
+      "id": "H7-gen-deep",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 28351,
+      "status": "PASS"
+    },
+    {
+      "id": "H7-del-zhi1",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 17308,
+      "status": "PASS"
+    },
+    {
+      "id": "H7-undo-restore",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 26938,
+      "status": "PASS"
+    },
+    {
+      "id": "H8-reset",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 17686,
+      "status": "PASS"
+    },
+    {
+      "id": "H8-gen-S0",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 32740,
+      "status": "PASS"
+    },
+    {
+      "id": "H8-edit1",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 32778,
+      "status": "PASS"
+    },
+    {
+      "id": "H8-edit2",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 32605,
+      "status": "PASS"
+    },
+    {
+      "id": "H8-edit3",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 35011,
+      "status": "PASS"
+    },
+    {
+      "id": "H8-edit4",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 34718,
+      "status": "PASS"
+    },
+    {
+      "id": "H8-edit5",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 36296,
+      "status": "PASS"
+    },
+    {
+      "id": "H8-edit6",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 39301,
+      "status": "PASS"
+    },
+    {
+      "id": "H8-edit7",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 38858,
+      "status": "PASS"
+    },
+    {
+      "id": "H8-edit8",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 41459,
+      "status": "PASS"
+    },
+    {
+      "id": "H8-edit9",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 40993,
+      "status": "PASS"
+    },
+    {
+      "id": "H8-edit10",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 43461,
+      "status": "PASS"
+    },
+    {
+      "id": "H8-undo1",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 42002,
+      "status": "PASS"
+    },
+    {
+      "id": "H8-undo2",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 42140,
+      "status": "PASS"
+    },
+    {
+      "id": "H8-undo3",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 39821,
+      "status": "PASS"
+    },
+    {
+      "id": "H8-undo4",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 39980,
+      "status": "PASS"
+    },
+    {
+      "id": "H8-undo5",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 36868,
+      "status": "PASS"
+    },
+    {
+      "id": "H8-undo6",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 35672,
+      "status": "PASS"
+    },
+    {
+      "id": "H8-undo7",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 35691,
+      "status": "PASS"
+    },
+    {
+      "id": "H8-undo8",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 33559,
+      "status": "PASS"
+    },
+    {
+      "id": "H8-undo9",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 33361,
+      "status": "PASS"
+    },
+    {
+      "id": "H8-undo10",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 31394,
+      "status": "PASS"
+    },
+    {
+      "id": "H8-undo11-noop",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 31137,
+      "status": "PASS"
+    },
+    {
+      "id": "H9-reset",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 17686,
+      "status": "PASS"
+    },
+    {
+      "id": "H9-gen-S0",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 32740,
+      "status": "PASS"
+    },
+    {
+      "id": "H9-rename-valid",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 30331,
+      "status": "PASS"
+    },
+    {
+      "id": "H9-empty-title-reject",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 32171,
+      "status": "PASS"
+    },
+    {
+      "id": "H9-tab-leading-reject",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 32171,
+      "status": "PASS"
+    },
+    {
+      "id": "H9-tab-trailing-reject",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 32171,
+      "status": "PASS"
+    },
+    {
+      "id": "H9-tab-middle-reject",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 32171,
+      "status": "PASS"
+    },
+    {
+      "id": "H9-undo",
+      "jsonTreeMatches": true,
+      "jsonStepMatches": true,
+      "pngValid": true,
+      "pngBytes": 31394,
+      "status": "PASS"
+    }
+  ],
+  "imageSpotChecks": [
+    "H8-edit10",
+    "H8-undo11-noop"
+  ],
+  "imageReview": "Coordinator visual spot check only, not human/manual acceptance",
+  "protected7Unchanged": true
+}

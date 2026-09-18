@@ -1,0 +1,511 @@
+{
+  "at": "2026-09-17T13:05:04.448Z",
+  "acceptanceResults": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\results.json",
+  "counts": {
+    "PASS": 21,
+    "FAIL": 0,
+    "UNTESTED": 1
+  },
+  "B1PassingSubsteps": 10,
+  "B2PassingSubsteps": 10,
+  "nonemptyEvidenceFiles": 120,
+  "files": [
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-1.png",
+      "bytes": 17686
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-1.json",
+      "bytes": 51
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-2.png",
+      "bytes": 32740
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-2.json",
+      "bytes": 554
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-3.png",
+      "bytes": 30526
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-3.json",
+      "bytes": 506
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-4.png",
+      "bytes": 33195
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-4.json",
+      "bytes": 606
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-5.png",
+      "bytes": 30280
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-5.json",
+      "bytes": 511
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-6.png",
+      "bytes": 33337
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-6.json",
+      "bytes": 616
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-7.png",
+      "bytes": 31224
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-7.json",
+      "bytes": 630
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-8.png",
+      "bytes": 28698
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-8.json",
+      "bytes": 536
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-9.png",
+      "bytes": 28855
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-9.json",
+      "bytes": 515
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-10.png",
+      "bytes": 30633
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-10.json",
+      "bytes": 554
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-11-unverified.png",
+      "bytes": 28540
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-11-unverified.json",
+      "bytes": 518
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-12a.png",
+      "bytes": 19387
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-12a.json",
+      "bytes": 75
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-12b.png",
+      "bytes": 15565
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-12b.json",
+      "bytes": 115
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-12c.png",
+      "bytes": 30902
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-12c.json",
+      "bytes": 554
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-12d.png",
+      "bytes": 28807
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-12d.json",
+      "bytes": 518
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-A1.png",
+      "bytes": 22696
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-A1.json",
+      "bytes": 253
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-A2.png",
+      "bytes": 31394
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-A2.json",
+      "bytes": 536
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-A3.png",
+      "bytes": 19691
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-A3.json",
+      "bytes": 60
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-A4.png",
+      "bytes": 31394
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-A4.json",
+      "bytes": 536
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-e1.png",
+      "bytes": 29834
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-e1.json",
+      "bytes": 503
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-e2.png",
+      "bytes": 32493
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-e2.json",
+      "bytes": 601
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-e3.png",
+      "bytes": 31785
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-e3.json",
+      "bytes": 592
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-e4.png",
+      "bytes": 34243
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-e4.json",
+      "bytes": 682
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-e5.png",
+      "bytes": 33534
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-e5.json",
+      "bytes": 673
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-e6.png",
+      "bytes": 35657
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-e6.json",
+      "bytes": 791
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-e7.png",
+      "bytes": 35202
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-e7.json",
+      "bytes": 782
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-e8.png",
+      "bytes": 38348
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-e8.json",
+      "bytes": 858
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-e9.png",
+      "bytes": 37759
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-e9.json",
+      "bytes": 849
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-e10.png",
+      "bytes": 40429
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-e10.json",
+      "bytes": 947
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-u1.png",
+      "bytes": 38741
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-u1.json",
+      "bytes": 879
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-u2.png",
+      "bytes": 39015
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-u2.json",
+      "bytes": 882
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-u3.png",
+      "bytes": 36106
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-u3.json",
+      "bytes": 812
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-u4.png",
+      "bytes": 36268
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-u4.json",
+      "bytes": 815
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-u5.png",
+      "bytes": 34497
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-u5.json",
+      "bytes": 703
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-u6.png",
+      "bytes": 34895
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-u6.json",
+      "bytes": 706
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-u7.png",
+      "bytes": 32804
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-u7.json",
+      "bytes": 622
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-u8.png",
+      "bytes": 33156
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-u8.json",
+      "bytes": 625
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-u9.png",
+      "bytes": 30855
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-u9.json",
+      "bytes": 533
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-u10.png",
+      "bytes": 31394
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-u10.json",
+      "bytes": 536
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B3.png",
+      "bytes": 31137
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B3.json",
+      "bytes": 518
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-edit01.png",
+      "bytes": 29834
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-edit01.json",
+      "bytes": 503
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-edit02.png",
+      "bytes": 32493
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-edit02.json",
+      "bytes": 601
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-edit03.png",
+      "bytes": 31785
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-edit03.json",
+      "bytes": 592
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-edit04.png",
+      "bytes": 34243
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-edit04.json",
+      "bytes": 682
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-edit05.png",
+      "bytes": 33534
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-edit05.json",
+      "bytes": 673
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-edit06.png",
+      "bytes": 35657
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-edit06.json",
+      "bytes": 791
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-edit07.png",
+      "bytes": 35202
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-edit07.json",
+      "bytes": 782
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-edit08.png",
+      "bytes": 38348
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-edit08.json",
+      "bytes": 858
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-edit09.png",
+      "bytes": 37759
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-edit09.json",
+      "bytes": 849
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-edit10.png",
+      "bytes": 40429
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B1-edit10.json",
+      "bytes": 947
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-undo01.png",
+      "bytes": 38741
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-undo01.json",
+      "bytes": 879
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-undo02.png",
+      "bytes": 39015
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-undo02.json",
+      "bytes": 882
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-undo03.png",
+      "bytes": 36106
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-undo03.json",
+      "bytes": 812
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-undo04.png",
+      "bytes": 36268
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-undo04.json",
+      "bytes": 815
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-undo05.png",
+      "bytes": 34497
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-undo05.json",
+      "bytes": 703
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-undo06.png",
+      "bytes": 34895
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-undo06.json",
+      "bytes": 706
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-undo07.png",
+      "bytes": 32804
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-undo07.json",
+      "bytes": 622
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-undo08.png",
+      "bytes": 33156
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-undo08.json",
+      "bytes": 625
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-undo09.png",
+      "bytes": 30855
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-undo09.json",
+      "bytes": 533
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-undo10.png",
+      "bytes": 31394
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\snap-B2-undo10.json",
+      "bytes": 536
+    }
+  ],
+  "exports": [
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\export-original-preserved.json",
+      "bytes": 397,
+      "sha256": "df8f17fbed15145cf88c091521a471fd1e0298d43388f55e3c0c1467a5020915",
+      "bytesEqual": true,
+      "jsonEqual": true
+    },
+    {
+      "path": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\public-continuation-01\\evidence\\downloads\\t1-map.json",
+      "bytes": 397,
+      "sha256": "df8f17fbed15145cf88c091521a471fd1e0298d43388f55e3c0c1467a5020915",
+      "bytesEqual": true,
+      "jsonEqual": true
+    }
+  ],
+  "protectedFilesUnchanged": true
+}

@@ -1,0 +1,61 @@
+{
+  "label": "H6-undo-noop-after-F1",
+  "tree": {
+    "title": "导入根A",
+    "children": [
+      {
+        "title": "子一",
+        "children": []
+      }
+    ]
+  },
+  "errors": [],
+  "message": {
+    "visible": true,
+    "text": "没有可撤销的操作",
+    "color": "rgb(17, 119, 17)",
+    "isError": false
+  },
+  "step": {
+    "id": "H6-undo-noop-after-F1",
+    "expected": {
+      "title": "导入根A",
+      "children": [
+        {
+          "title": "子一",
+          "children": []
+        }
+      ]
+    },
+    "status": "PASS",
+    "timestamp": "2026-09-18T03:37:54.176Z",
+    "actionCount": 1,
+    "actual": {
+      "title": "导入根A",
+      "children": [
+        {
+          "title": "子一",
+          "children": []
+        }
+      ]
+    },
+    "nodeCount": 2,
+    "uiMessage": {
+      "visible": true,
+      "text": "没有可撤销的操作",
+      "color": "rgb(17, 119, 17)",
+      "isError": false
+    },
+    "errors": [],
+    "assertions": {
+      "treeMatches": true,
+      "nodeCount": 2,
+      "message": {
+        "visible": true,
+        "text": "没有可撤销的操作",
+        "color": "rgb(17, 119, 17)",
+        "isError": false
+      }
+    }
+  }
+}

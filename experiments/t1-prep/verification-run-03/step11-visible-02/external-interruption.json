@@ -1,0 +1,10 @@
+{
+  "at": "2026-09-17T16:04:20.927Z",
+  "userReported": "Previously manually closed window; restart authorized",
+  "atCheck": {
+    "currentDriver": null,
+    "currentRunStarted": false
+  },
+  "classification": "EXTERNAL_USER_ACTION_NOT_PRODUCT_FAILURE",
+  "note": "Current new run had not launched: orchestration process environment reference failed before spawn. No browser observed closing in this run."
+}

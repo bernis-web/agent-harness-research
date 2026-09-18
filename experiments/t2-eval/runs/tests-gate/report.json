@@ -1,0 +1,54 @@
+{
+ "gate": "tests",
+ "stages": {
+  "reference": {
+   "notes": "D:\\projects\\agent-harness-research\\experiments\\t2-eval\\reference\\notes.py",
+   "returncode": 0,
+   "failed_modules": [],
+   "stderr_tail": "_nonempty) ... ok\r\ntest_export_absolute_paths (test_u07.U07Paths.test_export_absolute_paths) ... ok\r\ntest_export_empty_store (test_u07.U07Paths.test_export_empty_store) ... ok\r\ntest_export_relative_paths (test_u07.U07Paths.test_export_relative_paths) ... ok\r\ntest_repeated_exports_succeed (test_u07.U07Paths.test_repeated_exports_succeed) ... ok\r\ntest_out_already_exists (test_u08.U08ExportDestinations.test_out_already_exists) ... ok\r\ntest_out_empty_string (test_u08.U08ExportDestinations.test_out_empty_string) ... ok\r\ntest_out_equals_store (test_u08.U08ExportDestinations.test_out_equals_store) ... ok\r\ntest_out_is_a_directory (test_u08.U08ExportDestinations.test_out_is_a_directory) ... ok\r\ntest_out_parent_missing (test_u08.U08ExportDestinations.test_out_parent_missing) ... ok\r\ntest_out_same_file_via_dotslash (test_u08.U08ExportDestinations.test_out_same_file_via_dotslash) ... ok\r\ntest_store_or_out_pointing_at_directory (test_u08.U08ExportDestinations.test_store_or_out_pointing_at_directory) ... ok\r\ntest_store_still_usable (test_u08.U08ExportDestinations.test_store_still_usable) ... ok\r\ntest_add_to_array_keeps_format_and_order (test_u09.U09ArrayLifecycle.test_add_to_array_keeps_format_and_order) ... ok\r\ntest_duplicate_add_rejected_array_untouched (test_u09.U09ArrayLifecycle.test_duplicate_add_rejected_array_untouched) ... ok\r\ntest_export_creates_array (test_u09.U09ArrayLifecycle.test_export_creates_array) ... ok\r\ntest_list_and_reexport_order (test_u09.U09ArrayLifecycle.test_list_and_reexport_order) ... ok\r\ntest_search_array_store (test_u09.U09ArrayLifecycle.test_search_array_store) ... ok\r\ntest_bad_utf8_store (test_u10.U10CorruptStores.test_bad_utf8_store) ... ok\r\ntest_export_from_corrupt_store_creates_nothing (test_u10.U10CorruptStores.test_export_from_corrupt_store_creates_nothing) ... ok\r\ntest_truncated_store (test_u10.U10CorruptStores.test_truncated_store) ... ok\r\n\r\n----------------------------------------------------------------------\r\nRan 46 tests in 9.776s\r\n\r\nOK\r\n",
+   "ok": true
+  },
+  "defective": {
+   "notes": "D:\\projects\\agent-harness-research\\experiments\\t2-eval\\defective\\notes.py",
+   "returncode": 1,
+   "failed_modules": [
+    "test_u01",
+    "test_u04",
+    "test_u05",
+    "test_u09"
+   ],
+   "stderr_tail": "    self.assertEqual(json.loads(raw.decode(\"utf-8\")), expected)\r\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\nAssertionError: Lists differ: [{'title': 'beta', 'body': '包含 Beta 词'}, {'title': 'A[48 chars]'g'}] != [{'title': 'Alpha', 'body': 'x'}, {'title': 'beta', '[48 chars]'g'}]\r\n\r\nFirst differing element 0:\r\n{'title': 'beta', 'body': '包含 Beta 词'}\r\n{'title': 'Alpha', 'body': 'x'}\r\n\r\n+ [{'body': 'x', 'title': 'Alpha'},\r\n- [{'body': '包含 Beta 词', 'title': 'beta'},\r\n? ^\r\n\r\n+  {'body': '包含 Beta 词', 'title': 'beta'},\r\n? ^\r\n\r\n-  {'body': 'x', 'title': 'Alpha'},\r\n   {'body': 'g', 'title': 'Gamma'}]\r\n\r\n======================================================================\r\nFAIL: test_list_and_reexport_order (test_u09.U09ArrayLifecycle.test_list_and_reexport_order)\r\n----------------------------------------------------------------------\r\nTraceback (most recent call last):\r\n  File \"C:\\Users\\28417\\AppData\\Local\\Temp\\tmpt_q5p1d6\\stage-defective\\tests\\test_u09.py\", line 64, in test_list_and_reexport_order\r\n    self.assertEqual(self.json_out(self.run_notes([\"list\", \"--store\", \"arr.json\"])),\r\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\r\n                     [A, B, G])\r\n                     ^^^^^^^^^^\r\nAssertionError: Lists differ: [{'title': 'Gamma', 'body': 'g'}, {'title': 'Alpha', [48 chars] 词'}] != [{'title': 'Alpha', 'body': 'x'}, {'title': 'beta', '[48 chars]'g'}]\r\n\r\nFirst differing element 0:\r\n{'title': 'Gamma', 'body': 'g'}\r\n{'title': 'Alpha', 'body': 'x'}\r\n\r\n- [{'body': 'g', 'title': 'Gamma'},\r\n-  {'body': 'x', 'title': 'Alpha'},\r\n? ^\r\n\r\n+ [{'body': 'x', 'title': 'Alpha'},\r\n? ^\r\n\r\n-  {'body': '包含 Beta 词', 'title': 'beta'}]\r\n?                                        ^\r\n\r\n+  {'body': '包含 Beta 词', 'title': 'beta'},\r\n?                                        ^\r\n\r\n+  {'body': 'g', 'title': 'Gamma'}]\r\n\r\n----------------------------------------------------------------------\r\nRan 46 tests in 7.997s\r\n\r\nFAILED (failures=13)\r\n",
+   "unexpected_failed_modules": [],
+   "missing_chain_modules": [],
+   "ok": true
+  }
+ },
+ "tests_inventory_before": {
+  "_support.py": "97df401afd6b88c389fe0734e3c4ccd0f635e64e924face24b96f0d7c7cf8153",
+  "test_u01.py": "e045ca4d06af151c11aa8d6038149f3721baba728fdbfebfc327fe910071fa5a",
+  "test_u02.py": "1c708b5c7c85fc8837c10a16865a0e98289fe415283873d11606e740aab3d753",
+  "test_u03.py": "a293318f18612943ca2f5612969e9e890eb94a739e2a9c06b20017014055c48c",
+  "test_u04.py": "388791fd0bf9297b3dbeee02f1f39a404ba89345b000a3b787ba9458fe8cdb98",
+  "test_u05.py": "aa30004ab2868cb8b0c0f529336f48c68647955c2bdda95468f1774c01386245",
+  "test_u06.py": "039f301ada979c660492e74a6fe724c2cb7f181865a7192c3171d8e806a3fa72",
+  "test_u07.py": "f453fdae03bd4b9aa66b77ce58a15a59e6aa1b7257fcc03abd305ec993f83b6a",
+  "test_u08.py": "407b9c703416fa92a864ff99a815bd04286ac48e20b3bb4ab76b7417820336ff",
+  "test_u09.py": "bf198e0b4fca380789a6471cc6ab74f254b511fd4c719d2843253418152a1d84",
+  "test_u10.py": "76fdb6dc9637101c3a9d4c5c2c1592b81cea85d70cd4233d01c842c2f0546abd"
+ },
+ "boundary_scan": [],
+ "tests_inventory_after": {
+  "_support.py": "97df401afd6b88c389fe0734e3c4ccd0f635e64e924face24b96f0d7c7cf8153",
+  "test_u01.py": "e045ca4d06af151c11aa8d6038149f3721baba728fdbfebfc327fe910071fa5a",
+  "test_u02.py": "1c708b5c7c85fc8837c10a16865a0e98289fe415283873d11606e740aab3d753",
+  "test_u03.py": "a293318f18612943ca2f5612969e9e890eb94a739e2a9c06b20017014055c48c",
+  "test_u04.py": "388791fd0bf9297b3dbeee02f1f39a404ba89345b000a3b787ba9458fe8cdb98",
+  "test_u05.py": "aa30004ab2868cb8b0c0f529336f48c68647955c2bdda95468f1774c01386245",
+  "test_u06.py": "039f301ada979c660492e74a6fe724c2cb7f181865a7192c3171d8e806a3fa72",
+  "test_u07.py": "f453fdae03bd4b9aa66b77ce58a15a59e6aa1b7257fcc03abd305ec993f83b6a",
+  "test_u08.py": "407b9c703416fa92a864ff99a815bd04286ac48e20b3bb4ab76b7417820336ff",
+  "test_u09.py": "bf198e0b4fca380789a6471cc6ab74f254b511fd4c719d2843253418152a1d84",
+  "test_u10.py": "76fdb6dc9637101c3a9d4c5c2c1592b81cea85d70cd4233d01c842c2f0546abd"
+ },
+ "integrity_ok": true
+}

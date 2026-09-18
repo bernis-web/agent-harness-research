@@ -1,0 +1,17 @@
+只输出一个简短CommonJS模块 continuation.cjs，module.exports=async(t)=>{}；不要大段论证。真实Claude任务，模型glm-5.3-flash。只实现公开10、11、12a-d，A/B另复用你此前已生成的fragments.cjs。约70行，必要注释。
+前置：协调者先运行公开1-9驱动，当前s9={title:'中心主题',children:[{title:'分支一',children:[]},{title:'分支贰',children:[{title:'细节甲',children:[]},{title:'细节乙',children:[]}]},{title:'分支三',children:[]}]}; 浏览器真实导出并saveAs T1_OUT/downloads/t1-map.json，已通过固定预期JSON/hash。
+已实测取消探针：无filechooser监听的headless click出现isTrusted cancel但为浏览器自动取消，非用户真实原生取消；监听后Escape发送到网页且未出现cancel；FileChooser无cancel接口。本轮不允许可见窗。因此11必须t.unverified('11',明确BLOCKED_HEADLESS_NATIVE_CANCEL原因,fn)，不能假通过。fn可真实点击#btn-import（无filechooser监听，不setFiles空数组，不dispatch），等500ms后t.check(s9)，点击undo再check(s9)，只记录“自动取消/撤销清空”的部分证据；出现实际树错误应throw立即停。禁止内部树/函数/undoStack读写。11未验证不阻止独立12/A/B，说明这是授权调整。
+10: add([2],'细节丁'), check七节点, snap10-before-import, importSaved, check六节点。12a: reopen()关闭标签页后打开file://，空+undo空。12b: gen('临时根'), rename([],'临时根改名'),check；为证明撤销确有一条不能直接读内部栈，可做undo到临时根、再undo不变、再真实rename回临时根改名以重建一条，保存这些额外UI校验证据。12c importSaved恢复s9，12d undo不变。
+契约：
+模块契约：harness.cjs导出 async function createHarness()，返回t。t.page为当前Playwright Page；t.S0='中心主题\n  分支一\n  分支二\n    细节甲\n    细节乙\n  分支三'；t.TREE为对应独立纯JS树；t.clone(x)深拷贝。t.tree()异步只读DOM返回{title,children}或null；t.check(expected)精确比较树、pageerror/console.error为空、null时empty可见。t.gen(text),t.rename(indexPath,title),t.add(indexPath,title),t.del(indexPath),t.undo()都是异步真实UI。indexPath=[]根，[1]根第2子，[1,1]第2子第2孙。t.reopen()关闭当前page后新page打开file://原reference。t.exportMap()真实点击下载，存原件/哈希和saveAs到out/downloads/t1-map.json并返回JSON；t.importSaved()click导入按钮+filechooser.setFiles显式保存文件并等待导入完成。t.snap(label)保存截图和DOM JSON。t.step(id,fn)执行fn后snap、标PASS并刷新results.json，异常标FAIL截图后throw；所有22项预置UNTESTED。t.unverified(id,reason,fn)执行部分检查，保存证据但保留UNTESTED，异常同样停止。t.close()关闭自己browser context写结果summary；t.note(key,value)记录非敏感证据。public-chain.cjs和fragments.cjs各module.exports=async(t)=>{}，按顺序调用。入口由协调者仅粘合三个模块，不实现UI。
+
+冻结公开步骤:
+| 10 | 为"分支三"添加子节点"细节丁"（共 7 节点）→ 点击"导入 JSON"选择 `t1-map.json` | 整体替换为导出时刻内容："细节丁"消失，恢复 6 节点，标题/层级/顺序与导出时刻完全一致，撤销记录清空 | ☐ | |
+| 11 | 再次点击"导入 JSON"但取消选择 → 无变化、不要求提示、不报错；随后点击"撤销" | 撤销无效果、无报错，导图保持 6 节点 | ☐ | |
+| 12a | 关闭标签页，重新打开 `mindmap.html` | 空状态；点击撤销无效果 | ☐ | |
+| 12b | 生成单节点"临时根"，再重命名为"临时根改名" | 单节点导图"临时根改名"，撤销记录含 1 条 | ☐ | |
+| 12c | 显式导入步骤 9 保存的 `t1-map.json` | 完整恢复步骤 9 的 6 节点导图（根"中心主题"，第 2 子"分支贰"）；临时图消失 | ☐ | |
+| 12d | 点击撤销 | 无效果，导入后的导图不变（撤销记录仍为空） | ☐ | |
+
+
+方法全部await；独立纯JS对象为预期oracle，禁止依据实际DOM生成expected。不要创建/启动浏览器，只返回模块；任何真正验收失败直接传播，由t.step留证后总驱动停止。

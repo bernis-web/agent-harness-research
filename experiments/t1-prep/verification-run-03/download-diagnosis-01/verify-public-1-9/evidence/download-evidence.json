@@ -1,0 +1,20 @@
+{
+  "begin": {
+    "frameId": "8618B144F49A815E738C7B7401747F6E",
+    "guid": "b7b16c6f-2f02-4477-af05-975418c4f267",
+    "url": "blob:null/492f25c7-7c7a-441e-85bf-738a039fede4",
+    "suggestedFilename": "mindmap.json"
+  },
+  "done": {
+    "guid": "b7b16c6f-2f02-4477-af05-975418c4f267",
+    "totalBytes": 397,
+    "receivedBytes": 397,
+    "state": "completed",
+    "filePath": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\download-diagnosis-01\\verify-public-1-9\\evidence\\downloads\\b7b16c6f-2f02-4477-af05-975418c4f267"
+  },
+  "playwrightPath": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\download-diagnosis-01\\verify-public-1-9\\evidence\\downloads\\b7b16c6f-2f02-4477-af05-975418c4f267",
+  "original": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\download-diagnosis-01\\verify-public-1-9\\evidence\\downloads\\b7b16c6f-2f02-4477-af05-975418c4f267",
+  "saved": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\download-diagnosis-01\\verify-public-1-9\\evidence\\downloads\\t1-map.json",
+  "originalSHA256": "df8f17fbed15145cf88c091521a471fd1e0298d43388f55e3c0c1467a5020915",
+  "savedSHA256": "df8f17fbed15145cf88c091521a471fd1e0298d43388f55e3c0c1467a5020915"
+}

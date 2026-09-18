@@ -1,0 +1,5 @@
+{
+  "accepted": true,
+  "source": "../source-verified.json",
+  "scope": "Harness session only; does not modify product or cancel event"
+}

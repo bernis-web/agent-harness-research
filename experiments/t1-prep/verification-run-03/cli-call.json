@@ -1,0 +1,27 @@
+{
+  "started": "2026-09-17T19:33:15+0800",
+  "executable": "D:/projects/node-global/node_modules/@anthropic-ai/claude-code/bin/claude.exe",
+  "args": [
+    "--bare",
+    "--print",
+    "--tools",
+    "",
+    "--disable-slash-commands",
+    "--strict-mcp-config",
+    "--mcp-config",
+    "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\empty-mcp.json",
+    "--setting-sources",
+    "",
+    "--settings",
+    "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\isolated-settings.json",
+    "--no-session-persistence",
+    "--no-chrome",
+    "--output-format",
+    "json"
+  ],
+  "prompt_sha256": "e5aacf6c665cc88bf4b4325809c6989175d539a9a0457ebf226f5767c064c042",
+  "timeout_seconds": 720,
+  "role": "preparation assistant, not tested product",
+  "exit_code": 1,
+  "elapsed_seconds": 0.73
+}

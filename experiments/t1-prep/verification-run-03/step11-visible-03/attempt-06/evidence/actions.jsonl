@@ -1,0 +1,9 @@
+{"action":"open","url":"file:///D:/projects/agent-harness-research/experiments/t1-prep/reference/mindmap.html","ts":1789665205030}
+{"action":"gen","ts":1789665205217}
+{"action":"dialog","type":"prompt","value":"changed","ts":1789665205370}
+{"action":"rename","indexPath":[],"title":"changed","ts":1789665205491}
+{"action":"importSaved","ts":1789665205543}
+{"action":"snap","label":"before-cancel","ts":1789665205623}
+{"action":"snap","label":"after-cancel","ts":1789665207844}
+{"action":"undo","ts":1789665207967}
+{"action":"snap","label":"after-undo","ts":1789665208021}

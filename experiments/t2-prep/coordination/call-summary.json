@@ -1,0 +1,130 @@
+{
+  "calls": [
+    {
+      "call": "call-01-spec",
+      "requested_model": "glm-5.3-flash",
+      "observed_models": [
+        "glm-5.3-flash"
+      ],
+      "effort": "low",
+      "exit_code": 0,
+      "result_is_error": false,
+      "timedOut": false,
+      "elapsed_seconds": 114.732,
+      "tools_count": 0,
+      "mcp_count": 0,
+      "skills_count": 0,
+      "tool_use_count": 0,
+      "plugin_metadata_count": 10
+    },
+    {
+      "call": "call-02-spec-review",
+      "requested_model": "glm-5.3-flash",
+      "observed_models": [
+        "glm-5.3-flash"
+      ],
+      "effort": "low",
+      "exit_code": 0,
+      "result_is_error": false,
+      "timedOut": false,
+      "elapsed_seconds": 92.911,
+      "tools_count": 0,
+      "mcp_count": 0,
+      "skills_count": 0,
+      "tool_use_count": 0,
+      "plugin_metadata_count": 10
+    },
+    {
+      "call": "call-03-readme",
+      "requested_model": "glm-5.3-flash",
+      "observed_models": [
+        "glm-5.3-flash"
+      ],
+      "effort": "low",
+      "exit_code": 0,
+      "result_is_error": false,
+      "timedOut": false,
+      "elapsed_seconds": 34.725,
+      "tools_count": 0,
+      "mcp_count": 0,
+      "skills_count": 0,
+      "tool_use_count": 0,
+      "plugin_metadata_count": 10
+    },
+    {
+      "call": "call-04-spec-patches",
+      "requested_model": "glm-5.3-flash",
+      "observed_models": [
+        "glm-5.3-flash"
+      ],
+      "effort": "low",
+      "exit_code": 0,
+      "result_is_error": false,
+      "timedOut": false,
+      "elapsed_seconds": 28.862,
+      "tools_count": 0,
+      "mcp_count": 0,
+      "skills_count": 0,
+      "tool_use_count": 0,
+      "plugin_metadata_count": 10
+    },
+    {
+      "call": "call-05-public",
+      "requested_model": "glm-5.3-flash",
+      "observed_models": [
+        "glm-5.3-flash"
+      ],
+      "effort": "low",
+      "exit_code": 0,
+      "result_is_error": false,
+      "timedOut": false,
+      "elapsed_seconds": 165.513,
+      "tools_count": 0,
+      "mcp_count": 0,
+      "skills_count": 0,
+      "tool_use_count": 0,
+      "plugin_metadata_count": 10
+    },
+    {
+      "call": "call-06-public-patches",
+      "requested_model": "glm-5.3-flash",
+      "observed_models": [
+        "glm-5.3-flash"
+      ],
+      "effort": "low",
+      "exit_code": 0,
+      "result_is_error": false,
+      "timedOut": false,
+      "elapsed_seconds": 238.647,
+      "tools_count": 0,
+      "mcp_count": 0,
+      "skills_count": 0,
+      "tool_use_count": 0,
+      "plugin_metadata_count": 10
+    },
+    {
+      "call": "call-07-private",
+      "requested_model": "glm-5.3-flash",
+      "observed_models": [
+        "glm-5.3-flash"
+      ],
+      "effort": "low",
+      "exit_code": 0,
+      "result_is_error": false,
+      "timedOut": false,
+      "elapsed_seconds": 128.534,
+      "tools_count": 0,
+      "mcp_count": 0,
+      "skills_count": 0,
+      "tool_use_count": 0,
+      "plugin_metadata_count": 10
+    }
+  ],
+  "raw_output_location": "Each named call directory contains prompt.txt, stdout.jsonl, stderr.txt, result.json, model-call.json; raw evidence retained, safety redaction only",
+  "authentication": "Inherited normal authentication; no credential file read or copied by coordinator",
+  "isolation": "safe-mode + tools empty + disable-slash-commands + strict empty MCP + disableAllHooks; init lists plugin metadata, so not claimed plugin list empty",
+  "scope_correction": "preflight metadata inventory preserved; no repeat full repository scan",
+  "products_run": 0,
+  "tests_run": 0,
+  "python_created_or_executed": false
+}

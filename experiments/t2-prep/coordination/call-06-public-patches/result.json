@@ -1,0 +1,85 @@
+{
+  "duration_api_ms": 237823,
+  "stop_reason": "end_turn",
+  "session_id": "d7db78d2-9023-4a86-aed1-72a478e909c0",
+  "total_cost_usd": 0.34132,
+  "usage": {
+    "input_tokens": 7639,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "output_tokens": 12125,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "glm-5.3-flash": {
+      "inputTokens": 7639,
+      "outputTokens": 12125,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.34132,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000,
+      "thinkingTokens": 0,
+      "canonicalModel": "glm-5.3-flash",
+      "provider": "firstParty",
+      "costBasis": "unknown"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "is_error": false,
+  "num_turns": 1,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "```json\n{\n  \"patches\": [\n    {\n      \"old\": \"- **LF**：JSON 字符串中的 `\\\\n` 解码后是实际换行符 LF（U+000A），不是反斜杠+n。`\\\\t` 同理为制表符。\",\n      \"new\": \"- **LF**：JSON 字符串中的 `\\\\n` 解码后是实际换行符 LF（U+000A），不是反斜杠+n。`\\\\t` 同理为制表符。argv 数组按 JSON 解码一次即得实际参数，不做二次解码。初始 JSONL 行内示例记法：JSON 字符串内部的反斜杠转义序列（如 `\\\\n`、`\\\\\\\"`、`\\\\t`、`\\\\\\\\`）保留为文件字节，不转为物理字符；仅记录之间与文件末尾的 `\\\\n` 表示物理 LF 字节。\"\n    },\n    {\n      \"old\": \"- **字节快照对象**：`SNAP(p, before, after)` 中 `before` 为该命令执行前路径 p 的完整内容字符串（`null` 表示文件不存在），`after` 为期望的执行后内容：具体字符串＝逐字节等于该字符串的 UTF-8 编码；`\\\"SAME\\\"`＝与 before 逐字节相同。快照对象本身即期望，不另构造。\",\n      \"new\": \"- **字节快照对象**：`SNAP(p, before, after)` 中 `before` 为该命令执行前路径 p 的存在性与完整原始 bytes（可能含非法 UTF-8；按存在性+bytes 直接记录，不得先转字符串再比较），`after` 为期望的执行后内容：具体字符串＝逐字节等于该字符串的 UTF-8 编码；`\\\"SAME\\\"`＝与 before 逐字节相同；`null`＝期望文件不存在。快照对象本身即期望，不另构造。**比较总则（固定）**：所有成功读操作（list/search/export）每步执行前后均比对实际 store bytes（文中未逐步重写时同样适用）；所有失败步骤比对目标文件的存在性+bytes；export 步骤还比对 out 文件；全程无临时残留文件。\"\n    },\n    {\n      \"old\": \"成功时：`add`/`export` stdout 与 stderr 均为空；`list`/`search` stderr 为空。\",\n      \"new\": \"成功时：`add`/`export` stdout 与 stderr 均为空；`list`/`search` stderr 为空。此成功约束为通用总则：全文所有成功步骤一律 exit 0 且按上述 stdout/stderr 约束执行，个别步骤未重复写出 exit/stderr 时同样适用；不新增其他判据。\"\n    },\n    {\n      \"old\": \"STORE 由无变为恰含 t1 的合法 JSONL（每行一记录、恰一个末尾 LF）。\",\n      \"new\": \"STORE 由无变为恰含 t1 的合法 JSONL（每行一记录、末尾有或无恰一 LF 均可）。\"\n    },\n    {\n      \"old\": \"  - t2 title=`CaseFold` body=`UPPER lower MiXeD`\\n  - t3 title=`caseFOLD二` body=`无关`\",\n      \"new\": \"  - t2 title=`Straße` body=`UPPER lower MiXeD`\\n  - t3 title=`STRASSE二` body=`无关`\"\n    },\n    {\n      \"old\": \"4. search：argv `[\\\"search\\\",\\\"--store\\\",\\\"store.jsonl\\\",\\\"--query\\\",\\\"casefold\\\"]`；exit 0，stderr empty，stdout json==`[t2,t3]`（按 store 顺序，各一次）。\",\n      \"new\": \"4. search：argv `[\\\"search\\\",\\\"--store\\\",\\\"store.jsonl\\\",\\\"--query\\\",\\\"strasse\\\"]`；exit 0，stderr empty，stdout json==`[t2,t3]`（按 store 顺序，各一次；查询词 casefold 后与 `Straße`、`STRASSE二` 折叠命中）。\"\n    },\n    {\n      \"old\": \"argv search query=`casefold` stdout json==`[t2,t3]`。\",\n      \"new\": \"argv search query=`strasse` stdout json==`[t2,t3]`。\"\n    },\n    {\n      \"old\": \"- 初始文件：STORE，内容（一行一记录、末尾恰一 LF）：\",\n      \"new\": \"- 初始文件：STORE，内容（一行一记录；JSONL 规范允许末尾有或无恰一 LF，此处固定为有）：\"\n    },\n    {\n      \"old\": \"STORE 追加第四行 `{\\\"title\\\":\\\"空body条\\\",\\\"body\\\":\\\"\\\"}` 且保持末尾恰一 LF。\",\n      \"new\": \"STORE 追加第四行 `{\\\"title\\\":\\\"空body条\\\",\\\"body\\\":\\\"\\\"}`，保持合法 JSONL（末尾 LF 有或无均可）。\"\n    },\n    {\n      \"old\": \"  6. search：argv `[\\\"search\\\",\\\"--store\\\",\\\"store.jsonl\\\",\\\"--query\\\",\\\"  保留两端  \\\"]`；exit 0，stdout json==该第五条（查询原样含空格，不做 trim）。\",\n      \"new\": \"  6. search：argv `[\\\"search\\\",\\\"--store\\\",\\\"store.jsonl\\\",\\\"--query\\\",\\\"  保留两端  \\\"]`；exit 0，stdout json==该第五条（查询原样含空格，不做 trim）。\\n  7. add：argv `[\\\"add\\\",\\\"--store\\\",\\\"store.jsonl\\\",\\\"--title\\\",\\\"ABC\\\",\\\"--body\\\",\\\"精确大小写\\\"]`；exit 0，stdout/stderr empty；STORE 追加第六条（`ABC` 与既有 `abc`、`ＡＢＣ` 均不构成重复：重复标题判定按精确大小写/逐码点）。\\n  8. list：argv `[\\\"list\\\",\\\"--store\\\",\\\"store.jsonl\\\"]`；exit 0，stderr empty，stdout json==六条按写入序（末条为第六条 `ABC`）。\"\n    },\n    {\n      \"old\": \"  `{\\\"title\\\":\\\"Straße\\\",\\\"body\\\":\\\"x\\\"}\\\\n{\\\"title\\\":\\\"别的\\\",\\\"body\\\":\\\"STRASSE 在正文\\\"}\\\\n{\\\"title\\\":\\\"双命中\\\",\\\"body\\\":\\\"strasse 也在这\\\"}\\\\n{\\\"title\\\":\\\"无关\\\",\\\"body\\\":\\\"zzz\\\"}\\\\n`\",\n      \"new\": \"  `{\\\"title\\\":\\\"Straße\\\",\\\"body\\\":\\\"x\\\"}\\\\n{\\\"title\\\":\\\"别的\\\",\\\"body\\\":\\\"STRASSE 在正文\\\"}\\\\n{\\\"title\\\":\\\"STRASSE\\\",\\\"body\\\":\\\"strasse 也在这\\\"}\\\\n{\\\"title\\\":\\\"无关\\\",\\\"body\\\":\\\"zzz\\\"}\\\\n`\"\n    },\n    {\n      \"old\": \"1. search：argv `[\\\"search\\\",\\\"--store\\\",\\\"store.jsonl\\\",\\\"--query\\\",\\\"strasse\\\"]`；exit 0，stderr empty，stdout json==`[Straße条, 别的条, 双命中条]`（store 顺序；`双命中` 仅出现一次）。\",\n      \"new\": \"1. search：argv `[\\\"search\\\",\\\"--store\\\",\\\"store.jsonl\\\",\\\"--query\\\",\\\"strasse\\\"]`；exit 0，stderr empty，stdout json==`[Straße条, 别的条, STRASSE条]`（store 顺序；第三条 title 与 body 真实双命中、仅出现一次）。\"\n    },\n    {\n      \"old\": \"3. search：argv `[\\\"search\\\",\\\"--store\\\",\\\"store.jsonl\\\",\\\"--query\\\",\\\"ß\\\"]`；exit 0，stdout json==`[Straße条]`（casefold 后 ß→ss 的反向不要求：仅要求查询词自身 casefold 参与；本步固定为字面 `ß` 不命中前三条其余记录）。STORE 全程 after=`\\\"SAME\\\"`（每步快照同 before）。\",\n      \"new\": \"3. search：argv `[\\\"search\\\",\\\"--store\\\",\\\"store.jsonl\\\",\\\"--query\\\",\\\"ß\\\"]`；exit 0，stdout json==`[Straße条, 别的条, STRASSE条]`（查询词自身 casefold：ß→ss，命中前三条折叠后含 strasse/ss 的记录；第四条 `无关` 不命中）。STORE 全程 after=`\\\"SAME\\\"`（每步快照同 before）。\"\n    },\n    {\n      \"old\": \"- 初始文件：STORE=`{\\\"title\\\":\\\"多行\\\",\\\"body\\\":\\\"第一行\\\\n\\\\\\\"引用段\\\\\\\"\\\\t尾\\\"}\\\\n`。\\n- 步骤：\\n  1. search：argv `[\\\"search\\\",\\\"--store\\\",\\\"store.jsonl\\\",\\\"--query\\\",\\\"第一行\\\\n\\\\\\\"引用段\\\\\\\"\\\"]`（查询含实际 LF 与引号）；exit 0，stderr empty，stdout json==`[多行条]`。\\n  2. search：argv `[\\\"search\\\",\\\"--store\\\",\\\"store.jsonl\\\",\\\"--query\\\",\\\"\\\\\\\"引用段\\\\\\\"\\\\t尾\\\"]`；exit 0，stdout json==`[多行条]`。\\n  3. search：argv `[\\\"search\\\",\\\"--store\\\",\\\"store.jsonl\\\",\\\"--query\\\",\\\"行\\\\n无\\\"]`；exit 0，stdout json==`[]`（无命中，R07）。STORE 每步 after=`\\\"SAME\\\"`。\",\n      \"new\": \"- 初始文件：无（step1 自建 STORE）。\\n- 步骤：\\n  1. add：argv `[\\\"add\\\",\\\"--store\\\",\\\"store.jsonl\\\",\\\"--title\\\",\\\"多行\\\",\\\"--body\\\",\\\"第一行\\\\n\\\\\\\"引用段\\\\\\\"\\\\t尾\\\"]`；exit 0，stdout empty，stderr empty；STORE 由无变为恰含该条的合法 JSONL（body 内的 `\\\\n`、`\\\\\\\"`、`\\\\t` 为 JSON 字符串转义、保留为文件字节；记录间与末尾 `\\\\n` 为物理 LF）。\\n  2. search：argv `[\\\"search\\\",\\\"--store\\\",\\\"store.jsonl\\\",\\\"--query\\\",\\\"第一行\\\\n\\\\\\\"引用段\\\\\\\"\\\"]`（查询含实际 LF 与引号）；exit 0，stderr empty，stdout json==`[多行条]`。\\n  3. search：argv `[\\\"search\\\",\\\"--store\\\",\\\"store.jsonl\\\",\\\"--query\\\",\\\"\\\\\\\"引用段\\\\\\\"\\\\t尾\\\"]`；exit 0，stdout json==`[多行条]`。\\n  4. search：argv `[\\\"search\\\",\\\"--store\\\",\\\"store.jsonl\\\",\\\"--query\\\",\\\"行\\\\n无\\\"]`；exit 0，stdout json==`[]`（无命中，R07）。STORE 每步 after=`\\\"SAME\\\"`。\"\n    },\n    {\n      \"old\": \"- 初始文件：本场景前两步用 EMPTY（评价器预创建的空文件 `empty.jsonl`，0 字节）；后两步无任何初始文件。\",\n      \"new\": \"- 初始文件：EMPTY=`empty.jsonl`（评价器预创建的空文件，0 字节），本场景全程存在；`one.jsonl` 初始不存在，由步骤 3 中段创建；`missing.jsonl` 与 `o.json` 初始不存在且全程期望保持不存在。\"\n    },\n    {\n      \"old\": \"再于非空时复验：评价器预创建 `one.jsonl`=\",\n      \"new\": \"再于非空时复验：评价器在此步创建 `one.jsonl`=\"\n    },\n    {\n      \"old\": \"## U07 导出：正常与空导出、readonly store、含中文/空格路径（R02/R05/R07）\",\n      \"new\": \"## U07 导出：正常与空导出、含中文/空格路径（R02/R05/R07）\"\n    },\n    {\n      \"old\": \"- requirements：相对与绝对路径、含中文与空格的路径正常工作；readonly 输入不阻碍导出。\",\n      \"new\": \"- requirements：相对与绝对路径、含中文与空格的路径正常工作；导出不修改输入 store，可重复执行（权限模拟类失败场景不在验收范围）。\"\n    },\n    {\n      \"old\": \"4. readonly store 导出：评价器将 `dir one/中文 store.jsonl` 置为只读（文件级只读位，目录可写），argv 重复步骤 1 的命令（out 换 `out ro.json`）；exit 0；`out ro.json` 解析==同上；只读 store bytes after=`\\\"SAME\\\"`。（权限模拟类失败场景不在验收范围。）\",\n      \"new\": \"4. 重复导出普通文件：argv 重复步骤 1 的命令（out 换 `out ro.json`）；exit 0，stdout/stderr empty；`out ro.json` 解析==同上；输入 store bytes after=`\\\"SAME\\\"`。\"\n    },\n    {\n      \"old\": \"EXIST=`exists.json`=`[]\\\\n`（普通文件）；DIR=`adir/`（存在的目录）。\",\n      \"new\": \"EXIST=`exists.json`=`[]\\\\n`（普通文件）；DIR=`adir/`（存在的目录）；SUB=`sub/`（初始预创建的空目录）。\"\n    },\n    {\n      \"old\": \"| 2 | `[\\\"export\\\",\\\"--store\\\",\\\"good.jsonl\\\",\\\"--out\\\",\\\"./sub/../exists.json\\\"]` | exit 2，one-line（规范化后同路径，R11）；两文件均不变；`sub` 目录不得被创建 |\",\n      \"new\": \"| 2 | `[\\\"export\\\",\\\"--store\\\",\\\"good.jsonl\\\",\\\"--out\\\",\\\"./sub/../good.jsonl\\\"]` | exit 2，one-line（规范化后与 source 同一路径，R11）；GOOD after=`\\\"SAME\\\"`；预创建的空目录 `sub` 断言仍存在且仍为空 |\"\n    },\n    {\n      \"old\": \"2. search（数组 store）：argv `[\\\"search\\\",\\\"--store\\\",\\\"arr.json\\\",\\\"--query\\\",\\\"beta\\\"]`；exit 0，stdout json==两条按序（title `Alpha` 不命中、`beta` title 命中、body `Beta` casefold 命中）。SRC after=`\\\"SAME\\\"`。\",\n      \"new\": \"2. search（数组 store）：argv `[\\\"search\\\",\\\"--store\\\",\\\"arr.json\\\",\\\"--query\\\",\\\"beta\\\"]`；exit 0，stdout json==仅第二条（第一条 title `Alpha` 不含 `beta`，不命中；第二条 title `beta` 与 body `Beta` casefold 后命中）。SRC after=`\\\"SAME\\\"`。\"\n    },\n    {\n      \"old\": \"- requirements：坏 schema/BOM/重复记录的公开规范仅本节声明（坏数据→exit 3、不修改文件、隐藏用例仅换数据复测本节流程，不得临时扩展）；本场景固定两类坏 bytes，list 与 add 各自独立拒绝。\",\n      \"new\": \"- requirements：坏数据的公开规范仅本节声明（坏数据→exit 3、不修改文件、隐藏用例仅换数据复测本节流程，不得临时扩展、不新增隐藏错误类别）；本场景固定两类坏 bytes，list 与 add 各自独立拒绝。\"\n    },\n    {\n      \"old\": \"  - BADUTF8=`bad.jsonl`，bytes 为 `7B 7D FF 0A 7B 7D`（含非法 UTF-8 字节 FF）。\",\n      \"new\": \"  - BADUTF8=`bad.jsonl`，bytes 为 `7B 22 74 69 74 6C 65 22 3A 22 61 22 2C 22 62 6F 64 79 22 3A 22 FF 22 7D`（即原本合法的 `{\\\"title\\\":\\\"a\\\",\\\"body\\\":\\\"b\\\"}` 记录中 body 字符串值的唯一字节 `b`(62) 被替换为 FF，构成唯一解码错误；无末尾 LF）。\"\n    },\n    {\n      \"old\": \"3. list：argv `[\\\"list\\\",\\\"--store\\\",\\\"bad.jsonl\\\"]`；exit 3，one-line（解码失败/BOM 或坏 bytes 同流程）。\",\n      \"new\": \"3. list：argv `[\\\"list\\\",\\\"--store\\\",\\\"bad.jsonl\\\"]`；exit 3，one-line（非法 UTF-8 字节致解码失败）。\"\n    }\n  ]\n}\n```",
+  "ttft_ms": 190026,
+  "type": "result",
+  "duration_ms": 237975,
+  "uuid": "0fb8c627-956c-4df0-923a-f05627181203",
+  "ttft_stream_ms": 1689,
+  "time_to_request_ms": 154,
+  "first_content_frame_ms": 1690,
+  "queued_turn_count": 0,
+  "result_index": 0
+}

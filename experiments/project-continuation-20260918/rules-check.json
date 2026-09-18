@@ -1,0 +1,38 @@
+{
+  "paths": [
+    {
+      "path": "D:/AGENTS.md",
+      "exists": false
+    },
+    {
+      "path": "D:/AGENTS.override.md",
+      "exists": false
+    },
+    {
+      "path": "D:/projects/AGENTS.md",
+      "exists": false
+    },
+    {
+      "path": "D:/projects/AGENTS.override.md",
+      "exists": false
+    },
+    {
+      "path": "D:/projects/agent-harness-research/AGENTS.md",
+      "exists": false
+    },
+    {
+      "path": "D:/projects/agent-harness-research/AGENTS.override.md",
+      "exists": false
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/AGENTS.md",
+      "exists": false
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/AGENTS.override.md",
+      "exists": false
+    }
+  ],
+  "instructions": "User-provided AGENTS instructions and existing global dox-hierarchy/windows-and-context applied; no target-chain AGENTS files found.",
+  "otherDocumentsUnchanged": true
+}

@@ -1,0 +1,8 @@
+{
+  "jsonDeepEqual": true,
+  "bytesEqual": true,
+  "sha256": "df8f17fbed15145cf88c091521a471fd1e0298d43388f55e3c0c1467a5020915",
+  "expectedSHA256": "df8f17fbed15145cf88c091521a471fd1e0298d43388f55e3c0c1467a5020915",
+  "expectedFile": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/expected.json",
+  "actualFile": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/download-diagnosis-01/verify-public-1-9/evidence/downloads/t1-map.json"
+}

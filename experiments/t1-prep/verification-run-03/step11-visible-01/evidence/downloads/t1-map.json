@@ -1,0 +1,26 @@
+{
+  "title": "中心主题",
+  "children": [
+    {
+      "title": "分支一",
+      "children": []
+    },
+    {
+      "title": "分支贰",
+      "children": [
+        {
+          "title": "细节甲",
+          "children": []
+        },
+        {
+          "title": "细节乙",
+          "children": []
+        }
+      ]
+    },
+    {
+      "title": "分支三",
+      "children": []
+    }
+  ]
+}

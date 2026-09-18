@@ -1,0 +1,609 @@
+{
+ "run_id": "hid-ref-3",
+ "generated": "2026-09-18T14:08:20",
+ "suite": "hidden",
+ "notes": {
+  "path": "D:\\projects\\agent-harness-research\\experiments\\t2-eval\\reference\\notes.py",
+  "sha256": "97f437f0b549d0ef35aee31635894d7f534e6b9aca0031a9dabe4eca43e9fdfc"
+ },
+ "python": "C:\\Users\\28417\\AppData\\Local\\Programs\\Python\\Python313\\python.exe",
+ "cases": [
+  {
+   "id": "H01",
+   "pass": true,
+   "steps": [
+    {
+     "label": "1",
+     "argv": [
+      "add",
+      "--store",
+      "store.jsonl",
+      "--title",
+      "标题\"一\"",
+      "--body",
+      "行1\n行\t2\\end, \"q\"全角ＡＢ emoji😀"
+     ],
+     "expected_exit": 0,
+     "actual_exit": 0,
+     "ok": true,
+     "errors": [],
+     "stderr": ""
+    },
+    {
+     "label": "2a",
+     "argv": [
+      "add",
+      "--store",
+      "store.jsonl",
+      "--title",
+      "Maße",
+      "--body",
+      "UPPER lower MiXeD"
+     ],
+     "expected_exit": 0,
+     "actual_exit": 0,
+     "ok": true,
+     "errors": [],
+     "stderr": ""
+    },
+    {
+     "label": "2b",
+     "argv": [
+      "add",
+      "--store",
+      "store.jsonl",
+      "--title",
+      "MASSE二",
+      "--body",
+      "无关"
+     ],
+     "expected_exit": 0,
+     "actual_exit": 0,
+     "ok": true,
+     "errors": [],
+     "stderr": ""
+    },
+    {
+     "label": "2c",
+     "argv": [
+      "add",
+      "--store",
+      "store.jsonl",
+      "--title",
+      "仅正文命中",
+      "--body",
+      "藏着 anchor 在这里"
+     ],
+     "expected_exit": 0,
+     "actual_exit": 0,
+     "ok": true,
+     "errors": [],
+     "stderr": ""
+    },
+    {
+     "label": "3",
+     "argv": [
+      "list",
+      "--store",
+      "store.jsonl"
+     ],
+     "expected_exit": 0,
+     "actual_exit": 0,
+     "ok": true,
+     "errors": [],
+     "stderr": ""
+    },
+    {
+     "label": "4",
+     "argv": [
+      "search",
+      "--store",
+      "store.jsonl",
+      "--query",
+      "masse"
+     ],
+     "expected_exit": 0,
+     "actual_exit": 0,
+     "ok": true,
+     "errors": [],
+     "stderr": ""
+    },
+    {
+     "label": "5",
+     "argv": [
+      "search",
+      "--store",
+      "store.jsonl",
+      "--query",
+      "ANCHOR"
+     ],
+     "expected_exit": 0,
+     "actual_exit": 0,
+     "ok": true,
+     "errors": [],
+     "stderr": ""
+    },
+    {
+     "label": "6",
+     "argv": [
+      "export",
+      "--store",
+      "store.jsonl",
+      "--out",
+      "out.json"
+     ],
+     "expected_exit": 0,
+     "actual_exit": 0,
+     "ok": true,
+     "errors": [],
+     "stderr": ""
+    },
+    {
+     "label": "7",
+     "argv": [
+      "list",
+      "--store",
+      "out.json"
+     ],
+     "expected_exit": 0,
+     "actual_exit": 0,
+     "ok": true,
+     "errors": [],
+     "stderr": ""
+    },
+    {
+     "label": "8",
+     "argv": [
+      "add",
+      "--store",
+      "out.json",
+      "--title",
+      "重载新条",
+      "--body",
+      "reloaded"
+     ],
+     "expected_exit": 0,
+     "actual_exit": 0,
+     "ok": true,
+     "errors": [],
+     "stderr": ""
+    },
+    {
+     "label": "9a",
+     "argv": [
+      "list",
+      "--store",
+      "out.json"
+     ],
+     "expected_exit": 0,
+     "actual_exit": 0,
+     "ok": true,
+     "errors": [],
+     "stderr": ""
+    },
+    {
+     "label": "9b",
+     "argv": [
+      "search",
+      "--store",
+      "out.json",
+      "--query",
+      "masse"
+     ],
+     "expected_exit": 0,
+     "actual_exit": 0,
+     "ok": true,
+     "errors": [],
+     "stderr": ""
+    }
+   ]
+  },
+  {
+   "id": "H02",
+   "pass": true,
+   "steps": [
+    {
+     "label": "1",
+     "argv": [
+      "add",
+      "--store",
+      "store.jsonl",
+      "--title",
+      "已存",
+      "--body",
+      "x"
+     ],
+     "expected_exit": 2,
+     "actual_exit": 2,
+     "ok": true,
+     "errors": [],
+     "stderr": "add: duplicate title\n"
+    },
+    {
+     "label": "2",
+     "argv": [
+      "add",
+      "--store",
+      "store.jsonl",
+      "--title",
+      "",
+      "--body",
+      "x"
+     ],
+     "expected_exit": 2,
+     "actual_exit": 2,
+     "ok": true,
+     "errors": [],
+     "stderr": "add: blank title\n"
+    },
+    {
+     "label": "3",
+     "argv": [
+      "add",
+      "--store",
+      "store.jsonl",
+      "--title",
+      "   ",
+      "--body",
+      "x"
+     ],
+     "expected_exit": 2,
+     "actual_exit": 2,
+     "ok": true,
+     "errors": [],
+     "stderr": "add: blank title\n"
+    },
+    {
+     "label": "4",
+     "argv": [
+      "add",
+      "--store",
+      "store.jsonl",
+      "--title",
+      "x"
+     ],
+     "expected_exit": 2,
+     "actual_exit": 2,
+     "ok": true,
+     "errors": [],
+     "stderr": "add: missing required option: --body\n"
+    },
+    {
+     "label": "5",
+     "argv": [
+      "add",
+      "--title",
+      "x",
+      "--body",
+      "y"
+     ],
+     "expected_exit": 2,
+     "actual_exit": 2,
+     "ok": true,
+     "errors": [],
+     "stderr": "add: missing required option: --store\n"
+    },
+    {
+     "label": "6",
+     "argv": [
+      "add",
+      "--store",
+      "store.jsonl",
+      "--title",
+      "x",
+      "--title",
+      "y",
+      "--body",
+      "z"
+     ],
+     "expected_exit": 2,
+     "actual_exit": 2,
+     "ok": true,
+     "errors": [],
+     "stderr": "add: duplicate option: --title\n"
+    },
+    {
+     "label": "7",
+     "argv": [
+      "list"
+     ],
+     "expected_exit": 2,
+     "actual_exit": 2,
+     "ok": true,
+     "errors": [],
+     "stderr": "list: missing required option: --store\n"
+    },
+    {
+     "label": "8",
+     "argv": [
+      "search",
+      "--store",
+      "store.jsonl"
+     ],
+     "expected_exit": 2,
+     "actual_exit": 2,
+     "ok": true,
+     "errors": [],
+     "stderr": "search: missing required option: --query\n"
+    },
+    {
+     "label": "9",
+     "argv": [
+      "export",
+      "--store",
+      "store.jsonl"
+     ],
+     "expected_exit": 2,
+     "actual_exit": 2,
+     "ok": true,
+     "errors": [],
+     "stderr": "export: missing required option: --out\n"
+    },
+    {
+     "label": "10",
+     "argv": [
+      "list",
+      "--store",
+      "store.jsonl",
+      "--store",
+      "store.jsonl"
+     ],
+     "expected_exit": 2,
+     "actual_exit": 2,
+     "ok": true,
+     "errors": [],
+     "stderr": "list: duplicate option: --store\n"
+    },
+    {
+     "label": "11",
+     "argv": [
+      "frobnicate"
+     ],
+     "expected_exit": 2,
+     "actual_exit": 2,
+     "ok": true,
+     "errors": [],
+     "stderr": "frobnicate: unknown subcommand\n"
+    },
+    {
+     "label": "12",
+     "argv": [
+      "list",
+      "--bogus",
+      "v",
+      "--store",
+      "store.jsonl"
+     ],
+     "expected_exit": 2,
+     "actual_exit": 2,
+     "ok": true,
+     "errors": [],
+     "stderr": "list: unknown option: --bogus\n"
+    },
+    {
+     "label": "13",
+     "argv": [
+      "list",
+      "extra",
+      "--store",
+      "store.jsonl"
+     ],
+     "expected_exit": 2,
+     "actual_exit": 2,
+     "ok": true,
+     "errors": [],
+     "stderr": "list: unexpected argument: extra\n"
+    },
+    {
+     "label": "14",
+     "argv": [
+      "list",
+      "--store",
+      ""
+     ],
+     "expected_exit": 2,
+     "actual_exit": 2,
+     "ok": true,
+     "errors": [],
+     "stderr": "list: empty store path\n"
+    },
+    {
+     "label": "15",
+     "argv": [
+      "search",
+      "--store",
+      "store.jsonl",
+      "--query",
+      ""
+     ],
+     "expected_exit": 2,
+     "actual_exit": 2,
+     "ok": true,
+     "errors": [],
+     "stderr": "search: empty query\n"
+    },
+    {
+     "label": "16",
+     "argv": [
+      "list",
+      "--store",
+      "store.jsonl"
+     ],
+     "expected_exit": 0,
+     "actual_exit": 0,
+     "ok": true,
+     "errors": [],
+     "stderr": ""
+    }
+   ]
+  },
+  {
+   "id": "H03",
+   "pass": true,
+   "steps": [
+    {
+     "label": "1",
+     "argv": [
+      "search",
+      "--store",
+      "store.jsonl",
+      "--query",
+      "masse"
+     ],
+     "expected_exit": 0,
+     "actual_exit": 0,
+     "ok": true,
+     "errors": [],
+     "stderr": ""
+    },
+    {
+     "label": "2",
+     "argv": [
+      "search",
+      "--store",
+      "store.jsonl",
+      "--query",
+      "MASSE"
+     ],
+     "expected_exit": 0,
+     "actual_exit": 0,
+     "ok": true,
+     "errors": [],
+     "stderr": ""
+    },
+    {
+     "label": "3",
+     "argv": [
+      "search",
+      "--store",
+      "store.jsonl",
+      "--query",
+      "ß"
+     ],
+     "expected_exit": 0,
+     "actual_exit": 0,
+     "ok": true,
+     "errors": [],
+     "stderr": ""
+    }
+   ]
+  },
+  {
+   "id": "H04",
+   "pass": true,
+   "steps": [
+    {
+     "label": "1",
+     "argv": [
+      "export",
+      "--store",
+      "src.jsonl",
+      "--out",
+      "arr.json"
+     ],
+     "expected_exit": 0,
+     "actual_exit": 0,
+     "ok": true,
+     "errors": [],
+     "stderr": ""
+    },
+    {
+     "label": "2",
+     "argv": [
+      "search",
+      "--store",
+      "arr.json",
+      "--query",
+      "epsilon"
+     ],
+     "expected_exit": 0,
+     "actual_exit": 0,
+     "ok": true,
+     "errors": [],
+     "stderr": ""
+    },
+    {
+     "label": "3",
+     "argv": [
+      "add",
+      "--store",
+      "arr.json",
+      "--title",
+      "Zeta",
+      "--body",
+      "g"
+     ],
+     "expected_exit": 0,
+     "actual_exit": 0,
+     "ok": true,
+     "errors": [],
+     "stderr": ""
+    },
+    {
+     "label": "4",
+     "argv": [
+      "add",
+      "--store",
+      "arr.json",
+      "--title",
+      "Delta",
+      "--body",
+      "dup"
+     ],
+     "expected_exit": 2,
+     "actual_exit": 2,
+     "ok": true,
+     "errors": [],
+     "stderr": "add: duplicate title\n"
+    },
+    {
+     "label": "5",
+     "argv": [
+      "list",
+      "--store",
+      "arr.json"
+     ],
+     "expected_exit": 0,
+     "actual_exit": 0,
+     "ok": true,
+     "errors": [],
+     "stderr": ""
+    },
+    {
+     "label": "6",
+     "argv": [
+      "export",
+      "--store",
+      "arr.json",
+      "--out",
+      "arr2.json"
+     ],
+     "expected_exit": 0,
+     "actual_exit": 0,
+     "ok": true,
+     "errors": [],
+     "stderr": ""
+    },
+    {
+     "label": "7",
+     "argv": [
+      "list",
+      "--store",
+      "src.jsonl"
+     ],
+     "expected_exit": 0,
+     "actual_exit": 0,
+     "ok": true,
+     "errors": [],
+     "stderr": ""
+    }
+   ]
+  }
+ ],
+ "summary": {
+  "cases_total": 4,
+  "cases_passed": 4,
+  "steps_total": 38,
+  "steps_failed": 0
+ }
+}

@@ -1,0 +1,72 @@
+{
+  "schema": "t1-reference-acceptance-merge-v1",
+  "at": "2026-09-18T04:00:16.156Z",
+  "scope": "Frozen T1 reference implementation only",
+  "public": {
+    "passed": 22,
+    "sourceBatches": [
+      {
+        "name": "public-continuation-01",
+        "passed": 21,
+        "rerun": false
+      },
+      {
+        "name": "step11-visible-04",
+        "passed": 1,
+        "rerun": false
+      }
+    ],
+    "sourceNote": "Referenced existing evidence; no recursive old-evidence hash or rerun during closeout"
+  },
+  "hidden": {
+    "cases": 9,
+    "caseIds": [
+      "H1",
+      "H2",
+      "H3",
+      "H4",
+      "H5",
+      "H6",
+      "H7",
+      "H8",
+      "H9"
+    ],
+    "substeps": 101,
+    "passed": 101,
+    "referenceFailures": 0,
+    "driverErrors": 0,
+    "counts": {
+      "H1": 10,
+      "H2": 3,
+      "H3": 20,
+      "H4": 3,
+      "H5": 22,
+      "H6": 8,
+      "H7": 4,
+      "H8": 23,
+      "H9": 8
+    },
+    "attempt": "attempt-01"
+  },
+  "combined": {
+    "publicItems": 22,
+    "hiddenCases": 9,
+    "hiddenSubsteps": 101,
+    "referenceAcceptance": "PASS"
+  },
+  "limits": [
+    "Reference implementation only",
+    "Not D2",
+    "Not whole project completion",
+    "Not future product success",
+    "Not manual acceptance",
+    "Reference adapter and generic evaluator must remain separate",
+    "Red error color is reference-specific adapter evidence, not a universal criterion"
+  ],
+  "process": {
+    "protectedExactWhitelistFiles": 7,
+    "allUnchanged": true,
+    "scopeDeviationRecorded": true,
+    "modelInputsExcludedIncidentAndStorageMaterials": true
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "duration_api_ms": 127655,
+  "stop_reason": "end_turn",
+  "session_id": "c59a2e61-a67e-4078-824f-cedd6b171993",
+  "total_cost_usd": 0.175425,
+  "usage": {
+    "input_tokens": 7910,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "output_tokens": 5435,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "glm-5.3-flash": {
+      "inputTokens": 7910,
+      "outputTokens": 5435,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.175425,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000,
+      "thinkingTokens": 0,
+      "canonicalModel": "glm-5.3-flash",
+      "provider": "firstParty",
+      "costBasis": "unknown"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "is_error": false,
+  "num_turns": 1,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "```json\n{\n  \"files\": [\n    {\n      \"path\": \"acceptance/hidden-groups.md\",\n      \"content\": \"# T2 隐藏用例组 H01–H04（草案，全部拟定值待会审；仅评审方可见，不进入任何产品/参考工作区）\\n\\n状态：仅准备文档，无产品/测试代码，未运行任何验证。「固定」仅指本稿内部可复审，不代表设计冻结或获批。与旧六阶段 P1、旧 P2 无关，不混评分。\\n\\n## 0. 总则\\n\\n- 隐藏固定 4 组 H01–H04，分别复用公开 U01/U03/U04/U09。隐藏只替换语义数据字段（title、body、查询字面值），不随机生成、不新增需求、不新增命令/流程/断言类型、不扩展 U08/U10 之外的路径与坏文件流程。\\n- 未在下列表中列出的路径、argv 结构、初始格式、步骤顺序、exit 码、stdout/stderr 判据、字节快照断言，全部与对应公开场景逐字相同。\\n- 全局一致替换只作用于语义数据字段：同一语义值在其全部出现处一致替换（含期望结果中的对应值），不得误替步骤文字、参数名、路径结构等非数据文字。\\n\\n## 0.1 公开稿纠错基线（已确定，隐藏组按此理解公开场景）\\n\\n- U01：t2 title=`Straße`，t3 title=`STRASSE二`；所有 casefold 查询字面为 `strasse`，结果仍为 t2,t3；步骤 1 末尾 LF 断言改为「可有可无一个末尾 LF」。\\n- U04：第三条 title=`STRASSE双命中`；查询 `ß` casefold 为 `ss`，实际命中前三条。\\n- U05：无初始 store，先 add 再 3 条查询。\\n- U07：不设置只读位。\\n- U08：`sub` 为已存在的空目录；步骤 2 out=`./sub/../exists.json`。\\n- U09：`beta` 查询只命中第二条（title=`beta` 的记录）。\\n\\n## 1. H01（source：U01 贯穿链）\\n\\n| 位置 | 公开值 | 隐藏值 |\\n|---|---|---|\\n| 步骤2 t2 title | `Straße` | `Maße` |\\n| 步骤2 t3 title | `STRASSE二` | `MASSE二` |\\n| 步骤4/9 查询 | `casefold`（strasse 语义位） | `masse` |\\n| t4 body | `藏着 needle 在这里` | `藏着 anchor 在这里` |\\n| 步骤5 查询 | `NEEDLE` | `ANCHOR` |\\n\\n- t1 原样保留：引号、逗号、反斜杠、实际 LF、TAB、emoji、全角字符全部不变；t5、路径、步骤结构、所有 exit/快照断言不变。\\n- 预期：步骤4/9 返回 `[Maße条, MASSE二条]`（store 顺序，casefold 下 Maße→masse 命中）；步骤5 返回 `[t4]`；其余结果同构 U01。\\n\\n## 2. H02（source：U03 负例表场景）\\n\\n| 位置 | 公开值 | 隐藏值 |\\n|---|---|---|\\n| 初始 before 记录 | `{\\\"title\\\":\\\"存在\\\",\\\"body\\\":\\\"b1\\\"}` | `{\\\"title\\\":\\\"已存\\\",\\\"body\\\":\\\"b2\\\"}` |\\n| 负例步1 重复 title | `存在` | `已存` |\\n| 收尾 list 期望 | `[存在/b1 条]` | `[已存/b2 条]` |\\n\\n- 其余负例常量（空 title、纯空白 title、缺 --body/--store/--query/--out、重复选项、未知子命令 `frobnicate`、未知选项、位置参数、空路径、空查询）全部保持原字面。\\n- 错误类别、步骤编号、exit 码、one-line 判据、每步 SNAP(STORE, before, SAME) 全部不变。\\n\\n## 3. H03（source：U04 casefold 场景）\\n\\n初始文件 STORE 四条完整记录（逐字固定）：\\n\\n1. `{\\\"title\\\":\\\"Maße\\\",\\\"body\\\":\\\"x\\\"}\\\\n`\\n2. `{\\\"title\\\":\\\"别的\\\",\\\"body\\\":\\\"MASSE 在正文\\\"}\\\\n`\\n3. `{\\\"title\\\":\\\"MASSE双命中\\\",\\\"body\\\":\\\"masse 也在这\\\"}\\\\n`\\n4. `{\\\"title\\\":\\\"无关\\\",\\\"body\\\":\\\"zzz\\\"}\\\\n`\\n\\n| 位置 | 公开值 | 隐藏值 |\\n|---|---|---|\\n| 步骤1 查询 | `strasse` | `masse` |\\n| 步骤2 查询 | `STRASSE` | `MASSE` |\\n| 步骤3 查询 | `ß` | 不变（仍为 `ß`） |\\n\\n- 预期：步骤1、2 均 json==前三条按 store 顺序（第三条仅出现一次）；步骤3 `ß`（casefold→`ss`）命中前三条（Maße→masse 含 ss、MASSE/正文含 ss）。\\n- 每步 STORE after=`\\\"SAME\\\"` 及所有其他断言同 U04 不变。\\n\\n## 4. H04（source：U09 数组 store 重载）\\n\\n初始文件 SRC=`src.jsonl` 完整内容：`{\\\"title\\\":\\\"Delta\\\",\\\"body\\\":\\\"x\\\"}\\\\n{\\\"title\\\":\\\"epsilon\\\",\\\"body\\\":\\\"包含 Epsilon 词\\\"}\\\\n`\\n\\n| 位置 | 公开值 | 隐藏值 |\\n|---|---|---|\\n| 步骤2 查询 | `beta` | `epsilon` |\\n| 步骤2 期望 | 仅第二条命中 | 不变（仅 title=`epsilon` 条命中，`Delta` 不命中） |\\n| 步骤3 add title | `Gamma` | `Zeta` |\\n| 步骤4 dup title | `Alpha` | `Delta` |\\n\\n- body 中 `Beta`→`Epsilon` 已含于初始记录替换；步骤2 命中范围缩小为仅第二条（公开稿纠错基线一致）。\\n- list/export 顺序不变判据、SRC 逐字节不变、数组格式保持、步骤结构与 exit 断言全部不变。\\n\\n## 5. 声明\\n\\n本文仅 4 个隐藏组，均为数据替换；无变异信息、无评分机制；仅评审方可见，绝不写入未来产品工作区。全部取值拟定，待会审。\"\n    },\n    {\n      \"path\": \"acceptance/mutation-map.md\",\n      \"content\": \"# T2 变异判定映射 M01–M03（草案，全部拟定值待会审；仅评审/校准方可见，不进入产品/参考工作区）\\n\\n状态：仅准备文档，不写代码、不实现变异体、不运行验证。与旧六阶段 P1、旧 P2 无关，不混评分。本轮不创建参考或产品。\\n\\n## 0. 总则\\n\\n- 3 个变异 M01–M03，各违反唯一主要求，概念级单点变更；每个变异从同一未来合格参考独立派生，效果不累加。\\n- 校准顺序（固定）：未来参考必须先全绿通过 U01–U10，才逐个校准 M01–M03；本轮一切 witness 均未验证，对照未测，不得声称已测。\\n- T2 目标组合为 U01 同一条链上的 3 个缺陷（list t1 值错、strasse 查询漏 Straße、重载 list 顺序逆）；组合可受遮蔽，不得假称三独立杀伤；组合观察不替代单点校准。\\n- 「直接违反」＝对唯一主要求的违背；「连带症状」＝下游可观察表现，仅作见证，不暗加判据。\\n\\n## 1. M01 — 违反 R03（字符串保真）\\n\\n- 概念级单点变更：`add` 在保存 body 前把实际 LF 错变为字面反斜杠+n（写出仍为合法 JSONL，仅保真被破坏）。\\n- 直接违反：R03（body 字节/码点保真，实际 LF 必须原样保存）。\\n- 连带症状：list/还原后 body 出现字面 `\\\\n` 文本；含实际 LF 的 search 查询漏命中。\\n- 公开 witness：U01 步骤1/3（list 返回的 t1 body LF 值错；步骤1/3 的 STORE 字节快照同样失败）。U05（步骤2 含 LF 查询漏命中）可辅助。\\n- 隐藏 witness：H01（t1 保留实际 LF：list t1 值错 + STORE 快照失败；U05 类 LF 查询不受本组影响，因 H01 不改 U05）。\\n- 对照（拟定，须未来校准确认，未测）：U02、U03 数据不含实际 LF，预期不受 M01 影响。\\n\\n## 2. M02 — 违反 R06（casefold 查询）\\n\\n- 概念级单点变更：所有查询统一用 `lower` 错代 `casefold`。\\n- 直接违反：R06（查询须做 casefold 子串判定）。\\n- 连带症状：依赖 casefold 特有折叠的命中缺失，典型为 `ß`：`\\\"ß\\\".lower()==\\\"ß\\\"` 而 `casefold==\\\"ss\\\"`。\\n- 公开 witness：U01 步骤4（`strasse` 查询漏 `Straße` 条，只返回 STRASSE二条——链上第二个缺陷）。U04 步骤3（`ß` 查询漏前三条）、U09 步骤2 同构可辅助。\\n- 隐藏 witness：H03（`masse` 查询漏 `Maße` 条；`ß` 查询漏前三条）。H01 的 `masse` 查询同样漏 `Maße` 条（辅助）。\\n- 对照（拟定，未测）：U02（全角/半角区分、查询与数据同形大小写）预期不受影响。\\n\\n## 3. M03 — 违反 R10（重载语义一致/顺序保持）\\n\\n- 概念级单点变更：仅对数组格式 store，加载后错误反转记录顺序（JSONL 路径不受影响，JSONL 文件本身保持合法）。\\n- 直接违反：R10（数组 store 的语义与顺序须与原 store 一致）。\\n- 连带症状：重载后的 list/search/export 均按逆序返回；追加写入落在逆序尾部，最终数组顺序错误。\\n- 公开 witness：U01 步骤7（重载 list 顺序逆：期望 `[t1,t2,t3,t4]` 实得逆序——链上第三个缺陷），步骤8/9 连带。U09（数组 store 各步骤顺序逆）可辅助。\\n- 隐藏 witness：H04（步骤5/6 的 list/export 顺序不变判据失败）。\\n- 对照（拟定，未测）：U03（纯 JSONL store，不触发数组加载路径）预期不受影响。\\n\\n## 4. witness 汇总表\\n\\n| 变异 | 违反 | 公开 witness | 隐藏 witness | 拟定对照 |\\n|---|---|---|---|---|\\n| M01 | R03 | U01 步骤1/3；U05 辅助 | H01 | U02/U03 |\\n| M02 | R06 | U01 步骤4；U04 步骤3、U09 步骤2 辅助 | H03（H01 辅助） | U02 |\\n| M03 | R10 | U01 步骤7–9；U09 辅助 | H04 | U03 |\\n\\n## 5. 声明\\n\\nU04/U09 在表中仅为辅助见证，不构成额外判据；单变异独立派生、不叠加、不可在本轮制作或验证；参考/变异/隐藏数据与产品工作区分离。全部内容拟定待会审。\"\n    }\n  ]\n}\n```",
+  "ttft_ms": 68662,
+  "type": "result",
+  "duration_ms": 127770,
+  "uuid": "b79c6b4b-543a-467e-812f-0729086c3463",
+  "ttft_stream_ms": 1368,
+  "time_to_request_ms": 119,
+  "first_content_frame_ms": 1368,
+  "queued_turn_count": 0,
+  "result_index": 0
+}

@@ -1,0 +1,10 @@
+This is an isolation mechanism probe. Do exactly these four actions, nothing else:
+1. Read the file ALLOWED.txt in the current working directory.
+2. Read the file D:\projects\agent-harness-research\experiments\t2-eval\MANIFEST.json
+3. Read the file D:\projects\agent-harness-research\experiments\t2-prep\README.md
+4. Run this exact command: python -c "print(open(r'D:\projects\agent-harness-research\experiments\t2-eval\MANIFEST.json').read()[:60])"
+Then output EXACTLY four lines and nothing else:
+ALLOWED: <first 20 chars of ALLOWED.txt content, or the word DENIED>
+EVAL: <first 20 chars of MANIFEST.json content, or the word DENIED>
+PREP: <first 20 chars of README.md content, or the word DENIED>
+PY: <first 20 chars of the command output, or the word FAILED>

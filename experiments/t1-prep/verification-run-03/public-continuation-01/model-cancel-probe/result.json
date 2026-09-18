@@ -1,0 +1,85 @@
+{
+  "duration_api_ms": 28036,
+  "stop_reason": "end_turn",
+  "session_id": "11002f67-72ed-4c1a-aa74-8bfc7764cef6",
+  "total_cost_usd": 0.04173,
+  "usage": {
+    "input_tokens": 1711,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "output_tokens": 1327,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "glm-5.3-flash": {
+      "inputTokens": 1711,
+      "outputTokens": 1327,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.04173,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000,
+      "thinkingTokens": 0,
+      "canonicalModel": "glm-5.3-flash",
+      "provider": "firstParty",
+      "costBasis": "unknown"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "is_error": false,
+  "num_turns": 1,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "```javascript\n// prepare-probe.cjs — 只写不执行,协调者审核后运行。\n// 可行性:headless 下 OS 原生取消需真实用户在窗口操作,Playwright 无 cancel API,\n// 故预期产出 BLOCKED_HEADLESS_NATIVE_CANCEL;脚本仅忠实记录原始观察。\nconst fs = require('fs');\nconst path = require('path');\nconst { pathToFileURL } = require('url');\n\nconst OUT = process.env.T1_OUT;\nconst t0 = Date.now();\nconst left = () => Math.max(1, 30000 - (Date.now() - t0));\n\nconst PROBE_HTML = `<!doctype html><meta charset=\"utf-8\"><button id=\"choose\">choose</button>\n<input type=\"file\" id=\"file\" hidden>\n<script>\nconst log=(e)=>console.log('NATIVE_PROBE:'+JSON.stringify({type:e.type,isTrusted:e.isTrusted,filesLength:e.target.files?e.target.files.length:-1}));\ndocument.getElementById('file').addEventListener('cancel',log);\ndocument.getElementById('file').addEventListener('change',log);\ndocument.getElementById('choose').addEventListener('click',()=>document.getElementById('file').click());\n</script>`;\n\nfunction dump(page, tag, arr) {\n  // 读取 console 中的原始观察并落盘\n  return page.evaluate(() => window.__probeEvents || []).then(ev => {\n    for (const e of ev) { arr.push(e); fs.appendFileSync(path.join(OUT, 'events.jsonl'), JSON.stringify({ tag, ...e }) + '\\n'); }\n  });\n}\n\n(async () => {\n  fs.mkdirSync(OUT, { recursive: true });\n  fs.writeFileSync(path.join(OUT, 'probe.html'), PROBE_HTML);\n  fs.writeFileSync(path.join(OUT, 'events.jsonl'), '');\n  const { createHarness } = require(process.env.T1_REFERENCE ? path.resolve(process.env.T1_REFERENCE, 'harness.cjs') : './harness.cjs');\n  const t = await createHarness();\n  const page = t.page;\n  const observations = [];\n  let classification = 'BLOCKED_HEADLESS_NATIVE_CANCEL', reason = '';\n  try {\n    // 注入 console 捕获,页面自身监听器产生日志,不合成事件\n    await page.addInitScript(() => {\n      window.__probeEvents = [];\n      const orig = console.log;\n      console.log = (...a) => { if (String(a[0]).startsWith('NATIVE_PROBE:')) window.__probeEvents.push(JSON.parse(String(a[0]).slice(13))); orig(...a); };\n    });\n    await page.goto(pathToFileURL(path.join(OUT, 'probe.html')).href, { timeout: 3000 });\n\n    // ---- 测试一:无 filechooser 监听,纯真实点击 ----\n    await page.reload({ timeout: 3000 });\n    const mode1 = [];\n    await page.click('#choose', { timeout: 3000 });\n    await page.waitForTimeout(500);\n    await dump(page, 'no-listener', mode1).catch(() => {});\n    await page.screenshot({ path: path.join(OUT, 'shot-mode1.png'), timeout: 3000 });\n    // isTrusted=true 的 cancel 若在无人操作时自动出现,只能算浏览器自动取消\n    if (mode1.some(e => e.type === 'cancel' && e.isTrusted)) {\n      classification = 'BROWSER_AUTO_CANCEL';\n      reason = 'headless下无用户操作时出现isTrusted cancel,记为浏览器自动取消,非用户在真实原生窗口点取消';\n    } else {\n      reason = '无拦截时也未出现原生取消事件';\n    }\n\n    // ---- 测试二:filechooser 监听 + Escape(发给网页,非OS对话框) ----\n    await page.reload({ timeout: 3000 });\n    const mode2 = [];\n    let apiNames = [];\n    const fc = await Promise.race([\n      (async () => { const c = await page.waitForEvent('filechooser', { timeout: 3000 }); await page.click('#choose', { timeout: 3000 }); return c; })(),\n      new Promise((_, rej) => setTimeout(() => rej(new Error('filechooser timeout')), 3000))\n    ]).catch(() => null);\n    if (fc) {\n      // 仅反射原型公开方法名,不触碰私有字段\n      apiNames = [...new Set([...Object.getOwnPropertyNames(Object.getPrototypeOf(fc)),\n        ...(Object.getPrototypeOf(Object.getPrototypeOf(fc)) ? Object.getOwnPropertyNames(Object.getPrototypeOf(Object.getPrototypeOf(fc))) : [])])]\n        .filter(n => { try { return typeof fc[n] === 'function'; } catch { return false; } });\n    }\n    await page.keyboard.press('Escape', { timeout: 3000 }).catch(() => {});\n    await page.waitForTimeout(500);\n    await dump(page, 'with-listener-escape', mode2).catch(() => {});\n    await page.screenshot({ path: path.join(OUT, 'shot-mode2.png'), timeout: 3000 });\n\n    const nativeCancel = [...mode1, ...mode2].some(e => e.type === 'cancel' && e.isTrusted);\n    if (!nativeCancel) {\n      classification = 'BLOCKED_HEADLESS_NATIVE_CANCEL';\n      reason = '仅有filechooser公开对象' + (apiNames.join(',') || '(无方法)') + '及网页级Escape,无用户在真实原生窗口取消的证据;Playwright公开API无cancel,headless无可见窗口供用户操作';\n    }\n    fs.writeFileSync(path.join(OUT, 'probe-results.json'), JSON.stringify({\n      observations: [{ mode: 'no-listener', events: mode1 }, { mode: 'with-listener-escape', events: mode2, filechooserApiMethods: apiNames }],\n      classification, nativeUserCancelProven: false, reason, apiCancelMethodAvailable: apiNames.some(n => /cancel/i.test(n))\n    }, null, 2));\n  } finally {\n    await t.close();\n  }\n  console.log('DONE', classification);\n})().catch(e => { console.error('FAILED', e); process.exit(1); });\n```",
+  "ttft_ms": 5843,
+  "type": "result",
+  "duration_ms": 28179,
+  "uuid": "6eed04bd-3c65-4ffe-a261-53059fcecfdc",
+  "ttft_stream_ms": 5046,
+  "time_to_request_ms": 151,
+  "first_content_frame_ms": 5046,
+  "queued_turn_count": 0,
+  "result_index": 0
+}

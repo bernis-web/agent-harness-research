@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -c *)"
+    ],
+    "deny": [
+      "Read(//d/projects/agent-harness-research/experiments/t2-eval/**)",
+      "Read(//D/projects/agent-harness-research/experiments/t2-prep/**)"
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+PASS argv surrogate list exit2
+PASS argv surrogate list oneline+empty stdout
+PASS argv surrogate search exit2
+PASS argv surrogate add title exit2
+PASS argv surrogate add left no file
+PASS content surrogate exit3 list
+PASS content surrogate bytes unchanged list
+PASS content surrogate oneline+empty stdout list
+PASS content surrogate exit3 search
+PASS content surrogate bytes unchanged search
+PASS content surrogate oneline+empty stdout search
+PASS content surrogate exit3 export
+PASS content surrogate bytes unchanged export
+PASS content surrogate oneline+empty stdout export
+PASS content surrogate export created nothing
+PASS array content surrogate exit3
+PASS export ok
+PASS export no temp residue
+PASS export array semantic
+
+19 passed, 0 failed

@@ -1,0 +1,8 @@
+You are the delegated implementation worker. Model glm-5.3-flash effort low. Tiny driver repair only, no browser run/tools. Return ONLY JSON {diagnosis,old,new,reason,classification}. In a visible Playwright Chrome cancellation verifier, CDP SystemInfo.getProcessInfo returns info; current code info.processList.filter throws Cannot read properties of undefined (reading filter), before any native cancel. Identify exact CDP response field and give minimal robust replacement for this exact old snippet. Check Array.isArray, reject invalid/ambiguous browser PID, save raw process info to output cdp-process-info.json (contains only this dedicated browser process info). No product changes. Use fs/path already imported, out is evidence directory. Detach CDP before validation exceptions. Throw {classify:'BLOCKED_DRIVER',msg:...} for schema/PID errors. browserPid must remain in surrounding scope. old snippet:
+const info = await cdp.send('SystemInfo.getProcessInfo');
+    const browserProcs = info.processList.filter(p => p.type === 'browser');
+    if (browserProcs.length !== 1) throw { classify: 'BLOCKED', msg: 'browser pid ambiguous' };
+    const browserPid = browserProcs[0].id;
+    await cdp.detach();
+
+Do not output markdown. No new broad feature. This is a driver defect not product failure.

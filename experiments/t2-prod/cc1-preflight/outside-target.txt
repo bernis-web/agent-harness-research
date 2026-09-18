@@ -1,0 +1,1 @@
+Outside-workspace probe target (parent dir, not deny-covered, not in workspace).

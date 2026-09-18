@@ -1,0 +1,85 @@
+{
+  "duration_api_ms": 55142,
+  "stop_reason": "end_turn",
+  "session_id": "6bbc01ff-a53e-42d9-8596-1fbddd658dd5",
+  "total_cost_usd": 0.0578,
+  "usage": {
+    "input_tokens": 1435,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "output_tokens": 2025,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "glm-5.3-flash": {
+      "inputTokens": 1435,
+      "outputTokens": 2025,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0578,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000,
+      "thinkingTokens": 0,
+      "canonicalModel": "glm-5.3-flash",
+      "provider": "firstParty",
+      "costBasis": "unknown"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "is_error": false,
+  "num_turns": 1,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "{\"diagnosis\":\"The previous patch referenced a non-existent field `processList` on the SystemInfo.getProcessInfo return value. Per verified local primary source D:/projects/npm-cache/_npx/cbf1b8a072280925/node_modules/playwright-core/types/protocol.d.ts lines 18565-18570, `getProcessInfoReturnValue = { processInfo: ProcessInfo[] }` — the field is `processInfo`, an array. The previous patch also detached only after filtering, had no array/type check on the response, no PID sanity check, and misclassified schema/PID failures as generic 'BLOCKED'.\",\"old\":\"const info = await cdp.send('SystemInfo.getProcessInfo');\\n    const browserProcs = info.processList.filter(p => p.type === 'browser');\\n    if (browserProcs.length !== 1) throw { classify: 'BLOCKED', msg: 'browser pid ambiguous' };\\n    const browserPid = browserProcs[0].id;\\n    await cdp.detach();\",\"new\":\"const resp = await cdp.send('SystemInfo.getProcessInfo');\\n    await cdp.detach();\\n    if (!Array.isArray(resp.processInfo)) throw { classify: 'BLOCKED_DRIVER', msg: 'getProcessInfo: processInfo is not an array', rawResp: resp };\\n    const browserProcs = resp.processInfo.filter(p => p.type === 'browser');\\n    if (browserProcs.length !== 1) throw { classify: 'BLOCKED_DRIVER', msg: 'browser pid ambiguous', rawResp: resp };\\n    const browserPid = browserProcs[0].id;\\n    if (!Number.isSafeInteger(browserPid) || browserPid <= 0) throw { classify: 'BLOCKED_DRIVER', msg: 'browser pid is not a positive safe integer', rawResp: resp };\",\"reason\":\"Corrected field name to `processInfo` per the verified protocol.d.ts definition. `cdp.detach()` now runs immediately after send so the CDP session is not held during validation; the already-received `resp` object remains readable after detach. The raw response is preserved verbatim on every failure path (`rawResp: resp`) and no failure is swallowed — all schema/PID violations throw with classification 'BLOCKED_DRIVER'. Validation enforces: processInfo is an array, exactly one browser-type entry, and a positive safe integer PID.\",\"classification\":\"BLOCKED_DRIVER\",\"cleanupReplacement\":\"t.close = async () => {\\n  writeResults();\\n  await ctx.close();\\n  const remaining = ctx.pages();\\n  if (remaining.length !== 0) {\\n    throw new Error(`task context close incomplete: ${remaining.length} page(s) remain after ctx.close()`);\\n  }\\n  return { ownedContextCloseCompleted: true, pagesRemaining: 0 };\\n};\"}",
+  "ttft_ms": 43485,
+  "type": "result",
+  "duration_ms": 55242,
+  "uuid": "a4f51eba-8f26-4a4f-b1a5-09622312c159",
+  "ttft_stream_ms": 995,
+  "time_to_request_ms": 104,
+  "first_content_frame_ms": 996,
+  "queued_turn_count": 0,
+  "result_index": 0
+}

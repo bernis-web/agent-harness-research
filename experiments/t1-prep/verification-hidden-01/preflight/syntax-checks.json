@@ -1,0 +1,17 @@
+[
+  {
+    "file": "harness.cjs",
+    "syntax": "PASS",
+    "sha256": "701eb1437079c410bdf4c0672f1cdb0fff0315131f64d30461b07b5aedda29d2"
+  },
+  {
+    "file": "cases.cjs",
+    "syntax": "PASS",
+    "sha256": "22af111a7f17a4fb50e844c12ef3135144db1e37d5aa94b2e543f08187a25212"
+  },
+  {
+    "file": "run.cjs",
+    "syntax": "PASS",
+    "sha256": "0a0123fc93055555d2b76ba33700a204643128d926c0cb9736188a2619eec737"
+  }
+]

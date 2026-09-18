@@ -1,0 +1,17 @@
+{
+  "tree": {
+    "title": "中心主题",
+    "children": [
+      {
+        "title": "分支一",
+        "children": []
+      },
+      {
+        "title": "分支三",
+        "children": []
+      }
+    ]
+  },
+  "errors": [],
+  "message": "已删除"
+}

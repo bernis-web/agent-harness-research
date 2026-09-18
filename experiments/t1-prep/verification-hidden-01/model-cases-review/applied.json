@@ -1,0 +1,84 @@
+{
+  "modelPatches": [
+    {
+      "index": 0,
+      "file": "fixtures.json",
+      "exactMatches": 1
+    },
+    {
+      "index": 1,
+      "file": "fixtures.json",
+      "exactMatches": 1
+    },
+    {
+      "index": 2,
+      "file": "cases.cjs",
+      "exactMatches": 1
+    },
+    {
+      "index": 3,
+      "file": "cases.cjs",
+      "exactMatches": 1
+    },
+    {
+      "index": 4,
+      "file": "cases.cjs",
+      "exactMatches": 1
+    },
+    {
+      "index": 5,
+      "file": "cases.cjs",
+      "exactMatches": 1
+    },
+    {
+      "index": 6,
+      "file": "cases.cjs",
+      "exactMatches": 1
+    },
+    {
+      "index": 7,
+      "file": "cases.cjs",
+      "exactMatches": 1
+    },
+    {
+      "index": 8,
+      "file": "cases.cjs",
+      "exactMatches": 1
+    },
+    {
+      "index": 9,
+      "file": "cases.cjs",
+      "exactMatches": 1
+    },
+    {
+      "index": 10,
+      "file": "cases.cjs",
+      "exactMatches": 1
+    },
+    {
+      "index": 11,
+      "file": "cases.cjs",
+      "exactMatches": 1
+    },
+    {
+      "index": 12,
+      "file": "cases.cjs",
+      "exactMatches": 1
+    },
+    {
+      "index": 13,
+      "file": "cases.cjs",
+      "exactMatches": 1
+    },
+    {
+      "index": 14,
+      "file": "cases.cjs",
+      "exactMatches": 1
+    }
+  ],
+  "coordinatorAdditionalPatch": {
+    "reason": "Model correction omitted explicitly requested H6 root-add path correction",
+    "old": "await t.add([0], '临时')",
+    "new": "await t.add([], '临时')"
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "duration_api_ms": 14896,
+  "stop_reason": "end_turn",
+  "session_id": "71bcdfa0-5e58-4827-b01b-ec95b6e49dff",
+  "total_cost_usd": 0.033460000000000004,
+  "usage": {
+    "input_tokens": 1827,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "output_tokens": 973,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "glm-5.3-flash": {
+      "inputTokens": 1827,
+      "outputTokens": 973,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.033460000000000004,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000,
+      "thinkingTokens": 0,
+      "canonicalModel": "glm-5.3-flash",
+      "provider": "firstParty",
+      "costBasis": "unknown"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "is_error": false,
+  "num_turns": 1,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "```commonjs\n// fragments.cjs — A1-A4 + B1-B3\nmodule.exports = async (t) => {\n  const S0 = t.S0;\n\n  // ---------- 片段 A ----------\n  await t.step('A1', async () => {\n    await t.gen(S0);\n    await t.del([1]); // 删除根第2子\"分支二\"(含2孙)\n    const exp = t.clone(t.TREE);\n    exp.children.splice(1, 1);\n    await t.check(exp); // 根剩 分支一/分支三 共3节点\n    await t.snap('A1');\n  });\n\n  await t.step('A2', async () => {\n    await t.undo();\n    await t.check(t.clone(t.TREE)); // 回S0六节点\n    await t.snap('A2');\n  });\n\n  await t.step('A3', async () => {\n    await t.del([]); // 删除根\n    await t.check(null); // empty可见\n    await t.snap('A3');\n  });\n\n  await t.step('A4', async () => {\n    await t.undo();\n    await t.check(t.clone(t.TREE)); // 恢复S0六节点\n    await t.snap('A4');\n  });\n\n  // ---------- 片段 B ----------\n  await t.gen(S0); // UI重置\n  let cur = t.clone(t.TREE);\n  const pre = [];\n\n  const edits = [\n    () => { pre.push(t.clone(cur)); cur.children[0].title = '甲一'; await t.rename([0], '甲一'); },\n    () => { pre.push(t.clone(cur)); cur.children[0].children.push({ title: '临时1', children: [] }); await t.add([0], '临时1'); },\n    () => { pre.push(t.clone(cur)); cur.children[1].title = '甲二'; await t.rename([1], '甲二'); },\n    () => { pre.push(t.clone(cur)); cur.children[1].children.push({ title: '临时2', children: [] }); await t.add([1], '临时2'); },\n    () => { pre.push(t.clone(cur)); cur.children[2].title = '甲三'; await t.rename([2], '甲三'); },\n    () => { pre.push(t.clone(cur)); cur.children[1].children[0].children.push({ title: '临时3', children: [] }); await t.add([1, 0], '临时3'); },\n    () => { pre.push(t.clone(cur)); cur.children[1].children[0].title = '甲细'; await t.rename([1, 0], '甲细'); },\n    () => { pre.push(t.clone(cur)); cur.children.push({ title: '临时根', children: [] }); await t.add([], '临时根'); },\n    () => { pre.push(t.clone(cur)); cur.children[1].children[1].title = '甲乙'; await t.rename([1, 1], '甲乙'); },\n    () => { pre.push(t.clone(cur)); cur.children[2].children.push({ title: '临时4', children: [] }); await t.add([2], '临时4'); },\n  ];\n\n  // B1: 严格依次10次编辑\n  for (let i = 0; i < 10; i++) {\n    const id = 'B1';\n    const label = 'B1-edit' + String(i + 1).padStart(2, '0');\n    await t.step(id + '-e' + (i + 1), async () => {\n      await edits[i]();\n      await t.check(t.clone(cur));\n      await t.snap(label);\n    });\n  }\n\n  // B2: 逐步undo回各pre-state\n  for (let i = 9; i >= 0; i--) {\n    const label = 'B2-undo' + String(10 - i).padStart(2, '0');\n    await t.step('B2-u' + (10 - i), async () => {\n      await t.undo();\n      await t.check(t.clone(pre[i]));\n      await t.snap(label);\n    });\n  }\n\n  // B3: 再undo一次,无效果无错,回到初始S0\n  await t.step('B3', async () => {\n    await t.undo();\n    await t.check(t.clone(t.TREE)); // 初始树\n    await t.snap('B3');\n  });\n};\n```",
+  "ttft_ms": 2695,
+  "type": "result",
+  "duration_ms": 15132,
+  "uuid": "62bbe928-7652-4888-bcf8-4d8743d0c08b",
+  "ttft_stream_ms": 2219,
+  "time_to_request_ms": 272,
+  "first_content_frame_ms": 2220,
+  "queued_turn_count": 0,
+  "result_index": 0
+}

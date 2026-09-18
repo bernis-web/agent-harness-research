@@ -1,0 +1,85 @@
+{
+  "duration_api_ms": 24462,
+  "stop_reason": "end_turn",
+  "session_id": "876c8cbd-dfb8-44db-b083-bf342b3bd253",
+  "total_cost_usd": 0.032064999999999996,
+  "usage": {
+    "input_tokens": 1848,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "output_tokens": 913,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "glm-5.3-flash": {
+      "inputTokens": 1848,
+      "outputTokens": 913,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.032064999999999996,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000,
+      "thinkingTokens": 0,
+      "canonicalModel": "glm-5.3-flash",
+      "provider": "firstParty",
+      "costBasis": "unknown"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "is_error": false,
+  "num_turns": 1,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "# T1 本地验证报告（step11-visible-04）\n\n**日期**：2026-09-18（Asia/Shanghai）\n**执行方式**：Codex 实际执行并复核 Flash 补丁；本报告仅基于其产出的证据整理，未由报告撰写者亲自运行。\n\n## 验证范围与前提\n\n本步骤为 step11 可见项 T1 验证，前置条件均满足：UI 生成临时树、UI 重命名生效、UI 导入原始非空 `public-continuation-01` JSON 并清空撤销栈，且仅执行 post10 等价操作。此前 21 步的 PASS 未重跑，仅核对了 old21 各步骤源结果状态，39 份证据文件全部存在且 SHA256 与既有索引一致（见 `old-evidence-validation.json`）。\n\n## 浏览器执行（单次）\n\n新开浏览器恰好运行一次：UTC 2026-09-18T03:11:18.838Z 启动，03:11:23.837Z 结束。driver PID 21576、browser PID 32568、native dialog Chrome 子进程 PID 21464、owner HWND 1445546、dialog HWND 69386、Cancel HWND 69420。PID、创建时间、exe、父进程、profile、owner 全部校验通过（`execution/identity-tests.json`、`launch.json`、`identity-before-click.json`）。\n\n## 核心结果\n\n- 通过真实 SendInput 触发 Cancel 点击；DOM cancel 事件 `isTrusted=true`，无 change 事件。\n- 点击前后树结构快照与原始非空 `public-continuation-01` JSON 完全一致；undo 无树变化，消息为「没有可撤销的操作」（`attempt-01/evidence/results.json`、`native-result.json`、`dom-events.jsonl`、snaps before/after/undo 的 json/png）。\n- 三组错误数组均为空。\n- **结论：step11 PASS。** 聚合 22 为公开项 PASS，**不构成完整 T1**；hidden 与 D2 未执行。\n\n## 清理与边界\n\n浏览器清理成功（pages=0，driver exit=0）；`cleanup-audit.json` 确认六个相关 PID 均不存在。变更仅限新建文件夹；未读取参考资料、规范、手册、全局设置、注册表、依赖或任何认证信息。原生截图仅含 Cancel（`cancel-button.png`），页面截图仅作记录；未捕获个人文件列表。\n\n## Flash 补丁与模型调用\n\n- 原始 `model-*/result.json` 均保留。\n- model-env：env merge 提案被否决，改为排他性 wx 创建任务的 Preferences 提示（目录偏好仅为初始提示，未读取目录列表，未声称正向 UI 路径证明；本次无需导航）。\n- model-privacy：精确保留原隐私块、修正空行的修订补丁已保存（reviewed-patch）。\n- model-interception：主会话直接禁用拦截，配本地源 `source-verified.json`。\n- 全部继承源记录于 `execution/*.inherited`。\n\n`model-call-summary.json` 记录 3 次真实调用，模型均观测为 `glm-5.3-flash`，全部正常退出：\n\n| 任务 | PID | 耗时(s) | exit |\n|---|---|---|---|\n| model-env | 7104 | 63.607 | 0 |\n| model-privacy | 6680 | 36.355 | 0 |\n| model-interception | 21196 | 30.041 | 0 |\n\n## 备注\n\n初版本地源路径查找属无关尝试；补丁空白不匹配已离线修正，浏览器未重跑。五个受保护文件经 `protected-before.json` / `protected-after.json` 比对确认未变更。各路径的绝对位置与逐项证据见 `evidence-index.json`；复核记录见 `execution-review.json` 与 `syntax-checks.json`。",
+  "ttft_ms": 1620,
+  "type": "result",
+  "duration_ms": 24562,
+  "uuid": "fe3b20e3-00fa-41ea-94e3-7cb5c5df4189",
+  "ttft_stream_ms": 1021,
+  "time_to_request_ms": 100,
+  "first_content_frame_ms": 1022,
+  "queued_turn_count": 0,
+  "result_index": 0
+}

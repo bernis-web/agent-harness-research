@@ -1,0 +1,44 @@
+{
+  "tree": {
+    "title": "中心主题",
+    "children": [
+      {
+        "title": "甲一",
+        "children": [
+          {
+            "title": "临时1",
+            "children": []
+          }
+        ]
+      },
+      {
+        "title": "甲二",
+        "children": [
+          {
+            "title": "甲细",
+            "children": [
+              {
+                "title": "临时3",
+                "children": []
+              }
+            ]
+          },
+          {
+            "title": "细节乙",
+            "children": []
+          },
+          {
+            "title": "临时2",
+            "children": []
+          }
+        ]
+      },
+      {
+        "title": "甲三",
+        "children": []
+      }
+    ]
+  },
+  "errors": [],
+  "message": "已重命名"
+}

@@ -1,0 +1,260 @@
+{
+ "mode": "scan",
+ "label": "batch-cc-1 pre-session",
+ "run_id": "batch-cc-1-prescan",
+ "generated": "2026-09-18T19:31:22",
+ "spec": "isolation/spec-d4-batch-v0.2.md",
+ "scan_dir": "D:\\projects\\agent-harness-research\\experiments\\t2-prod\\batch-cc-1",
+ "phase_filter": "all",
+ "verifier_sha256": "625b753e621b46c0198df114f88d2b66a2d7e5b018226840c1e0c47f96300479",
+ "corpus_sha256": "c4138b6aeee6907c1134fc15c8da1b99420e66957d68ef9e143475d4d484c10c",
+ "files": [
+  {
+   "path": "README.md",
+   "sha256": "6874a16a43337cf4993c8ee45cd1f39e298dcace359234e35c72955e5878c948",
+   "bytes": 1558
+  },
+  {
+   "path": "T2-SPEC-draft-v0.1.md",
+   "sha256": "bc399eec1b41f2d942eff12fbf48c3da42c492d5824e466d1e1b5caa3cf668da",
+   "bytes": 14213
+  },
+  {
+   "path": "notes.py",
+   "sha256": "78c16c9985bf906f309547f545dc53cc5c6c519214674ba3b9a188b764b4b0be",
+   "bytes": 9174
+  },
+  {
+   "path": "public-cases.md",
+   "sha256": "dca5fdbd3f1ca792156c932994ca45072dcac44b927e3907362759b12f27dd70",
+   "bytes": 22783
+  },
+  {
+   "path": "tests/_support.py",
+   "sha256": "97df401afd6b88c389fe0734e3c4ccd0f635e64e924face24b96f0d7c7cf8153",
+   "bytes": 2463
+  },
+  {
+   "path": "tests/test_u01.py",
+   "sha256": "e045ca4d06af151c11aa8d6038149f3721baba728fdbfebfc327fe910071fa5a",
+   "bytes": 3677
+  },
+  {
+   "path": "tests/test_u02.py",
+   "sha256": "1c708b5c7c85fc8837c10a16865a0e98289fe415283873d11606e740aab3d753",
+   "bytes": 2377
+  },
+  {
+   "path": "tests/test_u03.py",
+   "sha256": "a293318f18612943ca2f5612969e9e890eb94a739e2a9c06b20017014055c48c",
+   "bytes": 1813
+  },
+  {
+   "path": "tests/test_u04.py",
+   "sha256": "388791fd0bf9297b3dbeee02f1f39a404ba89345b000a3b787ba9458fe8cdb98",
+   "bytes": 1532
+  },
+  {
+   "path": "tests/test_u05.py",
+   "sha256": "aa30004ab2868cb8b0c0f529336f48c68647955c2bdda95468f1774c01386245",
+   "bytes": 1646
+  },
+  {
+   "path": "tests/test_u06.py",
+   "sha256": "039f301ada979c660492e74a6fe724c2cb7f181865a7192c3171d8e806a3fa72",
+   "bytes": 1692
+  },
+  {
+   "path": "tests/test_u07.py",
+   "sha256": "f453fdae03bd4b9aa66b77ce58a15a59e6aa1b7257fcc03abd305ec993f83b6a",
+   "bytes": 2291
+  },
+  {
+   "path": "tests/test_u08.py",
+   "sha256": "407b9c703416fa92a864ff99a815bd04286ac48e20b3bb4ab76b7417820336ff",
+   "bytes": 3379
+  },
+  {
+   "path": "tests/test_u09.py",
+   "sha256": "bf198e0b4fca380789a6471cc6ab74f254b511fd4c719d2843253418152a1d84",
+   "bytes": 3085
+  },
+  {
+   "path": "tests/test_u10.py",
+   "sha256": "76fdb6dc9637101c3a9d4c5c2c1592b81cea85d70cd4233d01c842c2f0546abd",
+   "bytes": 1777
+  }
+ ],
+ "file_count": 15,
+ "corpus": {
+  "total": 45,
+  "phase_filter": "all",
+  "stale_removed": [],
+  "whitelist_removed": [
+   {
+    "value": "已存",
+    "source": "whitelist"
+   }
+  ],
+  "active_count": 44,
+  "active_values": [
+   "Maße",
+   "MASSE二",
+   "MASSE双命中",
+   "masse",
+   "藏着 anchor 在这里",
+   "ANCHOR",
+   "b2",
+   "MASSE 在正文",
+   "masse 也在这",
+   "已存/b2 条",
+   "Delta",
+   "epsilon",
+   "Epsilon",
+   "Zeta",
+   "包含 Epsilon 词",
+   "M01",
+   "M02",
+   "M03",
+   "H01",
+   "H02",
+   "H03",
+   "H04",
+   "mutation-map",
+   "hidden-groups",
+   "变异判定映射",
+   "隐藏用例组",
+   "witness",
+   "预测清单",
+   "PREDICTED-EXACT",
+   "CALIBRATED",
+   "t2-eval",
+   "t2-prep",
+   "FABRICATION-LOG",
+   "MANIFEST.json",
+   "frozen-criteria",
+   "zero-change",
+   "predicted.py",
+   "hidden.py",
+   "mutants.py",
+   "agent-harness-research",
+   "cline-mcp-workspace",
+   "return s.casefold()",
+   "record = {\"title\": title, \"body\": body}",
+   "return data, True"
+  ],
+  "active_subset_sha256": "90efeb867524419e01ad342fbfc8dcc3562eb5a0d356a709472c388809c867c2",
+  "freshness_sources": [
+   {
+    "path": "D:\\projects\\agent-harness-research\\experiments\\t2-prep\\acceptance\\hidden-groups.md",
+    "sha256": "9156f3890a2baadd6261d05c2892530775aacd2153421d33007eecd06d2b3bfe"
+   },
+   {
+    "path": "D:\\projects\\agent-harness-research\\experiments\\t2-prep\\acceptance\\mutation-map.md",
+    "sha256": "0267f6c1ec973e46675709ffe01468a8b761c4bac017312d95d8bf1043435af4"
+   },
+   {
+    "path": "D:\\projects\\agent-harness-research\\experiments\\t2-prep\\README.md",
+    "sha256": "f4699b38a1d891d9179b76f4299799065a69cca91e2a2bee517d74097663c71c"
+   },
+   {
+    "path": "D:\\projects\\agent-harness-research\\experiments\\t2-prep\\coordination\\draft-status.md",
+    "sha256": "573e44191d3cf31d971ced1c6d4c41dfde14816f4d145ab1facc1442e6ee84ae"
+   },
+   {
+    "path": "D:\\projects\\agent-harness-research\\experiments\\t2-eval\\FABRICATION-LOG.md",
+    "sha256": "9ef46cdd25880e131d25ff08b0c968ceaf87900171b9708559c9ea324ce49671"
+   },
+   {
+    "path": "D:\\projects\\agent-harness-research\\experiments\\t2-eval\\evaluator\\hidden.py",
+    "sha256": "e87f8834501238d470569af053ce971ef53d7e351cfaf197cec1c3e4fe8b15c0"
+   },
+   {
+    "path": "D:\\projects\\agent-harness-research\\experiments\\t2-eval\\evaluator\\mutants.py",
+    "sha256": "3d3574773b8637bcba8f7ad25e2ab8bf1d9129a14255389445520d5783d96d55"
+   },
+   {
+    "path": "D:\\projects\\agent-harness-research\\experiments\\t2-eval\\evaluator\\predicted.py",
+    "sha256": "03f82748f7daf43005cccd9ca6fbce437342a4a94c7d7896a6f31b358dd36105"
+   },
+   {
+    "path": "D:\\projects\\agent-harness-research\\experiments\\t2-eval\\runs\\zero-change-check-1\\verification.txt",
+    "sha256": "3503d7bdd1e3c97b1258fc663bbeec88e37c1abc9b41b26903500818ec129aa6"
+   },
+   {
+    "path": "D:\\projects\\cline-mcp-workspace\\orchestration\\tmp\\task-t2-fabrication-review.md",
+    "sha256": "88e31e55b83c27a4a171f3fdf9949fb7f342c8427e1311cede7ff63ea88eb6c7"
+   },
+   {
+    "path": "D:\\projects\\cline-mcp-workspace\\orchestration\\runs\\20260918-132658\\last-message.txt",
+    "sha256": "241079329f2de9fdb6b0a408004fd9f65e01ca8de942719b8c295f954d5e3c6e"
+   }
+  ],
+  "whitelist_sources": [
+   {
+    "path": "D:\\projects\\agent-harness-research\\experiments\\t2-prep\\spec\\T2-SPEC-draft-v0.1.md",
+    "sha256": "bc399eec1b41f2d942eff12fbf48c3da42c492d5824e466d1e1b5caa3cf668da"
+   },
+   {
+    "path": "D:\\projects\\agent-harness-research\\experiments\\t2-eval\\defective\\notes.py",
+    "sha256": "78c16c9985bf906f309547f545dc53cc5c6c519214674ba3b9a188b764b4b0be"
+   },
+   {
+    "path": "D:\\projects\\agent-harness-research\\experiments\\t2-prep\\acceptance\\public-cases.md",
+    "sha256": "dca5fdbd3f1ca792156c932994ca45072dcac44b927e3907362759b12f27dd70"
+   },
+   {
+    "path": "D:\\projects\\agent-harness-research\\experiments\\t2-eval\\tests\\_support.py",
+    "sha256": "97df401afd6b88c389fe0734e3c4ccd0f635e64e924face24b96f0d7c7cf8153"
+   },
+   {
+    "path": "D:\\projects\\agent-harness-research\\experiments\\t2-eval\\tests\\test_u01.py",
+    "sha256": "e045ca4d06af151c11aa8d6038149f3721baba728fdbfebfc327fe910071fa5a"
+   },
+   {
+    "path": "D:\\projects\\agent-harness-research\\experiments\\t2-eval\\tests\\test_u02.py",
+    "sha256": "1c708b5c7c85fc8837c10a16865a0e98289fe415283873d11606e740aab3d753"
+   },
+   {
+    "path": "D:\\projects\\agent-harness-research\\experiments\\t2-eval\\tests\\test_u03.py",
+    "sha256": "a293318f18612943ca2f5612969e9e890eb94a739e2a9c06b20017014055c48c"
+   },
+   {
+    "path": "D:\\projects\\agent-harness-research\\experiments\\t2-eval\\tests\\test_u04.py",
+    "sha256": "388791fd0bf9297b3dbeee02f1f39a404ba89345b000a3b787ba9458fe8cdb98"
+   },
+   {
+    "path": "D:\\projects\\agent-harness-research\\experiments\\t2-eval\\tests\\test_u05.py",
+    "sha256": "aa30004ab2868cb8b0c0f529336f48c68647955c2bdda95468f1774c01386245"
+   },
+   {
+    "path": "D:\\projects\\agent-harness-research\\experiments\\t2-eval\\tests\\test_u06.py",
+    "sha256": "039f301ada979c660492e74a6fe724c2cb7f181865a7192c3171d8e806a3fa72"
+   },
+   {
+    "path": "D:\\projects\\agent-harness-research\\experiments\\t2-eval\\tests\\test_u07.py",
+    "sha256": "f453fdae03bd4b9aa66b77ce58a15a59e6aa1b7257fcc03abd305ec993f83b6a"
+   },
+   {
+    "path": "D:\\projects\\agent-harness-research\\experiments\\t2-eval\\tests\\test_u08.py",
+    "sha256": "407b9c703416fa92a864ff99a815bd04286ac48e20b3bb4ab76b7417820336ff"
+   },
+   {
+    "path": "D:\\projects\\agent-harness-research\\experiments\\t2-eval\\tests\\test_u09.py",
+    "sha256": "bf198e0b4fca380789a6471cc6ab74f254b511fd4c719d2843253418152a1d84"
+   },
+   {
+    "path": "D:\\projects\\agent-harness-research\\experiments\\t2-eval\\tests\\test_u10.py",
+    "sha256": "76fdb6dc9637101c3a9d4c5c2c1592b81cea85d70cd4233d01c842c2f0546abd"
+   },
+   {
+    "path": "runs\\batch-cc-1\\readme-original.md",
+    "sha256": "6874a16a43337cf4993c8ee45cd1f39e298dcace359234e35c72955e5878c948"
+   }
+  ]
+ },
+ "claims_scope": "PASS == zero match in active literal corpus byte patterns (utf-8/utf-16-le); not a claim of zero secrets of any encoding",
+ "scan_hits": [],
+ "problems": [],
+ "ok": true
+}

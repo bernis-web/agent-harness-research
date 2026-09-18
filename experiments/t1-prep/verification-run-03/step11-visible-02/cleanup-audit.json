@@ -1,0 +1,24 @@
+{
+  "at": "2026-09-17T16:06:04.410Z",
+  "driver": {
+    "pid": 35832,
+    "exitCode": 1
+  },
+  "context": {
+    "ownedContextCloseCompleted": true,
+    "at": "2026-09-17T16:04:44.457Z",
+    "pagesRemaining": 0
+  },
+  "osObservation": {
+    "queriedExactIds": [
+      32640,
+      35832
+    ],
+    "driverNotPresent": true,
+    "reportedBrowserIdCurrentlyProcessName": "conhost",
+    "caution": "PID alone is not a stable identity; no OS termination attempted. Context-close API returned and pagesRemaining=0; do not claim PID globally absent."
+  },
+  "noFurtherRun": true,
+  "trackedDiff": "",
+  "protectedUnchanged": true
+}

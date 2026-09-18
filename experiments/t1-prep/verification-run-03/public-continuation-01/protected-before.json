@@ -1,0 +1,26 @@
+{
+  "at": "2026-09-17T12:55:54.672Z",
+  "allUnchanged": true,
+  "files": {
+    "README.md": {
+      "sha256": "182ea15d3f5fa0a7ebbf68588805bd5c42ca247a4c7644dec4927fe35eeafa75",
+      "unchanged": true
+    },
+    "reference/mindmap.html": {
+      "sha256": "c3811f4e772e53fdbf4a047f015eebd2eb6f57df90e497c4b78608af0f5904ad",
+      "unchanged": true
+    },
+    "reference/README.md": {
+      "sha256": "562164a394bfee597047c6bb194d109ccfb7a471b5beeb0e4106d514061494d1",
+      "unchanged": true
+    },
+    "spec/T1-规格-冻结-v1.0.md": {
+      "sha256": "3c1dbd49d8b79559cfcc1619a12d270dfc540c7a1265b1507aa9832049081f93",
+      "unchanged": true
+    },
+    "acceptance/验收手册-公开链与片段.md": {
+      "sha256": "3a90ef31c8b34e35fefebf3dceba44c91d30ee7a86013ff7461453409a654b46",
+      "unchanged": true
+    }
+  }
+}

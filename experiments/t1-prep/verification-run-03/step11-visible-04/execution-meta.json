@@ -1,0 +1,11 @@
+{
+  "started": "2026-09-18T03:11:18.838Z",
+  "driverPid": 21576,
+  "attempt": 1,
+  "visibleBrowser": true,
+  "timeoutSeconds": 90,
+  "driverExitCode": 0,
+  "browserPid": 32568,
+  "dialogPid": 21464,
+  "cleanupAt": "2026-09-18T03:11:23.837Z"
+}

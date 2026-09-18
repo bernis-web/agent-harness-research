@@ -1,0 +1,31 @@
+{
+  "pid": 48240,
+  "driverPid": 48548,
+  "exe": "C:/Program Files/Google/Chrome/Application/chrome.exe",
+  "profile": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\step11-visible-03\\attempt-06\\evidence/profile",
+  "spawnBeforeMs": 1789665203532,
+  "spawnAfterMs": 1789665203670,
+  "cdpPid": 48240,
+  "cdpEqualsSpawn": true,
+  "identity": {
+    "passed": true,
+    "pid": 48240,
+    "exe": "c:\\program files\\google\\chrome\\application\\chrome.exe",
+    "createTime": 1789665203.5345669,
+    "parentPid": 48548,
+    "profile": "d:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\step11-visible-03\\attempt-06\\evidence\\profile",
+    "profileMatch": true,
+    "targetOwnerHwnd": 12125696,
+    "targetTopWindows": [
+      {
+        "hwnd": 12125696,
+        "pid": 48240,
+        "class": "Chrome_WidgetWin_1",
+        "visible": true,
+        "owner": 0,
+        "ownerPid": 0
+      }
+    ],
+    "checkedAtMs": 1789665205740
+  }
+}

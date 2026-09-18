@@ -1,0 +1,24 @@
+Return ONLY JSON {"replacements":[{"file":"step11.cjs","old":"exact block","new":"replacement"}],"rationale":"..."}. Fix harness-only native filechooser interception after successful prerequisite nonempty import. Current code disabling via independent CDP session may not disable original Playwright main session interceptor. Use in-process t.page._connection.toImpl(t.page) based on supplied verified local source; get server impl.delegate._mainFrameSession._client; explicitly send Page.setInterceptFileChooserDialog enabled:false on that session after updateSubscription false. Assert fileChooserIntercepted() false, listener zero. Log safe counts/booleans only. Preserve tests and page input untouched, no setFiles([]), no fake cancel, no internal product state. Reject if mapping not available. No change to UI prerequisite. Existing exact block:
+// step11 — inserted after playwright import, before native spawn (same in-process playwright-core)
+await (async () => {
+  const fs = require('fs');
+  if (t.page.listenerCount('filechooser') !== 0) {
+    throw new Error('pre-spawn: filechooser listener already attached, count=' + t.page.listenerCount('filechooser'));
+  }
+  await t.page._channel.updateSubscription({ event: 'fileChooser', enabled: false });
+  const cdp = await t.page.context().newCDPSession(t.page);
+  try {
+    await cdp.send('Page.setInterceptFileChooserDialog', { enabled: false });
+  } finally {
+    await cdp.detach();
+  }
+  fs.writeFileSync(path.join(out,'interception.json'), JSON.stringify({
+    filechooserListenerCount: t.page.listenerCount('filechooser'),
+    updateSubscription: { event: 'fileChooser', enabled: false },
+    cdpSetInterceptFileChooserDialog: { enabled: false },
+    atMs: Date.now(),
+  }, null, 2));
+})();
+
+Verified local source excerpts:
+[{"file":"D:/projects/npm-cache/_npx/cbf1b8a072280925/node_modules/playwright-core/lib/coreBundle.js","start":22844,"end":22858,"text":"      async setFileChooserInterceptedBy(progress2, enabled, by) {\n        await progress2.race(this._setFileChooserInterceptedBy(enabled, by));\n      }\n      async _setFileChooserInterceptedBy(enabled, by) {\n        const wasIntercepted = this.fileChooserIntercepted();\n        if (enabled)\n          this._fileChooserInterceptedBy.add(by);\n        else\n          this._fileChooserInterceptedBy.delete(by);\n        if (wasIntercepted !== this.fileChooserIntercepted())\n          await this.delegate.updateFileChooserInterception();\n      }\n      fileChooserIntercepted() {\n        return this._fileChooserInterceptedBy.size > 0;\n      }"},{"file":"D:/projects/npm-cache/_npx/cbf1b8a072280925/node_modules/playwright-core/lib/coreBundle.js","start":37344,"end":37349,"text":"      async updateRequestInterception() {\n        await this._networkManager.setRequestInterception(this._page.needsRequestInterception());\n      }\n      async updateFileChooserInterception() {\n        await this._forAllFrameSessions((frame) => frame._updateFileChooserInterception(false));\n      }"},{"file":"D:/projects/npm-cache/_npx/cbf1b8a072280925/node_modules/playwright-core/lib/coreBundle.js","start":38026,"end":38032,"text":"      async _updateFileChooserInterception(initial) {\n        const enabled = this._page.fileChooserIntercepted();\n        if (initial && !enabled)\n          return;\n        await this._client.send(\"Page.setInterceptFileChooserDialog\", { enabled }).catch(() => {\n        });\n      }"},{"file":"D:/projects/npm-cache/_npx/cbf1b8a072280925/node_modules/playwright-core/lib/coreBundle.js","start":63977,"end":63985,"text":"  dispatcherConnection.onmessage = (message) => setImmediate(() => clientConnection.dispatch(message));\n  clientConnection.onmessage = (message) => setImmediate(() => dispatcherConnection.dispatch(message));\n  clientConnection.toImpl = (x) => {\n    if (x instanceof Connection)\n      return x === clientConnection ? dispatcherConnection : void 0;\n    if (!x)\n      return dispatcherConnection._dispatcherByGuid.get(\"\");\n    return dispatcherConnection._dispatcherByGuid.get(x._guid)._object;\n  };"}]

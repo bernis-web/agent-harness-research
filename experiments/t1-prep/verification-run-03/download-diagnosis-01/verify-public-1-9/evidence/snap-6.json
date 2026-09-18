@@ -1,0 +1,31 @@
+{
+  "tree": {
+    "title": "中心主题",
+    "children": [
+      {
+        "title": "分支一",
+        "children": [
+          {
+            "title": "细节丙",
+            "children": []
+          }
+        ]
+      },
+      {
+        "title": "分支贰",
+        "children": [
+          {
+            "title": "细节甲",
+            "children": []
+          }
+        ]
+      },
+      {
+        "title": "分支三",
+        "children": []
+      }
+    ]
+  },
+  "errors": [],
+  "message": "生成被拒绝：第 2 行：缩进不符合层级规则（多根或跳层）；当前导图与撤销记录不变"
+}

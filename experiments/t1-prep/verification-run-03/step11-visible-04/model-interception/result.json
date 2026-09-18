@@ -1,0 +1,85 @@
+{
+  "duration_api_ms": 29389,
+  "stop_reason": "end_turn",
+  "session_id": "7a8db40c-5420-43f9-a2a4-b722e9144e35",
+  "total_cost_usd": 0.04388,
+  "usage": {
+    "input_tokens": 2111,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "output_tokens": 1333,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "",
+    "iterations": [],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "glm-5.3-flash": {
+      "inputTokens": 2111,
+      "outputTokens": 1333,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.04388,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000,
+      "thinkingTokens": 0,
+      "canonicalModel": "glm-5.3-flash",
+      "provider": "firstParty",
+      "costBasis": "unknown"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "is_error": false,
+  "num_turns": 1,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "```json\n{\n  \"replacements\": [\n    {\n      \"file\": \"step11.cjs\",\n      \"old\": \"// step11 — inserted after playwright import, before native spawn (same in-process playwright-core)\\nawait (async () => {\\n  const fs = require('fs');\\n  if (t.page.listenerCount('filechooser') !== 0) {\\n    throw new Error('pre-spawn: filechooser listener already attached, count=' + t.page.listenerCount('filechooser'));\\n  }\\n  await t.page._channel.updateSubscription({ event: 'fileChooser', enabled: false });\\n  const cdp = await t.page.context().newCDPSession(t.page);\\n  try {\\n    await cdp.send('Page.setInterceptFileChooserDialog', { enabled: false });\\n  } finally {\\n    await cdp.detach();\\n  }\\n  fs.writeFileSync(path.join(out,'interception.json'), JSON.stringify({\\n    filechooserListenerCount: t.page.listenerCount('filechooser'),\\n    updateSubscription: { event: 'fileChooser', enabled: false },\\n    cdpSetInterceptFileChooserDialog: { enabled: false },\\n    atMs: Date.now(),\\n  }, null, 2));\\n})();\",\n      \"new\": \"// step11 — inserted after playwright import, before native spawn (same in-process playwright-core)\\nawait (async () => {\\n  const fs = require('fs');\\n  if (t.page.listenerCount('filechooser') !== 0) {\\n    throw new Error('pre-spawn: filechooser listener already attached, count=' + t.page.listenerCount('filechooser'));\\n  }\\n  // Resolve the in-process impl object: clientConnection.toImpl maps a client-side\\n  // Page to its dispatcher's impl Page (coreBundle.js ~63977).\\n  const conn = t.page._connection;\\n  if (!conn || typeof conn.toImpl !== 'function') {\\n    throw new Error('reject: t.page._connection.toImpl not available');\\n  }\\n  const pageImpl = conn.toImpl(t.page);\\n  if (!pageImpl || !pageImpl.delegate) {\\n    throw new Error('reject: page impl or impl.delegate mapping not available');\\n  }\\n  const mainFrameSession = pageImpl.delegate._mainFrameSession;\\n  const mainClient = mainFrameSession && mainFrameSession._client;\\n  if (!mainClient || typeof mainClient.send !== 'function') {\\n    throw new Error('reject: impl.delegate._mainFrameSession._client mapping not available');\\n  }\\n  // 1) Clear Playwright's own interceptors registered for this page.\\n  await t.page._channel.updateSubscription({ event: 'fileChooser', enabled: false });\\n  // 2) Explicitly disable native interception on the ORIGINAL main-frame CDP session\\n  //    (_updateFileChooserInterception sends Page.setInterceptFileChooserDialog on\\n  //    this exact _client), not on a fresh detached CDP session.\\n  const interceptedBefore = pageImpl.fileChooserIntercepted();\\n  await mainClient.send('Page.setInterceptFileChooserDialog', { enabled: false });\\n  const interceptedAfter = pageImpl.fileChooserIntercepted();\\n  const listenerCount = t.page.listenerCount('filechooser');\\n  if (interceptedAfter !== false) {\\n    throw new Error('post-disable: fileChooserIntercepted() still true');\\n  }\\n  if (listenerCount !== 0) {\\n    throw new Error('post-disable: filechooser listener count=' + listenerCount);\\n  }\\n  fs.writeFileSync(path.join(out,'interception.json'), JSON.stringify({\\n    filechooserListenerCount: listenerCount,\\n    fileChooserInterceptedBefore: interceptedBefore,\\n    fileChooserInterceptedAfter: interceptedAfter,\\n    updateSubscription: { event: 'fileChooser', enabled: false },\\n    mainFrameSessionSetInterceptFileChooserDialog: { enabled: false },\\n    atMs: Date.now(),\\n  }, null, 2));\\n})();\"\n    }\n  ],\n  \"rationale\": \"The old block's independent newCDPSession sent Page.setInterceptFileChooserDialog on a fresh session, which cannot disable interception on the original main-frame session that Playwright's own interceptor owns. Per verified source: updateSubscription(false) removes the page's 'by' entry (coreBundle.js ~22844) and delegate.updateFileChooserInterception() fans out to frame sessions (~37344), each sending Page.setInterceptFileChooserDialog on frame._client (~38026). The replacement resolves that exact original session in-process via _connection.toImpl(t.page) -> impl.delegate._mainFrameSession._client and sends enabled:false on it directly, then asserts pageImpl.fileChooserIntercepted() === false and zero 'filechooser' listeners. If the toImpl or delegate/session/_client mapping is unavailable, it rejects instead of proceeding. Only counts/booleans are logged; no setFiles([]), no fake cancel, no product-state mutation; UI prerequisite and page input are untouched.\"\n}\n```",
+  "ttft_ms": 9205,
+  "type": "result",
+  "duration_ms": 29482,
+  "uuid": "bbd463f7-f1e3-421b-989a-7d8ae2b83d30",
+  "ttft_stream_ms": 1213,
+  "time_to_request_ms": 102,
+  "first_content_frame_ms": 1214,
+  "queued_turn_count": 0,
+  "result_index": 0
+}

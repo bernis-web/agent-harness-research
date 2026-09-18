@@ -1,0 +1,174 @@
+{
+  "date": "2026-09-18",
+  "type": "Document-only static cross-check, not product tests",
+  "exact_read_allowlist": [
+    "spec/T2-SPEC-draft-v0.1.md",
+    "README.md",
+    "acceptance/README.md",
+    "acceptance/public-cases.md",
+    "acceptance/hidden-groups.md",
+    "acceptance/mutation-map.md"
+  ],
+  "requirements": [
+    "R01",
+    "R02",
+    "R03",
+    "R04",
+    "R05",
+    "R06",
+    "R07",
+    "R08",
+    "R09",
+    "R10",
+    "R11",
+    "R12"
+  ],
+  "public_ids": [
+    "U01",
+    "U02",
+    "U03",
+    "U04",
+    "U05",
+    "U06",
+    "U07",
+    "U08",
+    "U09",
+    "U10"
+  ],
+  "hidden_ids": [
+    "H01",
+    "H02",
+    "H03",
+    "H04"
+  ],
+  "mutation_ids": [
+    "M01",
+    "M02",
+    "M03"
+  ],
+  "argv_arrays_parse_checked": 68,
+  "argv_parse_errors": [],
+  "scenarios": [
+    [
+      "U01",
+      "R01/R03/R04/R05/R06/R07/R09/R10",
+      "特殊字符串写入→JSONL读取→strasse查询→导出→数组重载；保真/查询/顺序预期逐项比对"
+    ],
+    [
+      "U02",
+      "R03/R04/R06/R07",
+      "全角不归一化；ABC与abc精确不同；空正文与两端空白保留；成功写出不锁字节"
+    ],
+    [
+      "U03",
+      "R01/R03/R04/R08/R09",
+      "15条独立拒绝命令仍属于1个场景；每步snapshot原始bytes；missing store参数不绑定隐含路径"
+    ],
+    [
+      "U04",
+      "R06",
+      "strasse/STRASSE/ß均命中前三条；第三条确实标题正文双命中且只返回一次"
+    ],
+    [
+      "U05",
+      "R03/R06",
+      "先add含LF/引号/TAB；3次query预期1/1/0；bytes不变只用于后三个只读步骤"
+    ],
+    [
+      "U06",
+      "R02/R06/R07/R08",
+      "空store、空格query、无结果与缺失文件区分；missing与out不创建"
+    ],
+    [
+      "U07",
+      "R02/R05/R09",
+      "普通文件、相对/绝对中文空格路径、空导出；未设置只读位或权限模拟"
+    ],
+    [
+      "U08",
+      "R02/R08/R09/R11",
+      "./sub/../good与源同路径且sub已存在；现有目标/目录/缺父目录/空路径分别拒绝"
+    ],
+    [
+      "U09",
+      "R04/R05/R06/R09/R10",
+      "beta仅返回第二条；数组add保持格式；重复拒绝；原JSONL始终不变"
+    ],
+    [
+      "U10",
+      "R05/R08/R09",
+      "截断JSON与单一非法UTF8字节；不新增隐藏坏数据种类；拒绝时bytes及存在性不变"
+    ]
+  ],
+  "gates": [
+    [
+      "G01",
+      "用户明确要求",
+      "诊断修复预置notes.py，不是从零创建；不引入第三方依赖"
+    ],
+    [
+      "G02",
+      "用户明确要求",
+      "notes.py+README.md+CHANGES.md；CHANGES≤10条"
+    ],
+    [
+      "G03",
+      "用户明确要求",
+      "tests相对文件集合及每文件SHA-256前后一致；本轮未读/未hash tests"
+    ],
+    [
+      "G04",
+      "稿内拟定",
+      "U01–U10共10场景；H01–H04仅数据替换；M01–M03独立单点校准，不混P1/P2"
+    ],
+    [
+      "G05",
+      "范围",
+      "参考/隐藏/变异/coordination不进入产品；未来提供已有产品和公开tests，不把修复任务变成新建"
+    ],
+    [
+      "G06",
+      "比较规则",
+      "成功序列化按有序记录/字符串语义；JSONL一物理行一记录、末尾LF 0或1；拒绝/只读按原bytes"
+    ],
+    [
+      "G07",
+      "未验证",
+      "未运行产品、Python、测试、变异、故障注入；均UNRUN"
+    ]
+  ],
+  "hidden_mapping": {
+    "H01": "U01",
+    "H02": "U03",
+    "H03": "U04",
+    "H04": "U09"
+  },
+  "mutations": {
+    "M01": {
+      "primary": "R03",
+      "public": "U01.1/3; U05.2",
+      "hidden": "H01"
+    },
+    "M02": {
+      "primary": "R06",
+      "public": "U01.4; U04.1-3",
+      "hidden": "H01/H03",
+      "negative_note": "U09 ASCII query cannot kill this mutation"
+    },
+    "M03": {
+      "primary": "R10",
+      "public": "U01.7; U09.3/5/6",
+      "hidden": "H04"
+    }
+  },
+  "git_status_after": "?? experiments/\n?? research/\n",
+  "tracked_diff_stat": "empty",
+  "preservation_evidence_limit": "No repeat inventory and no repository hash comparison. Git status cannot prove untracked pre-existing files unchanged. No such claim is made.",
+  "unresolved_design_decisions": [
+    "JSONL + JSON array dual-format detection and allowing add after reload (baseline A proposed; read-only reload B is not a second active criterion)",
+    "Exact duplicate-title semantics, Unicode casefold substring scope, stdout shape and 0/2/3 exit codes are proposed choices",
+    "Public10/hidden4/three single-point mutations and scope exclusions await coordinator review"
+  ],
+  "status": "STATIC_REVIEW_COMPLETE_DRAFT_NOT_APPROVED",
+  "product_status": "UNRUN"
+}

@@ -1,0 +1,6 @@
+Error: DOWNLOAD_FAILURE: canceled
+    at t.exportMap (D:\projects\agent-harness-research\experiments\t1-prep\verification-run-03\attempt04-model-glm53\flash-modules\execution\harness.cjs:114:23)
+    at async D:\projects\agent-harness-research\experiments\t1-prep\verification-run-03\attempt04-model-glm53\flash-modules\execution\public-chain.cjs:65:22
+    at async t.step (D:\projects\agent-harness-research\experiments\t1-prep\verification-run-03\attempt04-model-glm53\flash-modules\execution\harness.cjs:151:11)
+    at async module.exports (D:\projects\agent-harness-research\experiments\t1-prep\verification-run-03\attempt04-model-glm53\flash-modules\execution\public-chain.cjs:64:3)
+    at async D:\projects\agent-harness-research\experiments\t1-prep\verification-run-03\attempt04-model-glm53\flash-modules\execution\run.cjs:7:65

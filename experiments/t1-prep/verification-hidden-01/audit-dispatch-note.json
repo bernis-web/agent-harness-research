@@ -1,0 +1,6 @@
+{
+  "at": "2026-09-18T03:45:11.594Z",
+  "reason": "Original audit call spent >300s on thinking with no deliverable text. Dispatch narrower <=100-line task; original remains bounded at its original timeout and output preserved.",
+  "newCall": "model-audit-small",
+  "scope": "read only exact new evidence; no model receives results/incident/storage material"
+}

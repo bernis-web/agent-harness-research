@@ -1,0 +1,31 @@
+{
+  "attempt": 2,
+  "started": "2026-09-17T19:41:23+0800",
+  "executable": "D:/projects/node-global/node_modules/@anthropic-ai/claude-code/bin/claude.exe",
+  "args": [
+    "--print",
+    "--safe-mode",
+    "--tools",
+    "",
+    "--disable-slash-commands",
+    "--strict-mcp-config",
+    "--mcp-config",
+    "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\attempt02-normal-auth\\empty-mcp.json",
+    "--setting-sources",
+    "user",
+    "--settings",
+    "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\attempt02-normal-auth\\settings.json",
+    "--no-session-persistence",
+    "--system-prompt-snapshot",
+    "off",
+    "--no-chrome",
+    "--output-format",
+    "json"
+  ],
+  "prompt_sha256": "380374a5ae3c1b1913a0ef9daef0fc17b3cd879688b3254020a80fc3dc3dc190",
+  "timeout_seconds": 840,
+  "authentication": "normal HOME inherited; safe-mode help explicitly preserves auth; no credential extraction",
+  "role": "preparation assistant, not tested product",
+  "error": "bounded task timeout",
+  "elapsed_seconds": 840.03
+}

@@ -1,0 +1,46 @@
+{
+  "label": "H2-gen-single-root",
+  "tree": {
+    "title": "根A",
+    "children": []
+  },
+  "errors": [],
+  "message": {
+    "visible": true,
+    "text": "生成成功：导图已整体替换，撤销记录已清空",
+    "color": "rgb(17, 119, 17)",
+    "isError": false
+  },
+  "step": {
+    "id": "H2-gen-single-root",
+    "expected": {
+      "title": "根A",
+      "children": []
+    },
+    "status": "PASS",
+    "timestamp": "2026-09-18T03:37:43.959Z",
+    "actionCount": 1,
+    "actual": {
+      "title": "根A",
+      "children": []
+    },
+    "nodeCount": 1,
+    "uiMessage": {
+      "visible": true,
+      "text": "生成成功：导图已整体替换，撤销记录已清空",
+      "color": "rgb(17, 119, 17)",
+      "isError": false
+    },
+    "errors": [],
+    "assertions": {
+      "treeMatches": true,
+      "nodeCount": 1,
+      "message": {
+        "visible": true,
+        "text": "生成成功：导图已整体替换，撤销记录已清空",
+        "color": "rgb(17, 119, 17)",
+        "isError": false
+      }
+    }
+  }
+}

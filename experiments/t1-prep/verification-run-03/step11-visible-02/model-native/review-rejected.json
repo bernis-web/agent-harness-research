@@ -1,0 +1,5 @@
+{
+  "accepted": false,
+  "reason": "invented info.processList; local protocol declares processInfo",
+  "localSource": "D:/projects/npm-cache/_npx/cbf1b8a072280925/node_modules/playwright-core/types/protocol.d.ts:18565-18570"
+}

@@ -1,0 +1,131 @@
+{
+  "at": "2026-09-18T03:35:13.254Z",
+  "passed": true,
+  "checks": {
+    "bothMainDocumentsNonempty": true,
+    "sourceWhitelistUnchanged": true,
+    "trackedDiffUnchanged": true,
+    "realFlashCallsSuccessful": true,
+    "noToolsMcpSkills": true,
+    "originalWrapperPreserved": true,
+    "promptsMatchCallRecords": true,
+    "eachDocumentHasAbsoluteEvidenceMap": true,
+    "T1FreezeNotInvented": true,
+    "hiddenDelegationAndNoRepeat": true,
+    "D2RemainsClosed": true,
+    "old102NotDefault": true,
+    "T2NextActionPending": true,
+    "preparationSeparatedFromProduct": true,
+    "coordinatorAdvancesWithinExistingAuthorization": true,
+    "contextSummaryNotIndependentEvidence": true,
+    "T2WorkerReportedNotVerified": true
+  },
+  "calls": [
+    {
+      "directory": "model",
+      "pid": 2092,
+      "model": [
+        "glm-5.3-flash"
+      ],
+      "effort": "low",
+      "elapsedSeconds": 47.899,
+      "exitCode": 0,
+      "resultIsError": false,
+      "tools": [],
+      "mcpServers": [],
+      "skills": [],
+      "toolUseCount": 0,
+      "promptHashMatches": true,
+      "wrapperMatchesReviewedSource": true
+    },
+    {
+      "directory": "model-revision",
+      "pid": 16180,
+      "model": [
+        "glm-5.3-flash"
+      ],
+      "effort": "low",
+      "elapsedSeconds": 71.579,
+      "exitCode": 0,
+      "resultIsError": false,
+      "tools": [],
+      "mcpServers": [],
+      "skills": [],
+      "toolUseCount": 0,
+      "promptHashMatches": true,
+      "wrapperMatchesReviewedSource": true
+    }
+  ],
+  "sourceChecks": [
+    {
+      "path": "D:/projects/agent-harness-research/research/01-scope/研究问题与边界.md",
+      "unchanged": true
+    },
+    {
+      "path": "D:/projects/agent-harness-research/research/02-design/先导任务说明.md",
+      "unchanged": true
+    },
+    {
+      "path": "D:/projects/agent-harness-research/research/02-design/评分规则.md",
+      "unchanged": true
+    },
+    {
+      "path": "D:/projects/agent-harness-research/research/02-design/数据契约.md",
+      "unchanged": true
+    },
+    {
+      "path": "D:/projects/agent-harness-research/research/02-design/运行器设计.md",
+      "unchanged": true
+    },
+    {
+      "path": "D:/projects/agent-harness-research/docs/superpowers/plans/2026-09-15-claude-code-long-horizon-research-plan.md",
+      "unchanged": true
+    },
+    {
+      "path": "D:/projects/agent-harness-research/docs/superpowers/plans/2026-09-15-flash-execution-brief.md",
+      "unchanged": true
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/README.md",
+      "unchanged": true
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/step11-visible-04/REPORT.md",
+      "unchanged": true
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/step11-visible-04/final-verification.json",
+      "unchanged": true
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/step11-visible-04/evidence-index-validation.json",
+      "unchanged": true
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/step11-visible-04/model-report/invoke-stream.py",
+      "unchanged": true
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/step11-visible-04/model-report/settings.json",
+      "unchanged": true
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/step11-visible-04/model-report/empty-mcp.json",
+      "unchanged": true
+    }
+  ],
+  "referencePathsExist": 11,
+  "mainFiles": [
+    {
+      "path": "D:/projects/agent-harness-research/experiments/project-continuation-20260918/project-status.md",
+      "sha256": "61229f277351998de1f92e6d17aed2433af10146777928a967c7794c7ca2d4a2"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/project-continuation-20260918/next-work-plan.md",
+      "sha256": "37870d1bfa90decb0c97eca4d9ace6ca8cf63d2d00ebdbe12b45833727373697"
+    }
+  ],
+  "scope": "Only exact baseline source whitelist rehashed; no browser-profile/private-config/Cookies scans. No historical experiments rerun. No claim about unrelated concurrent worker writes.",
+  "auth": "Normal CLI authentication inherited; coordinator did not inspect credentials or private configurations.",
+  "promptHashRule": "Hash uses Python read_text universal newline normalization, identical to inherited invoke-stream.py; no prompt file rewritten."
+}

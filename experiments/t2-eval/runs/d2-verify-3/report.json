@@ -1,0 +1,321 @@
+{
+ "mode": "staging",
+ "run_id": "d2-verify-3",
+ "generated": "2026-09-18T19:26:34",
+ "spec": "isolation/spec-d2-isolation-v0.1.md",
+ "verifier_sha256": "a8698f8d4f095c17f96625f2d1bc2c4f945bd815c85ba6e9f3b18f9edc351a6e",
+ "corpus_sha256": "c4138b6aeee6907c1134fc15c8da1b99420e66957d68ef9e143475d4d484c10c",
+ "allowlist": {
+  "T2-SPEC-draft-v0.1.md": "bc399eec1b41f2d942eff12fbf48c3da42c492d5824e466d1e1b5caa3cf668da",
+  "notes.py": "78c16c9985bf906f309547f545dc53cc5c6c519214674ba3b9a188b764b4b0be",
+  "public-cases.md": "dca5fdbd3f1ca792156c932994ca45072dcac44b927e3907362759b12f27dd70",
+  "tests/_support.py": "97df401afd6b88c389fe0734e3c4ccd0f635e64e924face24b96f0d7c7cf8153",
+  "tests/test_u01.py": "e045ca4d06af151c11aa8d6038149f3721baba728fdbfebfc327fe910071fa5a",
+  "tests/test_u02.py": "1c708b5c7c85fc8837c10a16865a0e98289fe415283873d11606e740aab3d753",
+  "tests/test_u03.py": "a293318f18612943ca2f5612969e9e890eb94a739e2a9c06b20017014055c48c",
+  "tests/test_u04.py": "388791fd0bf9297b3dbeee02f1f39a404ba89345b000a3b787ba9458fe8cdb98",
+  "tests/test_u05.py": "aa30004ab2868cb8b0c0f529336f48c68647955c2bdda95468f1774c01386245",
+  "tests/test_u06.py": "039f301ada979c660492e74a6fe724c2cb7f181865a7192c3171d8e806a3fa72",
+  "tests/test_u07.py": "f453fdae03bd4b9aa66b77ce58a15a59e6aa1b7257fcc03abd305ec993f83b6a",
+  "tests/test_u08.py": "407b9c703416fa92a864ff99a815bd04286ac48e20b3bb4ab76b7417820336ff",
+  "tests/test_u09.py": "bf198e0b4fca380789a6471cc6ab74f254b511fd4c719d2843253418152a1d84",
+  "tests/test_u10.py": "76fdb6dc9637101c3a9d4c5c2c1592b81cea85d70cd4233d01c842c2f0546abd"
+ },
+ "staged_files": [
+  "T2-SPEC-draft-v0.1.md",
+  "notes.py",
+  "public-cases.md",
+  "tests/_support.py",
+  "tests/test_u01.py",
+  "tests/test_u02.py",
+  "tests/test_u03.py",
+  "tests/test_u04.py",
+  "tests/test_u05.py",
+  "tests/test_u06.py",
+  "tests/test_u07.py",
+  "tests/test_u08.py",
+  "tests/test_u09.py",
+  "tests/test_u10.py"
+ ],
+ "integrity": [
+  {
+   "path": "T2-SPEC-draft-v0.1.md",
+   "source_sha256": "bc399eec1b41f2d942eff12fbf48c3da42c492d5824e466d1e1b5caa3cf668da",
+   "staged_sha256": "bc399eec1b41f2d942eff12fbf48c3da42c492d5824e466d1e1b5caa3cf668da",
+   "copy_ok": true,
+   "anchor": "frozen-criteria",
+   "anchor_ok": true
+  },
+  {
+   "path": "notes.py",
+   "source_sha256": "78c16c9985bf906f309547f545dc53cc5c6c519214674ba3b9a188b764b4b0be",
+   "staged_sha256": "78c16c9985bf906f309547f545dc53cc5c6c519214674ba3b9a188b764b4b0be",
+   "copy_ok": true,
+   "anchor": "manifest",
+   "anchor_ok": true
+  },
+  {
+   "path": "public-cases.md",
+   "source_sha256": "dca5fdbd3f1ca792156c932994ca45072dcac44b927e3907362759b12f27dd70",
+   "staged_sha256": "dca5fdbd3f1ca792156c932994ca45072dcac44b927e3907362759b12f27dd70",
+   "copy_ok": true,
+   "anchor": "frozen-criteria",
+   "anchor_ok": true
+  },
+  {
+   "path": "tests/_support.py",
+   "source_sha256": "97df401afd6b88c389fe0734e3c4ccd0f635e64e924face24b96f0d7c7cf8153",
+   "staged_sha256": "97df401afd6b88c389fe0734e3c4ccd0f635e64e924face24b96f0d7c7cf8153",
+   "copy_ok": true,
+   "anchor": "manifest",
+   "anchor_ok": true
+  },
+  {
+   "path": "tests/test_u01.py",
+   "source_sha256": "e045ca4d06af151c11aa8d6038149f3721baba728fdbfebfc327fe910071fa5a",
+   "staged_sha256": "e045ca4d06af151c11aa8d6038149f3721baba728fdbfebfc327fe910071fa5a",
+   "copy_ok": true,
+   "anchor": "manifest",
+   "anchor_ok": true
+  },
+  {
+   "path": "tests/test_u02.py",
+   "source_sha256": "1c708b5c7c85fc8837c10a16865a0e98289fe415283873d11606e740aab3d753",
+   "staged_sha256": "1c708b5c7c85fc8837c10a16865a0e98289fe415283873d11606e740aab3d753",
+   "copy_ok": true,
+   "anchor": "manifest",
+   "anchor_ok": true
+  },
+  {
+   "path": "tests/test_u03.py",
+   "source_sha256": "a293318f18612943ca2f5612969e9e890eb94a739e2a9c06b20017014055c48c",
+   "staged_sha256": "a293318f18612943ca2f5612969e9e890eb94a739e2a9c06b20017014055c48c",
+   "copy_ok": true,
+   "anchor": "manifest",
+   "anchor_ok": true
+  },
+  {
+   "path": "tests/test_u04.py",
+   "source_sha256": "388791fd0bf9297b3dbeee02f1f39a404ba89345b000a3b787ba9458fe8cdb98",
+   "staged_sha256": "388791fd0bf9297b3dbeee02f1f39a404ba89345b000a3b787ba9458fe8cdb98",
+   "copy_ok": true,
+   "anchor": "manifest",
+   "anchor_ok": true
+  },
+  {
+   "path": "tests/test_u05.py",
+   "source_sha256": "aa30004ab2868cb8b0c0f529336f48c68647955c2bdda95468f1774c01386245",
+   "staged_sha256": "aa30004ab2868cb8b0c0f529336f48c68647955c2bdda95468f1774c01386245",
+   "copy_ok": true,
+   "anchor": "manifest",
+   "anchor_ok": true
+  },
+  {
+   "path": "tests/test_u06.py",
+   "source_sha256": "039f301ada979c660492e74a6fe724c2cb7f181865a7192c3171d8e806a3fa72",
+   "staged_sha256": "039f301ada979c660492e74a6fe724c2cb7f181865a7192c3171d8e806a3fa72",
+   "copy_ok": true,
+   "anchor": "manifest",
+   "anchor_ok": true
+  },
+  {
+   "path": "tests/test_u07.py",
+   "source_sha256": "f453fdae03bd4b9aa66b77ce58a15a59e6aa1b7257fcc03abd305ec993f83b6a",
+   "staged_sha256": "f453fdae03bd4b9aa66b77ce58a15a59e6aa1b7257fcc03abd305ec993f83b6a",
+   "copy_ok": true,
+   "anchor": "manifest",
+   "anchor_ok": true
+  },
+  {
+   "path": "tests/test_u08.py",
+   "source_sha256": "407b9c703416fa92a864ff99a815bd04286ac48e20b3bb4ab76b7417820336ff",
+   "staged_sha256": "407b9c703416fa92a864ff99a815bd04286ac48e20b3bb4ab76b7417820336ff",
+   "copy_ok": true,
+   "anchor": "manifest",
+   "anchor_ok": true
+  },
+  {
+   "path": "tests/test_u09.py",
+   "source_sha256": "bf198e0b4fca380789a6471cc6ab74f254b511fd4c719d2843253418152a1d84",
+   "staged_sha256": "bf198e0b4fca380789a6471cc6ab74f254b511fd4c719d2843253418152a1d84",
+   "copy_ok": true,
+   "anchor": "manifest",
+   "anchor_ok": true
+  },
+  {
+   "path": "tests/test_u10.py",
+   "source_sha256": "76fdb6dc9637101c3a9d4c5c2c1592b81cea85d70cd4233d01c842c2f0546abd",
+   "staged_sha256": "76fdb6dc9637101c3a9d4c5c2c1592b81cea85d70cd4233d01c842c2f0546abd",
+   "copy_ok": true,
+   "anchor": "manifest",
+   "anchor_ok": true
+  }
+ ],
+ "corpus": {
+  "total": 45,
+  "phase_filter": "all",
+  "stale_removed": [],
+  "whitelist_removed": [
+   {
+    "value": "已存",
+    "source": "whitelist"
+   }
+  ],
+  "active_count": 44,
+  "active_values": [
+   "Maße",
+   "MASSE二",
+   "MASSE双命中",
+   "masse",
+   "藏着 anchor 在这里",
+   "ANCHOR",
+   "b2",
+   "MASSE 在正文",
+   "masse 也在这",
+   "已存/b2 条",
+   "Delta",
+   "epsilon",
+   "Epsilon",
+   "Zeta",
+   "包含 Epsilon 词",
+   "M01",
+   "M02",
+   "M03",
+   "H01",
+   "H02",
+   "H03",
+   "H04",
+   "mutation-map",
+   "hidden-groups",
+   "变异判定映射",
+   "隐藏用例组",
+   "witness",
+   "预测清单",
+   "PREDICTED-EXACT",
+   "CALIBRATED",
+   "t2-eval",
+   "t2-prep",
+   "FABRICATION-LOG",
+   "MANIFEST.json",
+   "frozen-criteria",
+   "zero-change",
+   "predicted.py",
+   "hidden.py",
+   "mutants.py",
+   "agent-harness-research",
+   "cline-mcp-workspace",
+   "return s.casefold()",
+   "record = {\"title\": title, \"body\": body}",
+   "return data, True"
+  ],
+  "active_subset_sha256": "90efeb867524419e01ad342fbfc8dcc3562eb5a0d356a709472c388809c867c2",
+  "freshness_sources": [
+   {
+    "path": "D:\\projects\\agent-harness-research\\experiments\\t2-prep\\acceptance\\hidden-groups.md",
+    "sha256": "9156f3890a2baadd6261d05c2892530775aacd2153421d33007eecd06d2b3bfe"
+   },
+   {
+    "path": "D:\\projects\\agent-harness-research\\experiments\\t2-prep\\acceptance\\mutation-map.md",
+    "sha256": "0267f6c1ec973e46675709ffe01468a8b761c4bac017312d95d8bf1043435af4"
+   },
+   {
+    "path": "D:\\projects\\agent-harness-research\\experiments\\t2-prep\\README.md",
+    "sha256": "f4699b38a1d891d9179b76f4299799065a69cca91e2a2bee517d74097663c71c"
+   },
+   {
+    "path": "D:\\projects\\agent-harness-research\\experiments\\t2-prep\\coordination\\draft-status.md",
+    "sha256": "573e44191d3cf31d971ced1c6d4c41dfde14816f4d145ab1facc1442e6ee84ae"
+   },
+   {
+    "path": "D:\\projects\\agent-harness-research\\experiments\\t2-eval\\FABRICATION-LOG.md",
+    "sha256": "7940ab77a7ccb44d945359023960a563098733e69f3a0d8223716d0faa48294d"
+   },
+   {
+    "path": "D:\\projects\\agent-harness-research\\experiments\\t2-eval\\evaluator\\hidden.py",
+    "sha256": "e87f8834501238d470569af053ce971ef53d7e351cfaf197cec1c3e4fe8b15c0"
+   },
+   {
+    "path": "D:\\projects\\agent-harness-research\\experiments\\t2-eval\\evaluator\\mutants.py",
+    "sha256": "3d3574773b8637bcba8f7ad25e2ab8bf1d9129a14255389445520d5783d96d55"
+   },
+   {
+    "path": "D:\\projects\\agent-harness-research\\experiments\\t2-eval\\evaluator\\predicted.py",
+    "sha256": "03f82748f7daf43005cccd9ca6fbce437342a4a94c7d7896a6f31b358dd36105"
+   },
+   {
+    "path": "D:\\projects\\agent-harness-research\\experiments\\t2-eval\\runs\\zero-change-check-1\\verification.txt",
+    "sha256": "3503d7bdd1e3c97b1258fc663bbeec88e37c1abc9b41b26903500818ec129aa6"
+   },
+   {
+    "path": "D:\\projects\\cline-mcp-workspace\\orchestration\\tmp\\task-t2-fabrication-review.md",
+    "sha256": "88e31e55b83c27a4a171f3fdf9949fb7f342c8427e1311cede7ff63ea88eb6c7"
+   },
+   {
+    "path": "D:\\projects\\cline-mcp-workspace\\orchestration\\runs\\20260918-132658\\last-message.txt",
+    "sha256": "241079329f2de9fdb6b0a408004fd9f65e01ca8de942719b8c295f954d5e3c6e"
+   }
+  ],
+  "whitelist_sources": [
+   {
+    "path": "D:\\projects\\agent-harness-research\\experiments\\t2-prep\\spec\\T2-SPEC-draft-v0.1.md",
+    "sha256": "bc399eec1b41f2d942eff12fbf48c3da42c492d5824e466d1e1b5caa3cf668da"
+   },
+   {
+    "path": "D:\\projects\\agent-harness-research\\experiments\\t2-eval\\defective\\notes.py",
+    "sha256": "78c16c9985bf906f309547f545dc53cc5c6c519214674ba3b9a188b764b4b0be"
+   },
+   {
+    "path": "D:\\projects\\agent-harness-research\\experiments\\t2-prep\\acceptance\\public-cases.md",
+    "sha256": "dca5fdbd3f1ca792156c932994ca45072dcac44b927e3907362759b12f27dd70"
+   },
+   {
+    "path": "D:\\projects\\agent-harness-research\\experiments\\t2-eval\\tests\\_support.py",
+    "sha256": "97df401afd6b88c389fe0734e3c4ccd0f635e64e924face24b96f0d7c7cf8153"
+   },
+   {
+    "path": "D:\\projects\\agent-harness-research\\experiments\\t2-eval\\tests\\test_u01.py",
+    "sha256": "e045ca4d06af151c11aa8d6038149f3721baba728fdbfebfc327fe910071fa5a"
+   },
+   {
+    "path": "D:\\projects\\agent-harness-research\\experiments\\t2-eval\\tests\\test_u02.py",
+    "sha256": "1c708b5c7c85fc8837c10a16865a0e98289fe415283873d11606e740aab3d753"
+   },
+   {
+    "path": "D:\\projects\\agent-harness-research\\experiments\\t2-eval\\tests\\test_u03.py",
+    "sha256": "a293318f18612943ca2f5612969e9e890eb94a739e2a9c06b20017014055c48c"
+   },
+   {
+    "path": "D:\\projects\\agent-harness-research\\experiments\\t2-eval\\tests\\test_u04.py",
+    "sha256": "388791fd0bf9297b3dbeee02f1f39a404ba89345b000a3b787ba9458fe8cdb98"
+   },
+   {
+    "path": "D:\\projects\\agent-harness-research\\experiments\\t2-eval\\tests\\test_u05.py",
+    "sha256": "aa30004ab2868cb8b0c0f529336f48c68647955c2bdda95468f1774c01386245"
+   },
+   {
+    "path": "D:\\projects\\agent-harness-research\\experiments\\t2-eval\\tests\\test_u06.py",
+    "sha256": "039f301ada979c660492e74a6fe724c2cb7f181865a7192c3171d8e806a3fa72"
+   },
+   {
+    "path": "D:\\projects\\agent-harness-research\\experiments\\t2-eval\\tests\\test_u07.py",
+    "sha256": "f453fdae03bd4b9aa66b77ce58a15a59e6aa1b7257fcc03abd305ec993f83b6a"
+   },
+   {
+    "path": "D:\\projects\\agent-harness-research\\experiments\\t2-eval\\tests\\test_u08.py",
+    "sha256": "407b9c703416fa92a864ff99a815bd04286ac48e20b3bb4ab76b7417820336ff"
+   },
+   {
+    "path": "D:\\projects\\agent-harness-research\\experiments\\t2-eval\\tests\\test_u09.py",
+    "sha256": "bf198e0b4fca380789a6471cc6ab74f254b511fd4c719d2843253418152a1d84"
+   },
+   {
+    "path": "D:\\projects\\agent-harness-research\\experiments\\t2-eval\\tests\\test_u10.py",
+    "sha256": "76fdb6dc9637101c3a9d4c5c2c1592b81cea85d70cd4233d01c842c2f0546abd"
+   }
+  ]
+ },
+ "claims_scope": "PASS == zero match in active literal corpus byte patterns (utf-8/utf-16-le); not a claim of zero secrets of any encoding",
+ "scan_hits": [],
+ "problems": [],
+ "ok": true
+}

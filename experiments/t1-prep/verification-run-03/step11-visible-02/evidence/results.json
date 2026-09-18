@@ -1,0 +1,16 @@
+{
+  "item": 11,
+  "name": "native-visible-dialog-cancel",
+  "PASS": false,
+  "classification": "BLOCKED",
+  "checks": {
+    "oracleLoaded": true,
+    "treeBeforeImport": true
+  },
+  "evidence": {
+    "oracle": "D:\\projects\\agent-harness-research\\experiments\\t1-prep\\verification-run-03\\step11-visible-02\\evidence\\downloads\\t1-map.json",
+    "browserPid": 32640
+  },
+  "error": "Native tool/ownership failure: {\"tool\":\"native_cancel\",\"stage\":\"find_dialog\",\"passed\":false,\"failure\":\"DIALOG_NOT_FOUND\",\"handles\":{}}",
+  "status": "UNTESTED"
+}

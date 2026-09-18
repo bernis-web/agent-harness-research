@@ -1,0 +1,28 @@
+{
+  "at": "2026-09-17T16:02:38.450Z",
+  "worker": "Claude CLI glm-5.3-flash --effort low",
+  "acceptedSource": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/step11-visible-02/model-correction/result.json",
+  "rejectedSource": "D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/step11-visible-02/model-native/result.json",
+  "changes": [
+    {
+      "file": "step11.cjs",
+      "author": "Flash correction + Codex evidence-write glue",
+      "detail": "processInfo + guarded exact browser PID; coordinator adds raw response persistence omitted by model"
+    },
+    {
+      "file": "harness.cjs",
+      "author": "Flash correction",
+      "detail": "propagate owned-context close failure, assert no remaining pages"
+    },
+    {
+      "file": "native_cancel.py",
+      "author": "inherited unchanged",
+      "detail": "PID/owner/foreground/button hit-test, target-button-only screenshot, SendInput mouse click"
+    },
+    {
+      "file": "run.cjs",
+      "author": "Codex orchestration",
+      "detail": "new output paths; truthful owned-context cleanup; 90s bound"
+    }
+  ]
+}

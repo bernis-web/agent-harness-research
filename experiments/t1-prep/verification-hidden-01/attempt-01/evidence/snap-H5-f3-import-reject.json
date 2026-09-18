@@ -1,0 +1,113 @@
+{
+  "label": "H5-f3-import-reject",
+  "tree": {
+    "title": "临时根",
+    "children": [
+      {
+        "title": "分支一",
+        "children": []
+      },
+      {
+        "title": "分支二",
+        "children": [
+          {
+            "title": "细节甲",
+            "children": []
+          },
+          {
+            "title": "细节乙",
+            "children": []
+          }
+        ]
+      },
+      {
+        "title": "分支三",
+        "children": []
+      }
+    ]
+  },
+  "errors": [],
+  "message": {
+    "visible": true,
+    "text": "导入被拒绝：结构或标题不符合公开结构 {title, children}；当前导图与撤销记录不变",
+    "color": "rgb(204, 34, 34)",
+    "isError": true
+  },
+  "step": {
+    "id": "H5-f3-import-reject",
+    "expected": {
+      "title": "临时根",
+      "children": [
+        {
+          "title": "分支一",
+          "children": []
+        },
+        {
+          "title": "分支二",
+          "children": [
+            {
+              "title": "细节甲",
+              "children": []
+            },
+            {
+              "title": "细节乙",
+              "children": []
+            }
+          ]
+        },
+        {
+          "title": "分支三",
+          "children": []
+        }
+      ]
+    },
+    "status": "PASS",
+    "timestamp": "2026-09-18T03:37:51.672Z",
+    "actionCount": 1,
+    "actual": {
+      "title": "临时根",
+      "children": [
+        {
+          "title": "分支一",
+          "children": []
+        },
+        {
+          "title": "分支二",
+          "children": [
+            {
+              "title": "细节甲",
+              "children": []
+            },
+            {
+              "title": "细节乙",
+              "children": []
+            }
+          ]
+        },
+        {
+          "title": "分支三",
+          "children": []
+        }
+      ]
+    },
+    "nodeCount": 6,
+    "uiMessage": {
+      "visible": true,
+      "text": "导入被拒绝：结构或标题不符合公开结构 {title, children}；当前导图与撤销记录不变",
+      "color": "rgb(204, 34, 34)",
+      "isError": true
+    },
+    "errors": [],
+    "assertions": {
+      "treeMatches": true,
+      "nodeCount": 6,
+      "message": {
+        "visible": true,
+        "text": "导入被拒绝：结构或标题不符合公开结构 {title, children}；当前导图与撤销记录不变",
+        "color": "rgb(204, 34, 34)",
+        "isError": true
+      },
+      "messageErrorShown": true
+    }
+  }
+}

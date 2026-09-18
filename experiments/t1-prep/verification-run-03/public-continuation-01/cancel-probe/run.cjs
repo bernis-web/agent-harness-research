@@ -1,0 +1,1 @@
+process.env.T1_OUT="D:/projects/agent-harness-research/experiments/t1-prep/verification-run-03/public-continuation-01/cancel-probe/evidence";process.env.T1_REFERENCE="D:/projects/agent-harness-research/experiments/t1-prep/reference/mindmap.html";process.env.T1_PLAYWRIGHT='D:/projects/npm-cache/_npx/cbf1b8a072280925/node_modules/playwright-core';require('./probe.cjs');

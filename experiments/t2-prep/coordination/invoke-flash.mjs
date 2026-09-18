@@ -1,0 +1,24 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import crypto from 'node:crypto';
+import {spawn} from 'node:child_process';
+const home=path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:)/,'$1'));
+const name=process.argv[2];
+if(!/^call-[0-9]{2}-[a-z-]+$/.test(name||''))throw Error('Invalid call directory');
+const dir=path.resolve(home,name);
+const prompt=fs.readFileSync(path.join(dir,'prompt.txt'),'utf8');
+const model='glm-5.3-flash';
+const args=['--print','--safe-mode','--effort','low','--model',model,'--tools','','--disable-slash-commands','--strict-mcp-config','--mcp-config',path.join(dir,'empty-mcp.json'),'--setting-sources','user','--settings',path.join(dir,'settings.json'),'--no-session-persistence','--system-prompt-snapshot','off','--no-chrome','--output-format','stream-json','--verbose','--include-partial-messages'];
+const scrub=s=>s.replace(/sk-[A-Za-z0-9_-]{12,}/g,'[REDACTED]').replace(/(bearer\s+)[A-Za-z0-9._~+/=-]+/gi,'$1[REDACTED]').replace(/((?:api[_-]?key|auth[_-]?token|access[_-]?token|password|secret)\s*[=:]\s*)[^\s"<>]+/gi,'$1[REDACTED]');
+const out=fs.openSync(path.join(dir,'stdout.jsonl'),'wx'),err=fs.openSync(path.join(dir,'stderr.txt'),'wx');
+const start=Date.now(),started=new Date().toISOString();
+const child=spawn('D:/projects/node-global/node_modules/@anthropic-ai/claude-code/bin/claude.exe',args,{cwd:dir,windowsHide:true,env:{...process.env,TEMP:path.join(dir,'temp'),TMP:path.join(dir,'temp'),CLAUDE_CODE_TMPDIR:path.join(dir,'temp'),CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC:'1',CLAUDE_CODE_DISABLE_AUTO_MEMORY:'1'},stdio:['pipe','pipe','pipe']});
+let result=null,init=null,models=new Set(),timedOut=false,stdoutBuf='',stderrBuf='',events=0,toolUses=0,spawnError=null;
+function line(s,target,isOut){const clean=scrub(s);fs.writeSync(target,clean+'\n');if(isOut){try{const ev=JSON.parse(clean);events++;if(ev.type==='system'&&ev.subtype==='init')init=ev;if(ev.model)models.add(ev.model);if(ev.message?.model)models.add(ev.message.model);for(const b of ev.message?.content||[])if(b.type==='tool_use')toolUses++;if(ev.type==='result')result=ev;}catch{}}}
+child.stdout.setEncoding('utf8');child.stderr.setEncoding('utf8');
+child.stdout.on('data',s=>{stdoutBuf+=s;let i;while((i=stdoutBuf.indexOf('\n'))>=0){line(stdoutBuf.slice(0,i),out,true);stdoutBuf=stdoutBuf.slice(i+1);}});
+child.stderr.on('data',s=>{stderrBuf+=s;let i;while((i=stderrBuf.indexOf('\n'))>=0){line(stderrBuf.slice(0,i),err,false);stderrBuf=stderrBuf.slice(i+1);}});
+child.on('error',e=>{spawnError=scrub(e.message);});
+child.stdin.on('error',e=>{spawnError=scrub(e.message);});child.stdin.end(prompt,'utf8');
+const timer=setTimeout(()=>{timedOut=true;child.kill();},360000);
+child.on('close',(code,signal)=>{clearTimeout(timer);if(stdoutBuf)line(stdoutBuf,out,true);if(stderrBuf)line(stderrBuf,err,false);fs.closeSync(out);fs.closeSync(err);if(result)fs.writeFileSync(path.join(dir,'result.json'),JSON.stringify(result,null,2),{flag:'wx'});const meta={started,ended:new Date().toISOString(),elapsed_seconds:(Date.now()-start)/1000,pid:child.pid,requested_model:model,effort:'low',args,exit_code:code,signal,timedOut,spawnError,result_received:!!result,result_is_error:result?.is_error,observed_models:[...models],events,tool_use_count:toolUses,init_tools:init?.tools,init_mcp_servers:init?.mcp_servers,init_skills:init?.skills,init_plugins:init?.plugins,usage:result?.usage,modelUsage:result?.modelUsage,prompt_sha256:crypto.createHash('sha256').update(prompt).digest('hex'),authentication:'Normal inherited authentication; no credential file inspected or copied',output:'Original stream/result with safety redaction only; no paraphrase',wrapper:'Node adaptation of reviewed t1-prep verification-run-03 step11-visible-04 model-report/invoke-stream.py; no Python created or executed'};fs.writeFileSync(path.join(dir,'model-call.json'),JSON.stringify(meta,null,2),{flag:'wx'});console.log(JSON.stringify(meta));process.exitCode=(code===0&&result&&!result.is_error&&!timedOut)?0:1;});

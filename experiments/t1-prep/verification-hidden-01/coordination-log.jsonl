@@ -1,0 +1,1 @@
+{"at":"2026-09-18T03:28:11.676Z","event":"model-dispatch","calls":[{"name":"model-harness","wrapperPid":27900},{"name":"model-cases","wrapperPid":33020}],"priorToolIssue":"Node REPL does not expose process; dispatch corrected to default normal environment inheritance, no model launched during failed call."}

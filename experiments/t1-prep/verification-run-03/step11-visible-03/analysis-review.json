@@ -1,0 +1,17 @@
+{
+  "accepted": [
+    "async unsubscribe supported by source, not proven root cause",
+    "explicit no-cancel interception off with awaited acknowledgement"
+  ],
+  "rejected": [
+    "conhost-parent inference unsupported",
+    "accepting guessed parent chain",
+    "swallowed disabling errors",
+    "strong causal conclusion without live evidence"
+  ],
+  "additionalSourceLines": [
+    "coreBundle.js:61352-61360",
+    "coreBundle.js:58645-58664"
+  ],
+  "next": "actual spawn PID capture + own-only live identity, strict original owner; no owner broadening"
+}

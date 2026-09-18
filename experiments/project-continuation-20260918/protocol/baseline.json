@@ -1,0 +1,27 @@
+{
+  "at": "2026-09-18T03:38:16.071Z",
+  "sources": [
+    {
+      "path": "D:/projects/agent-harness-research/experiments/project-continuation-20260918/project-status.md",
+      "sha256": "61229f277351998de1f92e6d17aed2433af10146777928a967c7794c7ca2d4a2"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/project-continuation-20260918/next-work-plan.md",
+      "sha256": "37870d1bfa90decb0c97eca4d9ace6ca8cf63d2d00ebdbe12b45833727373697"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/project-continuation-20260918/model/invoke-stream.py",
+      "sha256": "dd6dc934ac473a16be41e1431d30e3a5f81cfc600a50bf54a5288399d9d07ac7"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/project-continuation-20260918/model/settings.json",
+      "sha256": "8964de44d77cff8ae8cbedf4f94e3ddfa213d7177a29851f651c932cba25aa0c"
+    },
+    {
+      "path": "D:/projects/agent-harness-research/experiments/project-continuation-20260918/model/empty-mcp.json",
+      "sha256": "691f62624936af38f0e6b2ac6c8b43162a23696696f62d5037d9eb2b43bd73c5"
+    }
+  ],
+  "gitStatus": "?? experiments/\n?? research/\n",
+  "policy": "Exact five-file whitelist only; no recursive enumeration or hashing of prior experiments, profiles, private settings, Cookies, hidden cases."
+}

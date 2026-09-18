@@ -1,0 +1,36 @@
+{
+  "userEdits": [
+    {
+      "file": "spec/T2-SPEC-draft-v0.1.md",
+      "old": "- 未来产品仅为 `notes.py`（仅 Python 标准库，无任何第三方依赖）+ `README.md`，位于未来产品工作区根目录。",
+      "new": "- **用户明确要求：任务是诊断并修复预置、已有缺陷的 `notes.py`，不是从零创建笔记程序。**未来任务包提供已有 `notes.py` 与评价器维护的 `tests/`；执行者仅修复 `notes.py`、维护产品 `README.md`，并交付 `CHANGES.md`（变更记录不超过 10 条；按非空变更条目计，标题不计）。不得把任务改成新建产品或引入第三方依赖。",
+      "authority": "Explicit user review correction in this task"
+    },
+    {
+      "file": "spec/T2-SPEC-draft-v0.1.md",
+      "old": "- 未来 `tests/` 由评价器提供，产品与规格均不得修改它。本规格不泄漏、也不得推测任何缺陷插入点、变异体或隐藏用例内容。",
+      "new": "- **用户明确要求：`tests/` 不可修改，前后文件集合与每个文件内容哈希必须一致。**未来评价器在修复前保存公开 tests 的相对文件清单及每文件 SHA-256，修复后按同一清单复核原始文件 bytes 的哈希；不得增、删、改 tests 文件。清单放在评价侧，不进入或由产品改写。本轮不创建、不运行测试，也不实际计算 tests 哈希。规格不泄漏任何缺陷位置或隐藏数据。",
+      "authority": "Explicit user review correction in this task"
+    },
+    {
+      "file": "spec/T2-SPEC-draft-v0.1.md",
+      "old": "本文所有「固定判据」仅指本草案内部固定、可复审，不代表设计已冻结或获批；所有具体取值为拟定值，汇总见 §10。",
+      "new": "本文所有「固定判据」仅指草案内部固定、可复审，不代表整体设计已冻结或获批；诊断修复已有 notes.py、CHANGES.md≤10 条、tests 哈希不变是用户明确要求，其余 CLI/格式设计取值为拟定值，汇总见 §10。",
+      "authority": "Explicit user review correction in this task"
+    },
+    {
+      "file": "spec/T2-SPEC-draft-v0.1.md",
+      "old": "- 本批无运行、无实验、无代码生成。",
+      "new": "- 本批仅生成准备文档与自有 CLI 协调留证；没有产品或测试代码生成/执行，没有产品实验。",
+      "authority": "Explicit user review correction in this task"
+    },
+    {
+      "file": "spec/T2-SPEC-draft-v0.1.md",
+      "old": "产品交付物、依赖限制、tests/ 不可修改",
+      "new": "诊断修复已有 notes.py、README.md 与 CHANGES.md≤10 条交付、标准库依赖限制、tests/ 文件集合与内容哈希不变",
+      "authority": "Explicit user review correction in this task"
+    }
+  ],
+  "added_public_static_gate": "## 用户明确的诊断修复与静态交付门槛\n\n- 未来任务是诊断并修复预置的已有缺陷 `notes.py`，不是从零创建；不得修改评价器提供的 `tests/`。\n- 交付修复后的 `notes.py`、产品 `README.md` 与不超过 10 条变更记录的 `CHANGES.md`，仅使用 Python 标准库。\n- 评价器在修复前后核对 tests 的相对文件集合及每文件原始 bytes 的 SHA-256 完全一致；不得增、删、改 tests 文件。哈希清单留在评价侧。本轮不读取或计算任何 tests 哈希。\n- 上述是公开静态门槛，不新增第 11 个行为场景；未核对则记 UNRUN，不能据此宣称通过。\n",
+  "note": "Applied to files created in this task only; no tests read or hashed"
+}
